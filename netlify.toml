@@ -1,0 +1,17 @@
+[build]
+  publish = "dist" # Ajusta esto a tu carpeta de construcción si es diferente
+  command = "npm run build"
+
+  
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+
+[dev]
+  command = "npm run dev"
+  port = 3000
+
+[build.environment]
+NODE_VERSION = "22"
