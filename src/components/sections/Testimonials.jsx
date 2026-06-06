@@ -1,6 +1,10 @@
+import { useLocation } from 'react-router-dom';
 import { AnimatedSection } from '../ui/AnimatedSection';
 import { StaggerContainer } from '../ui/StaggerContainer';
-// import { useTranslation } from '../../hooks/useTranslation'; // TODO: Habilitar en Fase 2 final
+import es from '../../locales/es.json';
+import en from '../../locales/en.json';
+
+const translationsByLang = { es, en };
 
 // Star icon
 const StarIcon = () => (
@@ -16,33 +20,12 @@ const QuoteIcon = () => (
   </svg>
 );
 
-// Datos de testimonios
-const testimonials = [
-  {
-    quote: 'En 3 semanas pasamos de perder el 40% de leads por respuesta tardía a capturarlos automáticamente 24/7.',
-    name: 'María Gómez',
-    company: 'Inmobiliaria Viva',
-    result: '+40% leads en 30 días',
-    rating: 5
-  },
-  {
-    quote: 'Oryon Labs automatizó nuestro sistema de citas y seguimiento. Ahora nuestro equipo se enfoca en atender, no en administrar.',
-    name: 'Dr. Carlos Ruiz',
-    company: 'Clínica BeautyMed',
-    result: 'Ahorramos 3h/día',
-    rating: 5
-  },
-  {
-    quote: 'El chatbot cualifica leads antes de que hablen con nosotros. La calidad de las oportunidades mejoró drásticamente.',
-    name: 'Laura Martínez',
-    company: 'E-Shop Style',
-    result: 'ROI 300% en 60 días',
-    rating: 5
-  }
-];
-
 export default function Testimonials() {
-  // const { t } = useTranslation();
+  const location = useLocation();
+  const pathLang = location.pathname.split('/')[1];
+  const lang = ['es', 'en'].includes(pathLang) ? pathLang : 'es';
+  const t = translationsByLang[lang] || translationsByLang.es;
+  const testimonials = t.testimonials;
 
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-navy relative overflow-hidden">
@@ -56,13 +39,13 @@ export default function Testimonials() {
         {/* Header */}
         <AnimatedSection className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
           <span className="inline-block bg-white/10 text-cyan-light text-sm font-semibold px-4 py-2 rounded-full mb-4 sm:mb-6">
-            Casos de éxito
+            {testimonials.badge}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Lo que dicen nuestros clientes
+            {testimonials.title}
           </h2>
           <p className="text-gray-400 text-base sm:text-lg">
-            Resultados reales de empresas que automatizaron con Oryon Labs.
+            {testimonials.description}
           </p>
         </AnimatedSection>
 
@@ -71,7 +54,7 @@ export default function Testimonials() {
           staggerDelay={200}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
-          {testimonials.map((testimonial, index) => (
+          {testimonials.cards.map((testimonial, index) => (
             <div
               key={index}
               className="group bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm hover:border-cyan/30 hover:bg-white/10 transition-all duration-300"

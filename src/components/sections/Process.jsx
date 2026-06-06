@@ -1,5 +1,9 @@
+import { useLocation } from 'react-router-dom';
 import { AnimatedSection } from '../ui/AnimatedSection';
-// import { useTranslation } from '../../hooks/useTranslation'; // TODO: Habilitar en Fase 2 final
+import es from '../../locales/es.json';
+import en from '../../locales/en.json';
+
+const translationsByLang = { es, en };
 
 // Iconos Lucide
 const SearchIcon = () => (
@@ -15,50 +19,28 @@ const TrendingUpIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
 );
 
-// Datos del proceso
-const steps = [
-  {
-    number: '01',
-    icon: SearchIcon,
-    title: 'Diagnóstico',
-    description: 'Analizamos tus procesos actuales, identificamos cuellos de botella y definimos oportunidades de automatización con mayor ROI.'
-  },
-  {
-    number: '02',
-    icon: PaletteIcon,
-    title: 'Diseño',
-    description: 'Diseñamos flujos de trabajo optimizados y personalizados para tu negocio. Prototipos visuales antes de construir.'
-  },
-  {
-    number: '03',
-    icon: WrenchIcon,
-    title: 'Implementación',
-    description: 'Construimos e integramos las automatizaciones. Conectamos todas las herramientas. Testing completo antes de salir a producción.'
-  },
-  {
-    number: '04',
-    icon: TrendingUpIcon,
-    title: 'Resultados',
-    description: 'Lanzamos, medimos y optimizamos. Soporte continuo para que la IA mejore con el tiempo. Resultados visibles desde el día uno.'
-  }
-];
+const icons = [SearchIcon, PaletteIcon, WrenchIcon, TrendingUpIcon];
 
 export default function Process() {
-  // const { t } = useTranslation(); // TODO: t('process.title')
+  const location = useLocation();
+  const pathLang = location.pathname.split('/')[1];
+  const lang = ['es', 'en'].includes(pathLang) ? pathLang : 'es';
+  const t = translationsByLang[lang] || translationsByLang.es;
+  const process = t.process;
 
   return (
-    <section id="proceso" className="py-16 sm:py-20 lg:py-24 bg-gray-950">
+    <section id={lang === 'en' ? 'process' : 'proceso'} className="py-16 sm:py-20 lg:py-24 bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <AnimatedSection className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
           <span className="inline-block bg-cyan-pale text-cyan-dark text-sm font-semibold px-4 py-2 rounded-full mb-4 sm:mb-6">
-            Cómo trabajamos
+            {process.badge}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            4 pasos para transformar tu negocio
+            {process.title}
           </h2>
           <p className="text-gray-400 text-base sm:text-lg">
-            Un proceso probado que lleva tu empresa de la idea a resultados medibles en menos de 30 días.
+            {process.description}
           </p>
         </AnimatedSection>
 
@@ -68,8 +50,8 @@ export default function Process() {
           <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan/30 to-transparent" />
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {steps.map((step, index) => {
-              const IconComponent = step.icon;
+            {process.steps.map((step, index) => {
+              const IconComponent = icons[index];
               return (
                 <AnimatedSection key={step.number} delay={index * 150}>
                   <div className="relative group h-full">
@@ -94,7 +76,7 @@ export default function Process() {
                       </p>
 
                       {/* Arrow indicator (excepto último) */}
-                      {index < steps.length - 1 && (
+                      {index < process.steps.length - 1 && (
                         <div className="hidden lg:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10">
                           <div className="w-8 h-8 rounded-full bg-cyan text-white flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>

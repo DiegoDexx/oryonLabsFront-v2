@@ -1,7 +1,11 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { AnimatedSection } from '../ui/AnimatedSection';
 import { StaggerContainer } from '../ui/StaggerContainer';
-// import { useTranslation } from '../../hooks/useTranslation'; // TODO: Habilitar en Fase 2 final
+import es from '../../locales/es.json';
+import en from '../../locales/en.json';
+
+const translationsByLang = { es, en };
 
 // Plus/Minus icon component
 const PlusIcon = () => (
@@ -16,42 +20,6 @@ const MinusIcon = () => (
     <line x1="5" y1="12" x2="19" y2="12" />
   </svg>
 );
-
-// FAQ items
-const faqItems = [
-  {
-    question: '¿Qué es un agente de IA y cómo puede ayudar mi negocio?',
-    answer: 'Un agente de IA es un sistema automatizado que realiza tareas específicas como responder preguntas, capturar leads o programar citas. Reduce costos, elimina errores humanos y trabaja 24/7 sin descanso.'
-  },
-  {
-    question: '¿Cuánto tiempo lleva implementar una automatización?',
-    answer: 'La mayoría de proyectos están operativos en 2-4 semanas. El tiempo exacto depende de la complejidad de la integración necesaria y de las herramientas que ya uses.'
-  },
-  {
-    question: '¿Necesito conocimientos técnicos?',
-    answer: 'No. Nosotros nos encargamos de toda la implementación técnica. Tú solo necesitas dedicar 1-2 horas a la configuración inicial para contarnos cómo funciona tu negocio.'
-  },
-  {
-    question: '¿Qué pasa si ya tengo herramientas configuradas?',
-    answer: 'Perfecto. Integramos tu CRM, email marketing y otras herramientas existentes. No es necesario cambiar todo lo que tienes funcionando.'
-  },
-  {
-    question: '¿Cómo se mide el ROI de la automatización?',
-    answer: 'Trackamos métricas clave como leads capturados, tiempo de respuesta, tareas automatizadas y costos operativos. Dashboard en tiempo real incluido.'
-  },
-  {
-    question: '¿El soporte incluye actualizaciones?',
-    answer: 'Sí. Todos los planes incluyen soporte técnico y actualizaciones de mantenimiento. Los planes Pro y superiores incluyen optimizaciones mensuales.'
-  },
-  {
-    question: '¿Puedo cancelar en cualquier momento?',
-    answer: 'Absolutamente. No hay contratos de permanencia. Puedes cancelar cuando quieras sin penalización. Tu setup te pertenece.'
-  },
-  {
-    question: '¿Trabajan con empresas de cualquier tamaño?',
-    answer: 'Trabajamos con autónomos, startups, pymes y empresas medianas. Escalamos contigo según tus necesidades de crecimiento.'
-  }
-];
 
 function FAQItem({ item, isOpen, onToggle, index }) {
   return (
@@ -87,8 +55,13 @@ function FAQItem({ item, isOpen, onToggle, index }) {
 }
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(0); // First item open by default
-  // const { t } = useTranslation();
+  const location = useLocation();
+  const pathLang = location.pathname.split('/')[1];
+  const lang = ['es', 'en'].includes(pathLang) ? pathLang : 'es';
+  const t = translationsByLang[lang] || translationsByLang.es;
+  const faq = t.faq;
+  
+  const [openIndex, setOpenIndex] = useState(0);
 
   const handleToggle = (index) => {
     setOpenIndex(openIndex === index ? -1 : index);
@@ -100,13 +73,13 @@ export default function FAQ() {
         {/* Header */}
         <AnimatedSection className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
           <span className="inline-block bg-cyan-pale text-cyan-dark text-sm font-semibold px-4 py-2 rounded-full mb-4 sm:mb-6">
-            Preguntas frecuentes
+            {faq.badge}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-4">
-            Todo lo que necesitas saber
+            {faq.title}
           </h2>
           <p className="text-gray-600 text-base sm:text-lg">
-            Resolvemos tus dudas sobre automatización e inteligencia artificial.
+            {faq.description}
           </p>
         </AnimatedSection>
 
@@ -114,7 +87,7 @@ export default function FAQ() {
         <AnimatedSection delay={100}>
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 lg:p-8">
             <StaggerContainer staggerDelay={50}>
-              {faqItems.map((item, index) => (
+              {faq.items.map((item, index) => (
                 <FAQItem
                   key={index}
                   item={item}
@@ -129,12 +102,12 @@ export default function FAQ() {
 
         {/* CTA */}
         <AnimatedSection delay={200} className="text-center mt-12">
-          <p className="text-gray-600 mb-4">¿Tienes más preguntas?</p>
+          <p className="text-gray-600 mb-4">{faq.cta_title}</p>
           <a
-            href="#contacto"
+            href={`/${lang}#${lang === 'en' ? 'contact' : 'contacto'}`}
             className="inline-flex items-center gap-2 bg-navy hover:bg-navy-light text-white font-semibold px-6 py-3 rounded-lg transition-all"
           >
-            Hablar con un experto
+            {faq.cta_button}
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>

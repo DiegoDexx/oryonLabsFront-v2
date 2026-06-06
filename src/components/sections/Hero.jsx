@@ -1,27 +1,17 @@
 import { FaCircle, FaCheck } from 'react-icons/fa';
+import { useLocation } from 'react-router-dom';
+import es from '../../locales/es.json';
+import en from '../../locales/en.json';
 
-const metrics = [
-  { value: '2.4k', label: 'Leads/mes', sublabel: '+180%' },
-  { value: '18min', label: 'Respuesta', sublabel: '-91%' },
-  { value: '€8.2k', label: 'Ahorrado', sublabel: '+monthly' },
-];
-
-const automationItems = [
-  { icon: '💬', label: 'Lead captado vía chatbot', status: 'Activo' },
-  { icon: '🧠', label: 'Enriquecimiento de datos IA', status: 'Activo' },
-  { icon: '🔗', label: 'Asignado a CRM automáticamente', status: 'Activo' },
-  { icon: '✉️', label: 'Email de bienvenida enviado', status: 'Activo' },
-];
-
-const trustLogos = [
-  'INMOBILIARIA VIVA',
-  'CLÍNICA BEAUTYMED',
-  'E-SHOP STYLE',
-  'LEXPRO ABOGADOS',
-  'MEDCENTER',
-];
+const translationsByLang = { es, en };
 
 export default function Hero() {
+  const location = useLocation();
+  const pathLang = location.pathname.split('/')[1];
+  const lang = ['es', 'en'].includes(pathLang) ? pathLang : 'es';
+  const t = translationsByLang[lang] || translationsByLang.es;
+  const hero = t.hero;
+
   return (
     <section className="relative bg-navy min-h-screen pt-20 overflow-hidden">
       {/* Background pattern */}
@@ -37,37 +27,38 @@ export default function Hero() {
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/10">
               <span className="w-2 h-2 bg-cyan rounded-full animate-pulse" />
               <span className="text-cyan-light text-sm font-medium">
-                Agencia de Automatización con IA para PyMEs
+                {hero.badge}
               </span>
             </div>
 
             {/* Headline */}
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Infraestructura de{' '}
-                <span className="text-cyan-light">IA real</span> para tu negocio
+                {lang === 'es' ? 'Infraestructura de ' : 'Real AI infrastructure '}
+                <span className="text-cyan-light">{hero.title_highlight}</span>
+                {lang === 'es' ? ' para tu negocio' : ' for your business'}
               </h1>
               <p className="text-gray-300 text-lg leading-relaxed max-w-xl">
-                Automatizamos la captación de leads, la atención al cliente y los flujos de trabajo de tu empresa. No plantillas. Ingeniería de IA a medida.
+                {hero.subtitle}
               </p>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
               <a
-                href="#precios"
+                href={`/${lang}#${lang === 'en' ? 'pricing' : 'precios'}`}
                 className="bg-cyan hover:bg-cyan-medium text-white font-semibold px-6 py-3.5 rounded-lg transition-all flex items-center gap-2 shadow-lg shadow-cyan/25"
               >
-                Ver planes y precios
+                {hero.cta_primary}
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </a>
               <a
-                href="#contacto"
+                href={`/${lang}#${lang === 'en' ? 'contact' : 'contacto'}`}
                 className="bg-white hover:bg-gray-50 text-navy font-semibold px-6 py-3.5 rounded-lg transition-all"
               >
-                Hablar con un experto
+                {hero.cta_secondary}
               </a>
             </div>
 
@@ -75,15 +66,15 @@ export default function Hero() {
             <div className="flex flex-wrap items-center gap-6 pt-4">
               <div className="flex items-center gap-2 text-gray-300 text-sm">
                 <FaCheck className="w-4 h-4 text-cyan" />
-                <span>Sin conocimientos técnicos</span>
+                <span>{hero.trust_indicator_1}</span>
               </div>
               <div className="flex items-center gap-2 text-gray-300 text-sm">
                 <FaCheck className="w-4 h-4 text-cyan" />
-                <span>Resultados en 30 días</span>
+                <span>{hero.trust_indicator_2}</span>
               </div>
               <div className="flex items-center gap-2 text-gray-300 text-sm">
                 <FaCheck className="w-4 h-4 text-cyan" />
-                <span>Soporte incluido</span>
+                <span>{hero.trust_indicator_3}</span>
               </div>
             </div>
           </div>
@@ -101,16 +92,16 @@ export default function Hero() {
                   <FaCircle className="w-3 h-3 text-red-500" />
                   <FaCircle className="w-3 h-3 text-yellow-500" />
                   <FaCircle className="w-3 h-3 text-green-500" />
-                  <span className="ml-2 text-gray-400 text-sm">Oryon Labs — Panel de automatizaciones</span>
+                  <span className="ml-2 text-gray-400 text-sm">{hero.panel_title}</span>
                 </div>
                 <div className="bg-cyan/20 text-cyan-light text-xs font-semibold px-3 py-1 rounded-full">
-                  50+ PyMEs automatizadas
+                  {hero.panel_badge}
                 </div>
               </div>
 
               {/* Automation Items */}
               <div className="space-y-3 mb-6">
-                {automationItems.map((item, index) => (
+                {hero.automation_items.map((item, index) => (
                   <div
                     key={index}
                     className="flex items-center justify-between bg-white/5 rounded-lg px-4 py-3 border border-white/5"
@@ -129,13 +120,21 @@ export default function Hero() {
 
               {/* Metrics */}
               <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/10">
-                {metrics.map((metric, index) => (
-                  <div key={index} className="text-center">
-                    <p className="text-2xl font-bold text-white">{metric.value}</p>
-                    <p className="text-xs text-gray-400">{metric.label}</p>
-                    <p className="text-xs text-green-400">{metric.sublabel}</p>
-                  </div>
-                ))}
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-white">{hero.metrics.leads.value}</p>
+                  <p className="text-xs text-gray-400">{hero.metrics.leads.label}</p>
+                  <p className="text-xs text-green-400">{hero.metrics.leads.sublabel}</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-white">{hero.metrics.response.value}{hero.metrics.response.unit}</p>
+                  <p className="text-xs text-gray-400">{hero.metrics.response.label}</p>
+                  <p className="text-xs text-green-400">{hero.metrics.response.sublabel}</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-white">{hero.metrics.savings.currency}{hero.metrics.savings.value}{hero.metrics.savings.unit}</p>
+                  <p className="text-xs text-gray-400">{hero.metrics.savings.label}</p>
+                  <p className="text-xs text-green-400">{hero.metrics.savings.sublabel}</p>
+                </div>
               </div>
 
               {/* Time Saved Badge */}
@@ -146,8 +145,8 @@ export default function Hero() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-white font-bold text-sm">3h/día ahorradas</p>
-                  <p className="text-gray-400 text-xs">por empresa de media</p>
+                  <p className="text-white font-bold text-sm">{hero.time_saved.title}</p>
+                  <p className="text-gray-400 text-xs">{hero.time_saved.subtitle}</p>
                 </div>
               </div>
             </div>
@@ -157,10 +156,10 @@ export default function Hero() {
         {/* Trust Bar */}
         <div className="mt-20 pt-12 border-t border-white/10">
           <p className="text-center text-gray-400 text-sm mb-8">
-            Empresas que ya automatizan con Oryon Labs
+            {t.trust_bar.title}
           </p>
           <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16">
-            {trustLogos.map((logo, index) => (
+            {t.trust_bar.logos.map((logo, index) => (
               <span
                 key={index}
                 className="text-gray-500 font-semibold text-sm tracking-wider hover:text-gray-300 transition-colors"

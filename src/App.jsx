@@ -4,12 +4,7 @@ import store from './store';
 
 import './index.css';
 
-// Layouts
-import Navbar from './components/layouts/Navbar';
-import Footer from './components/layouts/Footer';
-
-// Chat Widget
-import ChatWidget from './components/ui/ChatWidget';
+import Layout from './components/layouts/Layout';
 
 // Pages
 import Home from './pages/home';
@@ -22,30 +17,27 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <div className="min-h-screen">
-          <Navbar />
-          <main>
-            <Routes>
-              <Route path="/" element={<Navigate to="/home" replace />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/faq" element={<FAQ />} />
-              
-              {/* Rutas protegidas */}
-              <Route
-                path="/adminpanel"
-                element={
-                  <PrivateRoute roles={['admin', 'Administrador']}>
-                    <AdminPanel />
-                  </PrivateRoute>
-                }
-              />
-
-              <Route path="/login" element={<Login onClose={() => {}} />} />
-            </Routes>
-          </main>
-          <Footer />
-          <ChatWidget />
-        </div>
+        <Routes>
+          {/* Redirect root to /es */}
+          <Route path="/" element={<Navigate to="/es" replace />} />
+          
+          {/* Routes with language prefix */}
+          <Route path="/:lang" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="faq" element={<FAQ />} />
+          </Route>
+          
+          {/* Admin routes (no lang prefix) */}
+          <Route
+            path="/adminpanel"
+            element={
+              <PrivateRoute roles={['admin', 'Administrador']}>
+                <AdminPanel />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/login" element={<Login onClose={() => {}} />} />
+        </Routes>
       </Router>
     </Provider>
   );

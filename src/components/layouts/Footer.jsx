@@ -1,7 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FaTwitter, FaLinkedin, FaInstagram, FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
+import es from '../../locales/es.json';
+import en from '../../locales/en.json';
+
+const translationsByLang = { es, en };
 
 export default function Footer() {
+  const location = useLocation();
+  const pathLang = location.pathname.split('/')[1];
+  const lang = ['es', 'en'].includes(pathLang) ? pathLang : 'es';
+  const t = translationsByLang[lang] || translationsByLang.es;
+  const footer = t.footer;
   const currentYear = new Date().getFullYear();
 
   return (
@@ -15,10 +24,10 @@ export default function Footer() {
               <div className="w-8 h-8 bg-cyan rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">O</span>
               </div>
-              <span className="font-bold text-lg">OryonLabs</span>
+              <span className="font-bold text-lg">{footer.brand}</span>
             </div>
             <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-              Automatizamos la captación de leads, la atención al cliente y los flujos de trabajo de tu empresa.
+              {footer.description}
             </p>
             <div className="flex gap-4">
               <a
@@ -50,45 +59,51 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="font-semibold text-white mb-6">Servicios</h3>
+            <h3 className="font-semibold text-white mb-6">{footer.columns.services.title}</h3>
             <ul className="space-y-4">
-              <li><a href="#servicios" className="text-gray-400 hover:text-cyan text-sm transition-colors">Chatbots IA</a></li>
-              <li><a href="#servicios" className="text-gray-400 hover:text-cyan text-sm transition-colors">Automatización de procesos</a></li>
-              <li><a href="#servicios" className="text-gray-400 hover:text-cyan text-sm transition-colors">Integración de sistemas</a></li>
-              <li><a href="#servicios" className="text-gray-400 hover:text-cyan text-sm transition-colors">Agentes IA personalizados</a></li>
+              {footer.columns.services.links.map((link, index) => (
+                <li key={index}>
+                  <a href={`/${lang}#${lang === 'en' ? 'services' : 'servicios'}`} className="text-gray-400 hover:text-cyan text-sm transition-colors">
+                    {link}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Company */}
           <div>
-            <h3 className="font-semibold text-white mb-6">Empresa</h3>
+            <h3 className="font-semibold text-white mb-6">{footer.columns.company.title}</h3>
             <ul className="space-y-4">
-              <li><a href="#" className="text-gray-400 hover:text-cyan text-sm transition-colors">Sobre nosotros</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-cyan text-sm transition-colors">Casos de uso</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-cyan text-sm transition-colors">FAQ</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-cyan text-sm transition-colors">Blog</a></li>
+              {footer.columns.company.links.map((link, index) => (
+                <li key={index}>
+                  <a href="#" className="text-gray-400 hover:text-cyan text-sm transition-colors">
+                    {link}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold text-white mb-6">Contacto</h3>
+            <h3 className="font-semibold text-white mb-6">{footer.columns.legal.title === 'Legal' || footer.columns.legal.title === 'Legal' ? 'Contacto' : 'Contact'}</h3>
             <ul className="space-y-4">
               <li className="flex items-center gap-3 text-gray-400 text-sm">
                 <FaEnvelope className="w-4 h-4 text-cyan" />
-                <a href="mailto:hola@oryonlabs.com" className="hover:text-cyan transition-colors">
-                  hola@oryonlabs.com
+                <a href={`mailto:${footer.contact.email}`} className="hover:text-cyan transition-colors">
+                  {footer.contact.email}
                 </a>
               </li>
               <li className="flex items-center gap-3 text-gray-400 text-sm">
                 <FaPhone className="w-4 h-4 text-cyan" />
-                <a href="tel:+34900123456" className="hover:text-cyan transition-colors">
-                  +34 900 123 456
+                <a href={`tel:${footer.contact.phone.replace(/\s/g, '')}`} className="hover:text-cyan transition-colors">
+                  {footer.contact.phone}
                 </a>
               </li>
               <li className="flex items-center gap-3 text-gray-400 text-sm">
                 <FaWhatsapp className="w-4 h-4 text-cyan" />
-                <span>WhatsApp disponible</span>
+                <span>{footer.contact.whatsapp}</span>
               </li>
             </ul>
           </div>
@@ -100,18 +115,14 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
-              © {currentYear} OryonLabs. Todos los derechos reservados.
+              {footer.copyright.replace('{year}', currentYear)}
             </p>
             <div className="flex gap-6">
-              <a href="#" className="text-gray-500 hover:text-cyan text-sm transition-colors">
-                Privacidad
-              </a>
-              <a href="#" className="text-gray-500 hover:text-cyan text-sm transition-colors">
-                Términos
-              </a>
-              <a href="#" className="text-gray-500 hover:text-cyan text-sm transition-colors">
-                Cookies
-              </a>
+              {footer.columns.legal.links.map((link, index) => (
+                <a key={index} href="#" className="text-gray-500 hover:text-cyan text-sm transition-colors">
+                  {link}
+                </a>
+              ))}
             </div>
           </div>
         </div>
