@@ -1,0 +1,336 @@
+{
+  "nav": {
+    "services": "Services",
+    "pricing": "Pricing",
+    "process": "Process",
+    "contact": "Contact",
+    "cta_login": "Talk to an expert",
+    "cta_pricing": "See plans"
+  },
+  "hero": {
+    "badge": "AI Automation Agency for SMBs",
+    "title": "Real AI infrastructure for your business",
+    "title_highlight": "real AI",
+    "subtitle": "We automate lead capture, customer service, and your company's workflows. No templates. Custom AI engineering.",
+    "cta_primary": "See plans and pricing",
+    "cta_secondary": "Talk to an expert",
+    "trust_indicator_1": "No technical knowledge required",
+    "trust_indicator_2": "Results in 30 days",
+    "trust_indicator_3": "Support included",
+    "panel_title": "Oryon Labs — Automation Dashboard",
+    "panel_badge": "50+ SMBs automated",
+    "metrics": {
+      "leads": {
+        "value": "2.4k",
+        "label": "Leads/month",
+        "sublabel": "+180%"
+      },
+      "response": {
+        "value": "18",
+        "unit": "min",
+        "label": "Response time",
+        "sublabel": "-91%"
+      },
+      "savings": {
+        "value": "8.2",
+        "currency": "€",
+        "unit": "k",
+        "label": "Saved",
+        "sublabel": "+monthly"
+      }
+    },
+    "automation_items": [
+      {
+        "icon": "💬",
+        "label": "Lead captured via chatbot",
+        "status": "Active"
+      },
+      {
+        "icon": "🧠",
+        "label": "AI data enrichment",
+        "status": "Active"
+      },
+      {
+        "icon": "🔗",
+        "label": "Auto-assigned to CRM",
+        "status": "Active"
+      },
+      {
+        "icon": "✉️",
+        "label": "Welcome email sent",
+        "status": "Active"
+      }
+    ],
+    "time_saved": {
+      "title": "3h/day saved",
+      "subtitle": "per company on average"
+    }
+  },
+  "trust_bar": {
+    "title": "Companies already automating with Oryon Labs",
+    "logos": [
+      "INMOBILIARIA VIVA",
+      "CLÍNICA BEAUTYMED",
+      "E-SHOP STYLE",
+      "LEXPRO ABOGADOS",
+      "MEDCENTER"
+    ]
+  },
+  "services": {
+    "badge": "What we build",
+    "title": "AI that works.",
+    "title_highlight": "You grow.",
+    "description": "We don't sell tools. We build real AI infrastructure that integrates into your processes and delivers measurable results from month one.",
+    "cta_primary": "See all services",
+    "cta_secondary": "Special case? Let's talk",
+    "cards": [
+      {
+        "badge": "Lead Generation",
+        "title": "24/7 Lead Capture",
+        "description": "Intelligent chatbots that capture, qualify, and nurture leads automatically while you sleep. Direct CRM integration."
+      },
+      {
+        "badge": "Workflow",
+        "title": "AI Workflows",
+        "description": "Automate repetitive tasks: follow-ups, assignments, notifications, and internal processes. Built with n8n and Make."
+      },
+      {
+        "badge": "Customer Support",
+        "title": "AI Support Agents",
+        "description": "GPT assistants trained on your documentation that resolve 80% of queries without human intervention."
+      },
+      {
+        "badge": "Integrations",
+        "title": "Full Tool Connection",
+        "description": "We connect your CRM, WhatsApp Business, email, calendars, and business tools into a unified ecosystem."
+      },
+      {
+        "badge": "Reporting",
+        "title": "Automatic Dashboards",
+        "description": "Real-time updated KPIs. Automatic sales, leads, and operations reports delivered to your email."
+      },
+      {
+        "badge": "Custom AI",
+        "title": "Custom AI Agents",
+        "description": "Fully customized AI assistants for your industry and processes. From quoters to virtual advisors."
+      }
+    ]
+  },
+  "process": {
+    "badge": "How we work",
+    "title": "4 steps to transform your business",
+    "description": "A proven process that takes your company from idea to measurable results in less than 30 days.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Diagnosis",
+        "description": "We analyze your current processes, identify bottlenecks, and define automation opportunities with the highest ROI."
+      },
+      {
+        "number": "02",
+        "title": "Design",
+        "description": "We design optimized and customized workflows for your business. Visual prototypes before building."
+      },
+      {
+        "number": "03",
+        "title": "Implementation",
+        "description": "We build and integrate the automations. We connect all the tools. Complete testing before going to production."
+      },
+      {
+        "number": "04",
+        "title": "Results",
+        "description": "We launch, measure, and optimize. Continuous support so the AI improves over time. Visible results from day one."
+      }
+    ]
+  },
+  "pricing": {
+    "badge": "Plans and pricing",
+    "title": "Clear investment.",
+    "title_highlight": "Measurable results.",
+    "description": "No forced annual contracts. No fine print. Start, scale, and cancel whenever you want.",
+    "toggle_monthly": "Monthly",
+    "toggle_yearly": "Yearly",
+    "discount_badge": "Save 20%",
+    "setup_label": "Initial setup",
+    "monthly_label": "Monthly fee",
+    "per_month": "/month",
+    "plans": [
+      {
+        "name": "Starter",
+        "subtitle": "For freelancers and small businesses",
+        "price_monthly": "199 €/month",
+        "price_yearly": "159 €/month",
+        "description": "Ideal for freelancers and small local businesses who want to try automation without a large initial investment.",
+        "features": [
+          "Web form (no chat or incoming WhatsApp detection)",
+          "AI to summarize and classify leads",
+          "Google Sheets CRM",
+          "Email to administrator",
+          "Email + WhatsApp to customer / Telegram",
+          "1 basic follow-up flow",
+          "Light support + cloud invoicing"
+        ],
+        "cta": "Start with Starter",
+        "popular": false
+      },
+      {
+        "name": "Pro Sales Automation",
+        "subtitle": "Web + Conversational Bot",
+        "price_monthly": "299 €/month",
+        "price_yearly": "239 €/month",
+        "description": "For SMEs that receive several leads per month. Includes everything in the Starter Pack plus advanced automation.",
+        "features": [
+          "Everything in Starter Pack included",
+          "Automatic WhatsApp to customer",
+          "Internal notification via Telegram/WhatsApp",
+          "Automatic follow-up",
+          "Lead status management",
+          "Basic duplicate detection",
+          "Simple dashboard",
+          "AI text improvement"
+        ],
+        "cta": "Start with Pro",
+        "popular": true
+      },
+      {
+        "name": "Professional + AI Bot",
+        "subtitle": "Web + Conversational Bot",
+        "price_monthly": "399 €/month",
+        "price_yearly": "319 €/month",
+        "description": "For businesses that want a more powerful website with intelligent conversational bot.",
+        "features": [
+          "Optimized website or landing page",
+          "Conversational bot/component",
+          "Smart form + WhatsApp message detection",
+          "AI to qualify leads",
+          "Advanced CRM/Sheets",
+          "Automatic emails",
+          "Automatic WhatsApp",
+          "Complete follow-up",
+          "CRM Dashboard"
+        ],
+        "cta": "Request Professional",
+        "popular": false
+      }
+    ]
+  },
+  "testimonials": {
+    "badge": "Success stories",
+    "title": "What our clients say",
+    "description": "Real results from companies that automated with Oryon Labs.",
+    "cards": [
+      {
+        "quote": "In 3 weeks we went from losing 40% of leads due to late response to capturing them automatically 24/7.",
+        "name": "María Gómez",
+        "company": "Inmobiliaria Viva",
+        "result": "+40% leads in 30 days",
+        "rating": 5
+      },
+      {
+        "quote": "Oryon Labs automated our appointment and follow-up system. Now our team focuses on serving, not administering.",
+        "name": "Dr. Carlos Ruiz",
+        "company": "Clínica BeautyMed",
+        "result": "We save 3h/day",
+        "rating": 5
+      },
+      {
+        "quote": "The chatbot qualifies leads before they talk to us. The quality of opportunities improved drastically.",
+        "name": "Laura Martínez",
+        "company": "E-Shop Style",
+        "result": "300% ROI in 60 days",
+        "rating": 5
+      }
+    ]
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Everything you need to know",
+    "description": "We answer your questions about automation and artificial intelligence.",
+    "items": [
+      {
+        "question": "What is an AI agent and how can it help my business?",
+        "answer": "An AI agent is an automated system that performs specific tasks like answering questions, capturing leads, or scheduling appointments. It reduces costs, eliminates human error, and works 24/7 without rest."
+      },
+      {
+        "question": "How long does it take to implement automation?",
+        "answer": "Most projects are operational in 2-4 weeks. The exact time depends on the complexity of the integration needed and the tools you already use."
+      },
+      {
+        "question": "Do I need technical knowledge?",
+        "answer": "No. We handle all the technical implementation. You only need to dedicate 1-2 hours to the initial setup to tell us how your business works."
+      },
+      {
+        "question": "What if I already have tools configured?",
+        "answer": "Perfect. We integrate your existing CRM, email marketing, and other tools. No need to change everything you have working."
+      },
+      {
+        "question": "How is ROI measured for automation?",
+        "answer": "We track key metrics such as leads captured, response time, automated tasks, and operational costs. Real-time dashboard included."
+      },
+      {
+        "question": "Does support include updates?",
+        "answer": "Yes. All plans include technical support and maintenance updates. Pro and higher plans include monthly optimizations."
+      },
+      {
+        "question": "Can I cancel at any time?",
+        "answer": "Absolutely. No long-term contracts. You can cancel whenever you want without penalty. Your setup belongs to you."
+      },
+      {
+        "question": "Do you work with companies of any size?",
+        "answer": "We work with freelancers, startups, SMBs, and mid-sized companies. We scale with you according to your growth needs."
+      }
+    ],
+    "cta_title": "Have more questions?",
+    "cta_button": "Talk to an expert"
+  },
+  "contact": {
+    "badge": "Contact",
+    "title": "Ready to automate?",
+    "description": "Tell us about your project. We'll respond in less than 24 hours.",
+    "form": {
+      "name_label": "Full name",
+      "name_placeholder": "Your name",
+      "email_label": "Email",
+      "email_placeholder": "you@company.com",
+      "company_label": "Company",
+      "company_placeholder": "Your company name",
+      "service_label": "Which service interests you?",
+      "message_label": "Tell us about your project",
+      "message_placeholder": "Briefly describe your needs...",
+      "submit": "Send message",
+      "submitting": "Sending...",
+      "success_title": "Message sent!",
+      "success_message": "We'll get back to you in less than 24 hours."
+    }
+  },
+  "footer": {
+    "brand": "OryonLabs",
+    "description": "We automate lead capture, customer service, and your company's workflows.",
+    "newsletter": {
+      "title": "Subscribe to newsletter",
+      "placeholder": "you@email.com",
+      "button": "Subscribe",
+      "privacy": "We respect your privacy. No spam."
+    },
+    "columns": {
+      "services": {
+        "title": "Services",
+        "links": ["AI Chatbots", "Process Automation", "System Integration", "Custom AI Agents"]
+      },
+      "company": {
+        "title": "Company",
+        "links": ["About us", "Use cases", "FAQ", "Blog"]
+      },
+      "legal": {
+        "title": "Legal",
+        "links": ["Privacy", "Terms", "Cookies"]
+      }
+    },
+    "contact": {
+      "email": "hello@oryonlabs.com",
+      "phone": "+34 900 123 456",
+      "whatsapp": "WhatsApp available"
+    },
+    "copyright": "© {year} OryonLabs. All rights reserved."
+  }
+}
