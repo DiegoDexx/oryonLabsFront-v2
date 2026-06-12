@@ -76,6 +76,50 @@
       "MEDCENTER"
     ]
   },
+  "why": {
+    "eyebrow": "POR QUÉ ORYON LABS",
+    "title": "Deja de pagar por herramientas que no se comunican entre sí.",
+    "subtitle": "La mayoría de empresas gasta 500–800€/mes en software desconectado. Oryon Labs lo reemplaza todo.",
+    "pain": {
+      "label": "LO QUE LA MAYORÍA DE EMPRESAS PAGA HOY",
+      "item1": "Software CRM de ventas",
+      "price1": "~80€/mes",
+      "item2": "Plataforma de chat y soporte IA",
+      "price2": "~120€/mes",
+      "item3": "Herramienta de email marketing",
+      "price3": "~60€/mes",
+      "item4": "Automatización de flujos y tareas",
+      "price4": "~80€/mes",
+      "item5": "Mensajería por WhatsApp Business",
+      "price5": "~40€/mes",
+      "item6": "Más horas innecesarias de gestión administrativa",
+      "total_label": "TOTAL MENSUAL",
+      "total": "500–800€/mes",
+      "description": "Múltiples facturas. Sin integración. Lo gestionas tú solo."
+    },
+    "solution": {
+      "label": "Todo integrado",
+      "eyebrow": "UNA PLATAFORMA. TODO INCLUIDO.",
+      "item1": "Chatbot IA (Ridley)",
+      "item2": "CRM + Pipeline",
+      "item3": "Email y WhatsApp Automation",
+      "item4": "Infraestructura de flujos",
+      "item5": "Soporte dedicado",
+      "item6": "Ahorra casi todo el tiempo administrativo",
+      "included": "incluido",
+      "price_label": "DESDE",
+      "price": "150€/mes",
+      "description": "Una sola factura. Todo integrado. Nosotros nos encargamos."
+    },
+    "testimonial": {
+      "text": "Renovy redujo su coste operativo un 60% en los primeros 30 días con Oryon Labs.",
+      "author": "— Cliente Renovy, sector reformas del hogar"
+    },
+    "cta": {
+      "primary": "Ver nuestros planes →",
+      "secondary": "Primero, hablemos"
+    }
+  },
   "services": {
     "badge": "Qué construimos",
     "title": "IA que trabaja.",
@@ -283,6 +327,9 @@
     "cta_title": "¿Tienes más preguntas?",
     "cta_button": "Hablar con un experto"
   },
+
+
+
   "contact": {
     "badge": "Contacto",
     "title": "¿Listo para automatizar?",
@@ -303,6 +350,77 @@
       "success_message": "Nos pondremos en contacto contigo en menos de 24 horas."
     }
   },
+
+
+
+  "form": {
+    "title": "Cuéntanos tu reto",
+    "subtitle": "En 24h te proponemos una solución concreta y un presupuesto sin letra pequeña.",
+    "footer_text": "Sin spam. Sin compromiso. Solo hablamos de automatización.",
+    "success_message": "¡Solicitud recibida! Analizaremos tu caso y te contactamos en menos de 24h.",
+    "steps": ["Tus datos", "Tu reto", "Contexto"],
+    "step1": {
+      "fields": {
+        "name": { "label": "Nombre completo", "placeholder": "Tu nombre" },
+        "company": { "label": "Empresa", "placeholder": "Nombre de tu empresa" },
+        "email": { "label": "Email corporativo", "placeholder": "tu@empresa.com" },
+        "phone": { "label": "Teléfono", "placeholder": "+34 600 000 000" }
+      },
+      "next_button": "Siguiente",
+      "errors": {
+        "name_required": "El nombre es obligatorio.",
+        "email_required": "El email es obligatorio.",
+        "email_invalid": "Correo inválido.",
+        "company_required": "La empresa es obligatoria.",
+        "phone_required": "El teléfono es obligatorio.",
+        "phone_invalid": "Teléfono inválido (solo números, 7-15 dígitos)."
+      }
+    },
+    "step2": {
+      "question": "¿Cuál es tu mayor reto ahora mismo?",
+      "retos": [
+        { "id": "tiempo", "emoji": "🕐", "title": "Pierdo tiempo en tareas repetitivas", "desc": "Procesos manuales, Excel, tareas que se repiten cada día" },
+        { "id": "clientes", "emoji": "📞", "title": "No puedo atender a todos mis clientes", "desc": "Llamadas perdidas, respuestas lentas, clientes sin atender" },
+        { "id": "leads", "emoji": "📋", "title": "Me cuesta organizar y seguir mis leads", "desc": "No sé en qué punto está cada cliente ni qué hacer después" },
+        { "id": "empezar", "emoji": "🤝", "title": "Quiero automatizar pero no sé por dónde empezar", "desc": "Tengo claro que necesito cambiar algo pero no sé el qué" },
+        { "id": "asistente", "emoji": "💬", "title": "Necesito un asistente que responda por mí 24/7", "desc": "WhatsApp, web, email — quiero respuestas automáticas inteligentes" },
+        { "id": "herramientas_desconectadas", "emoji": "⚙️", "title": "Mis herramientas no están conectadas entre sí", "desc": "CRM, email, WhatsApp, facturación — todo por separado" }
+      ],
+      "prev_button": "Anterior",
+      "next_button": "Siguiente",
+      "errors": {
+        "reto_required": "Selecciona tu principal reto."
+      }
+    },
+    "step3": {
+      "volumen_clientes": {
+        "question": "¿Cuántos clientes o contactos gestionas al mes?",
+        "options": ["Menos de 50", "50 - 200", "200 - 500", "Más de 500", "No lo sé exactamente"]
+      },
+      "herramientas": {
+        "question": "¿Qué herramientas usas actualmente?",
+        "hint": "opcional, puedes elegir varias",
+        "options": ["WhatsApp Business", "Email / Gmail", "CRM propio", "Excel / Google Sheets", "Redes Sociales", "Ninguna en especial"]
+      },
+      "urgencia": {
+        "question": "¿Cuándo necesitas una solución?",
+        "options": [
+          { "id": "alta", "label": "Lo antes posible" },
+          { "id": "media", "label": "En 1-2 meses" },
+          { "id": "baja", "label": "Solo estoy explorando" }
+        ]
+      },
+      "prev_button": "Anterior",
+      "submit_button": "Solicitar análisis gratuito",
+      "submitting": "Enviando...",
+      "errors": {
+        "volumen_clientes_required": "Indica cuántos contactos gestionas.",
+        "urgencia_required": "Indica cuándo necesitas una solución."
+      }
+    }
+  },
+
+
   "footer": {
     "brand": "OryonLabs",
     "description": "Automatizamos la captación de leads, la atención al cliente y los flujos de trabajo de tu empresa.",
@@ -332,5 +450,35 @@
       "whatsapp": "WhatsApp disponible"
     },
     "copyright": "© {year} OryonLabs. Todos los derechos reservados."
+  },
+  "cookies": {
+    "text": "Usamos cookies para mejorar tu experiencia. Al continuar, aceptas nuestra",
+    "link": "política de cookies",
+    "accept": "Aceptar",
+    "reject": "Rechazar"
+  },
+  "exit": {
+    "text": "¿Te vas sin automatizar tu negocio?",
+    "cta": "Hablar con Ridley →"
+  },
+  "chatbot": {
+    "header_title": "Ridley — Asistente Oryon",
+    "online_status": "En línea",
+    "retry": "Reintentar",
+    "quick_questions_label": "Preguntas rápidas:",
+    "rate_limit_banner": "Límite alcanzado. Contáctanos en hola@oryonlabs.com",
+    "lead_done_badge": "✅ Solicitud recibida",
+    "initial_message": "¡Hola! Soy Ridley, el asistente virtual de Oryon Labs. ¿En qué puedo ayudarte hoy?",
+    "placeholder": "Escribe tu mensaje...",
+    "rate_limit_msg": "Has alcanzado el límite de mensajes. Puedes continuar en 1 hora o contactarnos directamente.",
+    "timeout_msg": "La conexión tardó demasiado. Por favor inténtalo de nuevo.",
+    "error_msg": "Error de conexión. Por favor inténtalo de nuevo.",
+    "lead_confirmed_msg": "✅ ¡Listo! Nuestro equipo se pondrá en contacto contigo pronto.",
+    "quick_questions": [
+      "¿Qué servicios ofrecéis?",
+      "Ver planes y precios",
+      "Solicitar consulta gratuita",
+      "¿Cómo funciona la IA?"
+    ]
   }
 }

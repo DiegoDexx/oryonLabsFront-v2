@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap';
+/* Google Fonts se carga via <link> en index.html — no usar @import aquí (render-blocking) */
 
 @tailwind base;
 @tailwind components;
@@ -108,14 +108,17 @@
 
 .animate-fade-in-up {
   animation: fadeInUp 500ms ease-out forwards;
+  will-change: transform, opacity;
 }
 
 .animate-slide-in-right {
   animation: slideInRight 600ms ease-out forwards;
+  will-change: transform, opacity;
 }
 
 .animate-pulse-slow {
   animation: pulseSlow 2s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 .animate-shimmer {
@@ -127,14 +130,17 @@
   );
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
+  will-change: background-position;
 }
 
 .animate-glow {
   animation: glow 2s ease-in-out infinite;
+  will-change: box-shadow;
 }
 
 .animate-fade-in {
   animation: fadeIn 400ms ease-out forwards;
+  will-change: opacity;
 }
 
 .animate-bounce-slow {

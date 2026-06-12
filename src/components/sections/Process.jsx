@@ -36,7 +36,7 @@ export default function Process() {
           <span className="inline-block bg-cyan-pale text-cyan-dark text-sm font-semibold px-4 py-2 rounded-full mb-4 sm:mb-6">
             {process.badge}
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">
             {process.title}
           </h2>
           <p className="text-gray-400 text-base sm:text-lg">
@@ -68,7 +68,7 @@ export default function Process() {
                       </div>
                       
                       {/* Content */}
-                      <h3 className="text-xl font-bold text-white mb-2 sm:mb-3">
+                      <h3 className="text-xl font-extrabold text-white mb-2 sm:mb-3">
                         {step.title}
                       </h3>
                       <p className="text-gray-400 text-sm leading-relaxed">

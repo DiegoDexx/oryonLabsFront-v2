@@ -41,7 +41,7 @@ export default function Testimonials() {
           <span className="inline-block bg-white/10 text-cyan-light text-sm font-semibold px-4 py-2 rounded-full mb-4 sm:mb-6">
             {testimonials.badge}
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">
             {testimonials.title}
           </h2>
           <p className="text-gray-400 text-base sm:text-lg">

@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin
+Disallow: /adminpanel
+Disallow: /api
+Disallow: /login
+
+Sitemap: https://oryonlabs.com/sitemap.xml

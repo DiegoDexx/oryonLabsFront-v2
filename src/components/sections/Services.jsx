@@ -34,7 +34,7 @@ export default function Services() {
           <span className="inline-block bg-cyan-pale text-cyan-dark text-sm font-semibold px-4 py-2 rounded-full mb-6">
             {services.badge}
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
+          <h2 className="text-4xl lg:text-5xl font-extrabold text-navy mb-6">
             {services.title}<br />
             <span className="text-cyan">{services.title_highlight}</span>
           </h2>
@@ -44,7 +44,7 @@ export default function Services() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 cursor-pointer">
           {services.cards.map((service, index) => (
             <ServiceCard
               key={index}

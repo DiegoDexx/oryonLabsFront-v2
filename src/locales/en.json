@@ -76,6 +76,50 @@
       "MEDCENTER"
     ]
   },
+  "why": {
+    "eyebrow": "WHY ORYON LABS",
+    "title": "Stop paying for tools that don't talk to each other.",
+    "subtitle": "Most businesses spend €500–800/month on disconnected software. Oryon Labs replaces all of it.",
+    "pain": {
+      "label": "WHAT MOST BUSINESSES PAY TODAY",
+      "item1": "Sales CRM software",
+      "price1": "~€80/mo",
+      "item2": "AI chat & support platform",
+      "price2": "~€120/mo",
+      "item3": "Email marketing tool",
+      "price3": "~€60/mo",
+      "item4": "Workflow & task automation",
+      "price4": "~€80/mo",
+      "item5": "WhatsApp Business messaging",
+      "price5": "~€40/mo",
+      "item6": "Countless hours lost to manual admin work",
+      "total_label": "MONTHLY TOTAL",
+      "total": "€500–800/mo",
+      "description": "Multiple invoices. Zero integration. You manage everything."
+    },
+    "solution": {
+      "label": "Fully integrated",
+      "eyebrow": "ONE PLATFORM. EVERYTHING INCLUDED.",
+      "item1": "AI Chatbot (Ridley)",
+      "item2": "CRM + Pipeline",
+      "item3": "Email & WhatsApp Automation",
+      "item4": "Workflow Infrastructure",
+      "item5": "Dedicated support",
+      "item6": "Save almost all your administrative time",
+      "included": "included",
+      "price_label": "FROM",
+      "price": "€150/mo",
+      "description": "One invoice. Fully integrated. We handle everything."
+    },
+    "testimonial": {
+      "text": "Renovy reduced their operational costs by 60% in the first 30 days with Oryon Labs.",
+      "author": "— Renovy client, home renovation sector"
+    },
+    "cta": {
+      "primary": "See our plans →",
+      "secondary": "Talk to us first"
+    }
+  },
   "services": {
     "badge": "What we build",
     "title": "AI that works.",
@@ -303,6 +347,75 @@
       "success_message": "We'll get back to you in less than 24 hours."
     }
   },
+
+  "form": {
+    "title": "Tell us your challenge",
+    "subtitle": "Within 24h we'll propose a concrete solution and a quote with no fine print.",
+    "footer_text": "No spam. No commitment. We only talk about automation.",
+    "success_message": "Request received! We'll analyze your case and get back to you in under 24h.",
+    "steps": ["Your details", "Your challenge", "Context"],
+    "step1": {
+      "fields": {
+        "name": { "label": "Full name", "placeholder": "Your name" },
+        "company": { "label": "Company", "placeholder": "Your company name" },
+        "email": { "label": "Corporate email", "placeholder": "you@company.com" },
+        "phone": { "label": "Phone", "placeholder": "+34 600 000 000" }
+      },
+      "next_button": "Next",
+      "errors": {
+        "name_required": "Name is required.",
+        "email_required": "Email is required.",
+        "email_invalid": "Invalid email.",
+        "company_required": "Company is required.",
+        "phone_required": "Phone is required.",
+        "phone_invalid": "Invalid phone (numbers only, 7-15 digits)."
+      }
+    },
+    "step2": {
+      "question": "What is your biggest challenge right now?",
+      "retos": [
+        { "id": "tiempo", "emoji": "🕐", "title": "I lose time on repetitive tasks", "desc": "Manual processes, Excel, tasks that repeat every day" },
+        { "id": "clientes", "emoji": "📞", "title": "I can't attend all my clients", "desc": "Missed calls, slow responses, unattended clients" },
+        { "id": "leads", "emoji": "📋", "title": "I struggle to organize and follow my leads", "desc": "I don't know where each client stands or what to do next" },
+        { "id": "empezar", "emoji": "🤝", "title": "I want to automate but don't know where to start", "desc": "I know I need to change something but don't know what" },
+        { "id": "asistente", "emoji": "💬", "title": "I need an assistant that responds for me 24/7", "desc": "WhatsApp, web, email — I want smart automatic replies" },
+        { "id": "herramientas_desconectadas", "emoji": "⚙️", "title": "My tools are not connected to each other", "desc": "CRM, email, WhatsApp, invoicing — all separate" }
+      ],
+      "prev_button": "Previous",
+      "next_button": "Next",
+      "errors": {
+        "reto_required": "Please select your main challenge."
+      }
+    },
+    "step3": {
+      "volumen_clientes": {
+        "question": "How many clients or contacts do you manage per month?",
+        "options": ["Less than 50", "50 - 200", "200 - 500", "More than 500", "I don't know exactly"]
+      },
+      "herramientas": {
+        "question": "What tools do you currently use?",
+        "hint": "optional, you can choose several",
+        "options": ["WhatsApp Business", "Email / Gmail", "Own CRM", "Excel / Google Sheets", "Social Media", "None in particular"]
+      },
+      "urgencia": {
+        "question": "When do you need a solution?",
+        "options": [
+          { "id": "alta", "label": "As soon as possible" },
+          { "id": "media", "label": "In 1-2 months" },
+          { "id": "baja", "label": "Just exploring" }
+        ]
+      },
+      "prev_button": "Previous",
+      "submit_button": "Request free analysis",
+      "submitting": "Sending...",
+      "errors": {
+        "volumen_clientes_required": "Please indicate how many contacts you manage.",
+        "urgencia_required": "Please indicate when you need a solution."
+      }
+    }
+  },
+
+
   "footer": {
     "brand": "OryonLabs",
     "description": "We automate lead capture, customer service, and your company's workflows.",
@@ -332,5 +445,35 @@
       "whatsapp": "WhatsApp available"
     },
     "copyright": "© {year} OryonLabs. All rights reserved."
+  },
+  "cookies": {
+    "text": "We use cookies to improve your experience. By continuing, you agree to our",
+    "link": "cookie policy",
+    "accept": "Accept",
+    "reject": "Decline"
+  },
+  "exit": {
+    "text": "Leaving without automating your business?",
+    "cta": "Talk to Ridley →"
+  },
+  "chatbot": {
+    "header_title": "Ridley — Oryon Assistant",
+    "online_status": "Online",
+    "retry": "Retry",
+    "quick_questions_label": "Quick questions:",
+    "rate_limit_banner": "Message limit reached. Contact us at hello@oryonlabs.com",
+    "lead_done_badge": "✅ Request received",
+    "initial_message": "Hi! I'm Ridley, Oryon Labs' virtual assistant. How can I help you today?",
+    "placeholder": "Type your message...",
+    "rate_limit_msg": "You've reached the message limit. You can continue in 1 hour or contact us directly.",
+    "timeout_msg": "The connection took too long. Please try again.",
+    "error_msg": "Connection error. Please try again.",
+    "lead_confirmed_msg": "✅ Done! Our team will get in touch with you shortly.",
+    "quick_questions": [
+      "What services do you offer?",
+      "View plans and pricing",
+      "Request a free consultation",
+      "How does AI work?"
+    ]
   }
 }

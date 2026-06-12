@@ -1,4 +1,5 @@
 import Hero from '../components/sections/Hero';
+import WhyOryonLabs from '../components/sections/WhyOryonLabs';
 import Services from '../components/sections/Services';
 import Process from '../components/sections/Process';
 import Pricing from '../components/sections/Pricing';
@@ -15,7 +16,10 @@ export default function Home() {
     <>
       {/* Hero: Hook inicial + Trust bar logos */}
       <Hero />
-      
+
+      {/* Why Oryon Labs: Pain vs solución */}
+      <WhyOryonLabs />
+
       {/* Services: Qué ofrecemos */}
       <Services />
       

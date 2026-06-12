@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { FaCircle, FaCheck } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 import es from '../../locales/es.json';
@@ -12,6 +13,13 @@ export default function Hero() {
   const t = translationsByLang[lang] || translationsByLang.es;
   const hero = t.hero;
 
+  const [showScrollHint, setShowScrollHint] = useState(true);
+  useEffect(() => {
+    const onScroll = () => { if (window.scrollY > 80) setShowScrollHint(false); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <section className="relative bg-navy min-h-screen pt-20 overflow-hidden">
       {/* Background pattern */}
@@ -22,9 +30,12 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 animate-fade-in-up" style={{ animationDuration: '0.7s', animationDelay: '3.2s', animationFillMode: 'both' }}>
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/10">
+            <div
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/10 animate-fade-in"
+              style={{ animationDelay: '3.6s', animationFillMode: 'both' }}
+            >
               <span className="w-2 h-2 bg-cyan rounded-full animate-pulse" />
               <span className="text-cyan-light text-sm font-medium">
                 {hero.badge}
@@ -33,7 +44,7 @@ export default function Hero() {
 
             {/* Headline */}
             <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
                 {lang === 'es' ? 'Infraestructura de ' : 'Real AI infrastructure '}
                 <span className="text-cyan-light">{hero.title_highlight}</span>
                 {lang === 'es' ? ' para tu negocio' : ' for your business'}
@@ -80,7 +91,7 @@ export default function Hero() {
           </div>
 
           {/* Right Content - Dashboard Panel */}
-          <div className="relative">
+          <div className="relative animate-slide-in-right" style={{ animationDuration: '0.8s', animationDelay: '3.4s', animationFillMode: 'both' }}>
             {/* Glow effect */}
             <div className="absolute -inset-4 bg-gradient-to-r from-cyan/20 to-purple-500/20 rounded-3xl blur-2xl opacity-50" />
 
@@ -170,6 +181,22 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Scroll hint */}
+      {showScrollHint && (
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 pointer-events-none select-none">
+          <svg
+            className="w-6 h-6 animate-bounce"
+            style={{ color: 'rgba(56,189,248,0.6)' }}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      )}
     </section>
   );
 }

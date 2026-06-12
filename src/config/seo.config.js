@@ -16,7 +16,7 @@ export const siteConfig = {
   shortName: 'Oryon',
   url: 'https://oryonlabs.com',
   logo: '/logo-oryon.png',
-  defaultLocale: 'es',
+  defaultLocale: 'en',
   author: 'Oryon Labs Team'
 };
 
@@ -226,7 +226,7 @@ export default {
  *    import { Helmet } from 'react-helmet-async';
  *    // Inyectar meta tags desde generateMetaTags()
  * 
- * 4. Configurar Vike para SSR completo con rutas multiidioma:
+ * 4. Configurar Vite para SSR completo con rutas multiidioma:
  *    - / (redirect a /es)
  *    - /es/* (español)
  *    - /en/* (inglés)

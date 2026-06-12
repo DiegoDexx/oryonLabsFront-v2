@@ -75,7 +75,7 @@ export default function FAQ() {
           <span className="inline-block bg-cyan-pale text-cyan-dark text-sm font-semibold px-4 py-2 rounded-full mb-4 sm:mb-6">
             {faq.badge}
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy mb-4">
             {faq.title}
           </h2>
           <p className="text-gray-600 text-base sm:text-lg">

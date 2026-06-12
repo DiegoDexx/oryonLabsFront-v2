@@ -1,22 +1,64 @@
+import { lazy, Suspense, useState, useEffect } from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import ChatWidget from '../ui/ChatWidget';
+import SEOHead from '../ui/SEOHead';
+import CookieBanner from '../ui/CookieBanner';
+import StickyMobileCTA from '../ui/StickyMobileCTA';
+import ExitIntent from '../ui/ExitIntent';
+
+// Lazy load — el bundle de ChatWidget no se descarga hasta que el usuario interactúa
+const ChatWidget = lazy(() => import('../ui/ChatWidget'));
 
 export default function Layout() {
   const location = useLocation();
-  
-  // No mostrar layout en admin/login
+  const [chatReady, setChatReady] = useState(false);
+  const [autoOpenChat, setAutoOpenChat] = useState(false);
+
+  useEffect(() => {
+    const activate = () => setChatReady(true);
+
+    // Si alguien dispara open-chatbot antes del mount, carga y abre directamente
+    const activateAndOpen = () => {
+      setAutoOpenChat(true);
+      setChatReady(true);
+    };
+
+    window.addEventListener('scroll',      activate,       { passive: true, once: true });
+    window.addEventListener('mousemove',   activate,       { passive: true, once: true });
+    window.addEventListener('touchstart',  activate,       { passive: true, once: true });
+    window.addEventListener('open-chatbot', activateAndOpen, { once: true });
+
+    // Fallback: cargar tras 4s aunque no haya interacción
+    const fallback = setTimeout(activate, 4000);
+
+    return () => {
+      window.removeEventListener('scroll',       activate);
+      window.removeEventListener('mousemove',    activate);
+      window.removeEventListener('touchstart',   activate);
+      window.removeEventListener('open-chatbot', activateAndOpen);
+      clearTimeout(fallback);
+    };
+  }, []);
+
   if (location.pathname.includes('adminpanel') || location.pathname.includes('login')) {
     return <Outlet />;
   }
 
   return (
     <>
+      <SEOHead />
       <Navbar />
       <main><Outlet /></main>
       <Footer />
-      <ChatWidget />
+      {chatReady && (
+        <Suspense fallback={null}>
+          <ChatWidget autoOpen={autoOpenChat} />
+        </Suspense>
+      )}
+      <CookieBanner />
+      <StickyMobileCTA />
+      <ExitIntent />
     </>
   );
 }
