@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { FaPaperPlane, FaRobot, FaTimes, FaRedo } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 import { buildSystemPrompt } from '../../config/chatPrompt';
-import ridleyImg from '../../assets/img/ridley.png';
+import ridleyImg from '../../assets/img/ridley.webp';
 import es from '../../locales/es.json';
 import en from '../../locales/en.json';
 
