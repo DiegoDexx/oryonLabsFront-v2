@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SelectIdiom from '../ui/SelectIdiom';
 import useScrollSpy from '../../hooks/useScrollSpy';
-import logoBlue from '../../assets/img/logo_blue2.png';
+import logoBlue from '../../assets/img/logo_blue2.webp';
 import es from '../../locales/es.json';
 import en from '../../locales/en.json';
 

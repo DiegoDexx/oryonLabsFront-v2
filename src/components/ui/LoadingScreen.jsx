@@ -1,4 +1,4 @@
-import logo from '../../assets/img/logo_blue2.png';
+import logo from '../../assets/img/logo_blue2.webp';
 
 export default function LoadingScreen() {
   return (
