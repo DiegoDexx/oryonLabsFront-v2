@@ -188,7 +188,10 @@ export default function ChatWidget({ autoOpen = false }) {
 
       {/* Chat Widget */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl z-50 overflow-hidden border border-gray-100">
+        <div
+          className="fixed bottom-6 right-6 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl z-50 border border-gray-100 flex flex-col overflow-hidden"
+          style={{ maxHeight: 'calc(100vh - 5rem)' }}
+        >
 
           {/* Header */}
           <div
@@ -254,7 +257,7 @@ export default function ChatWidget({ autoOpen = false }) {
           </div>
 
           {/* Messages */}
-          <div className="h-72 overflow-y-auto p-4 bg-gray-50">
+          <div className="flex-1 min-h-[8rem] overflow-y-auto p-4 bg-gray-50">
             {messages.map((msg, index) => (
               <div
                 key={index}
