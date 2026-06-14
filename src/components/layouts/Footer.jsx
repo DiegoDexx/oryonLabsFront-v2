@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { FaTwitter, FaLinkedin, FaInstagram, FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
-import completeLogo from '../../assets/img/logo_blue2.png';
+import completeLogo from '../../assets/img/logo_blue2.webp';
 import es from '../../locales/es.json';
 import en from '../../locales/en.json';
 
