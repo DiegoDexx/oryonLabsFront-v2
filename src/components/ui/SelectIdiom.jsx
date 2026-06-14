@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const languages = [
   { code: 'es', label: 'ES', flag: '🇪🇸', name: 'Español' },
-  { code: 'en', label: 'EN', flag: '🇺🇸', name: 'English' },
+  { code: 'en', label: 'EN', flag: '🇬🇧', name: 'English' },
 ];
 
 export default function SelectIdiom({ isScrolled, isMobile = false, onClose }) {

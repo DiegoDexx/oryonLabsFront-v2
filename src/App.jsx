@@ -30,7 +30,7 @@ function App() {
       <Router>
         <Routes>
           {/* Redirect root to /es */}
-          <Route path="/" element={<Navigate to="/es" replace />} />
+          <Route path="/" element={<Navigate to={navigator.language?.startsWith('en') ? '/en' : '/es'} replace />} />
 
           {/* Routes with language prefix */}
           <Route path="/:lang" element={<Layout />}>

@@ -3,6 +3,7 @@ import {
   FaUser, FaComments, FaEnvelope, FaBolt, FaMobileAlt, FaClock,
   FaRobot, FaChartBar, FaNetworkWired, FaHeadset,
 } from 'react-icons/fa';
+import useCurrency from '../../hooks/useCurrency';
 import es from '../../locales/es.json';
 import en from '../../locales/en.json';
 
@@ -14,6 +15,14 @@ export default function WhyOryonLabs() {
   const lang = ['es', 'en'].includes(pathLang) ? pathLang : 'es';
   const t = translationsByLang[lang] || translationsByLang.es;
   const why = t.why;
+  const symbol = useCurrency().symbol;
+
+  // "~80" → "~€80/mes" | "500–800" → "€500–800/mes"
+  const fmt = (amount, period = '') => {
+    const approx = amount.startsWith('~');
+    const num = approx ? amount.slice(1) : amount;
+    return `${approx ? '~' : ''}${symbol}${num}${period}`;
+  };
 
   const painItems = [
     { Icon: FaUser,      text: why.pain.item1, price: why.pain.price1 },
@@ -59,7 +68,7 @@ export default function WhyOryonLabs() {
             {why.title}
           </h2>
           <p className="text-gray-400 text-base max-w-xl mx-auto leading-relaxed">
-            {why.subtitle}
+            {why.subtitle.replace('{currency}', symbol)}
           </p>
         </div>
 
@@ -82,7 +91,7 @@ export default function WhyOryonLabs() {
                     <span className="text-gray-400 text-sm leading-snug">{text}</span>
                   </div>
                   {price ? (
-                    <span className="text-gray-400 text-sm font-medium flex-shrink-0">{price}</span>
+                    <span className="text-gray-400 text-sm font-medium flex-shrink-0">{fmt(price, why.pain.per_month)}</span>
                   ) : (
                     <div className="w-5 h-5 bg-red-500/15 border border-red-500/25 rounded-full flex items-center justify-center flex-shrink-0">
                       <svg className="w-2.5 h-2.5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -98,7 +107,7 @@ export default function WhyOryonLabs() {
               <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.18em] mb-2">
                 {why.pain.total_label}
               </p>
-              <p className="text-2xl font-black text-red-400 mb-1">{why.pain.total}</p>
+              <p className="text-2xl font-black text-red-400 mb-1">{fmt(why.pain.total, why.pain.per_month)}</p>
               <p className="text-gray-500 text-xs">{why.pain.description}</p>
             </div>
           </div>
@@ -154,7 +163,7 @@ export default function WhyOryonLabs() {
               <p className="text-cyan text-[10px] font-bold uppercase tracking-[0.18em] mb-2">
                 {why.solution.price_label}
               </p>
-              <p className="text-2xl font-black text-cyan mb-1">{why.solution.price}</p>
+              <p className="text-2xl font-black text-cyan mb-1">{fmt(why.solution.price, why.solution.per_month)}</p>
               <p className="text-gray-400 text-xs">{why.solution.description}</p>
             </div>
           </div>

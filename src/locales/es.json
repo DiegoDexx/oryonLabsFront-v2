@@ -79,22 +79,23 @@
   "why": {
     "eyebrow": "POR QUÉ ORYON LABS",
     "title": "Deja de pagar por herramientas que no se comunican entre sí.",
-    "subtitle": "La mayoría de empresas gasta 500–800€/mes en software desconectado. Oryon Labs lo reemplaza todo.",
+    "subtitle": "La mayoría de empresas gasta 500–800{currency}/mes en software desconectado. Oryon Labs lo reemplaza todo.",
     "pain": {
       "label": "LO QUE LA MAYORÍA DE EMPRESAS PAGA HOY",
       "item1": "Software CRM de ventas",
-      "price1": "~80€/mes",
+      "price1": "~80",
       "item2": "Plataforma de chat y soporte IA",
-      "price2": "~120€/mes",
+      "price2": "~120",
       "item3": "Herramienta de email marketing",
-      "price3": "~60€/mes",
+      "price3": "~60",
       "item4": "Automatización de flujos y tareas",
-      "price4": "~80€/mes",
+      "price4": "~80",
       "item5": "Mensajería por WhatsApp Business",
-      "price5": "~40€/mes",
+      "price5": "~40",
       "item6": "Más horas innecesarias de gestión administrativa",
       "total_label": "TOTAL MENSUAL",
-      "total": "500–800€/mes",
+      "total": "500–800",
+      "per_month": "/mes",
       "description": "Múltiples facturas. Sin integración. Lo gestionas tú solo."
     },
     "solution": {
@@ -108,7 +109,8 @@
       "item6": "Ahorra casi todo el tiempo administrativo",
       "included": "incluido",
       "price_label": "DESDE",
-      "price": "150€/mes",
+      "price": "199",
+      "per_month": "/mes",
       "description": "Una sola factura. Todo integrado. Nosotros nos encargamos."
     },
     "testimonial": {
@@ -202,8 +204,8 @@
       {
         "name": "Starter",
         "subtitle": "Para autónomos y pequeños negocios",
-        "price_monthly": "199 €/mes",
-        "price_yearly": "159 €/mes",
+        "price_monthly": "199",
+        "price_yearly": "159",
         "description": "Ideal para autónomos y negocios locales pequeños que quieren probar automatización sin una gran inversión inicial.",
         "features": [
           "Formulario web (sin chat ni detección WhatsApp entrante)",
@@ -220,8 +222,8 @@
       {
         "name": "Pro Sales Automation",
         "subtitle": "Web + Bot conversacional",
-        "price_monthly": "299 €/mes",
-        "price_yearly": "239 €/mes",
+        "price_monthly": "299",
+        "price_yearly": "239",
         "description": "Para pymes que reciben varios leads al mes. Incluye todo el Pack Starter más automatización avanzada.",
         "features": [
           "Todo el Pack Starter incluido",
@@ -239,8 +241,8 @@
       {
         "name": "Professional + Bot IA",
         "subtitle": "Web + Bot conversacional",
-        "price_monthly": "399 €/mes",
-        "price_yearly": "319 €/mes",
+        "price_monthly": "399",
+        "price_yearly": "319",
         "description": "Para empresas que quieren una web más potente con bot conversacional inteligente.",
         "features": [
           "Web o landing optimizada",

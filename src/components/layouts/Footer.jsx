@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { FaTwitter, FaLinkedin, FaInstagram, FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
+import completeLogo from '../../assets/img/logo_blue2.png';
 import es from '../../locales/es.json';
 import en from '../../locales/en.json';
 
@@ -20,11 +21,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-cyan rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">O</span>
-              </div>
-              <span className="font-bold text-lg">{footer.brand}</span>
+            <div className="mb-6 flex items-center">
+              <Link to={`/${lang}`}>
+                <img
+                  src={completeLogo}
+                  alt="Oryon Labs"
+                  className="h-14 w-auto"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </Link>
+             
+              <span className="ml-2 text-xl font-bold text-white">Oryon  <span className="text-cyan">Labs </span> </span>
             </div>
             <p className="text-gray-400 text-sm mb-6 leading-relaxed">
               {footer.description}
