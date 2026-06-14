@@ -54,12 +54,14 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to={`/${lang}`} className="flex items-center gap-2.5">
-            <img
-              src={logoBlue}
-              alt="Oryon Labs logo"
-              className="w-8 h-8"
-              style={{ filter: isScrolled ? 'none' : 'brightness(1.1)' }}
-            />
+           <img
+            src={logoBlue}
+            alt="Oryon Labs logo"
+            width={32}
+            height={32}
+            className="w-8 h-8"
+            style={{ filter: isScrolled ? 'none' : 'brightness(1.1)' }}
+          />
             <span className={`font-bold text-lg ${isScrolled ? 'text-navy' : 'text-white'}`}>
               OryonLabs
             </span>

@@ -33,12 +33,14 @@ export default function LoadingScreen() {
         />
 
         {/* Logo */}
-        <img
-          src={logo}
-          alt="Oryon Labs"
-          className="relative w-14 h-14"
-          style={{ filter: 'drop-shadow(0 0 16px rgba(0,144,201,0.7))' }}
-        />
+     <img
+        src={logo}
+        alt="Oryon Labs"
+        width={56}
+        height={56}
+        className="relative w-14 h-14"
+        style={{ filter: 'drop-shadow(0 0 16px rgba(0,144,201,0.7))' }}
+      />
       </div>
 
       {/* Nombre */}

@@ -23,13 +23,15 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="mb-6 flex items-center">
               <Link to={`/${lang}`}>
-                <img
-                  src={completeLogo}
-                  alt="Oryon Labs"
-                  className="h-14 w-auto"
-                  loading="lazy"
-                  decoding="async"
-                />
+               <img
+                src={completeLogo}
+                alt="Oryon Labs"
+                width={56}
+                height={56}
+                className="h-14 w-auto"
+                loading="lazy"
+                decoding="async"
+              />
               </Link>
              
               <span className="ml-2 text-xl font-bold text-white">Oryon  <span className="text-cyan">Labs </span> </span>
