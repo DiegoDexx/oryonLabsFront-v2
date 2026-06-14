@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
@@ -7,13 +7,13 @@ import './index.css';
 
 import Layout from './components/layouts/Layout';
 import LoadingScreen from './components/ui/LoadingScreen';
-import NotFound from './pages/404notfound';
-// Pages
-import Home from './pages/home';
-import FAQ from './pages/faq';
-import AdminPanel from './pages/adminPanel';
-import Login from './pages/login';
 import PrivateRoute from './components/ui/PrivateRoute';
+
+const NotFound = lazy(() => import('./pages/404notfound'));
+const Home = lazy(() => import('./pages/home'));
+const FAQ = lazy(() => import('./pages/faq'));
+const AdminPanel = lazy(() => import('./pages/adminPanel'));
+const Login = lazy(() => import('./pages/login'));
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -28,6 +28,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
+        <Suspense fallback={null}>
         <Routes>
           {/* Redirect root to /es */}
           <Route path="/" element={<Navigate to={navigator.language?.startsWith('en') ? '/en' : '/es'} replace />} />
@@ -51,6 +52,7 @@ function App() {
           {/* Catch-all for 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </Suspense>
 
         {/* Loading overlay — sobre las rutas pero sin bloquearlas (SEOHead sigue activo) */}
         {loading && (
