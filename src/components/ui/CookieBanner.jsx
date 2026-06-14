@@ -20,7 +20,7 @@ export default function CookieBanner() {
     const timer = setTimeout(() => {
       setVisible(true);
       requestAnimationFrame(() => setTimeout(() => setShow(true), 20));
-    }, 4800);
+    }, 4900);
     return () => clearTimeout(timer);
   }, []);
 

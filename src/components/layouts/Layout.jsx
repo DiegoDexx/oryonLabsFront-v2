@@ -2,7 +2,6 @@ import { lazy, Suspense, useState, useEffect } from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import SEOHead from '../ui/SEOHead';
 import CookieBanner from '../ui/CookieBanner';
 import StickyMobileCTA from '../ui/StickyMobileCTA';
 import ExitIntent from '../ui/ExitIntent';
@@ -47,7 +46,6 @@ export default function Layout() {
 
   return (
     <>
-      <SEOHead />
       <Navbar />
       <main><Outlet /></main>
       <Footer />

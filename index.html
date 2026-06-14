@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/src/assets/img/logo_grey2.png" />
@@ -12,8 +12,32 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+    <!-- Fallback title/description (sobreescritos por @unhead/react en runtime) -->
     <title>Oryon Labs | Agencia de IA — Automatización para PyMEs</title>
     <meta name="description" content="Agencia de inteligencia artificial en Alicante. Automatizamos la captación de leads, atención al cliente y flujos de trabajo con IA a medida." />
+    <!-- Schema.org — datos estáticos de negocio, no dependen de JS -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Oryon Labs",
+      "url": "https://oryonlabs.com",
+      "logo": "https://i.ibb.co/TMQHCkCZ/logo-blue2.png",
+      "description": "AI automation agency for SMBs. Lead capture, customer support and workflow automation.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Alicante",
+        "addressCountry": "ES"
+      },
+      "areaServed": ["ES", "GB"],
+      "serviceType": ["AI Automation", "Chatbot Development", "Workflow Automation", "Web Development"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@oryonlabs.com",
+        "contactType": "customer service"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

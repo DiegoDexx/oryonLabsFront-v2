@@ -4,8 +4,8 @@
 
   <url>
     <loc>https://oryonlabs.com/es</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://oryonlabs.com/es"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://oryonlabs.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://oryonlabs.com/es"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://oryonlabs.com/en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://oryonlabs.com/en"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -13,59 +13,29 @@
 
   <url>
     <loc>https://oryonlabs.com/en</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://oryonlabs.com/es"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://oryonlabs.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://oryonlabs.com/es"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://oryonlabs.com/en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://oryonlabs.com/en"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://oryonlabs.com/es#servicios</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://oryonlabs.com/es#precios</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://oryonlabs.com/es#proceso</loc>
+    <loc>https://oryonlabs.com/es/faq</loc>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://oryonlabs.com/es/faq"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://oryonlabs.com/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://oryonlabs.com/en/faq"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://oryonlabs.com/es#contacto</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://oryonlabs.com/en#services</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://oryonlabs.com/en#pricing</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://oryonlabs.com/en#process</loc>
+    <loc>https://oryonlabs.com/en/faq</loc>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://oryonlabs.com/es/faq"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://oryonlabs.com/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://oryonlabs.com/en/faq"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://oryonlabs.com/en#contact</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
 
 </urlset>

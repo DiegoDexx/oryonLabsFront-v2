@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FaChevronDown, FaCopy, FaCheck } from 'react-icons/fa';
+import { HelmetSEO, seoData } from '../seo';
 
 const faqs = [
   {
@@ -38,6 +39,10 @@ const faqs = [
 ];
 
 const FAQWebConsultora = () => {
+  const location = useLocation();
+  const lang = location.pathname.split('/')[1] === 'en' ? 'en' : 'es';
+  const seo = seoData[lang].faq;
+
   const [expandedAccordion, setExpandedAccordion] = useState(null);
   const [copied, setCopied] = useState(false);
 
@@ -53,6 +58,8 @@ const FAQWebConsultora = () => {
   };
 
   return (
+    <>
+    <HelmetSEO {...seo} />
     <div className="min-h-screen bg-gray-50">
       {/* Navbar */}
       <nav className="bg-white shadow-sm">
@@ -140,6 +147,7 @@ const FAQWebConsultora = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
