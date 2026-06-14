@@ -7,7 +7,7 @@ import './index.css';
 
 import Layout from './components/layouts/Layout';
 import LoadingScreen from './components/ui/LoadingScreen';
-
+import NotFound from './pages/404notfound';
 // Pages
 import Home from './pages/home';
 import FAQ from './pages/faq';
@@ -48,6 +48,8 @@ function App() {
             }
           />
           <Route path="/login" element={<Login onClose={() => {}} />} />
+          {/* Catch-all for 404 */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         {/* Loading overlay — sobre las rutas pero sin bloquearlas (SEOHead sigue activo) */}

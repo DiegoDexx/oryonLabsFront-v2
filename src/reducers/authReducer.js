@@ -1,3 +1,4 @@
+
 // src/reducers/authReducer.js
 const token = localStorage.getItem('authToken');
 const user = JSON.parse(localStorage.getItem('user'));
