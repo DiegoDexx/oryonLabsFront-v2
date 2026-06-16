@@ -14,6 +14,8 @@ const Home = lazy(() => import('./pages/home'));
 const FAQ = lazy(() => import('./pages/faq'));
 const AdminPanel = lazy(() => import('./pages/adminPanel'));
 const Login = lazy(() => import('./pages/login'));
+const Terms = lazy(() => import('./pages/terms'));
+const Privacy = lazy(() => import('./pages/privacy'));
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -37,6 +39,8 @@ function App() {
           <Route path="/:lang" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="faq" element={<FAQ />} />
+            <Route path="terms" element={<Terms />} />
+            <Route path="privacy" element={<Privacy />} />
           </Route>
 
           {/* Admin routes (no lang prefix) */}

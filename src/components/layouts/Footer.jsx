@@ -128,11 +128,14 @@ export default function Footer() {
               {footer.copyright.replace('{year}', currentYear)}
             </p>
             <div className="flex gap-6">
-              {footer.columns.legal.links.map((link, index) => (
-                <a key={index} href="#" className="text-gray-500 hover:text-cyan text-sm transition-colors">
-                  {link}
-                </a>
-              ))}
+              {footer.columns.legal.links.map((link, index) => {
+                const hrefs = [`/${lang}/privacy`, `/${lang}/terms`, '#'];
+                return (
+                  <Link key={index} to={hrefs[index] ?? '#'} className="text-gray-500 hover:text-cyan text-sm transition-colors">
+                    {link}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>

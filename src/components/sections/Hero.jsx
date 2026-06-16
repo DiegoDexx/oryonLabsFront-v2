@@ -27,8 +27,8 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,144,201,0.15),transparent_40%)]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-10 lg:py-14 xl:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 xl:gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-8 animate-fade-in-up" style={{ animationDuration: '0.7s', animationDelay: '3.2s', animationFillMode: 'both' }}>
             {/* Badge */}
@@ -44,12 +44,12 @@ export default function Hero() {
 
             {/* Headline */}
             <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-5xl 2xl:text-6xl font-black text-white leading-tight">
                 {lang === 'es' ? 'Infraestructura de ' : 'Real AI infrastructure '}
                 <span className="text-cyan-light">{hero.title_highlight}</span>
                 {lang === 'es' ? ' para tu negocio' : ' for your business'}
               </h1>
-              <p className="text-gray-300 text-lg leading-relaxed max-w-xl">
+              <p className="text-gray-300 text-lg lg:text-base 2xl:text-lg leading-relaxed max-w-xl">
                 {hero.subtitle}
               </p>
             </div>
@@ -96,7 +96,7 @@ export default function Hero() {
             <div className="absolute -inset-4 bg-gradient-to-r from-cyan/20 to-purple-500/20 rounded-3xl blur-2xl opacity-50" />
 
             {/* Panel */}
-            <div className="relative bg-navy-light/80 backdrop-blur rounded-2xl border border-white/10 p-6 shadow-2xl">
+            <div className="relative bg-navy-light/80 backdrop-blur rounded-2xl border border-white/10 p-5 lg:p-5 xl:p-6 shadow-2xl">
               {/* Panel Header */}
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-2">
@@ -165,7 +165,7 @@ export default function Hero() {
         </div>
 
         {/* Trust Bar */}
-        <div className="mt-20 pt-12 border-t border-white/10">
+        <div className="mt-14 lg:mt-16 xl:mt-20 pt-10 lg:pt-12 border-t border-white/10">
           <p className="text-center text-gray-400 text-sm mb-8">
             {t.trust_bar.title}
           </p>

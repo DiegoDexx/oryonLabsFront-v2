@@ -329,6 +329,110 @@
     "cta_title": "Have more questions?",
     "cta_button": "Talk to an expert"
   },
+  "legal": {
+    "backLink": "Back to home",
+    "badge": "Legal documentation",
+    "terms": {
+      "title": "Terms of Service",
+      "lastUpdated": "Last updated: June 2025 · Version 1.0",
+      "intro": "This document sets out the terms under which Oryon Labs provides its AI automation services. We recommend reading it carefully before purchasing any service. If you have any questions, you can contact us at hola@oryonlabs.com.",
+      "sections": [
+        {
+          "title": "1. Purpose and acceptance",
+          "body": "These Terms of Service govern access to and use of the services offered by Oryon Labs (the \"Agency\") through its website and associated platforms. By purchasing any of our services, the Client confirms having read, understood, and fully accepted these terms. If you do not agree with any of the conditions set out here, please refrain from using our services."
+        },
+        {
+          "title": "2. Description of services",
+          "body": "Oryon Labs provides business process automation services using artificial intelligence, including but not limited to: development and implementation of AI chatbots, CRM integration, workflow automation, lead capture and qualification, and website development. The specific scope of each service will be detailed in the commercial proposal or individual contract signed with the Client."
+        },
+        {
+          "title": "3. Registration and user accounts",
+          "body": "To access certain features of our platform or admin panel, the Client must provide truthful, current, and complete information. The Client is responsible for keeping their access credentials confidential and for any activity carried out under their account. Oryon Labs reserves the right to suspend or cancel accounts that breach these terms."
+        },
+        {
+          "title": "4. Client obligations",
+          "body": "The Client agrees to provide the information, access, and materials necessary for the correct delivery of the service within the agreed timeframes. The Client also agrees to use the contracted services lawfully, without infringing third-party rights or applicable data protection, intellectual property, or e-commerce regulations."
+        },
+        {
+          "title": "5. Pricing and payment terms",
+          "body": "Service prices are specified in the corresponding commercial proposal and are expressed in euros (€) unless stated otherwise. Payment will be made according to the agreed terms (monthly, one-off, or milestone-based). Repeated non-payment may result in the temporary or permanent suspension of the service, without prejudice to any legal action that may apply."
+        },
+        {
+          "title": "6. Intellectual property",
+          "body": "All software, source code, designs, methodologies, and materials developed by Oryon Labs in the course of providing the service remain the property of the Agency, unless the transfer of rights is expressly agreed in the relevant contract. The Client retains ownership of its own data, brand, and provided content."
+        },
+        {
+          "title": "7. Limitation of liability",
+          "body": "Oryon Labs will provide its services with reasonable professional care but does not guarantee specific business outcomes resulting from the use of the implemented AI solutions. The Agency's liability shall, in any case, be limited to the amount actually paid by the Client in the preceding 12 months, except in cases of wilful misconduct or gross negligence."
+        },
+        {
+          "title": "8. Data protection",
+          "body": "The processing of personal data carried out by Oryon Labs is governed by our Privacy Policy, in accordance with the General Data Protection Regulation (GDPR) and, where applicable, the UK GDPR. When Oryon Labs acts as a data processor on behalf of the Client, both parties may enter into a specific Data Processing Agreement (DPA)."
+        },
+        {
+          "title": "9. Changes to these terms",
+          "body": "Oryon Labs may modify these Terms of Service at any time to reflect legislative, technical, or commercial changes. Any modifications will be notified through our website or by email and will take effect upon publication, unless another date is specified."
+        },
+        {
+          "title": "10. Governing law and jurisdiction",
+          "body": "These Terms of Service are governed by Spanish law. For any dispute arising from their interpretation or performance, both parties, waiving any other jurisdiction that may apply to them, submit to the courts of the city of Alicante, Spain."
+        }
+      ],
+      "contactTitle": "Have a legal question?",
+      "contactText": "Our team is available to answer any questions about our terms.",
+      "contactButton": "Contact our team"
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated: June 2025 · Version 1.0",
+      "intro": "At Oryon Labs, we are committed to protecting your privacy and processing your personal data in accordance with the General Data Protection Regulation (GDPR) and, where applicable, the UK GDPR. This policy explains what data we collect, why, and what rights you have. If you have any questions, you can contact us at hola@oryonlabs.com.",
+      "sections": [
+        {
+          "title": "1. Data controller",
+          "body": "The controller responsible for the personal data collected on this website is Oryon Labs, based in Alicante, Spain, with contact email hola@oryonlabs.com. For any query relating to the processing of your personal data, you can reach us at that address."
+        },
+        {
+          "title": "2. Data we collect",
+          "body": "We collect the data you voluntarily provide through contact forms, our website chatbot, or when purchasing services: name, email address, phone number, company, and any additional information you choose to share. We also automatically collect browsing data (IP address, device type, pages visited) through cookies and similar technologies."
+        },
+        {
+          "title": "3. Purpose of processing",
+          "body": "We use your personal data to: respond to your enquiries and requests, manage the contractual relationship and delivery of our services, send commercial communications (where consent has been given), improve our website and services, and comply with applicable legal obligations."
+        },
+        {
+          "title": "4. Legal basis for processing",
+          "body": "The processing of your data is based, depending on the case, on: the performance of a contract or pre-contractual relationship, your explicit consent (for example, for the newsletter or non-essential cookies), Oryon Labs' legitimate interest in improving its services, and compliance with legal obligations."
+        },
+        {
+          "title": "5. Data retention",
+          "body": "We retain your personal data for as long as necessary to fulfil the purpose for which it was collected and, where applicable, for the periods required by law (for example, tax or accounting obligations). Data from unattended contact forms is deleted after a reasonable period if no business relationship is established."
+        },
+        {
+          "title": "6. Recipients and international transfers",
+          "body": "Your data may be shared with technology service providers (hosting, CRM, automation and artificial intelligence tools) acting as data processors under contract. When these providers are located outside the European Economic Area or the United Kingdom, we ensure the transfer is carried out with appropriate safeguards (Standard Contractual Clauses or other mechanisms recognised under the GDPR and UK GDPR)."
+        },
+        {
+          "title": "7. Your rights",
+          "body": "You have the right to access, rectify, and erase your data, as well as to request restriction of or object to its processing and to data portability, by contacting hola@oryonlabs.com. You also have the right to lodge a complaint with the Spanish Data Protection Agency (AEPD) or, if you reside in the United Kingdom, with the Information Commissioner's Office (ICO), if you believe the processing does not comply with applicable law."
+        },
+        {
+          "title": "8. Cookies",
+          "body": "This website uses first-party and third-party cookies for technical, analytical, and personalisation purposes. You can review and manage your preferences at any time through the cookie settings panel available on our website."
+        },
+        {
+          "title": "9. Data security",
+          "body": "Oryon Labs applies appropriate technical and organisational measures to protect your personal data against unauthorised access, loss, alteration, or destruction, as required by the GDPR and UK GDPR."
+        },
+        {
+          "title": "10. Changes to this privacy policy",
+          "body": "This Privacy Policy may be updated to reflect legislative changes or changes to our data processing practices. Any significant change will be communicated through our website, indicating the date of the last update."
+        }
+      ],
+      "contactTitle": "Have a question about your data?",
+      "contactText": "Our team is available to answer any questions about how we handle your information.",
+      "contactButton": "Contact our team"
+    }
+  },
   "contact": {
     "badge": "Contact",
     "title": "Ready to automate?",

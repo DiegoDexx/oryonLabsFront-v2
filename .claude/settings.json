@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm run dev)",
+      "Skill(run)",
+      "Skill(run:*)"
+    ]
+  }
+}
