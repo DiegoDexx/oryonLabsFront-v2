@@ -45,9 +45,19 @@ export default function Hero() {
             {/* Headline */}
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-5xl 2xl:text-6xl font-black text-white leading-tight">
-                {lang === 'es' ? 'Infraestructura de ' : 'Real AI infrastructure '}
-                <span className="text-cyan-light">{hero.title_highlight}</span>
-                {lang === 'es' ? ' para tu negocio' : ' for your business'}
+                {(() => {
+                  const title = hero.title;
+                  const hl = hero.title_highlight;
+                  const idx = title.indexOf(hl);
+                  if (idx === -1) return title;
+                  return (
+                    <>
+                      {title.slice(0, idx)}
+                      <span className="text-cyan-light">{hl}</span>
+                      {title.slice(idx + hl.length)}
+                    </>
+                  );
+                })()}
               </h1>
               <p className="text-gray-300 text-lg lg:text-base 2xl:text-lg leading-relaxed max-w-xl">
                 {hero.subtitle}

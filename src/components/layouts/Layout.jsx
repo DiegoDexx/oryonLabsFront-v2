@@ -28,15 +28,19 @@ export default function Layout() {
     window.addEventListener('touchstart',  activate,       { passive: true, once: true });
     window.addEventListener('open-chatbot', activateAndOpen, { once: true });
 
-    // Fallback: cargar tras 4s aunque no haya interacción
-    const fallback = setTimeout(activate, 4000);
+    // Fallback: cargar cuando el browser esté idle (no fuerza descarga durante render crítico)
+    const fallback = 'requestIdleCallback' in window
+      ? window.requestIdleCallback(activate, { timeout: 7000 })
+      : setTimeout(activate, 6000);
 
     return () => {
       window.removeEventListener('scroll',       activate);
       window.removeEventListener('mousemove',    activate);
       window.removeEventListener('touchstart',   activate);
       window.removeEventListener('open-chatbot', activateAndOpen);
-      clearTimeout(fallback);
+      'requestIdleCallback' in window
+        ? window.cancelIdleCallback(fallback)
+        : clearTimeout(fallback);
     };
   }, []);
 

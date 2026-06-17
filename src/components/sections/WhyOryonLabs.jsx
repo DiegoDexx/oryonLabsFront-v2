@@ -3,6 +3,7 @@ import {
   FaUser, FaComments, FaEnvelope, FaBolt, FaMobileAlt, FaClock,
   FaRobot, FaChartBar, FaNetworkWired, FaHeadset,
 } from 'react-icons/fa';
+import logoBlue2 from '../../assets/img/logo_blue2.webp';
 import useCurrency from '../../hooks/useCurrency';
 import es from '../../locales/es.json';
 import en from '../../locales/en.json';
@@ -124,9 +125,12 @@ export default function WhyOryonLabs() {
 
             {/* Card header: logo + name */}
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-9 h-9 bg-cyan rounded-xl flex items-center justify-center font-black text-white text-sm shadow-md flex-shrink-0">
-                O
-              </div>
+              <img
+                src={logoBlue2}
+                alt="OryonX"
+                className="w-9 h-9 rounded-xl flex-shrink-0 object-contain"
+                style={{ filter: 'drop-shadow(0 0 6px rgba(0,144,201,0.4))' }}
+              />
               <div>
                 <p className="text-white font-bold text-sm leading-tight">OryonX</p>
                 <p className="text-cyan text-xs font-semibold leading-tight">{why.solution.label}</p>

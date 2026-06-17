@@ -3,7 +3,8 @@ import logo from '../../assets/img/logo_blue_ox.webp';
 export default function LoadingScreen() {
   return (
     <div
-      className="relative w-full h-full flex flex-col items-center justify-center gap-10 select-none overflow-hidden"
+      className="relative flex flex-col items-center justify-center gap-10 select-none overflow-hidden"
+      style={{ width: '100vw', height: '100vh' }}
     >
 
       {/* ── Orbs flotantes de fondo ── */}
@@ -89,6 +90,9 @@ export default function LoadingScreen() {
         <img
           src={logo}
           alt="OryonX"
+          width="203"
+          height="72"
+          fetchpriority="high"
           style={{
             height: '72px',
             width: 'auto',
