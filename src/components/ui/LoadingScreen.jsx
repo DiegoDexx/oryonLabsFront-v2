@@ -2,7 +2,55 @@ import logo from '../../assets/img/logo_blue_ox.webp';
 
 export default function LoadingScreen() {
   return (
-    <div className="flex flex-col items-center justify-center gap-10 select-none">
+    <div
+      className="relative w-full h-full flex flex-col items-center justify-center gap-10 select-none overflow-hidden"
+    >
+
+      {/* ── Orbs flotantes de fondo ── */}
+
+      {/* Orb 1 — azul grande, arriba-derecha */}
+      <div style={{
+        position: 'absolute',
+        top: '-120px',
+        right: '-100px',
+        width: '520px',
+        height: '520px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(0,144,201,0.32) 0%, transparent 65%)',
+        filter: 'blur(64px)',
+        willChange: 'transform',
+        animation: 'orbFloat1 11s ease-in-out infinite',
+      }} />
+
+      {/* Orb 2 — cyan mediano, abajo-izquierda */}
+      <div style={{
+        position: 'absolute',
+        bottom: '-80px',
+        left: '-80px',
+        width: '400px',
+        height: '400px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(56,189,248,0.18) 0%, transparent 65%)',
+        filter: 'blur(52px)',
+        willChange: 'transform',
+        animation: 'orbFloat2 14s ease-in-out infinite',
+      }} />
+
+      {/* Orb 3 — azul oscuro pequeño, centro-izquierda */}
+      <div style={{
+        position: 'absolute',
+        top: '40%',
+        left: '8%',
+        width: '260px',
+        height: '260px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(0,80,180,0.22) 0%, transparent 65%)',
+        filter: 'blur(44px)',
+        willChange: 'transform',
+        animation: 'orbFloat3 8s ease-in-out infinite',
+      }} />
+
+      {/* ── Contenido centrado ── */}
 
       {/* Logo con glow horizontal y shimmer */}
       <div className="relative flex items-center justify-center" style={{ width: '320px', height: '100px' }}>
@@ -72,6 +120,20 @@ export default function LoadingScreen() {
       </div>
 
       <style>{`
+        @keyframes orbFloat1 {
+          0%, 100% { transform: translate(0px, 0px);    }
+          33%       { transform: translate(22px, -18px); }
+          66%       { transform: translate(-12px, 12px); }
+        }
+        @keyframes orbFloat2 {
+          0%, 100% { transform: translate(0px, 0px);     }
+          50%       { transform: translate(-20px, -14px); }
+        }
+        @keyframes orbFloat3 {
+          0%, 100% { transform: translate(0px, 0px);    }
+          40%       { transform: translate(14px, -22px); }
+          80%       { transform: translate(-8px, 10px);  }
+        }
         @keyframes glowPulse {
           0%, 100% { opacity: 0.35; transform: scaleX(0.88); }
           50%       { opacity: 0.6;  transform: scaleX(1.1);  }
@@ -83,10 +145,6 @@ export default function LoadingScreen() {
         @keyframes logoFadeIn {
           0%   { opacity: 0; transform: translateY(10px); }
           100% { opacity: 1; transform: translateY(0);    }
-        }
-        @keyframes taglineFade {
-          0%   { opacity: 0; }
-          100% { opacity: 1; }
         }
         @keyframes loadBar {
           0%   { width: 0%;   }
