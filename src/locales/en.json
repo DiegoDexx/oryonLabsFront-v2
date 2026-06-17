@@ -8,14 +8,14 @@
     "cta_pricing": "See plans"
   },
   "hero": {
-    "badge": "AI Automation Agency for SMBs",
-    "title": "Real AI infrastructure for your business",
-    "title_highlight": "real AI",
-    "subtitle": "We automate lead capture, customer service, and your company's workflows. No templates. Custom AI engineering.",
-    "cta_primary": "See plans and pricing",
+    "badge": "For SMBs losing leads they can't follow up fast enough",
+    "title": "Your business is getting leads. The problem is what happens next.",
+    "title_highlight": "what happens next",
+    "subtitle": "We automate the response, follow-up, and qualification of your leads so none of them go cold waiting for someone to reply. Just like we did for Renovy in the home renovation sector.",
+    "cta_primary": "See how it works",
     "cta_secondary": "Talk to an expert",
-    "trust_indicator_1": "No technical knowledge required",
-    "trust_indicator_2": "Results in 30 days",
+    "trust_indicator_1": "Automatic response in seconds",
+    "trust_indicator_2": "Visible results in 30 days",
     "trust_indicator_3": "Support included",
     "panel_title": "Oryon Labs — Automation Dashboard",
     "panel_badge": "50+ SMBs automated",
@@ -67,7 +67,7 @@
     }
   },
   "trust_bar": {
-    "title": "Companies already automating with Oryon Labs",
+    "title": "Companies that stopped losing leads to slow response",
     "logos": [
       "INMOBILIARIA VIVA",
       "CLÍNICA BEAUTYMED",
@@ -77,9 +77,9 @@
     ]
   },
   "why": {
-    "eyebrow": "WHY ORYON LABS",
-    "title": "Stop paying for tools that don't talk to each other.",
-    "subtitle": "Most businesses spend 500–800{currency}/month on disconnected software. Oryon Labs replaces all of it.",
+    "eyebrow": "THE PROBLEM NO ONE SOLVES",
+    "title": "You have leads. The problem is you're too slow.",
+    "subtitle": "Most business opportunities are lost within the first 2 hours. By the time you respond, your lead is already talking to a competitor.",
     "pain": {
       "label": "WHAT MOST BUSINESSES PAY TODAY",
       "item1": "Sales CRM software",
@@ -114,8 +114,8 @@
       "description": "One invoice. Fully integrated. We handle everything."
     },
     "testimonial": {
-      "text": "Renovy reduced their operational costs by 60% in the first 30 days with Oryon Labs.",
-      "author": "— Renovy client, home renovation sector"
+      "text": "Renovy went from losing 40% of their enquiries due to slow response to capturing, qualifying, and assigning them in real time, 24 hours a day.",
+      "author": "— Real case: Renovy, home renovation sector"
     },
     "cta": {
       "primary": "See our plans →",
@@ -123,42 +123,42 @@
     }
   },
   "services": {
-    "badge": "What we build",
-    "title": "AI that works.",
-    "title_highlight": "You grow.",
-    "description": "We don't sell tools. We build real AI infrastructure that integrates into your processes and delivers measurable results from month one.",
+    "badge": "How we solve it",
+    "title": "One system.",
+    "title_highlight": "Everything handled.",
+    "description": "We don't sell you loose tools. We build the complete system that captures, responds, qualifies, and follows up on your leads — so you don't have to think about it.",
     "cta_primary": "See all services",
     "cta_secondary": "Special case? Let's talk",
     "cards": [
       {
         "badge": "Lead Generation",
-        "title": "24/7 Lead Capture",
-        "description": "Intelligent chatbots that capture, qualify, and nurture leads automatically while you sleep. Direct CRM integration."
+        "title": "Capture every lead, 24/7",
+        "description": "Your business gets enquiries at any hour. A smart chatbot replies in seconds, qualifies the lead, and logs it to your CRM automatically. You find out when they're already warm."
       },
       {
-        "badge": "Workflow",
-        "title": "AI Workflows",
-        "description": "Automate repetitive tasks: follow-ups, assignments, notifications, and internal processes. Built with n8n and Make."
+        "badge": "Follow-up",
+        "title": "Follow-up that never forgets",
+        "description": "Cold leads warm up on their own. We send reminders and follow-up sequences via WhatsApp or email — without anyone on your team having to remember."
       },
       {
-        "badge": "Customer Support",
-        "title": "AI Support Agents",
-        "description": "GPT assistants trained on your documentation that resolve 80% of queries without human intervention."
+        "badge": "First response",
+        "title": "First response in seconds, not hours",
+        "description": "78% of customers choose the provider who responds first. Your AI agent replies instantly and alerts your team when the lead is ready to close."
       },
       {
-        "badge": "Integrations",
-        "title": "Full Tool Connection",
-        "description": "We connect your CRM, WhatsApp Business, email, calendars, and business tools into a unified ecosystem."
+        "badge": "Everything connected",
+        "title": "All your tools talking to each other",
+        "description": "WhatsApp, email, CRM, calendar — all synced in real time. No manual data copying, no leads lost between platforms."
       },
       {
-        "badge": "Reporting",
-        "title": "Automatic Dashboards",
-        "description": "Real-time updated KPIs. Automatic sales, leads, and operations reports delivered to your email."
+        "badge": "Full visibility",
+        "title": "Know exactly how many leads you're losing (and why)",
+        "description": "Real-time dashboard: leads received, response time, conversions. Make decisions based on data, not gut feeling."
       },
       {
         "badge": "Custom AI",
-        "title": "Custom AI Agents",
-        "description": "Fully customized AI assistants for your industry and processes. From quoters to virtual advisors."
+        "title": "Built for your sector, not the other way around",
+        "description": "Renovation, real estate, clinics, legal — we build the system that fits how your business actually works."
       }
     ]
   },

@@ -8,14 +8,14 @@
     "cta_pricing": "Ver planes"
   },
   "hero": {
-    "badge": "Agencia de Automatización con IA para PyMEs",
-    "title": "Infraestructura de IA real para tu negocio",
-    "title_highlight": "IA real",
-    "subtitle": "Automatizamos la captación de leads, la atención al cliente y los flujos de trabajo de tu empresa. No plantillas. Ingeniería de IA a medida.",
-    "cta_primary": "Ver planes y precios",
+    "badge": "Para pymes que pierden leads por no contestar a tiempo",
+    "title": "Tu negocio recibe contactos. El problema es lo que pasa después.",
+    "title_highlight": "lo que pasa después",
+    "subtitle": "Automatizamos la respuesta, el seguimiento y la cualificación de tus leads para que ninguno se enfríe esperando que alguien lo atienda. Como hicimos con Renovy en el sector reformas.",
+    "cta_primary": "Ver cómo funciona",
     "cta_secondary": "Hablar con un experto",
-    "trust_indicator_1": "Sin conocimientos técnicos",
-    "trust_indicator_2": "Resultados en 30 días",
+    "trust_indicator_1": "Respuesta automática en segundos",
+    "trust_indicator_2": "Resultados visibles en 30 días",
     "trust_indicator_3": "Soporte incluido",
     "panel_title": "Oryon Labs — Panel de automatizaciones",
     "panel_badge": "50+ PyMEs automatizadas",
@@ -67,7 +67,7 @@
     }
   },
   "trust_bar": {
-    "title": "Empresas que ya automatizan con Oryon Labs",
+    "title": "Empresas que ya no pierden leads por respuesta tardía",
     "logos": [
       "INMOBILIARIA VIVA",
       "CLÍNICA BEAUTYMED",
@@ -77,9 +77,9 @@
     ]
   },
   "why": {
-    "eyebrow": "POR QUÉ ORYON LABS",
-    "title": "Deja de pagar por herramientas que no se comunican entre sí.",
-    "subtitle": "La mayoría de empresas gasta 500–800{currency}/mes en software desconectado. Oryon Labs lo reemplaza todo.",
+    "eyebrow": "EL PROBLEMA QUE NADIE RESUELVE",
+    "title": "Tienes leads. El problema es que llegas tarde.",
+    "subtitle": "La mayoría de oportunidades se pierden en las primeras 2 horas. Cuando alguien te contacta y no recibe respuesta inmediata, ya está comparando con tu competencia.",
     "pain": {
       "label": "LO QUE LA MAYORÍA DE EMPRESAS PAGA HOY",
       "item1": "Software CRM de ventas",
@@ -114,8 +114,8 @@
       "description": "Una sola factura. Todo integrado. Nosotros nos encargamos."
     },
     "testimonial": {
-      "text": "Renovy redujo su coste operativo un 60% en los primeros 30 días con Oryon Labs.",
-      "author": "— Cliente Renovy, sector reformas del hogar"
+      "text": "Renovy pasó de perder el 40% de sus contactos por respuesta tardía a recibirlos, cualificarlos y asignarlos en tiempo real, las 24h del día.",
+      "author": "— Caso real: Renovy, sector reformas del hogar"
     },
     "cta": {
       "primary": "Ver nuestros planes →",
@@ -123,42 +123,42 @@
     }
   },
   "services": {
-    "badge": "Qué construimos",
-    "title": "IA que trabaja.",
-    "title_highlight": "Tú que creces.",
-    "description": "No vendemos herramientas. Construimos infraestructura de IA real que se integra en tus procesos y genera resultados medibles desde el primer mes.",
+    "badge": "Cómo lo solucionamos",
+    "title": "Un sistema.",
+    "title_highlight": "Todo resuelto.",
+    "description": "No te vendemos herramientas sueltas. Montamos el sistema completo que capta, responde, cualifica y hace seguimiento de tus leads — sin que tú tengas que pensar en ello.",
     "cta_primary": "Ver todos los servicios",
     "cta_secondary": "¿Caso especial? Hablemos",
     "cards": [
       {
         "badge": "Lead Generation",
-        "title": "Captación de Leads 24/7",
-        "description": "Chatbots inteligentes que capturan, califican y nutren leads automáticamente mientras duermes. Integración directa con tu CRM."
+        "title": "Captura leads 24/7, sin perderte uno",
+        "description": "Tu negocio recibe contactos a cualquier hora. Un chatbot inteligente responde en segundos, cualifica al lead y lo registra en tu CRM automáticamente. Tú te enteras cuando ya está caliente."
       },
       {
-        "badge": "Workflow",
-        "title": "Flujos de Trabajo con IA",
-        "description": "Automatiza tareas repetitivas: seguimientos, asignaciones, notificaciones y procesos internos. Construidos con n8n y Make."
+        "badge": "Seguimiento",
+        "title": "Seguimiento que no se olvida ni se cansa",
+        "description": "Los leads fríos se calientan solos. Enviamos recordatorios y secuencias de seguimiento por WhatsApp o email sin que nadie en tu equipo tenga que acordarse."
       },
       {
-        "badge": "Atención al Cliente",
-        "title": "Agentes IA de Soporte",
-        "description": "Asistentes GPT entrenados con tu documentación que resuelven el 80% de las consultas sin intervención humana."
+        "badge": "Primera respuesta",
+        "title": "Primera respuesta en segundos, no en horas",
+        "description": "El 78% de clientes elige al proveedor que responde primero. Tu agente IA responde al instante y avisa a tu equipo cuando el lead está listo para cerrar."
       },
       {
-        "badge": "Integraciones",
-        "title": "Conexión Total de Herramientas",
-        "description": "Conectamos tu CRM, WhatsApp Business, email, calendarios y herramientas de negocio en un ecosistema unificado."
+        "badge": "Todo conectado",
+        "title": "Todas tus herramientas hablan entre sí",
+        "description": "WhatsApp, email, CRM, calendario — todo sincronizado en tiempo real. Sin copiar datos a mano, sin leads perdidos entre plataformas."
       },
       {
-        "badge": "Reporting",
-        "title": "Dashboards Automáticos",
-        "description": "KPIs actualizados en tiempo real. Reportes automáticos de ventas, leads y operaciones entregados en tu email."
+        "badge": "Visibilidad total",
+        "title": "Sabes exactamente cuántos leads pierdes (y por qué)",
+        "description": "Dashboard en tiempo real: leads recibidos, tiempo de respuesta, conversiones. Tomas decisiones con datos, no con intuición."
       },
       {
         "badge": "Custom AI",
-        "title": "Agentes IA a Medida",
-        "description": "Asistentes de IA completamente personalizados para tu sector y procesos. Desde cotizadores hasta asesores virtuales."
+        "title": "Solución a medida para tu sector",
+        "description": "Reformas, inmobiliaria, clínicas, legal — construimos el sistema adaptado a cómo funciona tu negocio, no al revés."
       }
     ]
   },
