@@ -51,20 +51,6 @@ export default function LoadingScreen() {
         />
       </div>
 
-      {/* Tagline */}
-      <p
-        style={{
-          color: 'rgba(156,163,175,0.55)',
-          fontSize: '10px',
-          fontWeight: 600,
-          textTransform: 'uppercase',
-          letterSpacing: '0.42em',
-          animation: 'taglineFade 1s ease-out 0.5s both',
-        }}
-      >
-        Iniciando sistema
-      </p>
-
       {/* Barra de progreso */}
       <div
         style={{
