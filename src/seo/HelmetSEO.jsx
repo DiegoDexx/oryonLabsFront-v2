@@ -1,4 +1,4 @@
-import { useHead } from '@unhead/react';
+﻿import { useHead } from '@unhead/react';
 
 const localeMap = {
   es: 'es_ES',
@@ -27,7 +27,7 @@ export default function HelmetSEO({
       { property: 'og:image',        content: image },
       { property: 'og:url',          content: url },
       { property: 'og:type',         content: 'website' },
-      { property: 'og:site_name',    content: 'Oryon Labs' },
+      { property: 'og:site_name',    content: 'OryonX' },
       { property: 'og:locale',       content: localeMap[lang] || 'es_ES' },
       { name: 'twitter:card',        content: 'summary_large_image' },
       { name: 'twitter:title',       content: title },

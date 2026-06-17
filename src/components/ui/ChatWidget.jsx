@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { FaPaperPlane, FaRobot, FaTimes, FaRedo } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 import { buildSystemPrompt } from '../../config/chatPrompt';
@@ -383,7 +383,7 @@ export default function ChatWidget({ autoOpen = false }) {
                 </button>
               </div>
               <p className="text-center text-xs text-gray-400 mt-3">
-                Powered by Oryon Labs AI
+                Powered by OryonX AI
               </p>
             </div>
           )}

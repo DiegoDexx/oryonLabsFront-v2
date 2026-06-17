@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../../actions/authActions";
@@ -30,7 +30,7 @@ const NavbarAdminPanel = () => {
         <div className="w-8 h-8 bg-cyan rounded-lg flex items-center justify-center">
           <span className="text-white font-bold text-sm">O</span>
         </div>
-        <span className="font-bold text-navy text-base">OryonLabs</span>
+        <span className="font-bold text-navy text-base">OryonX</span>
         <span className="text-xs bg-cyan/10 text-cyan font-semibold px-2 py-0.5 rounded-full">
           Admin
         </span>

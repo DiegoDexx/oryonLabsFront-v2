@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SelectIdiom from '../ui/SelectIdiom';
 import useScrollSpy from '../../hooks/useScrollSpy';
-import logoBlue from '../../assets/img/logo_blue2.webp';
+import logoBlue from '../../assets/img/logo_blue_ox.webp';
 import es from '../../locales/es.json';
 import en from '../../locales/en.json';
 
@@ -53,18 +53,18 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to={`/${lang}`} className="flex items-center gap-2.5">
-           <img
-            src={logoBlue}
-            alt="Oryon Labs logo"
-            width={32}
-            height={32}
-            className="w-8 h-8"
-            style={{ filter: isScrolled ? 'none' : 'brightness(1.1)' }}
-          />
-            <span className={`font-bold text-lg ${isScrolled ? 'text-navy' : 'text-white'}`}>
-              OryonLabs
-            </span>
+          <Link to={`/${lang}`} className="flex items-center">
+            <img
+              src={logoBlue}
+              alt="OryonX"
+              style={{
+                height: '36px',
+                width: 'auto',
+                filter: isScrolled
+                  ? 'brightness(0.25) contrast(2) saturate(1.4)'
+                  : 'brightness(1.15) drop-shadow(0 0 6px rgba(0,144,201,0.35))',
+              }}
+            />
           </Link>
 
           {/* Desktop Navigation */}

@@ -1,6 +1,6 @@
-import { Link, useLocation } from 'react-router-dom';
+﻿import { Link, useLocation } from 'react-router-dom';
 import { FaTwitter, FaLinkedin, FaInstagram, FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
-import completeLogo from '../../assets/img/logo_blue2.webp';
+import completeLogo from '../../assets/img/logo_blue_ox.webp';
 import es from '../../locales/es.json';
 import en from '../../locales/en.json';
 
@@ -21,20 +21,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="mb-6 flex items-center">
+            <div className="mb-6">
               <Link to={`/${lang}`}>
-               <img
-                src={completeLogo}
-                alt="Oryon Labs"
-                width={56}
-                height={56}
-                className="h-14 w-auto"
-                loading="lazy"
-                decoding="async"
-              />
+                <img
+                  src={completeLogo}
+                  alt="OryonX"
+                  loading="lazy"
+                  decoding="async"
+                  style={{
+                    height: '52px',
+                    width: 'auto',
+                    filter: 'brightness(1.15) drop-shadow(0 0 8px rgba(0,144,201,0.4))',
+                  }}
+                />
               </Link>
-             
-              <span className="ml-2 text-xl font-bold text-white">Oryon  <span className="text-cyan">Labs </span> </span>
             </div>
             <p className="text-gray-400 text-sm mb-6 leading-relaxed">
               {footer.description}
@@ -57,7 +57,7 @@ export default function Footer() {
                 <FaLinkedin className="w-4 h-4" />
               </a>
               <a
-                href="https://instagram.com/oryonlabs"
+                href="https://instagram.com/oryonx"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-cyan hover:bg-cyan-medium flex items-center justify-center transition-all"

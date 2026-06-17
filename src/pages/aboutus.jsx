@@ -1,11 +1,11 @@
-import React from "react";
+﻿import React from "react";
 
 const AboutUs = () => {
   return (
     <section className="aboutus-section col-lg-11">
       <h1 className="section-title">Sobre Nosotros</h1>
       <p>
-        En Oryon Labs, somos un equipo apasionado por la tecnología y la innovación. Nos especializamos en el desarrollo de soluciones digitales personalizadas para empresas y emprendedores, ayudando a transformar ideas en proyectos exitosos.
+        En OryonX, somos un equipo apasionado por la tecnología y la innovación. Nos especializamos en el desarrollo de soluciones digitales personalizadas para empresas y emprendedores, ayudando a transformar ideas en proyectos exitosos.
       </p>
       <h2 className="section-subtitle">Nuestra Misión</h2>
       <p>

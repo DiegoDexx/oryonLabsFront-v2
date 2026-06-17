@@ -1,5 +1,5 @@
-/**
- * Capa centralizada de peticiones a la API de Oryon Labs.
+﻿/**
+ * Capa centralizada de peticiones a la API de OryonX.
  *
  * Todas las llamadas incluyen siempre `Accept: application/json`.
  * Sin ese header, Laravel no detecta el request como API y redirige

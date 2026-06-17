@@ -1,66 +1,84 @@
-import logo from '../../assets/img/logo_blue2.webp';
+import logo from '../../assets/img/logo_blue_ox.webp';
 
 export default function LoadingScreen() {
   return (
     <div className="flex flex-col items-center justify-center gap-10 select-none">
 
-      {/* Logo con anillo giratorio + glow */}
-      <div className="relative flex items-center justify-center">
-        {/* Glow difuso */}
-        <div
-          className="absolute w-32 h-32 rounded-full opacity-40 animate-pulse"
-          style={{ background: 'radial-gradient(circle, rgba(0,144,201,0.6) 0%, transparent 70%)' }}
-        />
+      {/* Logo con glow horizontal y shimmer */}
+      <div className="relative flex items-center justify-center" style={{ width: '320px', height: '100px' }}>
 
-        {/* Anillo exterior giratorio */}
+        {/* Glow difuso detrás del logo */}
         <div
-          className="absolute w-28 h-28 rounded-full border-2 border-transparent"
+          className="absolute"
           style={{
-            borderTopColor: '#0090C9',
-            borderRightColor: 'rgba(0,144,201,0.3)',
-            animation: 'spin 1.2s linear infinite',
+            width: '340px',
+            height: '70px',
+            background: 'radial-gradient(ellipse at center, rgba(0,144,201,0.75) 0%, rgba(56,189,248,0.25) 50%, transparent 72%)',
+            filter: 'blur(18px)',
+            animation: 'glowPulse 2.2s ease-in-out infinite',
           }}
         />
 
-        {/* Anillo interior giratorio inverso */}
+        {/* Shimmer que cruza el logo */}
         <div
-          className="absolute w-20 h-20 rounded-full border-2 border-transparent"
-          style={{
-            borderBottomColor: '#38BDF8',
-            borderLeftColor: 'rgba(56,189,248,0.2)',
-            animation: 'spin 1.8s linear infinite reverse',
-          }}
-        />
+          className="absolute overflow-hidden"
+          style={{ width: '300px', height: '90px', borderRadius: '8px' }}
+        >
+          <div
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: '-120%',
+              width: '55%',
+              height: '100%',
+              background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.12) 50%, transparent 100%)',
+              animation: 'shimmer 2.6s ease-in-out infinite 0.6s',
+            }}
+          />
+        </div>
 
         {/* Logo */}
-     <img
-        src={logo}
-        alt="Oryon Labs"
-        width={56}
-        height={56}
-        className="relative w-14 h-14"
-        style={{ filter: 'drop-shadow(0 0 16px rgba(0,144,201,0.7))' }}
-      />
-      </div>
-
-      {/* Nombre */}
-      <div className="flex flex-col items-center gap-2">
-        <p className="text-white font-black text-2xl tracking-tight leading-none">
-          Oryon<span style={{ color: '#38BDF8' }}>Labs</span>
-        </p>
-        <p
-          className="text-[11px] font-semibold uppercase tracking-[0.35em]"
-          style={{ color: 'rgba(156,163,175,0.7)' }}
-        >
-          Iniciando sistema
-        </p>
-      </div>
-
-      {/* Barra de progreso animada */}
-      <div className="w-48 h-[2px] rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.08)' }}>
-        <div
-          className="h-full rounded-full"
+        <img
+          src={logo}
+          alt="OryonX"
           style={{
+            height: '72px',
+            width: 'auto',
+            position: 'relative',
+            filter: 'drop-shadow(0 0 22px rgba(0,144,201,0.55)) brightness(1.1)',
+            animation: 'logoFadeIn 0.7s ease-out forwards',
+          }}
+        />
+      </div>
+
+      {/* Tagline */}
+      <p
+        style={{
+          color: 'rgba(156,163,175,0.55)',
+          fontSize: '10px',
+          fontWeight: 600,
+          textTransform: 'uppercase',
+          letterSpacing: '0.42em',
+          animation: 'taglineFade 1s ease-out 0.5s both',
+        }}
+      >
+        Iniciando sistema
+      </p>
+
+      {/* Barra de progreso */}
+      <div
+        style={{
+          width: '200px',
+          height: '2px',
+          borderRadius: '9999px',
+          overflow: 'hidden',
+          background: 'rgba(255,255,255,0.06)',
+        }}
+      >
+        <div
+          style={{
+            height: '100%',
+            borderRadius: '9999px',
             background: 'linear-gradient(90deg, #0090C9, #38BDF8)',
             animation: 'loadBar 2.8s ease-in-out forwards',
           }}
@@ -68,11 +86,27 @@ export default function LoadingScreen() {
       </div>
 
       <style>{`
+        @keyframes glowPulse {
+          0%, 100% { opacity: 0.35; transform: scaleX(0.88); }
+          50%       { opacity: 0.6;  transform: scaleX(1.1);  }
+        }
+        @keyframes shimmer {
+          0%   { left: -120%; }
+          100% { left: 220%;  }
+        }
+        @keyframes logoFadeIn {
+          0%   { opacity: 0; transform: translateY(10px); }
+          100% { opacity: 1; transform: translateY(0);    }
+        }
+        @keyframes taglineFade {
+          0%   { opacity: 0; }
+          100% { opacity: 1; }
+        }
         @keyframes loadBar {
-          0%   { width: 0%; }
-          40%  { width: 55%; }
-          70%  { width: 75%; }
-          90%  { width: 90%; }
+          0%   { width: 0%;   }
+          40%  { width: 55%;  }
+          70%  { width: 75%;  }
+          90%  { width: 90%;  }
           100% { width: 100%; }
         }
       `}</style>
