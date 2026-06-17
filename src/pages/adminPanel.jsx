@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useGet } from '../hooks/useFetch';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -167,7 +167,7 @@ const AdminPanel = () => {
               <h1 className="text-2xl sm:text-3xl font-bold text-navy leading-tight">
                 Panel de Administración
               </h1>
-              <p className="text-sm text-gray-500 mt-0.5">Oryon Labs · Gestión interna</p>
+              <p className="text-sm text-gray-500 mt-0.5">OryonX · Gestión interna</p>
             </div>
 
             {/* Action buttons — wrap on mobile */}

@@ -1,4 +1,4 @@
-import logo from '../../assets/img/logo_blue2.webp';
+﻿import logo from '../../assets/img/original_logo_blue_ox.webp';
 
 export default function LoadingScreen() {
   return (
@@ -35,7 +35,7 @@ export default function LoadingScreen() {
         {/* Logo */}
      <img
         src={logo}
-        alt="Oryon Labs"
+        alt="OryonX"
         width={56}
         height={56}
         className="relative w-14 h-14"
@@ -46,7 +46,7 @@ export default function LoadingScreen() {
       {/* Nombre */}
       <div className="flex flex-col items-center gap-2">
         <p className="text-white font-black text-2xl tracking-tight leading-none">
-          Oryon<span style={{ color: '#38BDF8' }}>Labs</span>
+          Oryon<span style={{ color: '#38BDF8' }}>X</span>
         </p>
         <p
           className="text-[11px] font-semibold uppercase tracking-[0.35em]"

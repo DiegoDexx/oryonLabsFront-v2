@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+﻿import { useLocation } from 'react-router-dom';
 import {
   FaUser, FaComments, FaEnvelope, FaBolt, FaMobileAlt, FaClock,
   FaRobot, FaChartBar, FaNetworkWired, FaHeadset,
@@ -128,7 +128,7 @@ export default function WhyOryonLabs() {
                 O
               </div>
               <div>
-                <p className="text-white font-bold text-sm leading-tight">Oryon Labs</p>
+                <p className="text-white font-bold text-sm leading-tight">OryonX</p>
                 <p className="text-cyan text-xs font-semibold leading-tight">{why.solution.label}</p>
               </div>
             </div>

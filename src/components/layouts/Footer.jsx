@@ -1,6 +1,6 @@
-import { Link, useLocation } from 'react-router-dom';
+﻿import { Link, useLocation } from 'react-router-dom';
 import { FaTwitter, FaLinkedin, FaInstagram, FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
-import completeLogo from '../../assets/img/logo_blue2.webp';
+import completeLogo from '../../assets/img/original_logo_blue_ox.webp';
 import es from '../../locales/es.json';
 import en from '../../locales/en.json';
 
@@ -25,7 +25,7 @@ export default function Footer() {
               <Link to={`/${lang}`}>
                <img
                 src={completeLogo}
-                alt="Oryon Labs"
+                alt="OryonX"
                 width={56}
                 height={56}
                 className="h-14 w-auto"
@@ -34,7 +34,7 @@ export default function Footer() {
               />
               </Link>
              
-              <span className="ml-2 text-xl font-bold text-white">Oryon  <span className="text-cyan">Labs </span> </span>
+              <span className="ml-2 text-xl font-bold text-white">Oryon<span className="text-cyan">X</span></span>
             </div>
             <p className="text-gray-400 text-sm mb-6 leading-relaxed">
               {footer.description}
@@ -57,7 +57,7 @@ export default function Footer() {
                 <FaLinkedin className="w-4 h-4" />
               </a>
               <a
-                href="https://instagram.com/oryonlabs"
+                href="https://instagram.com/oryonx"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-cyan hover:bg-cyan-medium flex items-center justify-center transition-all"

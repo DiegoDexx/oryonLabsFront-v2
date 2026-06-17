@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SelectIdiom from '../ui/SelectIdiom';
 import useScrollSpy from '../../hooks/useScrollSpy';
-import logoBlue from '../../assets/img/logo_blue2.webp';
+import logoBlue from '../../assets/img/original_logo_blue_ox.webp';
 import es from '../../locales/es.json';
 import en from '../../locales/en.json';
 
@@ -56,14 +56,14 @@ export default function Navbar() {
           <Link to={`/${lang}`} className="flex items-center gap-2.5">
            <img
             src={logoBlue}
-            alt="Oryon Labs logo"
+            alt="OryonX logo"
             width={32}
             height={32}
             className="w-8 h-8"
             style={{ filter: isScrolled ? 'none' : 'brightness(1.1)' }}
           />
             <span className={`font-bold text-lg ${isScrolled ? 'text-navy' : 'text-white'}`}>
-              OryonLabs
+              OryonX
             </span>
           </Link>
 
