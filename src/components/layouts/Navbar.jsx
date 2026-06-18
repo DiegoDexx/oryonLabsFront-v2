@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SelectIdiom from '../ui/SelectIdiom';
+import useScrollSpy from '../../hooks/useScrollSpy';
+import logoBlue from '../../assets/img/logo_blue_ox.webp';
 import es from '../../locales/es.json';
 import en from '../../locales/en.json';
 
@@ -22,17 +24,17 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
-  // Extraer idioma del path
   const pathLang = location.pathname.split('/')[1];
   const lang = ['es', 'en'].includes(pathLang) ? pathLang : 'es';
   const t = translationsByLang[lang] || translationsByLang.es;
   const nav = t.nav;
   const navLinks = getNavLinks(lang);
 
+  const sectionIds = navLinks.map(link => link.href.replace('#', ''));
+  const activeSection = useScrollSpy(sectionIds, { offset: 80 });
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -51,35 +53,48 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to={`/${lang}`} className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-cyan rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">O</span>
-            </div>
-            <span className={`font-bold text-lg ${isScrolled ? 'text-navy' : 'text-white'}`}>
-              OryonLabs
-            </span>
+          <Link to={`/${lang}`} className="flex items-center">
+            <img
+              src={logoBlue}
+              alt="OryonX"
+              style={{
+                height: '36px',
+                width: 'auto',
+                filter: isScrolled
+                  ? 'brightness(0.25) contrast(2) saturate(1.4)'
+                  : 'brightness(1.15) drop-shadow(0 0 6px rgba(0,144,201,0.35))',
+              }}
+            />
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.labelKey}
-                href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-cyan ${
-                  isScrolled ? 'text-gray-700' : 'text-white/90'
-                }`}
-              >
-                {nav[link.labelKey]}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = link.href.replace('#', '') === activeSection;
+              return (
+                <a
+                  key={link.labelKey}
+                  href={link.href}
+                  className={`text-sm font-medium transition-colors relative pb-1 ${
+                    isActive
+                      ? 'text-cyan'
+                      : isScrolled ? 'text-gray-700 hover:text-cyan' : 'text-white/90 hover:text-white'
+                  }`}
+                >
+                  {nav[link.labelKey]}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-cyan rounded-full" />
+                  )}
+                </a>
+              );
+            })}
           </div>
 
           {/* Desktop CTA + Language Selector */}
           <div className="hidden md:flex items-center gap-4">
             <SelectIdiom isScrolled={isScrolled} />
             <a
-              href={`/${lang}/login`}
+              href={`/${lang}#${lang === 'en' ? 'contact' : 'contacto'}`}
               className={`text-sm font-medium transition-colors ${
                 isScrolled ? 'text-gray-700 hover:text-cyan' : 'text-white/90 hover:text-white'
               }`}

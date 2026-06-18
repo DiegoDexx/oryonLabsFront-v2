@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { FaCircle, FaCheck } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 import es from '../../locales/es.json';
@@ -12,6 +13,13 @@ export default function Hero() {
   const t = translationsByLang[lang] || translationsByLang.es;
   const hero = t.hero;
 
+  const [showScrollHint, setShowScrollHint] = useState(true);
+  useEffect(() => {
+    const onScroll = () => { if (window.scrollY > 80) setShowScrollHint(false); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <section className="relative bg-navy min-h-screen pt-20 overflow-hidden">
       {/* Background pattern */}
@@ -19,12 +27,15 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,144,201,0.15),transparent_40%)]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-10 lg:py-14 xl:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 xl:gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 animate-fade-in-up" style={{ animationDuration: '0.7s', animationDelay: '3.2s', animationFillMode: 'both' }}>
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/10">
+            <div
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/10 animate-fade-in"
+              style={{ animationDelay: '3.6s', animationFillMode: 'both' }}
+            >
               <span className="w-2 h-2 bg-cyan rounded-full animate-pulse" />
               <span className="text-cyan-light text-sm font-medium">
                 {hero.badge}
@@ -33,12 +44,22 @@ export default function Hero() {
 
             {/* Headline */}
             <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                {lang === 'es' ? 'Infraestructura de ' : 'Real AI infrastructure '}
-                <span className="text-cyan-light">{hero.title_highlight}</span>
-                {lang === 'es' ? ' para tu negocio' : ' for your business'}
+              <h1 className="text-4xl sm:text-5xl lg:text-5xl 2xl:text-6xl font-black text-white leading-tight">
+                {(() => {
+                  const title = hero.title;
+                  const hl = hero.title_highlight;
+                  const idx = title.indexOf(hl);
+                  if (idx === -1) return title;
+                  return (
+                    <>
+                      {title.slice(0, idx)}
+                      <span className="text-cyan-light">{hl}</span>
+                      {title.slice(idx + hl.length)}
+                    </>
+                  );
+                })()}
               </h1>
-              <p className="text-gray-300 text-lg leading-relaxed max-w-xl">
+              <p className="text-gray-300 text-lg lg:text-base 2xl:text-lg leading-relaxed max-w-xl">
                 {hero.subtitle}
               </p>
             </div>
@@ -80,12 +101,12 @@ export default function Hero() {
           </div>
 
           {/* Right Content - Dashboard Panel */}
-          <div className="relative">
+          <div className="relative animate-slide-in-right" style={{ animationDuration: '0.8s', animationDelay: '3.4s', animationFillMode: 'both' }}>
             {/* Glow effect */}
             <div className="absolute -inset-4 bg-gradient-to-r from-cyan/20 to-purple-500/20 rounded-3xl blur-2xl opacity-50" />
 
             {/* Panel */}
-            <div className="relative bg-navy-light/80 backdrop-blur rounded-2xl border border-white/10 p-6 shadow-2xl">
+            <div className="relative bg-navy-light/80 backdrop-blur rounded-2xl border border-white/10 p-5 lg:p-5 xl:p-6 shadow-2xl">
               {/* Panel Header */}
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-2">
@@ -154,7 +175,7 @@ export default function Hero() {
         </div>
 
         {/* Trust Bar */}
-        <div className="mt-20 pt-12 border-t border-white/10">
+        <div className="mt-14 lg:mt-16 xl:mt-20 pt-10 lg:pt-12 border-t border-white/10">
           <p className="text-center text-gray-400 text-sm mb-8">
             {t.trust_bar.title}
           </p>
@@ -170,6 +191,22 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Scroll hint */}
+      {showScrollHint && (
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 pointer-events-none select-none">
+          <svg
+            className="w-6 h-6 animate-bounce"
+            style={{ color: 'rgba(56,189,248,0.6)' }}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      )}
     </section>
   );
 }

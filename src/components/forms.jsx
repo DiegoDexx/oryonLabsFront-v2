@@ -1,226 +1,209 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
-import { FaRobot, FaNetworkWired, FaPlug, FaMagic, FaQuestionCircle } from "react-icons/fa";
+import es from "../locales/es.json";
+import en from "../locales/en.json";
 import SuccessModal from "./successModal";
-import ProjectRequirementsFields from "./ProjectRequirementsFields";
 
-const steps = ["Datos", "Categoría", "Requisitos"];
+const N8N_URL = import.meta.env.VITE_FORM_WEBHOOK_PROD_URL; // Cambia según entorno (usar VITE_FORM_WEBHOOK_PROD_URL para producción)
 
-const CATEGORIES = [
-  {
-    key: "chatbot_ia",
-    title: "Chatbot IA",
-    desc: "Agentes conversacionales para atención al cliente, soporte y ventas.",
-    Icon: <FaRobot className="w-8 h-8" />,
-  },
-  {
-    key: "automatizacion_procesos",
-    title: "Automatización de procesos",
-    desc: "Workflows con n8n/Make para eliminar tareas repetitivas.",
-    Icon: <FaNetworkWired className="w-8 h-8" />,
-  },
-  {
-    key: "integracion_sistemas",
-    title: "Integración de sistemas",
-    desc: "Conexión entre CRMs, herramientas y APIs en un ecosistema unificado.",
-    Icon: <FaPlug className="w-8 h-8" />,
-  },
-  {
-    key: "agente_ia_personalizado",
-    title: "Agente IA personalizado",
-    desc: "Asistentes GPT entrenados específicamente para tu negocio y sector.",
-    Icon: <FaMagic className="w-8 h-8" />,
-  },
-  {
-    key: "otros",
-    title: "Otros",
-    desc: "Proyectos personalizados que no encajan en las categorías anteriores.",
-    Icon: <FaQuestionCircle className="w-8 h-8" />,
-  },
-];
+const translationsByLang = { es, en };
+
+const MAP_CHALLENGE_CATEGORY = {
+  tiempo:                     "process_automation",
+  clientes:                   "ai_chatbot",
+  leads:                      "process_automation",
+  empezar:                    "other",
+  asistente:                  "ai_chatbot",
+  herramientas_desconectadas: "system_integration",
+};
+
+const MAP_URGENCY_PRIORITY = {
+  alta:  "high",
+  media: "medium",
+  baja:  "low",
+};
+
+const Pill = ({ label, selected, onClick }) => (
+  <button
+    type="button"
+    onClick={onClick}
+    className={`px-4 py-2 rounded-full text-sm font-medium border transition-all ${
+      selected
+        ? "bg-cyan text-white border-cyan"
+        : "bg-white text-gray-700 border-gray-200 hover:border-cyan"
+    }`}
+  >
+    {label}
+  </button>
+);
 
 const ProjectRequestForm = () => {
+  const location = useLocation();
+  const pathLang = location.pathname.split("/")[1];
+  const lang = ["es", "en"].includes(pathLang) ? pathLang : "es";
+  const tf = (translationsByLang[lang] || translationsByLang.es).form;
+
   const [currentStep, setCurrentStep] = useState(0);
-  const [clientName, setClientName] = useState("");
-  const [clientEmail, setClientEmail] = useState("");
-  const [clientPhone, setClientPhone] = useState("");
+
+  // Step 1 — contacto
+  const [clientName,    setClientName]    = useState("");
+  const [clientEmail,   setClientEmail]   = useState("");
+  const [clientPhone,   setClientPhone]   = useState("");
   const [clientCompany, setClientCompany] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [fieldsByCategory, setFieldsByCategory] = useState({});
-  const [formValues, setFormValues] = useState({});
-  const [projectName, setProjectName] = useState("");
-  const [loadingFields, setLoadingFields] = useState(false);
-  const [errors, setErrors] = useState({});
-  const [submitting, setSubmitting] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  useEffect(() => {
-    if (!selectedCategory) return;
-    if (fieldsByCategory[selectedCategory]) return;
+  // Step 2 — reto
+  const [selectedReto, setSelectedReto] = useState("");
 
-    setLoadingFields(true);
-    axios.get(`https://oryonlabsdb-production.up.railway.app/api/project-fields/category/${selectedCategory}`)
-      .then(res => {
-        const arr = res.data.data || [];
-        setFieldsByCategory(prev => ({ ...prev, [selectedCategory]: arr }));
+  // Step 3 — contexto
+  const [selectedVolumenClientes, setSelectedVolumenClientes] = useState("");
+  const [selectedHerramientas,    setSelectedHerramientas]    = useState([]);
+  const [selectedUrgencia,        setSelectedUrgencia]        = useState("");
 
-        const init = {};
-        arr.forEach(f => {
-          init[f.field_name] = f.type === "boolean" ? false : "";
-        });
-        setFormValues(prev => ({ ...init, ...prev }));
-      })
-      .catch(err => console.error("Error cargando fields:", err))
-      .finally(() => setLoadingFields(false));
-  }, [selectedCategory]);
+  const [errors,           setErrors]           = useState({});
+  const [submitting,       setSubmitting]        = useState(false);
+  const [showSuccessModal, setShowSuccessModal]  = useState(false);
 
-  const categoryFields = useMemo(() => fieldsByCategory[selectedCategory] || [], [fieldsByCategory, selectedCategory]);
-
+  // ── Validaciones ────────────────────────────────────────────
   const validateStep0 = () => {
     const e = {};
-    if (!clientName.trim()) e.clientName = "El nombre es obligatorio.";
-    if (!clientEmail.trim()) e.clientEmail = "El email es obligatorio.";
-    if (!clientCompany.trim()) e.clientCompany = "La empresa es obligatoria.";
-    if (!clientPhone.trim()) e.clientPhone = "El teléfono es obligatorio.";
-    
-    const emailValid = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(clientEmail);
-    const phoneValid = /^[0-9]{7,15}$/.test(clientPhone);
-    
-    if (!emailValid) e.clientEmail = "Correo inválido.";
-    if (!phoneValid) e.clientPhone = "Teléfono inválido (solo números, 7-15 dígitos).";
-    
+    const s1e = tf.step1.errors;
+    if (!clientName.trim())    e.clientName    = s1e.name_required;
+    if (!clientEmail.trim())   e.clientEmail   = s1e.email_required;
+    if (!clientCompany.trim()) e.clientCompany = s1e.company_required;
+    if (!clientPhone.trim())   e.clientPhone   = s1e.phone_required;
+    if (clientEmail && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(clientEmail))
+      e.clientEmail = s1e.email_invalid;
+    if (clientPhone && !/^[0-9]{7,15}$/.test(clientPhone))
+      e.clientPhone = s1e.phone_invalid;
     setErrors(e);
     return Object.keys(e).length === 0;
   };
 
   const validateStep1 = () => {
     const e = {};
-    if (!selectedCategory) e.category = "Selecciona una categoría.";
+    if (!selectedReto) e.reto = tf.step2.errors.reto_required;
     setErrors(e);
     return Object.keys(e).length === 0;
   };
 
   const validateStep2 = () => {
     const e = {};
-    categoryFields.forEach((f) => {
-      if (f.required) {
-        const v = formValues[f.field_name];
-        const empty =
-          (f.type === "boolean" && typeof v !== "boolean") ||
-          (f.type !== "boolean" && (v === null || v === undefined || v === ""));
-        if (empty) e[f.field_name] = "Campo obligatorio.";
-      }
-    });
+    const s3e = tf.step3.errors;
+    if (!selectedVolumenClientes) e.volumenClientes = s3e.volumen_clientes_required;
+    if (!selectedUrgencia)        e.urgencia        = s3e.urgencia_required;
     setErrors(e);
     return Object.keys(e).length === 0;
   };
 
+  // ── Navegación ──────────────────────────────────────────────
   const nextStep = () => {
     if (currentStep === 0 && !validateStep0()) return;
     if (currentStep === 1 && !validateStep1()) return;
-    if (currentStep < steps.length - 1) setCurrentStep((s) => s + 1);
+    if (currentStep < tf.steps.length - 1) setCurrentStep((s) => s + 1);
   };
 
   const prevStep = () => {
     if (currentStep > 0) setCurrentStep((s) => s - 1);
   };
 
-  const onChangeValue = (field, value) => {
-    setFormValues((prev) => ({ ...prev, [field]: value }));
+  const toggleHerramienta = (h) => {
+    setSelectedHerramientas((prev) =>
+      prev.includes(h) ? prev.filter((x) => x !== h) : [...prev, h]
+    );
   };
 
+  // ── Submit ───────────────────────────────────────────────────
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateStep2()) return;
 
+    const challengeLabel = tf.step2.retos.find((r) => r.id === selectedReto)?.title || selectedReto;
+    const urgencyLabel   = tf.step3.urgencia.options.find((u) => u.id === selectedUrgencia)?.label || selectedUrgencia;
+
+    const payload = {
+      // Contact data
+      name:    clientName,
+      company: clientCompany,
+      email:   clientEmail,
+      phone:   clientPhone,
+
+      // Lead context
+      challenge:    selectedReto,
+      client_volume: selectedVolumenClientes,
+      tools:         selectedHerramientas.join(", "),
+      urgency:       selectedUrgencia,
+      channel:       "form",
+      language:      lang,
+
+      // For n8n / AI processing
+      category: MAP_CHALLENGE_CATEGORY[selectedReto] || "other",
+      priority: MAP_URGENCY_PRIORITY[selectedUrgencia] || "medium",
+
+      // Summary for the AI Agent
+      summary: `Challenge: ${challengeLabel}. Client volume: ${selectedVolumenClientes}. Tools: ${selectedHerramientas.join(", ") || "none indicated"}. Urgency: ${urgencyLabel}. Company: ${clientCompany || "Not provided"}.`,
+    };
+
     try {
       setSubmitting(true);
+      await axios.post(N8N_URL, payload);
 
-      const clientResponse = await axios.post("https://oryonlabsdb-production.up.railway.app/api/clients", {
-        name: clientName,
-        email: clientEmail,
-        phone: clientPhone,
-        company: clientCompany,
-      });
-      const clientId = clientResponse.data.id;
-
-      const requirements = categoryFields.map((f) => ({
-        field_id: f.id ?? f.field_id,
-        value: formValues[f.field_name],
-      }));
-
-      const payload = {
-        name: projectName,
-        client_id: clientId,
-        category: selectedCategory,
-        requirements,
-      };
-
-      await axios.post(
-        "https://oryonlabsdb-production.up.railway.app/api/projects",
-        payload,
-        { headers: { "Content-Type": "application/json" } }
-      );
-
+      // Reset
       setCurrentStep(0);
-      setClientName("");
-      setClientEmail("");
-      setClientPhone("");
-      setClientCompany("");
-      setProjectName("");
-      setSelectedCategory("");
-      setFieldsByCategory({});
-      setFormValues({});
+      setClientName("");   setClientEmail("");
+      setClientPhone("");  setClientCompany("");
+      setSelectedReto(""); setSelectedVolumenClientes("");
+      setSelectedHerramientas([]); setSelectedUrgencia("");
       setErrors({});
       setShowSuccessModal(true);
 
     } catch (err) {
-      console.error("Error al enviar el proyecto:", err);
+      console.error("Error al enviar solicitud:", err);
     } finally {
       setSubmitting(false);
     }
   };
 
+  // ── Render ───────────────────────────────────────────────────
   return (
     <div className="w-full">
-      <h2 className="text-2xl font-bold text-navy mb-2">Cuéntanos tu proyecto</h2>
-      <p className="text-gray-500 text-sm mb-6">Todos los campos con * son obligatorios.</p>
+      <h2 className="text-2xl font-bold text-navy mb-2">{tf.title}</h2>
+      <p className="text-gray-500 text-sm mb-6">{tf.subtitle}</p>
 
       {/* Progressbar */}
       <div className="flex items-center gap-4 mb-8">
-        {steps.map((label, idx) => (
+        {tf.steps.map((label, idx) => (
           <div key={label} className="flex items-center gap-2">
             <div className="flex items-center gap-2">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center font-semibold text-sm ${
-                idx < currentStep ? 'bg-cyan text-white' : 
-                idx === currentStep ? 'bg-cyan text-white ring-4 ring-cyan/20' : 
-                'bg-gray-200 text-gray-500'
+                idx < currentStep   ? "bg-cyan text-white" :
+                idx === currentStep ? "bg-cyan text-white ring-4 ring-cyan/20" :
+                                      "bg-gray-200 text-gray-500"
               }`}>
                 {idx + 1}
               </div>
-              <span className={`text-sm font-medium hidden sm:block ${idx <= currentStep ? 'text-cyan' : 'text-gray-400'}`}>
+              <span className={`text-sm font-medium hidden sm:block ${idx <= currentStep ? "text-cyan" : "text-gray-400"}`}>
                 {label}
               </span>
             </div>
-            {idx < steps.length - 1 && (
-              <div className={`w-8 h-0.5 ${idx < currentStep ? 'bg-cyan' : 'bg-gray-200'}`} />
+            {idx < tf.steps.length - 1 && (
+              <div className={`w-8 h-0.5 ${idx < currentStep ? "bg-cyan" : "bg-gray-200"}`} />
             )}
           </div>
         ))}
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
+
+        {/* ── STEP 1: Datos de contacto ── */}
         {currentStep === 0 && (
           <div className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Nombre completo <span className="text-cyan">*</span>
+                  {tf.step1.fields.name.label} <span className="text-cyan">*</span>
                 </label>
-                <input
-                  type="text"
-                  placeholder="Tu nombre"
-                  value={clientName}
+                <input type="text" placeholder={tf.step1.fields.name.placeholder} value={clientName}
                   onChange={(e) => setClientName(e.target.value)}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-all text-gray-700"
                 />
@@ -228,12 +211,9 @@ const ProjectRequestForm = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Empresa <span className="text-cyan">*</span>
+                  {tf.step1.fields.company.label} <span className="text-cyan">*</span>
                 </label>
-                <input
-                  type="text"
-                  placeholder="Nombre de tu empresa"
-                  value={clientCompany}
+                <input type="text" placeholder={tf.step1.fields.company.placeholder} value={clientCompany}
                   onChange={(e) => setClientCompany(e.target.value)}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-all text-gray-700"
                 />
@@ -244,12 +224,9 @@ const ProjectRequestForm = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Email corporativo <span className="text-cyan">*</span>
+                  {tf.step1.fields.email.label} <span className="text-cyan">*</span>
                 </label>
-                <input
-                  type="email"
-                  placeholder="tu@empresa.com"
-                  value={clientEmail}
+                <input type="email" placeholder={tf.step1.fields.email.placeholder} value={clientEmail}
                   onChange={(e) => setClientEmail(e.target.value)}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-all text-gray-700"
                 />
@@ -257,12 +234,9 @@ const ProjectRequestForm = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Teléfono <span className="text-cyan">*</span>
+                  {tf.step1.fields.phone.label} <span className="text-cyan">*</span>
                 </label>
-                <input
-                  type="text"
-                  placeholder="+34 600 000 000"
-                  value={clientPhone}
+                <input type="text" placeholder={tf.step1.fields.phone.placeholder} value={clientPhone}
                   onChange={(e) => setClientPhone(e.target.value)}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-all text-gray-700"
                 />
@@ -270,103 +244,130 @@ const ProjectRequestForm = () => {
               </div>
             </div>
 
-            <button
-              type="button"
-              onClick={nextStep}
+            <button type="button" onClick={nextStep}
               className="bg-cyan hover:bg-cyan-medium text-white font-semibold px-8 py-3 rounded-lg transition-all w-full sm:w-auto"
             >
-              Siguiente
+              {tf.step1.next_button}
             </button>
           </div>
         )}
 
+        {/* ── STEP 2: Tu reto ── */}
         {currentStep === 1 && (
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-4">
-                ¿Qué necesitas automatizar? <span className="text-cyan">*</span>
-              </label>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {CATEGORIES.map(({ key, title, desc, Icon }) => (
+              <p className="text-sm font-medium text-gray-700 mb-4">
+                {tf.step2.question} <span className="text-cyan">*</span>
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {tf.step2.retos.map(({ id, emoji, title, desc }) => (
                   <button
-                    key={key}
+                    key={id}
                     type="button"
-                    onClick={() => setSelectedCategory(key)}
-                    className={`p-6 rounded-xl border-2 text-left transition-all group ${
-                      selectedCategory === key
-                        ? 'border-cyan bg-cyan-pale'
-                        : 'border-gray-200 hover:border-cyan/50 hover:bg-gray-50'
+                    onClick={() => setSelectedReto(id)}
+                    className={`p-5 rounded-xl border-2 text-left transition-all ${
+                      selectedReto === id
+                        ? "border-cyan bg-cyan-pale"
+                        : "border-gray-200 bg-white hover:border-cyan/50 hover:bg-gray-50"
                     }`}
                   >
-                    <div className={`mb-4 ${selectedCategory === key ? 'text-cyan' : 'text-gray-400 group-hover:text-cyan'}`}>
-                      {Icon}
-                    </div>
-                    <h4 className="font-semibold text-navy mb-1">{title}</h4>
-                    <p className="text-sm text-gray-500">{desc}</p>
+                    <div className="text-2xl mb-2">{emoji}</div>
+                    <p className="font-semibold text-navy text-sm mb-1">{title}</p>
+                    <p className="text-xs text-gray-500">{desc}</p>
                   </button>
                 ))}
               </div>
-
-              {errors.category && <p className="text-red-500 text-sm mt-2">{errors.category}</p>}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Nombre del proyecto <span className="text-cyan">*</span>
-              </label>
-              <input
-                type="text"
-                placeholder="¿Cómo quieres llamar a este proyecto?"
-                value={projectName}
-                onChange={(e) => setProjectName(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-cyan focus:ring-2 focus:ring-cyan/20 outline-none transition-all text-gray-700"
-              />
+              {errors.reto && <p className="text-red-500 text-sm mt-2">{errors.reto}</p>}
             </div>
 
             <div className="flex gap-4">
-              <button
-                type="button"
-                onClick={prevStep}
+              <button type="button" onClick={prevStep}
                 className="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-8 py-3 rounded-lg transition-all"
               >
-                Anterior
+                {tf.step2.prev_button}
               </button>
-              <button
-                type="button"
-                onClick={nextStep}
-                disabled={!selectedCategory || !projectName}
+              <button type="button" onClick={nextStep}
+                disabled={!selectedReto}
                 className="bg-cyan hover:bg-cyan-medium disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold px-8 py-3 rounded-lg transition-all"
               >
-                Siguiente
+                {tf.step2.next_button}
               </button>
             </div>
           </div>
         )}
 
+        {/* ── STEP 3: Contexto ── */}
         {currentStep === 2 && (
-          <ProjectRequirementsFields
-            selectedCategory={selectedCategory}
-            loadingFields={loadingFields}
-            categoryFields={categoryFields}
-            formValues={formValues}
-            onChangeValue={onChangeValue}
-            errors={errors}
-            prevStep={prevStep}
-            submitting={submitting}
-          />
+          <div className="space-y-8">
+
+            <div>
+              <p className="text-sm font-medium text-gray-700 mb-3">
+                {tf.step3.volumen_clientes.question} <span className="text-cyan">*</span>
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {tf.step3.volumen_clientes.options.map((opt) => (
+                  <Pill key={opt} label={opt}
+                    selected={selectedVolumenClientes === opt}
+                    onClick={() => setSelectedVolumenClientes(opt)}
+                  />
+                ))}
+              </div>
+              {errors.volumenClientes && <p className="text-red-500 text-sm mt-2">{errors.volumenClientes}</p>}
+            </div>
+
+            <div>
+              <p className="text-sm font-medium text-gray-700 mb-3">
+                {tf.step3.herramientas.question}{" "}
+                <span className="text-gray-400 font-normal">({tf.step3.herramientas.hint})</span>
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {tf.step3.herramientas.options.map((opt) => (
+                  <Pill key={opt} label={opt}
+                    selected={selectedHerramientas.includes(opt)}
+                    onClick={() => toggleHerramienta(opt)}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <p className="text-sm font-medium text-gray-700 mb-3">
+                {tf.step3.urgencia.question} <span className="text-cyan">*</span>
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {tf.step3.urgencia.options.map(({ id, label }) => (
+                  <Pill key={id} label={label}
+                    selected={selectedUrgencia === id}
+                    onClick={() => setSelectedUrgencia(id)}
+                  />
+                ))}
+              </div>
+              {errors.urgencia && <p className="text-red-500 text-sm mt-2">{errors.urgencia}</p>}
+            </div>
+
+            <div className="flex gap-4">
+              <button type="button" onClick={prevStep}
+                className="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-8 py-3 rounded-lg transition-all"
+              >
+                {tf.step3.prev_button}
+              </button>
+              <button type="submit" disabled={submitting}
+                className="bg-cyan hover:bg-cyan-medium disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold px-8 py-3 rounded-lg transition-all"
+              >
+                {submitting ? tf.step3.submitting : tf.step3.submit_button}
+              </button>
+            </div>
+          </div>
         )}
       </form>
 
-      <p className="text-center text-gray-400 text-xs mt-8">
-        Sin spam. Sin compromiso. Solo hablamos de automatización.
-      </p>
+      <p className="text-center text-gray-400 text-xs mt-8">{tf.footer_text}</p>
 
       {showSuccessModal && (
         <SuccessModal
           show={showSuccessModal}
           onClose={() => setShowSuccessModal(false)}
-          message="¡Solicitud enviada correctamente! Pronto contactaremos contigo."
+          message={tf.success_message}
         />
       )}
     </div>

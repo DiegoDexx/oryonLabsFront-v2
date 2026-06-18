@@ -8,16 +8,16 @@
     "cta_pricing": "Ver planes"
   },
   "hero": {
-    "badge": "Agencia de Automatización con IA para PyMEs",
-    "title": "Infraestructura de IA real para tu negocio",
-    "title_highlight": "IA real",
-    "subtitle": "Automatizamos la captación de leads, la atención al cliente y los flujos de trabajo de tu empresa. No plantillas. Ingeniería de IA a medida.",
-    "cta_primary": "Ver planes y precios",
+    "badge": "Para pymes que pierden clientes por no responder a tiempo",
+    "title": "Responde en segundos. No pierdas ni un cliente más.",
+    "title_highlight": "No pierdas ni un cliente más.",
+    "subtitle": "Automatizamos la captación de leads, la atención al cliente y tus flujos de trabajo — con ingeniería de IA a medida. Sin plantillas genéricas. Sin leads que se enfríen mientras tu equipo está ocupado.",
+    "cta_primary": "Ver cómo funciona",
     "cta_secondary": "Hablar con un experto",
-    "trust_indicator_1": "Sin conocimientos técnicos",
-    "trust_indicator_2": "Resultados en 30 días",
+    "trust_indicator_1": "Respuesta automática en segundos",
+    "trust_indicator_2": "Resultados visibles en 30 días",
     "trust_indicator_3": "Soporte incluido",
-    "panel_title": "Oryon Labs — Panel de automatizaciones",
+    "panel_title": "OryonX — Panel de automatizaciones",
     "panel_badge": "50+ PyMEs automatizadas",
     "metrics": {
       "leads": {
@@ -67,7 +67,7 @@
     }
   },
   "trust_bar": {
-    "title": "Empresas que ya automatizan con Oryon Labs",
+    "title": "Empresas que ya automatizan con OryonX",
     "logos": [
       "INMOBILIARIA VIVA",
       "CLÍNICA BEAUTYMED",
@@ -76,43 +76,89 @@
       "MEDCENTER"
     ]
   },
+  "why": {
+    "eyebrow": "POR QUÉ OryonX",
+    "title": "Deja de pagar por herramientas que no se comunican entre sí.",
+    "subtitle": "La mayoría de empresas gasta 500–800{currency}/mes en software desconectado. OryonX lo reemplaza todo.",
+    "pain": {
+      "label": "LO QUE LA MAYORÍA DE EMPRESAS PAGA HOY",
+      "item1": "Software CRM de ventas",
+      "price1": "~80",
+      "item2": "Plataforma de chat y soporte IA",
+      "price2": "~120",
+      "item3": "Herramienta de email marketing",
+      "price3": "~60",
+      "item4": "Automatización de flujos y tareas",
+      "price4": "~80",
+      "item5": "Mensajería por WhatsApp Business",
+      "price5": "~40",
+      "item6": "Más horas innecesarias de gestión administrativa",
+      "total_label": "TOTAL MENSUAL",
+      "total": "500–800",
+      "per_month": "/mes",
+      "description": "Múltiples facturas. Sin integración. Lo gestionas tú solo."
+    },
+    "solution": {
+      "label": "Todo integrado",
+      "eyebrow": "UNA PLATAFORMA. TODO INCLUIDO.",
+      "item1": "Chatbot IA (Ridley)",
+      "item2": "CRM + Pipeline",
+      "item3": "Email y WhatsApp Automation",
+      "item4": "Infraestructura de flujos",
+      "item5": "Soporte dedicado",
+      "item6": "Ahorra casi todo el tiempo administrativo",
+      "included": "incluido",
+      "price_label": "DESDE",
+      "price": "199",
+      "per_month": "/mes",
+      "description": "Una sola factura. Todo integrado. Nosotros nos encargamos."
+    },
+    "testimonial": {
+      "text": "Renovy redujo su coste operativo un 60% en los primeros 30 días con OryonX.",
+      "author": "— Cliente Renovy, sector reformas del hogar"
+    },
+    "cta": {
+      "primary": "Ver nuestros planes →",
+      "secondary": "Primero, hablemos"
+    }
+  },
   "services": {
-    "badge": "Qué construimos",
-    "title": "IA que trabaja.",
-    "title_highlight": "Tú que creces.",
-    "description": "No vendemos herramientas. Construimos infraestructura de IA real que se integra en tus procesos y genera resultados medibles desde el primer mes.",
+    "badge": "Cómo lo solucionamos",
+    "title": "Un sistema.",
+    "title_highlight": "Todo resuelto.",
+    "description": "No te vendemos herramientas sueltas. Montamos el sistema completo que capta, responde, cualifica y hace seguimiento de tus leads — sin que tú tengas que pensar en ello.",
     "cta_primary": "Ver todos los servicios",
     "cta_secondary": "¿Caso especial? Hablemos",
     "cards": [
       {
         "badge": "Lead Generation",
-        "title": "Captación de Leads 24/7",
-        "description": "Chatbots inteligentes que capturan, califican y nutren leads automáticamente mientras duermes. Integración directa con tu CRM."
+        "title": "Captura leads 24/7, sin perderte uno",
+        "description": "Tu negocio recibe contactos a cualquier hora. Un chatbot inteligente responde en segundos, cualifica al lead y lo registra en tu CRM automáticamente. Tú te enteras cuando ya está caliente."
       },
       {
-        "badge": "Workflow",
-        "title": "Flujos de Trabajo con IA",
-        "description": "Automatiza tareas repetitivas: seguimientos, asignaciones, notificaciones y procesos internos. Construidos con n8n y Make."
+        "badge": "Seguimiento",
+        "title": "Seguimiento que no se olvida ni se cansa",
+        "description": "Los leads fríos se calientan solos. Enviamos recordatorios y secuencias de seguimiento por WhatsApp o email sin que nadie en tu equipo tenga que acordarse."
       },
       {
-        "badge": "Atención al Cliente",
-        "title": "Agentes IA de Soporte",
-        "description": "Asistentes GPT entrenados con tu documentación que resuelven el 80% de las consultas sin intervención humana."
+        "badge": "Primera respuesta",
+        "title": "Primera respuesta en segundos, no en horas",
+        "description": "El 78% de clientes elige al proveedor que responde primero. Tu agente IA responde al instante y avisa a tu equipo cuando el lead está listo para cerrar."
       },
       {
-        "badge": "Integraciones",
-        "title": "Conexión Total de Herramientas",
-        "description": "Conectamos tu CRM, WhatsApp Business, email, calendarios y herramientas de negocio en un ecosistema unificado."
+        "badge": "Todo conectado",
+        "title": "Todas tus herramientas hablan entre sí",
+        "description": "WhatsApp, email, CRM, calendario — todo sincronizado en tiempo real. Sin copiar datos a mano, sin leads perdidos entre plataformas."
       },
       {
-        "badge": "Reporting",
-        "title": "Dashboards Automáticos",
-        "description": "KPIs actualizados en tiempo real. Reportes automáticos de ventas, leads y operaciones entregados en tu email."
+        "badge": "Visibilidad total",
+        "title": "Sabes exactamente cuántos leads pierdes (y por qué)",
+        "description": "Dashboard en tiempo real: leads recibidos, tiempo de respuesta, conversiones. Tomas decisiones con datos, no con intuición."
       },
       {
         "badge": "Custom AI",
-        "title": "Agentes IA a Medida",
-        "description": "Asistentes de IA completamente personalizados para tu sector y procesos. Desde cotizadores hasta asesores virtuales."
+        "title": "Solución a medida para tu sector",
+        "description": "Reformas, inmobiliaria, clínicas, legal — construimos el sistema adaptado a cómo funciona tu negocio, no al revés."
       }
     ]
   },
@@ -158,8 +204,8 @@
       {
         "name": "Starter",
         "subtitle": "Chatbot + captación de leads + vista básica de CRM",
-        "price_monthly": "199 €/mes",
-        "price_yearly": "159 €/mes",
+        "price_monthly": "199",
+        "price_yearly": "159",
         "description": "Hasta 150 leads/mes incluidos. Ideal para autónomos y negocios locales pequeños.",
         "features": [
           "Chatbot inteligente 24/7",
@@ -176,8 +222,8 @@
       {
         "name": "Pro",
         "subtitle": "+ clasificación automática + WhatsApp + resúmenes comerciales",
-        "price_monthly": "299 €/mes",
-        "price_yearly": "239 €/mes",
+        "price_monthly": "299",
+        "price_yearly": "239",
         "description": "Hasta 300 leads/mes incluidos. Para pymes que quieren automatización avanzada.",
         "features": [
           "Todo lo incluido en Starter",
@@ -194,8 +240,8 @@
       {
         "name": "Professional",
         "subtitle": "+ integraciones a medida + soporte prioritario",
-        "price_monthly": "499 €/mes",
-        "price_yearly": "399 €/mes",
+        "price_monthly": "499",
+        "price_yearly": "399",
         "description": "Hasta 500 leads/mes incluidos. Para empresas que necesitan soluciones personalizadas.",
         "features": [
           "Todo lo incluido en Pro",
@@ -212,8 +258,8 @@
       {
         "name": "Voice AI",
         "subtitle": "+ canal de voz (Vapi)",
-        "price_monthly": "Desde 499 €/mes",
-        "price_yearly": "Desde 399 €/mes",
+        "price_monthly": "Desde 499",
+        "price_yearly": "Desde 399",
         "description": "700+ leads/mes (caso a medida). Para empresas que quieren un agente de voz inteligente.",
         "features": [
           "Todo lo incluido en Professional",
@@ -232,7 +278,7 @@
   "testimonials": {
     "badge": "Casos de éxito",
     "title": "Lo que dicen nuestros clientes",
-    "description": "Resultados reales de empresas que automatizaron con Oryon Labs.",
+    "description": "Resultados reales de empresas que automatizaron con OryonX.",
     "cards": [
       {
         "quote": "En 3 semanas pasamos de perder el 40% de leads por respuesta tardía a capturarlos automáticamente 24/7.",
@@ -242,7 +288,7 @@
         "rating": 5
       },
       {
-        "quote": "Oryon Labs automatizó nuestro sistema de citas y seguimiento. Ahora nuestro equipo se enfoca en atender, no en administrar.",
+        "quote": "OryonX automatizó nuestro sistema de citas y seguimiento. Ahora nuestro equipo se enfoca en atender, no en administrar.",
         "name": "Dr. Carlos Ruiz",
         "company": "Clínica BeautyMed",
         "result": "Ahorramos 3h/día",
@@ -298,6 +344,112 @@
     "cta_title": "¿Tienes más preguntas?",
     "cta_button": "Hablar con un experto"
   },
+  "legal": {
+    "backLink": "Volver al inicio",
+    "badge": "Documentación legal",
+    "terms": {
+      "title": "Términos de Servicio",
+      "lastUpdated": "Última actualización: junio de 2025 · Versión 1.0",
+      "intro": "Este documento establece las condiciones bajo las cuales OryonX presta sus servicios de automatización con inteligencia artificial. Le recomendamos leerlo detenidamente antes de contratar cualquier servicio. Si tiene alguna duda, puede contactarnos en hola@OryonX.com.",
+      "sections": [
+        {
+          "title": "1. Objeto y aceptación",
+          "body": "Los presentes Términos de Servicio regulan el acceso y uso de los servicios ofrecidos por OryonX (en adelante, \"la Agencia\") a través de su sitio web y plataformas asociadas. Al contratar cualquiera de nuestros servicios, el Cliente declara haber leído, comprendido y aceptado íntegramente estos términos. Si no está de acuerdo con alguna de las condiciones aquí expuestas, le rogamos que se abstenga de utilizar nuestros servicios."
+        },
+        {
+          "title": "2. Descripción de los servicios",
+          "body": "OryonX ofrece servicios de automatización de procesos empresariales mediante inteligencia artificial, incluyendo pero no limitándose a: desarrollo e implementación de chatbots IA, integración con sistemas CRM, automatización de flujos de trabajo, captación y cualificación de leads, y desarrollo de páginas web. El alcance específico de cada servicio se detallará en la propuesta comercial o contrato individual suscrito con el Cliente."
+        },
+        {
+          "title": "3. Registro y cuentas de usuario",
+          "body": "Para acceder a determinadas funcionalidades de nuestra plataforma o panel de administración, el Cliente deberá proporcionar información veraz, actual y completa. El Cliente es responsable de mantener la confidencialidad de sus credenciales de acceso y de toda actividad realizada bajo su cuenta. OryonX se reserva el derecho de suspender o cancelar cuentas que incumplan estos términos."
+        },
+        {
+          "title": "4. Obligaciones del cliente",
+          "body": "El Cliente se compromete a proporcionar la información, accesos y materiales necesarios para la correcta prestación del servicio dentro de los plazos acordados. Asimismo, se obliga a utilizar los servicios contratados de forma lícita, sin infringir derechos de terceros ni la normativa vigente en materia de protección de datos, propiedad intelectual o comercio electrónico."
+        },
+        {
+          "title": "5. Precios y condiciones de pago",
+          "body": "Los precios de los servicios se especifican en la propuesta comercial correspondiente y se expresan en euros (€), salvo indicación contraria. El pago se realizará según las condiciones acordadas (mensual, único o por hitos). El impago reiterado podrá conllevar la suspensión temporal o definitiva del servicio, sin perjuicio de las acciones legales que correspondan."
+        },
+        {
+          "title": "6. Propiedad intelectual",
+          "body": "Todo el software, código fuente, diseños, metodologías y materiales desarrollados por OryonX en el marco de la prestación del servicio son propiedad de la Agencia, salvo que se acuerde expresamente la cesión de derechos en el contrato correspondiente. El Cliente conserva la titularidad de sus propios datos, marca y contenidos proporcionados."
+        },
+        {
+          "title": "7. Limitación de responsabilidad",
+          "body": "OryonX prestará sus servicios con la diligencia profesional habitual, pero no garantiza resultados comerciales específicos derivados del uso de las soluciones de IA implementadas. La responsabilidad de la Agencia, en cualquier caso, quedará limitada al importe efectivamente abonado por el Cliente en los últimos 12 meses, salvo en los supuestos de dolo o negligencia grave."
+        },
+        {
+          "title": "8. Protección de datos",
+          "body": "El tratamiento de datos personales realizado por OryonX se rige por nuestra Política de Privacidad, conforme al Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD). Cuando OryonX actúe como encargado del tratamiento de datos del Cliente, ambas partes podrán suscribir un Acuerdo de Tratamiento de Datos (DPA) específico."
+        },
+        {
+          "title": "9. Modificación de los términos",
+          "body": "OryonX podrá modificar los presentes Términos de Servicio en cualquier momento para adaptarlos a cambios legislativos, técnicos o comerciales. Las modificaciones serán notificadas a través de nuestro sitio web o por correo electrónico, y entrarán en vigor desde su publicación, salvo que se indique otra fecha."
+        },
+        {
+          "title": "10. Legislación aplicable y jurisdicción",
+          "body": "Estos Términos de Servicio se rigen por la legislación española vigente. Para cualquier controversia derivada de la interpretación o ejecución de los mismos, ambas partes, con renuncia a cualquier otro fuero que pudiera corresponderles, se someten a la jurisdicción de los Juzgados y Tribunales de la ciudad de Alicante."
+        }
+      ],
+      "contactTitle": "¿Tienes alguna pregunta legal?",
+      "contactText": "Nuestro equipo está disponible para resolver cualquier duda sobre nuestros términos.",
+      "contactButton": "Contactar con el equipo"
+    },
+    "privacy": {
+      "title": "Política de Privacidad",
+      "lastUpdated": "Última actualización: junio de 2025 · Versión 1.0",
+      "intro": "En OryonX nos comprometemos a proteger su privacidad y a tratar sus datos personales conforme al Reglamento General de Protección de Datos (RGPD) y, cuando corresponda, al UK GDPR. Esta política explica qué datos recopilamos, con qué finalidad y qué derechos le asisten. Si tiene alguna duda, puede contactarnos en hola@OryonX.com.",
+      "sections": [
+        {
+          "title": "1. Responsable del tratamiento",
+          "body": "El responsable del tratamiento de los datos personales recogidos en este sitio web es OryonX, con domicilio en Alicante, España, y correo de contacto hola@OryonX.com. Para cualquier consulta relacionada con el tratamiento de sus datos personales, puede dirigirse a nosotros a través de dicha dirección."
+        },
+        {
+          "title": "2. Datos que recopilamos",
+          "body": "Recopilamos los datos que usted nos facilita voluntariamente a través de formularios de contacto, el chatbot de nuestra web o la contratación de servicios: nombre, correo electrónico, teléfono, empresa y cualquier información adicional que decida compartir. También recopilamos datos de navegación de forma automática (dirección IP, tipo de dispositivo, páginas visitadas) mediante cookies y tecnologías similares."
+        },
+        {
+          "title": "3. Finalidad del tratamiento",
+          "body": "Utilizamos sus datos personales para: responder a sus consultas y solicitudes, gestionar la relación contractual y la prestación de nuestros servicios, enviar comunicaciones comerciales (cuando exista consentimiento), mejorar nuestra web y servicios, y cumplir con obligaciones legales aplicables."
+        },
+        {
+          "title": "4. Base legal del tratamiento",
+          "body": "El tratamiento de sus datos se basa, según el caso, en: la ejecución de un contrato o relación precontractual, su consentimiento expreso (por ejemplo, para newsletter o cookies no esenciales), el interés legítimo de OryonX en mejorar sus servicios, y el cumplimiento de obligaciones legales."
+        },
+        {
+          "title": "5. Conservación de los datos",
+          "body": "Conservamos sus datos personales durante el tiempo necesario para cumplir con la finalidad para la que fueron recogidos y, en su caso, durante los plazos legalmente exigidos (por ejemplo, obligaciones fiscales o contables). Los datos de los formularios de contacto no atendidos se eliminan tras un periodo razonable si no se formaliza ninguna relación comercial."
+        },
+        {
+          "title": "6. Destinatarios y transferencias internacionales",
+          "body": "Sus datos podrán ser comunicados a proveedores de servicios tecnológicos (hosting, CRM, herramientas de automatización e inteligencia artificial) que actúan como encargados del tratamiento bajo contrato. Cuando estos proveedores se encuentren fuera del Espacio Económico Europeo o del Reino Unido, garantizamos que la transferencia se realiza con las garantías adecuadas (Cláusulas Contractuales Tipo u otros mecanismos reconocidos por el RGPD y el UK GDPR)."
+        },
+        {
+          "title": "7. Derechos del usuario",
+          "body": "Usted tiene derecho a acceder, rectificar y suprimir sus datos, así como a solicitar la limitación, oposición a su tratamiento y la portabilidad de los mismos, dirigiéndose a hola@OryonX.com. Asimismo, tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) o, si reside en el Reino Unido, ante la Information Commissioner's Office (ICO), si considera que el tratamiento no se ajusta a la normativa vigente."
+        },
+        {
+          "title": "8. Cookies",
+          "body": "Este sitio web utiliza cookies propias y de terceros para fines técnicos, analíticos y de personalización. Puede consultar y configurar sus preferencias en cualquier momento a través del panel de configuración de cookies disponible en nuestro sitio web."
+        },
+        {
+          "title": "9. Seguridad de los datos",
+          "body": "OryonX aplica medidas técnicas y organizativas adecuadas para proteger sus datos personales frente a accesos no autorizados, pérdida, alteración o destrucción, conforme a lo exigido por el RGPD y el UK GDPR."
+        },
+        {
+          "title": "10. Cambios en la política de privacidad",
+          "body": "Esta Política de Privacidad puede actualizarse para adaptarse a cambios legislativos o en nuestras prácticas de tratamiento de datos. Cualquier cambio relevante será comunicado a través de nuestro sitio web, indicando la fecha de la última actualización."
+        }
+      ],
+      "contactTitle": "¿Tienes alguna pregunta sobre tus datos?",
+      "contactText": "Nuestro equipo está disponible para resolver cualquier duda sobre el tratamiento de tu información.",
+      "contactButton": "Contactar con el equipo"
+    }
+  },
+
+
   "contact": {
     "badge": "Contacto",
     "title": "¿Listo para automatizar?",
@@ -318,8 +470,79 @@
       "success_message": "Nos pondremos en contacto contigo en menos de 24 horas."
     }
   },
+
+
+
+  "form": {
+    "title": "Cuéntanos tu reto",
+    "subtitle": "En 24h te proponemos una solución concreta y un presupuesto sin letra pequeña.",
+    "footer_text": "Sin spam. Sin compromiso. Solo hablamos de automatización.",
+    "success_message": "¡Solicitud recibida! Analizaremos tu caso y te contactamos en menos de 24h.",
+    "steps": ["Tus datos", "Tu reto", "Contexto"],
+    "step1": {
+      "fields": {
+        "name": { "label": "Nombre completo", "placeholder": "Tu nombre" },
+        "company": { "label": "Empresa", "placeholder": "Nombre de tu empresa" },
+        "email": { "label": "Email corporativo", "placeholder": "tu@empresa.com" },
+        "phone": { "label": "Teléfono", "placeholder": "+34 600 000 000" }
+      },
+      "next_button": "Siguiente",
+      "errors": {
+        "name_required": "El nombre es obligatorio.",
+        "email_required": "El email es obligatorio.",
+        "email_invalid": "Correo inválido.",
+        "company_required": "La empresa es obligatoria.",
+        "phone_required": "El teléfono es obligatorio.",
+        "phone_invalid": "Teléfono inválido (solo números, 7-15 dígitos)."
+      }
+    },
+    "step2": {
+      "question": "¿Cuál es tu mayor reto ahora mismo?",
+      "retos": [
+        { "id": "tiempo", "emoji": "🕐", "title": "Pierdo tiempo en tareas repetitivas", "desc": "Procesos manuales, Excel, tareas que se repiten cada día" },
+        { "id": "clientes", "emoji": "📞", "title": "No puedo atender a todos mis clientes", "desc": "Llamadas perdidas, respuestas lentas, clientes sin atender" },
+        { "id": "leads", "emoji": "📋", "title": "Me cuesta organizar y seguir mis leads", "desc": "No sé en qué punto está cada cliente ni qué hacer después" },
+        { "id": "empezar", "emoji": "🤝", "title": "Quiero automatizar pero no sé por dónde empezar", "desc": "Tengo claro que necesito cambiar algo pero no sé el qué" },
+        { "id": "asistente", "emoji": "💬", "title": "Necesito un asistente que responda por mí 24/7", "desc": "WhatsApp, web, email — quiero respuestas automáticas inteligentes" },
+        { "id": "herramientas_desconectadas", "emoji": "⚙️", "title": "Mis herramientas no están conectadas entre sí", "desc": "CRM, email, WhatsApp, facturación — todo por separado" }
+      ],
+      "prev_button": "Anterior",
+      "next_button": "Siguiente",
+      "errors": {
+        "reto_required": "Selecciona tu principal reto."
+      }
+    },
+    "step3": {
+      "volumen_clientes": {
+        "question": "¿Cuántos clientes o contactos gestionas al mes?",
+        "options": ["Menos de 50", "50 - 200", "200 - 500", "Más de 500", "No lo sé exactamente"]
+      },
+      "herramientas": {
+        "question": "¿Qué herramientas usas actualmente?",
+        "hint": "opcional, puedes elegir varias",
+        "options": ["WhatsApp Business", "Email / Gmail", "CRM propio", "Excel / Google Sheets", "Redes Sociales", "Ninguna en especial"]
+      },
+      "urgencia": {
+        "question": "¿Cuándo necesitas una solución?",
+        "options": [
+          { "id": "alta", "label": "Lo antes posible" },
+          { "id": "media", "label": "En 1-2 meses" },
+          { "id": "baja", "label": "Solo estoy explorando" }
+        ]
+      },
+      "prev_button": "Anterior",
+      "submit_button": "Solicitar análisis gratuito",
+      "submitting": "Enviando...",
+      "errors": {
+        "volumen_clientes_required": "Indica cuántos contactos gestionas.",
+        "urgencia_required": "Indica cuándo necesitas una solución."
+      }
+    }
+  },
+
+
   "footer": {
-    "brand": "OryonLabs",
+    "brand": "OryonX",
     "description": "Automatizamos la captación de leads, la atención al cliente y los flujos de trabajo de tu empresa.",
     "newsletter": {
       "title": "Suscríbete al newsletter",
@@ -342,10 +565,40 @@
       }
     },
     "contact": {
-      "email": "hola@oryonlabs.com",
+      "email": "hola@OryonX.com",
       "phone": "+34 900 123 456",
       "whatsapp": "WhatsApp disponible"
     },
-    "copyright": "© {year} OryonLabs. Todos los derechos reservados."
+    "copyright": "© {year} OryonX. Todos los derechos reservados."
+  },
+  "cookies": {
+    "text": "Usamos cookies para mejorar tu experiencia. Al continuar, aceptas nuestra",
+    "link": "política de cookies",
+    "accept": "Aceptar",
+    "reject": "Rechazar"
+  },
+  "exit": {
+    "text": "¿Te vas sin automatizar tu negocio?",
+    "cta": "Hablar con Ridley →"
+  },
+  "chatbot": {
+    "header_title": "Ridley — Asistente Oryon",
+    "online_status": "En línea",
+    "retry": "Reintentar",
+    "quick_questions_label": "Preguntas rápidas:",
+    "rate_limit_banner": "Límite alcanzado. Contáctanos en hola@OryonX.com",
+    "lead_done_badge": "✅ Solicitud recibida",
+    "initial_message": "¡Hola! Soy Ridley, el asistente virtual de OryonX. ¿En qué puedo ayudarte hoy?",
+    "placeholder": "Escribe tu mensaje...",
+    "rate_limit_msg": "Has alcanzado el límite de mensajes. Puedes continuar en 1 hora o contactarnos directamente.",
+    "timeout_msg": "La conexión tardó demasiado. Por favor inténtalo de nuevo.",
+    "error_msg": "Error de conexión. Por favor inténtalo de nuevo.",
+    "lead_confirmed_msg": "✅ ¡Listo! Nuestro equipo se pondrá en contacto contigo pronto.",
+    "quick_questions": [
+      "¿Qué servicios ofrecéis?",
+      "Ver planes y precios",
+      "Solicitar consulta gratuita",
+      "¿Cómo funciona la IA?"
+    ]
   }
 }

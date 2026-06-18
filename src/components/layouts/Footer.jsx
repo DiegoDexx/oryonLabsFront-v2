@@ -1,5 +1,6 @@
-import { Link, useLocation } from 'react-router-dom';
+﻿import { Link, useLocation } from 'react-router-dom';
 import { FaTwitter, FaLinkedin, FaInstagram, FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
+import completeLogo from '../../assets/img/logo_blue_ox.webp';
 import es from '../../locales/es.json';
 import en from '../../locales/en.json';
 
@@ -20,11 +21,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-cyan rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">O</span>
-              </div>
-              <span className="font-bold text-lg">{footer.brand}</span>
+            <div className="mb-6">
+              <Link to={`/${lang}`}>
+                <img
+                  src={completeLogo}
+                  alt="OryonX"
+                  loading="lazy"
+                  decoding="async"
+                  style={{
+                    height: '52px',
+                    width: 'auto',
+                    filter: 'brightness(1.15) drop-shadow(0 0 8px rgba(0,144,201,0.4))',
+                  }}
+                />
+              </Link>
             </div>
             <p className="text-gray-400 text-sm mb-6 leading-relaxed">
               {footer.description}
@@ -47,7 +57,7 @@ export default function Footer() {
                 <FaLinkedin className="w-4 h-4" />
               </a>
               <a
-                href="https://instagram.com/oryonlabs"
+                href="https://instagram.com/oryonx"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-cyan hover:bg-cyan-medium flex items-center justify-center transition-all"
@@ -118,11 +128,14 @@ export default function Footer() {
               {footer.copyright.replace('{year}', currentYear)}
             </p>
             <div className="flex gap-6">
-              {footer.columns.legal.links.map((link, index) => (
-                <a key={index} href="#" className="text-gray-500 hover:text-cyan text-sm transition-colors">
-                  {link}
-                </a>
-              ))}
+              {footer.columns.legal.links.map((link, index) => {
+                const hrefs = [`/${lang}/privacy`, `/${lang}/terms`, '#'];
+                return (
+                  <Link key={index} to={hrefs[index] ?? '#'} className="text-gray-500 hover:text-cyan text-sm transition-colors">
+                    {link}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>

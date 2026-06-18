@@ -5,6 +5,9 @@ export default function PricingCard({
   subtitle,
   setupRange,
   monthlyRange,
+  perMonth = '/mes',
+  setupLabel = 'Setup inicial',
+  monthlyLabel = 'Mensualidad',
   description,
   features,
   isPopular = false,
@@ -51,18 +54,18 @@ export default function PricingCard({
       <div className="mb-6 space-y-4">
         <div>
           <p className={`text-xs uppercase tracking-wider mb-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-            Setup inicial
+            {setupLabel}
           </p>
           <p className="text-2xl font-bold">{setupRange}</p>
         </div>
         <div>
           <p className={`text-xs uppercase tracking-wider mb-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-            Mensualidad
+            {monthlyLabel}
           </p>
           <p className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-navy'}`}>
             {monthlyRange}
             <span className={`text-sm font-normal ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-              /mes
+              {perMonth}
             </span>
           </p>
         </div>

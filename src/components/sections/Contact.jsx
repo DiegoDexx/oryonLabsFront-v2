@@ -38,7 +38,7 @@ export default function Contact() {
                 {contact.badge}
               </span>
               
-              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+              <h2 className="text-3xl lg:text-4xl font-extrabold text-white mb-4">
                 {lang === 'es' ? 'Automatiza tu negocio.' : 'Automate your business.'}
                 <span className="text-cyan"> {lang === 'es' ? 'Empieza hoy.' : 'Start today.'}</span>
               </h2>

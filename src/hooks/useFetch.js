@@ -11,6 +11,8 @@ export const useGet = (url, token) => {
     const [error, setError] = useState(null);
   
     useEffect(() => {
+      if (!token || !url) return;
+
       const fetchData = async () => {
         try {
           const response = await axiosInstance.get(url, {
@@ -18,12 +20,12 @@ export const useGet = (url, token) => {
               Authorization: `Bearer ${token}`,
             },
           });
-  
+
           if (response.status !== 200) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
-  
-          const result = response.data; // Changed from response.json() to response.data
+
+          const result = response.data;
           setData(result);
         } catch (err) {
           setError(err.message);
@@ -31,7 +33,7 @@ export const useGet = (url, token) => {
           setLoading(false);
         }
       };
-  
+
       fetchData();
     }, [url, token]);
   

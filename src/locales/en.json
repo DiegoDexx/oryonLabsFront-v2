@@ -8,16 +8,16 @@
     "cta_pricing": "See plans"
   },
   "hero": {
-    "badge": "AI Automation Agency for SMBs",
-    "title": "Real AI infrastructure for your business",
-    "title_highlight": "real AI",
-    "subtitle": "We automate lead capture, customer service, and your company's workflows. No templates. Custom AI engineering.",
-    "cta_primary": "See plans and pricing",
+    "badge": "For SMBs losing clients because they don't reply fast enough",
+    "title": "Reply in seconds. Never lose another client.",
+    "title_highlight": "Never lose another client.",
+    "subtitle": "We automate lead capture, customer support, and your business workflows — with custom AI engineering, no generic templates. No more leads going cold while your team is busy with other things.",
+    "cta_primary": "See how it works",
     "cta_secondary": "Talk to an expert",
-    "trust_indicator_1": "No technical knowledge required",
-    "trust_indicator_2": "Results in 30 days",
+    "trust_indicator_1": "Automatic response in seconds",
+    "trust_indicator_2": "Visible results in 30 days",
     "trust_indicator_3": "Support included",
-    "panel_title": "Oryon Labs — Automation Dashboard",
+    "panel_title": "OryonX — Automation Dashboard",
     "panel_badge": "50+ SMBs automated",
     "metrics": {
       "leads": {
@@ -67,7 +67,7 @@
     }
   },
   "trust_bar": {
-    "title": "Companies already automating with Oryon Labs",
+    "title": "Companies that stopped losing leads to slow response",
     "logos": [
       "INMOBILIARIA VIVA",
       "CLÍNICA BEAUTYMED",
@@ -76,43 +76,89 @@
       "MEDCENTER"
     ]
   },
+  "why": {
+    "eyebrow": "WHY OryonX",
+    "title": "Stop paying for tools that don't talk to each other.",
+    "subtitle": "Most businesses spend 500–800{currency}/month on disconnected software. OryonX replaces all of it.",
+    "pain": {
+      "label": "WHAT MOST BUSINESSES PAY TODAY",
+      "item1": "Sales CRM software",
+      "price1": "~80",
+      "item2": "AI chat & support platform",
+      "price2": "~120",
+      "item3": "Email marketing tool",
+      "price3": "~60",
+      "item4": "Workflow & task automation",
+      "price4": "~80",
+      "item5": "WhatsApp Business messaging",
+      "price5": "~40",
+      "item6": "Countless hours lost to manual admin work",
+      "total_label": "MONTHLY TOTAL",
+      "total": "500–800",
+      "per_month": "/month",
+      "description": "Multiple invoices. Zero integration. You manage everything."
+    },
+    "solution": {
+      "label": "Fully integrated",
+      "eyebrow": "ONE PLATFORM. EVERYTHING INCLUDED.",
+      "item1": "AI Chatbot (Ridley)",
+      "item2": "CRM + Pipeline",
+      "item3": "Email & WhatsApp Automation",
+      "item4": "Workflow Infrastructure",
+      "item5": "Dedicated support",
+      "item6": "Save almost all your administrative time",
+      "included": "included",
+      "price_label": "FROM",
+      "price": "199",
+      "per_month": "/month",
+      "description": "One invoice. Fully integrated. We handle everything."
+    },
+    "testimonial": {
+      "text": "Renovy went from losing 40% of their enquiries due to slow response to capturing, qualifying, and assigning them in real time, 24 hours a day.",
+      "author": "— Real case: Renovy, home renovation sector"
+    },
+    "cta": {
+      "primary": "See our plans →",
+      "secondary": "Talk to us first"
+    }
+  },
   "services": {
-    "badge": "What we build",
-    "title": "AI that works.",
-    "title_highlight": "You grow.",
-    "description": "We don't sell tools. We build real AI infrastructure that integrates into your processes and delivers measurable results from month one.",
+    "badge": "How we solve it",
+    "title": "One system.",
+    "title_highlight": "Everything handled.",
+    "description": "We don't sell you loose tools. We build the complete system that captures, responds, qualifies, and follows up on your leads — so you don't have to think about it.",
     "cta_primary": "See all services",
     "cta_secondary": "Special case? Let's talk",
     "cards": [
       {
         "badge": "Lead Generation",
-        "title": "24/7 Lead Capture",
-        "description": "Intelligent chatbots that capture, qualify, and nurture leads automatically while you sleep. Direct CRM integration."
+        "title": "Capture every lead, 24/7",
+        "description": "Your business gets enquiries at any hour. A smart chatbot replies in seconds, qualifies the lead, and logs it to your CRM automatically. You find out when they're already warm."
       },
       {
-        "badge": "Workflow",
-        "title": "AI Workflows",
-        "description": "Automate repetitive tasks: follow-ups, assignments, notifications, and internal processes. Built with n8n and Make."
+        "badge": "Follow-up",
+        "title": "Follow-up that never forgets",
+        "description": "Cold leads warm up on their own. We send reminders and follow-up sequences via WhatsApp or email — without anyone on your team having to remember."
       },
       {
-        "badge": "Customer Support",
-        "title": "AI Support Agents",
-        "description": "GPT assistants trained on your documentation that resolve 80% of queries without human intervention."
+        "badge": "First response",
+        "title": "First response in seconds, not hours",
+        "description": "78% of customers choose the provider who responds first. Your AI agent replies instantly and alerts your team when the lead is ready to close."
       },
       {
-        "badge": "Integrations",
-        "title": "Full Tool Connection",
-        "description": "We connect your CRM, WhatsApp Business, email, calendars, and business tools into a unified ecosystem."
+        "badge": "Everything connected",
+        "title": "All your tools talking to each other",
+        "description": "WhatsApp, email, CRM, calendar — all synced in real time. No manual data copying, no leads lost between platforms."
       },
       {
-        "badge": "Reporting",
-        "title": "Automatic Dashboards",
-        "description": "Real-time updated KPIs. Automatic sales, leads, and operations reports delivered to your email."
+        "badge": "Full visibility",
+        "title": "Know exactly how many leads you're losing (and why)",
+        "description": "Real-time dashboard: leads received, response time, conversions. Make decisions based on data, not gut feeling."
       },
       {
         "badge": "Custom AI",
-        "title": "Custom AI Agents",
-        "description": "Fully customized AI assistants for your industry and processes. From quoters to virtual advisors."
+        "title": "Built for your sector, not the other way around",
+        "description": "Renovation, real estate, clinics, legal — we build the system that fits how your business actually works."
       }
     ]
   },
@@ -158,8 +204,8 @@
       {
         "name": "Starter",
         "subtitle": "Chatbot + lead capture + basic CRM view",
-        "price_monthly": "199 €/month",
-        "price_yearly": "159 €/month",
+        "price_monthly": "199",
+        "price_yearly": "159",
         "description": "Up to 150 leads/month included. Ideal for freelancers and small local businesses.",
         "features": [
           "Intelligent chatbot 24/7",
@@ -176,8 +222,8 @@
       {
         "name": "Pro",
         "subtitle": "+ automatic classification + WhatsApp + business summaries",
-        "price_monthly": "299 €/month",
-        "price_yearly": "239 €/month",
+        "price_monthly": "299",
+        "price_yearly": "239",
         "description": "Up to 300 leads/month included. For SMEs that want advanced automation.",
         "features": [
           "Everything included in Starter",
@@ -194,8 +240,8 @@
       {
         "name": "Professional",
         "subtitle": "+ custom integrations + priority support",
-        "price_monthly": "499 €/month",
-        "price_yearly": "399 €/month",
+        "price_monthly": "499",
+        "price_yearly": "399",
         "description": "Up to 500 leads/month included. For businesses that need customized solutions.",
         "features": [
           "Everything included in Pro",
@@ -212,8 +258,8 @@
       {
         "name": "Voice AI",
         "subtitle": "+ voice channel (Vapi)",
-        "price_monthly": "From 499 €/month",
-        "price_yearly": "From 399 €/month",
+        "price_monthly": "From 499",
+        "price_yearly": "From 399",
         "description": "700+ leads/month (custom case). For businesses that want an intelligent voice agent.",
         "features": [
           "Everything included in Professional",
@@ -232,7 +278,7 @@
   "testimonials": {
     "badge": "Success stories",
     "title": "What our clients say",
-    "description": "Real results from companies that automated with Oryon Labs.",
+    "description": "Real results from companies that automated with OryonX.",
     "cards": [
       {
         "quote": "In 3 weeks we went from losing 40% of leads due to late response to capturing them automatically 24/7.",
@@ -242,7 +288,7 @@
         "rating": 5
       },
       {
-        "quote": "Oryon Labs automated our appointment and follow-up system. Now our team focuses on serving, not administering.",
+        "quote": "OryonX automated our appointment and follow-up system. Now our team focuses on serving, not administering.",
         "name": "Dr. Carlos Ruiz",
         "company": "Clínica BeautyMed",
         "result": "We save 3h/day",
@@ -298,6 +344,110 @@
     "cta_title": "Have more questions?",
     "cta_button": "Talk to an expert"
   },
+  "legal": {
+    "backLink": "Back to home",
+    "badge": "Legal documentation",
+    "terms": {
+      "title": "Terms of Service",
+      "lastUpdated": "Last updated: June 2025 · Version 1.0",
+      "intro": "This document sets out the terms under which OryonX provides its AI automation services. We recommend reading it carefully before purchasing any service. If you have any questions, you can contact us at hola@OryonX.com.",
+      "sections": [
+        {
+          "title": "1. Purpose and acceptance",
+          "body": "These Terms of Service govern access to and use of the services offered by OryonX (the \"Agency\") through its website and associated platforms. By purchasing any of our services, the Client confirms having read, understood, and fully accepted these terms. If you do not agree with any of the conditions set out here, please refrain from using our services."
+        },
+        {
+          "title": "2. Description of services",
+          "body": "OryonX provides business process automation services using artificial intelligence, including but not limited to: development and implementation of AI chatbots, CRM integration, workflow automation, lead capture and qualification, and website development. The specific scope of each service will be detailed in the commercial proposal or individual contract signed with the Client."
+        },
+        {
+          "title": "3. Registration and user accounts",
+          "body": "To access certain features of our platform or admin panel, the Client must provide truthful, current, and complete information. The Client is responsible for keeping their access credentials confidential and for any activity carried out under their account. OryonX reserves the right to suspend or cancel accounts that breach these terms."
+        },
+        {
+          "title": "4. Client obligations",
+          "body": "The Client agrees to provide the information, access, and materials necessary for the correct delivery of the service within the agreed timeframes. The Client also agrees to use the contracted services lawfully, without infringing third-party rights or applicable data protection, intellectual property, or e-commerce regulations."
+        },
+        {
+          "title": "5. Pricing and payment terms",
+          "body": "Service prices are specified in the corresponding commercial proposal and are expressed in euros (€) unless stated otherwise. Payment will be made according to the agreed terms (monthly, one-off, or milestone-based). Repeated non-payment may result in the temporary or permanent suspension of the service, without prejudice to any legal action that may apply."
+        },
+        {
+          "title": "6. Intellectual property",
+          "body": "All software, source code, designs, methodologies, and materials developed by OryonX in the course of providing the service remain the property of the Agency, unless the transfer of rights is expressly agreed in the relevant contract. The Client retains ownership of its own data, brand, and provided content."
+        },
+        {
+          "title": "7. Limitation of liability",
+          "body": "OryonX will provide its services with reasonable professional care but does not guarantee specific business outcomes resulting from the use of the implemented AI solutions. The Agency's liability shall, in any case, be limited to the amount actually paid by the Client in the preceding 12 months, except in cases of wilful misconduct or gross negligence."
+        },
+        {
+          "title": "8. Data protection",
+          "body": "The processing of personal data carried out by OryonX is governed by our Privacy Policy, in accordance with the General Data Protection Regulation (GDPR) and, where applicable, the UK GDPR. When OryonX acts as a data processor on behalf of the Client, both parties may enter into a specific Data Processing Agreement (DPA)."
+        },
+        {
+          "title": "9. Changes to these terms",
+          "body": "OryonX may modify these Terms of Service at any time to reflect legislative, technical, or commercial changes. Any modifications will be notified through our website or by email and will take effect upon publication, unless another date is specified."
+        },
+        {
+          "title": "10. Governing law and jurisdiction",
+          "body": "These Terms of Service are governed by Spanish law. For any dispute arising from their interpretation or performance, both parties, waiving any other jurisdiction that may apply to them, submit to the courts of the city of Alicante, Spain."
+        }
+      ],
+      "contactTitle": "Have a legal question?",
+      "contactText": "Our team is available to answer any questions about our terms.",
+      "contactButton": "Contact our team"
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated: June 2025 · Version 1.0",
+      "intro": "At OryonX, we are committed to protecting your privacy and processing your personal data in accordance with the General Data Protection Regulation (GDPR) and, where applicable, the UK GDPR. This policy explains what data we collect, why, and what rights you have. If you have any questions, you can contact us at hola@OryonX.com.",
+      "sections": [
+        {
+          "title": "1. Data controller",
+          "body": "The controller responsible for the personal data collected on this website is OryonX, based in Alicante, Spain, with contact email hola@OryonX.com. For any query relating to the processing of your personal data, you can reach us at that address."
+        },
+        {
+          "title": "2. Data we collect",
+          "body": "We collect the data you voluntarily provide through contact forms, our website chatbot, or when purchasing services: name, email address, phone number, company, and any additional information you choose to share. We also automatically collect browsing data (IP address, device type, pages visited) through cookies and similar technologies."
+        },
+        {
+          "title": "3. Purpose of processing",
+          "body": "We use your personal data to: respond to your enquiries and requests, manage the contractual relationship and delivery of our services, send commercial communications (where consent has been given), improve our website and services, and comply with applicable legal obligations."
+        },
+        {
+          "title": "4. Legal basis for processing",
+          "body": "The processing of your data is based, depending on the case, on: the performance of a contract or pre-contractual relationship, your explicit consent (for example, for the newsletter or non-essential cookies), OryonX' legitimate interest in improving its services, and compliance with legal obligations."
+        },
+        {
+          "title": "5. Data retention",
+          "body": "We retain your personal data for as long as necessary to fulfil the purpose for which it was collected and, where applicable, for the periods required by law (for example, tax or accounting obligations). Data from unattended contact forms is deleted after a reasonable period if no business relationship is established."
+        },
+        {
+          "title": "6. Recipients and international transfers",
+          "body": "Your data may be shared with technology service providers (hosting, CRM, automation and artificial intelligence tools) acting as data processors under contract. When these providers are located outside the European Economic Area or the United Kingdom, we ensure the transfer is carried out with appropriate safeguards (Standard Contractual Clauses or other mechanisms recognised under the GDPR and UK GDPR)."
+        },
+        {
+          "title": "7. Your rights",
+          "body": "You have the right to access, rectify, and erase your data, as well as to request restriction of or object to its processing and to data portability, by contacting hola@OryonX.com. You also have the right to lodge a complaint with the Spanish Data Protection Agency (AEPD) or, if you reside in the United Kingdom, with the Information Commissioner's Office (ICO), if you believe the processing does not comply with applicable law."
+        },
+        {
+          "title": "8. Cookies",
+          "body": "This website uses first-party and third-party cookies for technical, analytical, and personalisation purposes. You can review and manage your preferences at any time through the cookie settings panel available on our website."
+        },
+        {
+          "title": "9. Data security",
+          "body": "OryonX applies appropriate technical and organisational measures to protect your personal data against unauthorised access, loss, alteration, or destruction, as required by the GDPR and UK GDPR."
+        },
+        {
+          "title": "10. Changes to this privacy policy",
+          "body": "This Privacy Policy may be updated to reflect legislative changes or changes to our data processing practices. Any significant change will be communicated through our website, indicating the date of the last update."
+        }
+      ],
+      "contactTitle": "Have a question about your data?",
+      "contactText": "Our team is available to answer any questions about how we handle your information.",
+      "contactButton": "Contact our team"
+    }
+  },
   "contact": {
     "badge": "Contact",
     "title": "Ready to automate?",
@@ -318,8 +468,77 @@
       "success_message": "We'll get back to you in less than 24 hours."
     }
   },
+
+  "form": {
+    "title": "Tell us your challenge",
+    "subtitle": "Within 24h we'll propose a concrete solution and a quote with no fine print.",
+    "footer_text": "No spam. No commitment. We only talk about automation.",
+    "success_message": "Request received! We'll analyze your case and get back to you in under 24h.",
+    "steps": ["Your details", "Your challenge", "Context"],
+    "step1": {
+      "fields": {
+        "name": { "label": "Full name", "placeholder": "Your name" },
+        "company": { "label": "Company", "placeholder": "Your company name" },
+        "email": { "label": "Corporate email", "placeholder": "you@company.com" },
+        "phone": { "label": "Phone", "placeholder": "+34 600 000 000" }
+      },
+      "next_button": "Next",
+      "errors": {
+        "name_required": "Name is required.",
+        "email_required": "Email is required.",
+        "email_invalid": "Invalid email.",
+        "company_required": "Company is required.",
+        "phone_required": "Phone is required.",
+        "phone_invalid": "Invalid phone (numbers only, 7-15 digits)."
+      }
+    },
+    "step2": {
+      "question": "What is your biggest challenge right now?",
+      "retos": [
+        { "id": "tiempo", "emoji": "🕐", "title": "I lose time on repetitive tasks", "desc": "Manual processes, Excel, tasks that repeat every day" },
+        { "id": "clientes", "emoji": "📞", "title": "I can't attend all my clients", "desc": "Missed calls, slow responses, unattended clients" },
+        { "id": "leads", "emoji": "📋", "title": "I struggle to organize and follow my leads", "desc": "I don't know where each client stands or what to do next" },
+        { "id": "empezar", "emoji": "🤝", "title": "I want to automate but don't know where to start", "desc": "I know I need to change something but don't know what" },
+        { "id": "asistente", "emoji": "💬", "title": "I need an assistant that responds for me 24/7", "desc": "WhatsApp, web, email — I want smart automatic replies" },
+        { "id": "herramientas_desconectadas", "emoji": "⚙️", "title": "My tools are not connected to each other", "desc": "CRM, email, WhatsApp, invoicing — all separate" }
+      ],
+      "prev_button": "Previous",
+      "next_button": "Next",
+      "errors": {
+        "reto_required": "Please select your main challenge."
+      }
+    },
+    "step3": {
+      "volumen_clientes": {
+        "question": "How many clients or contacts do you manage per month?",
+        "options": ["Less than 50", "50 - 200", "200 - 500", "More than 500", "I don't know exactly"]
+      },
+      "herramientas": {
+        "question": "What tools do you currently use?",
+        "hint": "optional, you can choose several",
+        "options": ["WhatsApp Business", "Email / Gmail", "Own CRM", "Excel / Google Sheets", "Social Media", "None in particular"]
+      },
+      "urgencia": {
+        "question": "When do you need a solution?",
+        "options": [
+          { "id": "alta", "label": "As soon as possible" },
+          { "id": "media", "label": "In 1-2 months" },
+          { "id": "baja", "label": "Just exploring" }
+        ]
+      },
+      "prev_button": "Previous",
+      "submit_button": "Request free analysis",
+      "submitting": "Sending...",
+      "errors": {
+        "volumen_clientes_required": "Please indicate how many contacts you manage.",
+        "urgencia_required": "Please indicate when you need a solution."
+      }
+    }
+  },
+
+
   "footer": {
-    "brand": "OryonLabs",
+    "brand": "OryonX",
     "description": "We automate lead capture, customer service, and your company's workflows.",
     "newsletter": {
       "title": "Subscribe to newsletter",
@@ -342,10 +561,40 @@
       }
     },
     "contact": {
-      "email": "hello@oryonlabs.com",
+      "email": "hello@OryonX.com",
       "phone": "+34 900 123 456",
       "whatsapp": "WhatsApp available"
     },
-    "copyright": "© {year} OryonLabs. All rights reserved."
+    "copyright": "© {year} OryonX. All rights reserved."
+  },
+  "cookies": {
+    "text": "We use cookies to improve your experience. By continuing, you agree to our",
+    "link": "cookie policy",
+    "accept": "Accept",
+    "reject": "Decline"
+  },
+  "exit": {
+    "text": "Leaving without automating your business?",
+    "cta": "Talk to Ridley →"
+  },
+  "chatbot": {
+    "header_title": "Ridley — Oryon Assistant",
+    "online_status": "Online",
+    "retry": "Retry",
+    "quick_questions_label": "Quick questions:",
+    "rate_limit_banner": "Message limit reached. Contact us at hello@OryonX.com",
+    "lead_done_badge": "✅ Request received",
+    "initial_message": "Hi! I'm Ridley, OryonX' virtual assistant. How can I help you today?",
+    "placeholder": "Type your message...",
+    "rate_limit_msg": "You've reached the message limit. You can continue in 1 hour or contact us directly.",
+    "timeout_msg": "The connection took too long. Please try again.",
+    "error_msg": "Connection error. Please try again.",
+    "lead_confirmed_msg": "✅ Done! Our team will get in touch with you shortly.",
+    "quick_questions": [
+      "What services do you offer?",
+      "View plans and pricing",
+      "Request a free consultation",
+      "How does AI work?"
+    ]
   }
 }
