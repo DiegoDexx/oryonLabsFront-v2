@@ -157,59 +157,74 @@
     "plans": [
       {
         "name": "Starter",
-        "subtitle": "For freelancers and small businesses",
+        "subtitle": "Chatbot + lead capture + basic CRM view",
         "price_monthly": "199 €/month",
         "price_yearly": "159 €/month",
-        "description": "Ideal for freelancers and small local businesses who want to try automation without a large initial investment.",
+        "description": "Up to 150 leads/month included. Ideal for freelancers and small local businesses.",
         "features": [
-          "Web form (no chat or incoming WhatsApp detection)",
-          "AI to summarize and classify leads",
-          "Google Sheets CRM",
+          "Intelligent chatbot 24/7",
+          "Automatic lead capture",
+          "Basic CRM view",
+          "Up to 150 leads/month included",
           "Email to administrator",
-          "Email + WhatsApp to customer / Telegram",
-          "1 basic follow-up flow",
-          "Light support + cloud invoicing"
+          "Basic WhatsApp/Telegram",
+          "Email support"
         ],
         "cta": "Start with Starter",
         "popular": false
       },
       {
-        "name": "Pro Sales Automation",
-        "subtitle": "Web + Conversational Bot",
+        "name": "Pro",
+        "subtitle": "+ automatic classification + WhatsApp + business summaries",
         "price_monthly": "299 €/month",
         "price_yearly": "239 €/month",
-        "description": "For SMEs that receive several leads per month. Includes everything in the Starter Pack plus advanced automation.",
+        "description": "Up to 300 leads/month included. For SMEs that want advanced automation.",
         "features": [
-          "Everything in Starter Pack included",
-          "Automatic WhatsApp to customer",
-          "Internal notification via Telegram/WhatsApp",
-          "Automatic follow-up",
-          "Lead status management",
-          "Basic duplicate detection",
-          "Simple dashboard",
-          "AI text improvement"
+          "Everything included in Starter",
+          "Automatic lead classification",
+          "Full WhatsApp Business",
+          "Business summaries with AI",
+          "Up to 300 leads/month included",
+          "Metrics dashboard",
+          "Priority support"
         ],
         "cta": "Start with Pro",
         "popular": true
       },
       {
-        "name": "Professional + AI Bot",
-        "subtitle": "Web + Conversational Bot",
-        "price_monthly": "399 €/month",
-        "price_yearly": "319 €/month",
-        "description": "For businesses that want a more powerful website with intelligent conversational bot.",
+        "name": "Professional",
+        "subtitle": "+ custom integrations + priority support",
+        "price_monthly": "499 €/month",
+        "price_yearly": "399 €/month",
+        "description": "Up to 500 leads/month included. For businesses that need customized solutions.",
         "features": [
-          "Optimized website or landing page",
-          "Conversational bot/component",
-          "Smart form + WhatsApp message detection",
-          "AI to qualify leads",
-          "Advanced CRM/Sheets",
-          "Automatic emails",
-          "Automatic WhatsApp",
-          "Complete follow-up",
-          "CRM Dashboard"
+          "Everything included in Pro",
+          "Custom integrations",
+          "Priority support 24/7",
+          "Up to 500 leads/month included",
+          "Advanced CRM",
+          "Custom reports",
+          "Dedicated account manager"
         ],
         "cta": "Request Professional",
+        "popular": false
+      },
+      {
+        "name": "Voice AI",
+        "subtitle": "+ voice channel (Vapi)",
+        "price_monthly": "From 499 €/month",
+        "price_yearly": "From 399 €/month",
+        "description": "700+ leads/month (custom case). For businesses that want an intelligent voice agent.",
+        "features": [
+          "Everything included in Professional",
+          "Voice channel with Vapi",
+          "AI voice agent",
+          "700+ leads/month (custom case)",
+          "Inbound/outbound calls",
+          "Phone integration",
+          "100% customized solution"
+        ],
+        "cta": "Contact for Voice AI",
         "popular": false
       }
     ]

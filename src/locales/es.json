@@ -157,59 +157,74 @@
     "plans": [
       {
         "name": "Starter",
-        "subtitle": "Para autónomos y pequeños negocios",
+        "subtitle": "Chatbot + captación de leads + vista básica de CRM",
         "price_monthly": "199 €/mes",
         "price_yearly": "159 €/mes",
-        "description": "Ideal para autónomos y negocios locales pequeños que quieren probar automatización sin una gran inversión inicial.",
+        "description": "Hasta 150 leads/mes incluidos. Ideal para autónomos y negocios locales pequeños.",
         "features": [
-          "Formulario web (sin chat ni detección WhatsApp entrante)",
-          "IA para resumir y clasificar leads",
-          "Google Sheets CRM",
+          "Chatbot inteligente 24/7",
+          "Captación automática de leads",
+          "Vista básica de CRM",
+          "Hasta 150 leads/mes incluidos",
           "Email al administrador",
-          "Email + WhatsApp al cliente / Telegram",
-          "1 flujo de seguimiento básico",
-          "Soporte ligero + generación de facturas en la nube"
+          "WhatsApp/Telegram básico",
+          "Soporte por email"
         ],
         "cta": "Empezar con Starter",
         "popular": false
       },
       {
-        "name": "Pro Sales Automation",
-        "subtitle": "Web + Bot conversacional",
+        "name": "Pro",
+        "subtitle": "+ clasificación automática + WhatsApp + resúmenes comerciales",
         "price_monthly": "299 €/mes",
         "price_yearly": "239 €/mes",
-        "description": "Para pymes que reciben varios leads al mes. Incluye todo el Pack Starter más automatización avanzada.",
+        "description": "Hasta 300 leads/mes incluidos. Para pymes que quieren automatización avanzada.",
         "features": [
-          "Todo el Pack Starter incluido",
-          "WhatsApp automático al cliente",
-          "Aviso interno por Telegram/WhatsApp",
-          "Seguimiento automático",
-          "Estados del lead",
-          "Detección básica de duplicados",
-          "Dashboard simple",
-          "Mejora de textos IA"
+          "Todo lo incluido en Starter",
+          "Clasificación automática de leads",
+          "WhatsApp Business completo",
+          "Resúmenes comerciales con IA",
+          "Hasta 300 leads/mes incluidos",
+          "Dashboard de métricas",
+          "Soporte prioritario"
         ],
         "cta": "Empezar con Pro",
         "popular": true
       },
       {
-        "name": "Professional + Bot IA",
-        "subtitle": "Web + Bot conversacional",
-        "price_monthly": "399 €/mes",
-        "price_yearly": "319 €/mes",
-        "description": "Para empresas que quieren una web más potente con bot conversacional inteligente.",
+        "name": "Professional",
+        "subtitle": "+ integraciones a medida + soporte prioritario",
+        "price_monthly": "499 €/mes",
+        "price_yearly": "399 €/mes",
+        "description": "Hasta 500 leads/mes incluidos. Para empresas que necesitan soluciones personalizadas.",
         "features": [
-          "Web o landing optimizada",
-          "Bot/componente conversacional",
-          "Formulario inteligente + WhatsApp detecta mensaje",
-          "IA para cualificar leads",
-          "CRM/Sheets avanzado",
-          "Emails automáticos",
-          "WhatsApp automático",
-          "Seguimiento completo",
-          "Dashboard CRM"
+          "Todo lo incluido en Pro",
+          "Integraciones a medida",
+          "Soporte prioritario 24/7",
+          "Hasta 500 leads/mes incluidos",
+          "CRM avanzado",
+          "Reportes personalizados",
+          "Gestor de cuenta dedicado"
         ],
         "cta": "Solicitar Professional",
+        "popular": false
+      },
+      {
+        "name": "Voice AI",
+        "subtitle": "+ canal de voz (Vapi)",
+        "price_monthly": "Desde 499 €/mes",
+        "price_yearly": "Desde 399 €/mes",
+        "description": "700+ leads/mes (caso a medida). Para empresas que quieren un agente de voz inteligente.",
+        "features": [
+          "Todo lo incluido en Professional",
+          "Canal de voz con Vapi",
+          "Agente de voz IA",
+          "700+ leads/mes (caso a medida)",
+          "Llamadas entrantes/salientes",
+          "Integración telefónica",
+          "Solución 100% personalizada"
+        ],
+        "cta": "Contactar para Voice AI",
         "popular": false
       }
     ]
