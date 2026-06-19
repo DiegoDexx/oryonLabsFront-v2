@@ -204,14 +204,14 @@
       {
         "name": "Starter",
         "subtitle": "Chatbot + lead capture + basic CRM view",
+        "setup_range": "€899 – €1,200",
         "price_monthly": "199",
         "price_yearly": "159",
-        "description": "Up to 150 leads/month included. Ideal for freelancers and small local businesses.",
+        "description": "Ideal for freelancers and small local businesses.",
         "features": [
           "Intelligent chatbot 24/7",
           "Automatic lead capture",
           "Basic CRM view",
-          "Up to 150 leads/month included",
           "Email to administrator",
           "Basic WhatsApp/Telegram",
           "Email support"
@@ -222,15 +222,15 @@
       {
         "name": "Pro",
         "subtitle": "+ automatic classification + WhatsApp + business summaries",
+        "setup_range": "€1,200 – €2,000",
         "price_monthly": "299",
         "price_yearly": "239",
-        "description": "Up to 300 leads/month included. For SMEs that want advanced automation.",
+        "description": "For SMEs that want advanced automation.",
         "features": [
           "Everything included in Starter",
           "Automatic lead classification",
           "Full WhatsApp Business",
           "Business summaries with AI",
-          "Up to 300 leads/month included",
           "Metrics dashboard",
           "Priority support"
         ],
@@ -240,14 +240,14 @@
       {
         "name": "Professional",
         "subtitle": "+ custom integrations + priority support",
+        "setup_range": "€2,000 – €2,500",
         "price_monthly": "499",
         "price_yearly": "399",
-        "description": "Up to 500 leads/month included. For businesses that need customized solutions.",
+        "description": "For businesses that need customized solutions.",
         "features": [
           "Everything included in Pro",
           "Custom integrations",
           "Priority support 24/7",
-          "Up to 500 leads/month included",
           "Advanced CRM",
           "Custom reports",
           "Dedicated account manager"
@@ -256,16 +256,17 @@
         "popular": false
       },
       {
-        "name": "Voice AI",
+        "name": "Business + Voice AI",
         "subtitle": "+ voice channel (Vapi)",
-        "price_monthly": "From 499",
-        "price_yearly": "From 399",
-        "description": "700+ leads/month (custom case). For businesses that want an intelligent voice agent.",
+        "setup_range": "€2,500 – €3,500",
+        "price_monthly": "499",
+        "price_prefix": "From",
+        "price_yearly": "399",
+        "description": "For businesses that want an intelligent voice agent.",
         "features": [
           "Everything included in Professional",
           "Voice channel with Vapi",
           "AI voice agent",
-          "700+ leads/month (custom case)",
           "Inbound/outbound calls",
           "Phone integration",
           "100% customized solution"

@@ -38,8 +38,9 @@ export default function Pricing() {
               key={plan.name}
               name={plan.name}
               subtitle={plan.subtitle}
-              setupRange={`${symbol}650 – ${symbol}3.500`}
+              setupRange={plan.setup_range || `${symbol}650 – ${symbol}3.500`}
               monthlyRange={`${symbol}${plan.price_monthly}`}
+              monthlyPrefix={plan.price_prefix || ''}
               perMonth={pricing.per_month}
               setupLabel={pricing.setup_label}
               monthlyLabel={pricing.monthly_label}
