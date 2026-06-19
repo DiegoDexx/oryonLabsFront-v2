@@ -1,17 +1,13 @@
-const LOCALE_CURRENCY = {
-  'en-GB': '£',
-  'en-AU': 'A$',
-  'en-CA': 'C$',
-  'en-US': '$',
-};
+const LOCALE_MAP = [
+  { match: (l) => l === 'en-GB',              symbol: '£',  period: 'mo' },
+  { match: (l) => l === 'en-AU',              symbol: 'A$', period: 'mo' },
+  { match: (l) => l === 'en-CA',              symbol: 'C$', period: 'mo' },
+  { match: (l) => l.startsWith('en'),         symbol: '$',  period: 'mo' },
+];
 
 export default function useCurrency() {
-  // SOLO EN DEV — comenta esta línea en producción
-  // const testLocale = import.meta.env.DEV ? 'en-US' : null;
-  
   const locale = navigator.language || 'es-ES';
-  
-  if (locale === 'en-GB') return { symbol: '£', period: 'mo' };
-  if (locale.startsWith('en')) return { symbol: '$', period: 'mo' };
-  return { symbol: '€' };
+  const match = LOCALE_MAP.find(entry => entry.match(locale));
+  if (match) return { symbol: match.symbol, period: match.period };
+  return { symbol: '€', period: 'mes' };
 }

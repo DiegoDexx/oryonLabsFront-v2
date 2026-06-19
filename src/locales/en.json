@@ -597,5 +597,169 @@
       "Request a free consultation",
       "How does AI work?"
     ]
+  },
+  "admin": {
+    "navbar": { "badge": "Admin", "logout": "Log out" },
+    "page": { "title": "Administration Panel", "subtitle": "OryonX · Internal management" },
+    "actions": { "new_lead": "New lead", "add_client": "Add client", "subscription": "Subscription", "invoice": "Invoice" },
+    "tabs": {
+      "dashboard": "Dashboard", "pipeline": "Pipeline", "projects": "Projects",
+      "clients": "Clients", "subscriptions": "Subscriptions", "invoices": "Billing", "leads": "Leads"
+    },
+    "toasts": {
+      "invoice_paid": "Invoice marked as paid",
+      "client_deleted": "Client deleted",
+      "client_status_updated": "Client status updated",
+      "lead_status_updated": "Lead status updated",
+      "lead_converted": "Lead successfully converted to client",
+      "lead_deleted": "Lead deleted",
+      "subscription_created": "Subscription created successfully",
+      "invoice_created": "Invoice generated successfully",
+      "client_created": "Client created successfully",
+      "lead_created": "Lead created successfully"
+    },
+    "common": {
+      "cancel": "Cancel", "close": "Close", "refresh": "Refresh", "refreshing": "Refreshing...",
+      "creating": "Creating...", "unexpected_error": "Unexpected error.",
+      "name_placeholder": "Full name", "company_placeholder": "Company name",
+      "email_placeholder": "client@company.com", "phone_placeholder": "+1 600 000 000"
+    },
+    "dashboard": {
+      "selector": { "marketing": "Marketing & Acquisition", "ventas": "Leads & Sales" },
+      "marketing": {
+        "kpi_total": "Total leads", "kpi_converted": "Converted leads",
+        "kpi_rate": "Conversion rate", "kpi_rate_sub": "lead → client",
+        "leads_by_source": {
+          "title": "Leads by source", "range_all": "All time", "range_month": "Last month",
+          "empty": "No data for this period.", "total_prefix": "Total:"
+        },
+        "conversion_by_source": {
+          "title": "Conversion by source", "subtitle": "% of leads that become clients",
+          "empty": "No data for this period.", "legend": "Green ≥ 30% · Orange ≥ 15% · Red < 15%"
+        }
+      },
+      "ventas": {
+        "kpi_active_clients": "Active clients", "kpi_mrr": "MRR",
+        "kpi_mrr_sub": "monthly recurring revenue", "kpi_pending": "Pending collection",
+        "alert_pending": "invoice(s) pending collection", "latest_leads_title": "Latest leads",
+        "converted_trend": {
+          "title": "Converted leads", "subtitle": "Last 6 months",
+          "vs_prev": "vs previous month", "total_label": "Total converted", "rate_label": "Conversion rate"
+        },
+        "mrr_growth": {
+          "title": "MRR growth", "subtitle": "New activations per month",
+          "vs_prev": "vs previous month", "current_label": "Current MRR", "new_label": "New this month"
+        },
+        "churn": {
+          "title": "Churn rate", "subtitle": "Cumulative cancellations",
+          "health_low": "Healthy", "health_mid": "Moderate", "health_high": "High — review",
+          "active": "Active", "cancelled": "Cancelled", "total": "Total"
+        }
+      },
+      "channels": {
+        "form": "Web form", "chatbot": "Chatbot", "whatsapp": "WhatsApp",
+        "phone": "Phone", "manual": "Manual"
+      }
+    },
+    "leads": {
+      "stats": { "total": "Total leads", "new": "New", "converted": "Converted" },
+      "toolbar": { "singular": "lead", "plural": "leads" },
+      "table": {
+        "headers": {
+          "lead": "Lead", "company": "Company", "channel": "Channel",
+          "challenge": "Challenge", "urgency": "Urgency", "status": "Status",
+          "date": "Date", "actions": "Actions"
+        },
+        "empty": "No leads registered yet.", "convert": "Convert", "converting": "..."
+      },
+      "detail": {
+        "title": "Lead Detail", "contact_info": "Contact information",
+        "company": "Company", "phone": "Phone", "channel": "Channel",
+        "language": "Language", "urgency": "Urgency", "date": "Date",
+        "challenge": "The challenge", "no_challenge": "No challenge information.",
+        "commercial_summary": "Commercial summary", "no_summary": "No commercial summary recorded.",
+        "notes": "Notes", "convert_btn": "Convert to client", "converting_btn": "Converting..."
+      },
+      "delete": {
+        "title": "Delete lead", "warning": "This action cannot be undone.",
+        "confirm": "Yes, delete", "deleting": "Deleting..."
+      }
+    },
+    "clients": {
+      "table": {
+        "headers": {
+          "client": "Client", "company": "Company", "email": "Email",
+          "phone": "Phone", "status": "Status", "language": "Language",
+          "projects": "Projects", "actions": "Actions"
+        },
+        "empty": "No clients available.",
+        "no_projects": "No projects", "singular": "client", "plural": "clients"
+      },
+      "detail": {
+        "title": "Client Details", "company": "Company", "phone": "Phone",
+        "language": "Language", "email": "Email", "projects": "Projects", "no_projects": "No projects"
+      },
+      "delete": {
+        "title": "Delete client",
+        "blocked": "Cannot delete — resolve the following first:",
+        "active_sub_title": "Active subscription",
+        "active_sub_hint": "Go to the Subscriptions tab and cancel it first.",
+        "active_projects_hint": "Go to the Projects tab and close them first.",
+        "project_singular": "active project", "project_plural": "active projects",
+        "understood": "Understood", "warning": "This action cannot be undone.",
+        "confirm": "Yes, delete", "deleting": "Deleting..."
+      }
+    },
+    "subscriptions": {
+      "kpi_mrr": "Total MRR", "kpi_active": "Active subscriptions",
+      "headers": {
+        "company": "Company", "plan": "Plan", "setup": "Setup", "monthly": "Monthly fee",
+        "start": "Start", "next_billing": "Next billing", "status": "Status", "action": "Action"
+      },
+      "empty": "No subscriptions", "per_month": "/mo"
+    },
+    "invoices": {
+      "kpi_pending_amount": "Pending collection", "kpi_pending_count": "Pending invoices",
+      "headers": {
+        "number": "Invoice #", "client": "Client", "type": "Type",
+        "amount": "Amount", "due_date": "Due date", "status": "Status", "action": "Action"
+      },
+      "empty": "No invoices", "mark_paid": "Mark as paid"
+    },
+    "pipeline": { "empty_stage": "Empty" },
+    "modal_lead": {
+      "title": "New manual lead", "name": "Name", "company": "Company",
+      "email": "Email", "phone": "Phone", "channel": "Channel", "client_language": "Client language",
+      "name_required": "Name is required.",
+      "submit": "Create lead", "submitting": "Creating..."
+    },
+    "modal_client": {
+      "title": "Add client", "name": "Name", "company": "Company",
+      "email": "Email", "phone": "Phone", "status_label": "Status",
+      "status_active": "Active", "status_inactive": "Inactive",
+      "name_required": "Name is required.", "email_required": "Email is required.",
+      "email_invalid": "Invalid email.", "submit": "Create client", "submitting": "Creating..."
+    },
+    "modal_subscription": {
+      "title": "New subscription", "client": "Client", "plan": "Plan",
+      "setup_fee": "Setup fee (€)", "monthly_fee": "Monthly fee (€/month)",
+      "start_date": "Start date", "next_billing": "Next billing date",
+      "notes": "Notes", "notes_placeholder": "Internal notes...",
+      "select_client": "Select a client", "select_plan": "Select a plan",
+      "client_required": "Select a client.", "plan_required": "Select a plan.",
+      "setup_required": "Setup fee required (≥ 0).", "monthly_required": "Monthly fee required (> 0).",
+      "start_required": "Start date required.",
+      "submit": "Create subscription", "submitting": "Creating..."
+    },
+    "modal_invoice": {
+      "title": "New invoice", "client": "Client", "subscription": "Subscription",
+      "subscription_optional": "(optional)", "no_subscription": "No associated subscription",
+      "type": "Type", "amount": "Amount (€)", "invoice_number": "Invoice #", "due_date": "Due date",
+      "select_client": "Select a client", "select_type": "Select type",
+      "type_required": "Select a type.", "amount_required": "Amount required (> 0).",
+      "due_date_required": "Due date required.",
+      "invoice_number_required": "Invoice number required.",
+      "submit": "Generate invoice", "submitting": "Generating..."
+    }
   }
 }
