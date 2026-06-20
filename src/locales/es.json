@@ -449,8 +449,6 @@
       "contactButton": "Contactar con el equipo"
     }
   },
-
-
   "contact": {
     "badge": "Contacto",
     "title": "¿Listo para automatizar?",
@@ -471,21 +469,34 @@
       "success_message": "Nos pondremos en contacto contigo en menos de 24 horas."
     }
   },
-
-
-
   "form": {
     "title": "Cuéntanos tu reto",
     "subtitle": "En 24h te proponemos una solución concreta y un presupuesto sin letra pequeña.",
     "footer_text": "Sin spam. Sin compromiso. Solo hablamos de automatización.",
     "success_message": "¡Solicitud recibida! Analizaremos tu caso y te contactamos en menos de 24h.",
-    "steps": ["Tus datos", "Tu reto", "Contexto"],
+    "steps": [
+      "Tus datos",
+      "Tu reto",
+      "Contexto"
+    ],
     "step1": {
       "fields": {
-        "name": { "label": "Nombre completo", "placeholder": "Tu nombre" },
-        "company": { "label": "Empresa", "placeholder": "Nombre de tu empresa" },
-        "email": { "label": "Email corporativo", "placeholder": "tu@empresa.com" },
-        "phone": { "label": "Teléfono", "placeholder": "+34 600 000 000" }
+        "name": {
+          "label": "Nombre completo",
+          "placeholder": "Tu nombre"
+        },
+        "company": {
+          "label": "Empresa",
+          "placeholder": "Nombre de tu empresa"
+        },
+        "email": {
+          "label": "Email corporativo",
+          "placeholder": "tu@empresa.com"
+        },
+        "phone": {
+          "label": "Teléfono",
+          "placeholder": "+34 600 000 000"
+        }
       },
       "next_button": "Siguiente",
       "errors": {
@@ -500,12 +511,42 @@
     "step2": {
       "question": "¿Cuál es tu mayor reto ahora mismo?",
       "retos": [
-        { "id": "tiempo", "emoji": "🕐", "title": "Pierdo tiempo en tareas repetitivas", "desc": "Procesos manuales, Excel, tareas que se repiten cada día" },
-        { "id": "clientes", "emoji": "📞", "title": "No puedo atender a todos mis clientes", "desc": "Llamadas perdidas, respuestas lentas, clientes sin atender" },
-        { "id": "leads", "emoji": "📋", "title": "Me cuesta organizar y seguir mis leads", "desc": "No sé en qué punto está cada cliente ni qué hacer después" },
-        { "id": "empezar", "emoji": "🤝", "title": "Quiero automatizar pero no sé por dónde empezar", "desc": "Tengo claro que necesito cambiar algo pero no sé el qué" },
-        { "id": "asistente", "emoji": "💬", "title": "Necesito un asistente que responda por mí 24/7", "desc": "WhatsApp, web, email — quiero respuestas automáticas inteligentes" },
-        { "id": "herramientas_desconectadas", "emoji": "⚙️", "title": "Mis herramientas no están conectadas entre sí", "desc": "CRM, email, WhatsApp, facturación — todo por separado" }
+        {
+          "id": "tiempo",
+          "emoji": "🕐",
+          "title": "Pierdo tiempo en tareas repetitivas",
+          "desc": "Procesos manuales, Excel, tareas que se repiten cada día"
+        },
+        {
+          "id": "clientes",
+          "emoji": "📞",
+          "title": "No puedo atender a todos mis clientes",
+          "desc": "Llamadas perdidas, respuestas lentas, clientes sin atender"
+        },
+        {
+          "id": "leads",
+          "emoji": "📋",
+          "title": "Me cuesta organizar y seguir mis leads",
+          "desc": "No sé en qué punto está cada cliente ni qué hacer después"
+        },
+        {
+          "id": "empezar",
+          "emoji": "🤝",
+          "title": "Quiero automatizar pero no sé por dónde empezar",
+          "desc": "Tengo claro que necesito cambiar algo pero no sé el qué"
+        },
+        {
+          "id": "asistente",
+          "emoji": "💬",
+          "title": "Necesito un asistente que responda por mí 24/7",
+          "desc": "WhatsApp, web, email — quiero respuestas automáticas inteligentes"
+        },
+        {
+          "id": "herramientas_desconectadas",
+          "emoji": "⚙️",
+          "title": "Mis herramientas no están conectadas entre sí",
+          "desc": "CRM, email, WhatsApp, facturación — todo por separado"
+        }
       ],
       "prev_button": "Anterior",
       "next_button": "Siguiente",
@@ -516,19 +557,41 @@
     "step3": {
       "volumen_clientes": {
         "question": "¿Cuántos clientes o contactos gestionas al mes?",
-        "options": ["Menos de 50", "50 - 200", "200 - 500", "Más de 500", "No lo sé exactamente"]
+        "options": [
+          "Menos de 50",
+          "50 - 200",
+          "200 - 500",
+          "Más de 500",
+          "No lo sé exactamente"
+        ]
       },
       "herramientas": {
         "question": "¿Qué herramientas usas actualmente?",
         "hint": "opcional, puedes elegir varias",
-        "options": ["WhatsApp Business", "Email / Gmail", "CRM propio", "Excel / Google Sheets", "Redes Sociales", "Ninguna en especial"]
+        "options": [
+          "WhatsApp Business",
+          "Email / Gmail",
+          "CRM propio",
+          "Excel / Google Sheets",
+          "Redes Sociales",
+          "Ninguna en especial"
+        ]
       },
       "urgencia": {
         "question": "¿Cuándo necesitas una solución?",
         "options": [
-          { "id": "alta", "label": "Lo antes posible" },
-          { "id": "media", "label": "En 1-2 meses" },
-          { "id": "baja", "label": "Solo estoy explorando" }
+          {
+            "id": "alta",
+            "label": "Lo antes posible"
+          },
+          {
+            "id": "media",
+            "label": "En 1-2 meses"
+          },
+          {
+            "id": "baja",
+            "label": "Solo estoy explorando"
+          }
         ]
       },
       "prev_button": "Anterior",
@@ -540,8 +603,6 @@
       }
     }
   },
-
-
   "footer": {
     "brand": "OryonX",
     "description": "Automatizamos la captación de leads, la atención al cliente y los flujos de trabajo de tu empresa.",
@@ -554,15 +615,29 @@
     "columns": {
       "services": {
         "title": "Servicios",
-        "links": ["Chatbots IA", "Automatización de procesos", "Integración de sistemas", "Agentes IA personalizados"]
+        "links": [
+          "Chatbots IA",
+          "Automatización de procesos",
+          "Integración de sistemas",
+          "Agentes IA personalizados"
+        ]
       },
       "company": {
         "title": "Empresa",
-        "links": ["Sobre nosotros", "Casos de uso", "FAQ", "Blog"]
+        "links": [
+          "Sobre nosotros",
+          "Casos de uso",
+          "FAQ",
+          "Blog"
+        ]
       },
       "legal": {
         "title": "Legal",
-        "links": ["Privacidad", "Términos", "Cookies"]
+        "links": [
+          "Privacidad",
+          "Términos",
+          "Cookies"
+        ]
       }
     },
     "contact": {
@@ -603,12 +678,28 @@
     ]
   },
   "admin": {
-    "navbar": { "badge": "Admin", "logout": "Cerrar sesión" },
-    "page": { "title": "Panel de Administración", "subtitle": "OryonX · Gestión interna" },
-    "actions": { "new_lead": "Nuevo lead", "add_client": "Añadir cliente", "subscription": "Suscripción", "invoice": "Factura" },
+    "navbar": {
+      "badge": "Admin",
+      "logout": "Cerrar sesión"
+    },
+    "page": {
+      "title": "Panel de Administración",
+      "subtitle": "OryonX · Gestión interna"
+    },
+    "actions": {
+      "new_lead": "Nuevo lead",
+      "add_client": "Añadir cliente",
+      "subscription": "Suscripción",
+      "invoice": "Factura"
+    },
     "tabs": {
-      "dashboard": "Dashboard", "pipeline": "Pipeline", "projects": "Proyectos",
-      "clients": "Clientes", "subscriptions": "Suscripciones", "invoices": "Facturación", "leads": "Leads"
+      "dashboard": "Dashboard",
+      "pipeline": "Pipeline",
+      "projects": "Proyectos",
+      "clients": "Clientes",
+      "subscriptions": "Suscripciones",
+      "invoices": "Facturación",
+      "leads": "Leads"
     },
     "toasts": {
       "invoice_paid": "Factura marcada como pagada",
@@ -623,85 +714,218 @@
       "lead_created": "Lead creado correctamente"
     },
     "common": {
-      "cancel": "Cancelar", "close": "Cerrar", "refresh": "Actualizar", "refreshing": "Actualizando...",
-      "creating": "Creando...", "unexpected_error": "Error inesperado.",
-      "name_placeholder": "Nombre completo", "company_placeholder": "Nombre de la empresa",
-      "email_placeholder": "cliente@empresa.com", "phone_placeholder": "+34 600 000 000"
+      "cancel": "Cancelar",
+      "close": "Cerrar",
+      "refresh": "Actualizar",
+      "refreshing": "Actualizando...",
+      "creating": "Creando...",
+      "unexpected_error": "Error inesperado.",
+      "name_placeholder": "Nombre completo",
+      "company_placeholder": "Nombre de la empresa",
+      "email_placeholder": "cliente@empresa.com",
+      "phone_placeholder": "+34 600 000 000"
     },
     "dashboard": {
-      "selector": { "marketing": "Marketing & Captación", "ventas": "Leads & Ventas" },
+      "selector": {
+        "marketing": "Marketing & Captación",
+        "ventas": "Leads & Ventas"
+      },
       "marketing": {
-        "kpi_total": "Leads totales", "kpi_converted": "Leads convertidos",
-        "kpi_rate": "Tasa de conversión", "kpi_rate_sub": "lead → cliente",
+        "kpi_total": "Leads totales",
+        "kpi_converted": "Leads convertidos",
+        "kpi_rate": "Tasa de conversión",
+        "kpi_rate_sub": "lead → cliente",
         "leads_by_source": {
-          "title": "Leads por fuente", "range_all": "Desde siempre", "range_month": "Último mes",
-          "empty": "Sin datos para este período.", "total_prefix": "Total:"
+          "title": "Leads por fuente",
+          "range_all": "Desde siempre",
+          "range_month": "Último mes",
+          "empty": "Sin datos para este período.",
+          "total_prefix": "Total:"
         },
         "conversion_by_source": {
-          "title": "Conversión por fuente", "subtitle": "% de leads que llegan a cliente",
-          "empty": "Sin datos para este período.", "legend": "Verde ≥ 30% · Naranja ≥ 15% · Rojo < 15%"
+          "title": "Conversión por fuente",
+          "subtitle": "% de leads que llegan a cliente",
+          "empty": "Sin datos para este período.",
+          "legend": "Verde ≥ 30% · Naranja ≥ 15% · Rojo < 15%"
+        },
+        "capture_trend": {
+          "title": "Tendencia de captación",
+          "subtitle": "Leads captados por mes",
+          "vs_prev": "vs mes anterior",
+          "this_month": "Este mes",
+          "total_label": "Total captados"
         }
       },
       "ventas": {
-        "kpi_active_clients": "Clientes activos", "kpi_mrr": "MRR",
-        "kpi_mrr_sub": "ingresos recurrentes mensuales", "kpi_pending": "Pendiente de cobro",
-        "alert_pending": "factura(s) pendiente(s) de cobro", "latest_leads_title": "Últimos leads",
+        "kpi_active_clients": "Clientes activos",
+        "kpi_mrr": "MRR",
+        "kpi_mrr_sub": "ingresos recurrentes mensuales",
+        "kpi_pending": "Pendiente de cobro",
+        "alert_pending": "factura(s) pendiente(s) de cobro",
+        "latest_leads_title": "Últimos leads",
         "converted_trend": {
-          "title": "Leads convertidos", "subtitle": "Últimos 6 meses",
-          "vs_prev": "vs mes anterior", "total_label": "Total convertidos", "rate_label": "Tasa de conversión"
+          "title": "Leads convertidos",
+          "subtitle": "Últimos 6 meses",
+          "vs_prev": "vs mes anterior",
+          "total_label": "Total convertidos",
+          "rate_label": "Tasa de conversión"
         },
         "mrr_growth": {
-          "title": "MRR growth", "subtitle": "Nuevas altas por mes",
-          "vs_prev": "vs mes anterior", "current_label": "MRR actual", "new_label": "Nuevo este mes"
+          "title": "MRR growth",
+          "subtitle": "Nuevas altas por mes",
+          "vs_prev": "vs mes anterior",
+          "current_label": "MRR actual",
+          "new_label": "Nuevo este mes"
         },
         "churn": {
-          "title": "Churn rate", "subtitle": "Cancelaciones acumuladas",
-          "health_low": "Saludable", "health_mid": "Moderado", "health_high": "Alto — revisar",
-          "active": "Activos", "cancelled": "Cancelados", "total": "Total"
+          "title": "Churn rate",
+          "subtitle": "Cancelaciones acumuladas",
+          "health_low": "Saludable",
+          "health_mid": "Moderado",
+          "health_high": "Alto — revisar",
+          "active": "Activos",
+          "cancelled": "Cancelados",
+          "total": "Total"
+        },
+        "funnel": {
+          "title": "Embudo de conversión",
+          "subtitle": "Estado actual del pipeline",
+          "stages": {
+            "new": "Nuevo",
+            "contacted": "Contactado",
+            "qualified": "Cualificado",
+            "converted": "Convertido"
+          },
+          "discarded_label": "descartados",
+          "drop_off": "caída",
+          "of_total": "del total",
+          "empty": "No hay leads para mostrar"
         }
       },
       "channels": {
-        "form": "Formulario web", "chatbot": "Chatbot", "whatsapp": "WhatsApp",
-        "phone": "Teléfono", "manual": "Manual"
+        "form": "Formulario web",
+        "chatbot": "Chatbot",
+        "whatsapp": "WhatsApp",
+        "phone": "Teléfono",
+        "manual": "Manual"
+      },
+      "adquisicion": {
+        "title": "Adquisición",
+        "subtitle": "¿Entran leads?",
+        "kpi_this_month": "Leads este mes",
+        "kpi_prev_month": "Mes anterior",
+        "kpi_avg_day": "Media / día",
+        "kpi_avg_day_sub": "este mes",
+        "channels_title": "Captación por canal",
+        "channels_empty": "Sin datos de canal",
+        "range_week": "Esta semana",
+        "range_month": "Este mes",
+        "range_6m": "Últimos 6 meses"
+      },
+      "conversion_section": {
+        "title": "Conversión",
+        "subtitle": "¿Se convierten y a qué ritmo?",
+        "kpi_rate": "Tasa global",
+        "kpi_best_channel": "Mejor canal",
+        "kpi_best_channel_sub": "mayor tasa de conversión",
+        "kpi_best_channel_none": "Sin datos",
+        "kpi_unmanaged": "Sin gestionar",
+        "kpi_unmanaged_sub": "leads en «nuevo» +3 días",
+        "unmanaged_alert": "lead(s) en «nuevo» sin tocar hace más de 3 días"
+      },
+      "negocio": {
+        "title": "Negocio",
+        "subtitle": "¿El dinero es sano?",
+        "kpi_mrr": "MRR",
+        "kpi_mrr_sub": "ingresos recurrentes",
+        "kpi_active": "Clientes activos",
+        "kpi_arpu": "ARPU",
+        "kpi_arpu_sub": "ingreso medio / cliente",
+        "kpi_pending": "Pendiente",
+        "mrr_by_plan_title": "MRR por plan",
+        "mrr_by_plan_empty": "Sin suscripciones activas",
+        "concentration_label": "del MRR en 1 cliente",
+        "renewals_title": "Próximas renovaciones",
+        "renewal_in": "en",
+        "renewal_days": "días",
+        "no_renewals": "Sin renovaciones en 15 días",
+        "renewal_alert": "renovación(es) en menos de 15 días"
       }
     },
     "leads": {
-      "stats": { "total": "Total leads", "new": "Nuevos", "converted": "Convertidos" },
-      "toolbar": { "singular": "lead", "plural": "leads" },
+      "stats": {
+        "total": "Total leads",
+        "new": "Nuevos",
+        "converted": "Convertidos"
+      },
+      "toolbar": {
+        "singular": "lead",
+        "plural": "leads"
+      },
       "table": {
         "headers": {
-          "lead": "Lead", "company": "Empresa", "channel": "Canal",
-          "challenge": "Reto", "urgency": "Urgencia", "status": "Estado",
-          "date": "Fecha", "actions": "Acciones"
+          "lead": "Lead",
+          "company": "Empresa",
+          "channel": "Canal",
+          "challenge": "Reto",
+          "urgency": "Urgencia",
+          "status": "Estado",
+          "date": "Fecha",
+          "actions": "Acciones"
         },
-        "empty": "Sin leads registrados.", "convert": "Convertir", "converting": "..."
+        "empty": "Sin leads registrados.",
+        "convert": "Convertir",
+        "converting": "..."
       },
       "detail": {
-        "title": "Detalle del Lead", "contact_info": "Información de contacto",
-        "company": "Empresa", "phone": "Teléfono", "channel": "Canal",
-        "language": "Idioma", "urgency": "Urgencia", "date": "Fecha",
-        "challenge": "El reto", "no_challenge": "Sin información sobre el reto.",
-        "commercial_summary": "Resumen comercial", "no_summary": "Sin resumen comercial registrado.",
-        "notes": "Notas", "convert_btn": "Convertir a cliente", "converting_btn": "Convirtiendo..."
+        "title": "Detalle del Lead",
+        "contact_info": "Información de contacto",
+        "company": "Empresa",
+        "phone": "Teléfono",
+        "channel": "Canal",
+        "language": "Idioma",
+        "urgency": "Urgencia",
+        "date": "Fecha",
+        "challenge": "El reto",
+        "no_challenge": "Sin información sobre el reto.",
+        "commercial_summary": "Resumen comercial",
+        "no_summary": "Sin resumen comercial registrado.",
+        "notes": "Notas",
+        "convert_btn": "Convertir a cliente",
+        "converting_btn": "Convirtiendo..."
       },
       "delete": {
-        "title": "Eliminar lead", "warning": "Esta acción no se puede deshacer.",
-        "confirm": "Sí, eliminar", "deleting": "Eliminando..."
+        "title": "Eliminar lead",
+        "warning": "Esta acción no se puede deshacer.",
+        "confirm": "Sí, eliminar",
+        "deleting": "Eliminando..."
       }
     },
     "clients": {
       "table": {
         "headers": {
-          "client": "Cliente", "company": "Empresa", "email": "Email",
-          "phone": "Teléfono", "status": "Estado", "language": "Idioma",
-          "projects": "Proyectos", "actions": "Acciones"
+          "client": "Cliente",
+          "company": "Empresa",
+          "email": "Email",
+          "phone": "Teléfono",
+          "status": "Estado",
+          "language": "Idioma",
+          "projects": "Proyectos",
+          "actions": "Acciones"
         },
         "empty": "No hay clientes disponibles.",
-        "no_projects": "Sin proyectos", "singular": "cliente", "plural": "clientes"
+        "no_projects": "Sin proyectos",
+        "singular": "cliente",
+        "plural": "clientes"
       },
       "detail": {
-        "title": "Detalle del cliente", "company": "Empresa", "phone": "Teléfono",
-        "language": "Idioma", "email": "Email", "projects": "Proyectos", "no_projects": "Sin proyectos"
+        "title": "Detalle del cliente",
+        "company": "Empresa",
+        "phone": "Teléfono",
+        "language": "Idioma",
+        "email": "Email",
+        "projects": "Proyectos",
+        "no_projects": "Sin proyectos"
       },
       "delete": {
         "title": "Eliminar cliente",
@@ -709,61 +933,113 @@
         "active_sub_title": "Suscripción activa",
         "active_sub_hint": "Ve a la pestaña Suscripciones y cancélala primero.",
         "active_projects_hint": "Ve a la pestaña Proyectos y ciérralos primero.",
-        "project_singular": "proyecto activo", "project_plural": "proyectos activos",
-        "understood": "Entendido", "warning": "Esta acción no se puede deshacer.",
-        "confirm": "Sí, eliminar", "deleting": "Eliminando..."
+        "project_singular": "proyecto activo",
+        "project_plural": "proyectos activos",
+        "understood": "Entendido",
+        "warning": "Esta acción no se puede deshacer.",
+        "confirm": "Sí, eliminar",
+        "deleting": "Eliminando..."
       }
     },
     "subscriptions": {
-      "kpi_mrr": "MRR Total", "kpi_active": "Suscripciones activas",
+      "kpi_mrr": "MRR Total",
+      "kpi_active": "Suscripciones activas",
       "headers": {
-        "company": "Empresa", "plan": "Plan", "setup": "Setup", "monthly": "Mensualidad",
-        "start": "Inicio", "next_billing": "Próx. factura", "status": "Estado", "action": "Acción"
+        "company": "Empresa",
+        "plan": "Plan",
+        "setup": "Setup",
+        "monthly": "Mensualidad",
+        "start": "Inicio",
+        "next_billing": "Próx. factura",
+        "status": "Estado",
+        "action": "Acción"
       },
-      "empty": "Sin suscripciones", "per_month": "/mes"
+      "empty": "Sin suscripciones",
+      "per_month": "/mes"
     },
     "invoices": {
-      "kpi_pending_amount": "Pendiente de cobro", "kpi_pending_count": "Facturas pendientes",
+      "kpi_pending_amount": "Pendiente de cobro",
+      "kpi_pending_count": "Facturas pendientes",
       "headers": {
-        "number": "Nº Factura", "client": "Cliente", "type": "Tipo",
-        "amount": "Importe", "due_date": "Vencimiento", "status": "Estado", "action": "Acción"
+        "number": "Nº Factura",
+        "client": "Cliente",
+        "type": "Tipo",
+        "amount": "Importe",
+        "due_date": "Vencimiento",
+        "status": "Estado",
+        "action": "Acción"
       },
-      "empty": "Sin facturas", "mark_paid": "Marcar pagada"
+      "empty": "Sin facturas",
+      "mark_paid": "Marcar pagada"
     },
-    "pipeline": { "empty_stage": "Vacío" },
+    "pipeline": {
+      "empty_stage": "Vacío"
+    },
     "modal_lead": {
-      "title": "Nuevo lead manual", "name": "Nombre", "company": "Empresa",
-      "email": "Email", "phone": "Teléfono", "channel": "Canal", "client_language": "Idioma del cliente",
+      "title": "Nuevo lead manual",
+      "name": "Nombre",
+      "company": "Empresa",
+      "email": "Email",
+      "phone": "Teléfono",
+      "channel": "Canal",
+      "client_language": "Idioma del cliente",
       "name_required": "El nombre es obligatorio.",
-      "submit": "Crear lead", "submitting": "Creando..."
+      "submit": "Crear lead",
+      "submitting": "Creando..."
     },
     "modal_client": {
-      "title": "Añadir cliente", "name": "Nombre", "company": "Empresa",
-      "email": "Email", "phone": "Teléfono", "status_label": "Estado",
-      "status_active": "Activo", "status_inactive": "Inactivo",
-      "name_required": "El nombre es obligatorio.", "email_required": "El email es obligatorio.",
-      "email_invalid": "Email inválido.", "submit": "Crear cliente", "submitting": "Creando..."
+      "title": "Añadir cliente",
+      "name": "Nombre",
+      "company": "Empresa",
+      "email": "Email",
+      "phone": "Teléfono",
+      "status_label": "Estado",
+      "status_active": "Activo",
+      "status_inactive": "Inactivo",
+      "name_required": "El nombre es obligatorio.",
+      "email_required": "El email es obligatorio.",
+      "email_invalid": "Email inválido.",
+      "submit": "Crear cliente",
+      "submitting": "Creando..."
     },
     "modal_subscription": {
-      "title": "Nueva suscripción", "client": "Cliente", "plan": "Plan",
-      "setup_fee": "Setup fee (€)", "monthly_fee": "Mensualidad (€/mes)",
-      "start_date": "Fecha inicio", "next_billing": "Próxima factura",
-      "notes": "Notas", "notes_placeholder": "Notas internas...",
-      "select_client": "Selecciona un cliente", "select_plan": "Selecciona un plan",
-      "client_required": "Selecciona un cliente.", "plan_required": "Selecciona un plan.",
-      "setup_required": "Setup fee requerido (≥ 0).", "monthly_required": "Mensualidad requerida (> 0).",
+      "title": "Nueva suscripción",
+      "client": "Cliente",
+      "plan": "Plan",
+      "setup_fee": "Setup fee (€)",
+      "monthly_fee": "Mensualidad (€/mes)",
+      "start_date": "Fecha inicio",
+      "next_billing": "Próxima factura",
+      "notes": "Notas",
+      "notes_placeholder": "Notas internas...",
+      "select_client": "Selecciona un cliente",
+      "select_plan": "Selecciona un plan",
+      "client_required": "Selecciona un cliente.",
+      "plan_required": "Selecciona un plan.",
+      "setup_required": "Setup fee requerido (≥ 0).",
+      "monthly_required": "Mensualidad requerida (> 0).",
       "start_required": "Fecha de inicio requerida.",
-      "submit": "Crear suscripción", "submitting": "Creando..."
+      "submit": "Crear suscripción",
+      "submitting": "Creando..."
     },
     "modal_invoice": {
-      "title": "Nueva factura", "client": "Cliente", "subscription": "Suscripción",
-      "subscription_optional": "(opcional)", "no_subscription": "Sin suscripción asociada",
-      "type": "Tipo", "amount": "Importe (€)", "invoice_number": "Nº Factura", "due_date": "Vencimiento",
-      "select_client": "Selecciona un cliente", "select_type": "Selecciona tipo",
-      "type_required": "Selecciona un tipo.", "amount_required": "Importe requerido (> 0).",
+      "title": "Nueva factura",
+      "client": "Cliente",
+      "subscription": "Suscripción",
+      "subscription_optional": "(opcional)",
+      "no_subscription": "Sin suscripción asociada",
+      "type": "Tipo",
+      "amount": "Importe (€)",
+      "invoice_number": "Nº Factura",
+      "due_date": "Vencimiento",
+      "select_client": "Selecciona un cliente",
+      "select_type": "Selecciona tipo",
+      "type_required": "Selecciona un tipo.",
+      "amount_required": "Importe requerido (> 0).",
       "due_date_required": "Fecha de vencimiento requerida.",
       "invoice_number_required": "Número de factura requerido.",
-      "submit": "Generar factura", "submitting": "Generando..."
+      "submit": "Generar factura",
+      "submitting": "Generando..."
     }
   }
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Modal from "../ui/Modal";
-import { apiCreateInvoice } from "../../api/apiActions";
+import Modal from "../../ui/Modal";
+import { apiCreateInvoice } from "../../../api/apiActions";
 
 const TYPES = [
   { value: "setup",   label: "Setup" },

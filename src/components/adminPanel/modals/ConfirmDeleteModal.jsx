@@ -1,4 +1,4 @@
-import Modal from "../ui/Modal";
+import Modal from "../../ui/Modal";
 
 const ConfirmDeleteModal = ({ isOpen, onClose, onConfirm, entityName, warningText, loading }) => (
   <Modal isOpen={isOpen} onClose={onClose} title="Confirmar eliminación">

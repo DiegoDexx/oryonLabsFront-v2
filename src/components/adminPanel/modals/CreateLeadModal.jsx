@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Modal from "../ui/Modal";
-import { apiSubmitLeadForm } from "../../api/apiActions";
+import Modal from "../../ui/Modal";
+import { apiSubmitLeadForm } from "../../../api/apiActions";
 
 const CHANNELS = [
   { value: "manual",    label: "Manual" },

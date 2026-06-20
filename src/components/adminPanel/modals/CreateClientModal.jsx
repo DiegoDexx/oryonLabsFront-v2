@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Modal from "../ui/Modal";
-import { apiCreateClient } from "../../api/apiActions";
+import Modal from "../../ui/Modal";
+import { apiCreateClient } from "../../../api/apiActions";
 
 // Campos en inglés — coinciden exactamente con ClientController::store()
 // que valida: name (required), company, email (required), phone, status
