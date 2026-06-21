@@ -49,9 +49,15 @@ const NavbarAdminPanel = () => {
         </div>
 
         {user && (
-          <span className="text-sm text-gray-500 hidden sm:block">
-            {user.name || user.email}
-          </span>
+          <div className="hidden sm:flex items-center gap-2.5">
+            <div className="w-7 h-7 rounded-lg bg-navy text-white text-xs font-bold flex items-center justify-center select-none flex-shrink-0">
+              {(user.name || user.email || '?').split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase()}
+            </div>
+            <div className="text-right">
+              <p className="text-xs font-semibold text-gray-700 leading-none">{user.name || user.email}</p>
+              <p className="text-xs text-gray-400 leading-none mt-0.5 capitalize">{user.roles?.[0] ?? 'admin'}</p>
+            </div>
+          </div>
         )}
         <button
           onClick={handleLogout}

@@ -12,6 +12,7 @@
     "title": "Your business is getting leads. The problem is what happens next.",
     "title_highlight": "what happens next",
     "subtitle": "We automate the response, follow-up, and qualification of your leads so none of them go cold waiting for someone to reply. Just like we did for Renovy in the home renovation sector.",
+    "subtitle_short": "We automate lead response and follow-up with AI. No more cold leads.",
     "cta_primary": "See how it works",
     "cta_secondary": "Talk to an expert",
     "trust_indicator_1": "Automatic response in seconds",
@@ -205,8 +206,8 @@
         "name": "Starter",
         "subtitle": "Chatbot + lead capture + basic CRM view",
         "setup_range": "€899 – €1,200",
-        "price_monthly": "199",
-        "price_yearly": "159",
+        "price_monthly": "299",
+        "price_yearly": "239",
         "description": "Ideal for freelancers and small local businesses.",
         "features": [
           "Intelligent chatbot 24/7",
@@ -223,8 +224,8 @@
         "name": "Pro",
         "subtitle": "+ automatic classification + WhatsApp + business summaries",
         "setup_range": "€1,200 – €2,000",
-        "price_monthly": "299",
-        "price_yearly": "239",
+        "price_monthly": "399",
+        "price_yearly": "319",
         "description": "For SMEs that want advanced automation.",
         "features": [
           "Everything included in Starter",
@@ -241,8 +242,8 @@
         "name": "Professional",
         "subtitle": "+ custom integrations + priority support",
         "setup_range": "€2,000 – €2,500",
-        "price_monthly": "499",
-        "price_yearly": "399",
+        "price_monthly": "549",
+        "price_yearly": "439",
         "description": "For businesses that need customized solutions.",
         "features": [
           "Everything included in Pro",
@@ -259,9 +260,9 @@
         "name": "Business + Voice AI",
         "subtitle": "+ voice channel (Vapi)",
         "setup_range": "€2,500 – €3,500",
-        "price_monthly": "499",
+        "price_monthly": "599",
         "price_prefix": "From",
-        "price_yearly": "399",
+        "price_yearly": "479",
         "description": "For businesses that want an intelligent voice agent.",
         "features": [
           "Everything included in Professional",
@@ -684,13 +685,23 @@
     },
     "page": {
       "title": "Administration Panel",
-      "subtitle": "OryonX · Internal management"
+      "subtitle": "Oryon Labs · Internal management",
+      "greeting_morning": "Good morning",
+      "greeting_afternoon": "Good afternoon",
+      "greeting_evening": "Good evening"
+    },
+    "stats": {
+      "new_leads": "New leads",
+      "active_clients": "Active clients",
+      "active_subs": "Active subscriptions",
+      "pending_invoices": "Pending invoices"
     },
     "actions": {
       "new_lead": "New lead",
       "add_client": "Add client",
       "subscription": "Subscription",
-      "invoice": "Invoice"
+      "invoice": "Invoice",
+      "add_user": "New user"
     },
     "tabs": {
       "dashboard": "Dashboard",
@@ -699,7 +710,8 @@
       "clients": "Clients",
       "subscriptions": "Subscriptions",
       "invoices": "Billing",
-      "leads": "Leads"
+      "leads": "Leads",
+      "users": "Users"
     },
     "toasts": {
       "invoice_paid": "Invoice marked as paid",
@@ -711,7 +723,10 @@
       "subscription_created": "Subscription created successfully",
       "invoice_created": "Invoice generated successfully",
       "client_created": "Client created successfully",
-      "lead_created": "Lead created successfully"
+      "lead_created": "Lead created successfully",
+      "user_created": "User created successfully",
+      "user_updated": "User updated",
+      "user_deleted": "User deleted"
     },
     "common": {
       "cancel": "Cancel",

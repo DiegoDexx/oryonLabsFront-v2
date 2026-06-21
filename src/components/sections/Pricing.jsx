@@ -38,7 +38,7 @@ export default function Pricing() {
               key={plan.name}
               name={plan.name}
               subtitle={plan.subtitle}
-              setupRange={plan.setup_range || `${symbol}650 – ${symbol}3.500`}
+              setupRange={plan.setup_range ? plan.setup_range.replace(/€/g, symbol) : `${symbol}650 – ${symbol}3.500`}
               monthlyRange={`${symbol}${plan.price_monthly}`}
               monthlyPrefix={plan.price_prefix || ''}
               perMonth={pricing.per_month}

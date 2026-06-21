@@ -103,6 +103,19 @@ export const apiCreateInvoice = (token, data) =>
 export const apiMarkInvoicePaid = (token, id) =>
   request("PATCH", `/api/invoices/${id}/mark-paid`, null, token);
 
+// ── Users ─────────────────────────────────────────────────────────────────────
+export const apiGetUsers = (token) =>
+  request("GET", "/api/users", null, token);
+
+export const apiCreateUser = (token, data) =>
+  request("POST", "/api/users", data, token);
+
+export const apiUpdateUser = (token, id, data) =>
+  request("PATCH", `/api/users/${id}`, data, token);
+
+export const apiDeleteUser = (token, id) =>
+  request("DELETE", `/api/users/${id}`, null, token);
+
 // ── Refresh helpers ───────────────────────────────────────────────────────────
 /** Fetches all panel data in parallel. Returns { clients, leads, subscriptions, invoices, projects }. */
 export const apiRefreshAll = async (token) => {
