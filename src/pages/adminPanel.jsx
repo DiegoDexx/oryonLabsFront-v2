@@ -7,30 +7,23 @@ import {
   apiUpdateProjectStage, apiUpdateSubscriptionStatus, apiMarkInvoicePaid,
 } from '../api/apiActions';
 import NavbarAdminPanel from '../components/adminPanel/NavbarAdminPanel';
+import { AdminLangProvider, useAdminT } from '../context/AdminLangContext';
 import ProjectsTable from '../components/adminPanel/views/projecttable';
 import ClientsTable from '../components/adminPanel/views/ClientsTable';
-import DashboardView from '../components/adminPanel/views/DashboardView';
+import DashboardView from '../components/adminPanel/views/dashboard/DashboardView';
 import PipelineView from '../components/adminPanel/views/PipelineView';
 import SubscriptionsView from '../components/adminPanel/views/SubscriptionsView';
 import InvoicesView from '../components/adminPanel/views/InvoicesView';
-import CreateSubscriptionModal from '../components/adminPanel/CreateSubscriptionModal';
-import CreateInvoiceModal from '../components/adminPanel/CreateInvoiceModal';
-import CreateClientModal from '../components/adminPanel/CreateClientModal';
-import CreateLeadModal from '../components/adminPanel/CreateLeadModal';
+import CreateSubscriptionModal from '../components/adminPanel/modals/CreateSubscriptionModal';
+import CreateInvoiceModal from '../components/adminPanel/modals/CreateInvoiceModal';
+import CreateClientModal from '../components/adminPanel/modals/CreateClientModal';
+import CreateLeadModal from '../components/adminPanel/modals/CreateLeadModal';
 import LeadsView from '../components/adminPanel/views/LeadsView';
 import Toast from '../components/adminPanel/Toast';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const TABS = [
-  { key: 'dashboard',     label: 'Dashboard' },
-  { key: 'pipeline',      label: 'Pipeline' },
-  { key: 'projects',      label: 'Proyectos' },
-  { key: 'clients',       label: 'Clientes' },
-  { key: 'subscriptions', label: 'Suscripciones' },
-  { key: 'invoices',      label: 'Facturación' },
-  { key: 'leads',         label: 'Leads' },
-];
+const TAB_KEYS = ['dashboard', 'pipeline', 'projects', 'clients', 'subscriptions', 'invoices', 'leads'];
 
 const TAB_ICONS = {
   dashboard:     (
@@ -71,7 +64,8 @@ const TAB_ICONS = {
 };
 
 // ─── ADMIN PANEL PRINCIPAL ───────────────────────────────────
-const AdminPanel = () => {
+const AdminPanelInner = () => {
+  const { t } = useAdminT();
   const [selectedTab, setSelectedTab]     = useState('dashboard');
   const [projects, setProjects]           = useState([]);
   const [clients, setClients]             = useState([]);
@@ -127,31 +121,31 @@ const AdminPanel = () => {
   const handleMarkPaid = async (id) => {
     await apiMarkInvoicePaid(token, id);
     setInvoices((prev) => prev.map((i) => i.id === id ? { ...i, status: 'paid' } : i));
-    showToast('Factura marcada como pagada');
+    showToast(t.toasts.invoice_paid);
   };
 
-  const handleClientDelete = () => { refreshClients(); showToast('Cliente eliminado'); };
+  const handleClientDelete = () => { refreshClients(); showToast(t.toasts.client_deleted); };
 
   const handleClientStatusChange = (clientId, newStatus) => {
     setClients((prev) => prev.map((c) => c.id === clientId ? { ...c, status: newStatus } : c));
-    showToast('Estado del cliente actualizado');
+    showToast(t.toasts.client_status_updated);
   };
 
   const handleLeadStatusChange = (leadId, newStatus) => {
     setLeads((prev) => prev.map((l) => l.id === leadId ? { ...l, status: newStatus } : l));
-    showToast('Estado del lead actualizado');
+    showToast(t.toasts.lead_status_updated);
   };
 
   const handleLeadConvert = (leadId) => {
     setLeads((prev) => prev.map((l) => l.id === leadId ? { ...l, status: 'converted' } : l));
-    showToast('Lead convertido a cliente correctamente');
+    showToast(t.toasts.lead_converted);
     refreshClients();
     refreshLeads();
   };
 
   const handleLeadDelete = (leadId) => {
     setLeads((prev) => prev.filter((l) => l.id !== leadId));
-    showToast('Lead eliminado');
+    showToast(t.toasts.lead_deleted);
   };
 
   return (
@@ -165,48 +159,32 @@ const AdminPanel = () => {
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
             <div className="flex-1 min-w-0">
               <h1 className="text-2xl sm:text-3xl font-bold text-navy leading-tight">
-                Panel de Administración
+                {t.page.title}
               </h1>
-              <p className="text-sm text-gray-500 mt-0.5">OryonX · Gestión interna</p>
+              <p className="text-sm text-gray-500 mt-0.5">{t.page.subtitle}</p>
             </div>
 
-            {/* Action buttons — wrap on mobile */}
+            {/* Action buttons */}
             <div className="flex flex-wrap gap-2 sm:justify-end">
-              <button
-                onClick={() => setShowCreateLead(true)}
-                className="flex items-center gap-1.5 bg-white text-gray-700 border border-gray-200 px-3 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 hover:border-gray-300 transition shadow-sm"
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                </svg>
-                Nuevo lead
+              <button onClick={() => setShowCreateLead(true)}
+                className="flex items-center gap-1.5 bg-white text-gray-700 border border-gray-200 px-3 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 hover:border-gray-300 transition shadow-sm">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
+                {t.actions.new_lead}
               </button>
-              <button
-                onClick={() => setShowCreateClient(true)}
-                className="flex items-center gap-1.5 bg-white text-gray-700 border border-gray-200 px-3 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 hover:border-gray-300 transition shadow-sm"
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                </svg>
-                Añadir cliente
+              <button onClick={() => setShowCreateClient(true)}
+                className="flex items-center gap-1.5 bg-white text-gray-700 border border-gray-200 px-3 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 hover:border-gray-300 transition shadow-sm">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
+                {t.actions.add_client}
               </button>
-              <button
-                onClick={() => setShowCreateSub(true)}
-                className="flex items-center gap-1.5 bg-cyan text-white px-3 py-2 rounded-lg text-sm font-medium hover:bg-cyan-medium transition shadow-sm"
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                </svg>
-                Suscripción
+              <button onClick={() => setShowCreateSub(true)}
+                className="flex items-center gap-1.5 bg-cyan text-white px-3 py-2 rounded-lg text-sm font-medium hover:bg-cyan-medium transition shadow-sm">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
+                {t.actions.subscription}
               </button>
-              <button
-                onClick={() => setShowCreateInvoice(true)}
-                className="flex items-center gap-1.5 bg-navy text-white px-3 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition shadow-sm"
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                </svg>
-                Factura
+              <button onClick={() => setShowCreateInvoice(true)}
+                className="flex items-center gap-1.5 bg-navy text-white px-3 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition shadow-sm">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
+                {t.actions.invoice}
               </button>
             </div>
           </div>
@@ -215,23 +193,16 @@ const AdminPanel = () => {
         {/* ── Tabs ── horizontally scrollable on mobile */}
         <div className="flex gap-1.5 mb-6 overflow-x-auto pb-1 -mx-4 px-4 sm:mx-0 sm:px-0"
           style={{ scrollbarWidth: 'none' }}>
-          {TABS.map((tab) => {
-            const isActive = selectedTab === tab.key;
+          {TAB_KEYS.map((key) => {
+            const isActive = selectedTab === key;
             return (
-              <button
-                key={tab.key}
-                onClick={() => setSelectedTab(tab.key)}
+              <button key={key} onClick={() => setSelectedTab(key)}
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-all flex-shrink-0 ${
-                  isActive
-                    ? 'bg-navy text-white shadow-md'
-                    : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
-                }`}
-              >
-                <span className={isActive ? 'opacity-100' : 'opacity-50'}>
-                  {TAB_ICONS[tab.key]}
-                </span>
-                <span>{tab.label}</span>
-                {tab.key === 'leads' && leads.filter(l => l.status === 'new').length > 0 && (
+                  isActive ? 'bg-navy text-white shadow-md' : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
+                }`}>
+                <span className={isActive ? 'opacity-100' : 'opacity-50'}>{TAB_ICONS[key]}</span>
+                <span>{t.tabs[key]}</span>
+                {key === 'leads' && leads.filter(l => l.status === 'new').length > 0 && (
                   <span className={`text-xs px-1.5 py-0.5 rounded-full font-bold leading-none ${isActive ? 'bg-white/20 text-white' : 'bg-blue-100 text-blue-600'}`}>
                     {leads.filter(l => l.status === 'new').length}
                   </span>
@@ -288,7 +259,7 @@ const AdminPanel = () => {
         onClose={() => setShowCreateSub(false)}
         clients={clients}
         token={token}
-        onSuccess={() => { refreshSubscriptions(); setShowCreateSub(false); showToast('Suscripción creada correctamente'); }}
+        onSuccess={() => { refreshSubscriptions(); setShowCreateSub(false); showToast(t.toasts.subscription_created); }}
       />
       <CreateInvoiceModal
         isOpen={showCreateInvoice}
@@ -297,18 +268,18 @@ const AdminPanel = () => {
         subscriptions={subscriptions}
         token={token}
         invoices={invoices}
-        onSuccess={() => { refreshInvoices(); setShowCreateInvoice(false); showToast('Factura generada correctamente'); }}
+        onSuccess={() => { refreshInvoices(); setShowCreateInvoice(false); showToast(t.toasts.invoice_created); }}
       />
       <CreateClientModal
         isOpen={showCreateClient}
         onClose={() => setShowCreateClient(false)}
         token={token}
-        onSuccess={() => { refreshClients(); showToast('Cliente creado correctamente'); }}
+        onSuccess={() => { refreshClients(); showToast(t.toasts.client_created); }}
       />
       <CreateLeadModal
         isOpen={showCreateLead}
         onClose={() => setShowCreateLead(false)}
-        onSuccess={() => { refreshLeads(); showToast('Lead creado correctamente'); }}
+        onSuccess={() => { refreshLeads(); showToast(t.toasts.lead_created); }}
       />
 
       <Toast
@@ -320,5 +291,11 @@ const AdminPanel = () => {
     </div>
   );
 };
+
+const AdminPanel = () => (
+  <AdminLangProvider>
+    <AdminPanelInner />
+  </AdminLangProvider>
+);
 
 export default AdminPanel;

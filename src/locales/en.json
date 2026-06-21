@@ -203,59 +203,75 @@
     "plans": [
       {
         "name": "Starter",
-        "subtitle": "For freelancers and small businesses",
+        "subtitle": "Chatbot + lead capture + basic CRM view",
+        "setup_range": "€899 – €1,200",
         "price_monthly": "199",
         "price_yearly": "159",
-        "description": "Ideal for freelancers and small local businesses who want to try automation without a large initial investment.",
+        "description": "Ideal for freelancers and small local businesses.",
         "features": [
-          "Web form (no chat or incoming WhatsApp detection)",
-          "AI to summarize and classify leads",
-          "Google Sheets CRM",
+          "Intelligent chatbot 24/7",
+          "Automatic lead capture",
+          "Basic CRM view",
           "Email to administrator",
-          "Email + WhatsApp to customer / Telegram",
-          "1 basic follow-up flow",
-          "Light support + cloud invoicing"
+          "Basic WhatsApp/Telegram",
+          "Email support"
         ],
         "cta": "Start with Starter",
         "popular": false
       },
       {
-        "name": "Pro Sales Automation",
-        "subtitle": "Web + Conversational Bot",
+        "name": "Pro",
+        "subtitle": "+ automatic classification + WhatsApp + business summaries",
+        "setup_range": "€1,200 – €2,000",
         "price_monthly": "299",
         "price_yearly": "239",
-        "description": "For SMEs that receive several leads per month. Includes everything in the Starter Pack plus advanced automation.",
+        "description": "For SMEs that want advanced automation.",
         "features": [
-          "Everything in Starter Pack included",
-          "Automatic WhatsApp to customer",
-          "Internal notification via Telegram/WhatsApp",
-          "Automatic follow-up",
-          "Lead status management",
-          "Basic duplicate detection",
-          "Simple dashboard",
-          "AI text improvement"
+          "Everything included in Starter",
+          "Automatic lead classification",
+          "Full WhatsApp Business",
+          "Business summaries with AI",
+          "Metrics dashboard",
+          "Priority support"
         ],
         "cta": "Start with Pro",
         "popular": true
       },
       {
-        "name": "Professional + AI Bot",
-        "subtitle": "Web + Conversational Bot",
-        "price_monthly": "399",
-        "price_yearly": "319",
-        "description": "For businesses that want a more powerful website with intelligent conversational bot.",
+        "name": "Professional",
+        "subtitle": "+ custom integrations + priority support",
+        "setup_range": "€2,000 – €2,500",
+        "price_monthly": "499",
+        "price_yearly": "399",
+        "description": "For businesses that need customized solutions.",
         "features": [
-          "Optimized website or landing page",
-          "Conversational bot/component",
-          "Smart form + WhatsApp message detection",
-          "AI to qualify leads",
-          "Advanced CRM/Sheets",
-          "Automatic emails",
-          "Automatic WhatsApp",
-          "Complete follow-up",
-          "CRM Dashboard"
+          "Everything included in Pro",
+          "Custom integrations",
+          "Priority support 24/7",
+          "Advanced CRM",
+          "Custom reports",
+          "Dedicated account manager"
         ],
         "cta": "Request Professional",
+        "popular": false
+      },
+      {
+        "name": "Business + Voice AI",
+        "subtitle": "+ voice channel (Vapi)",
+        "setup_range": "€2,500 – €3,500",
+        "price_monthly": "499",
+        "price_prefix": "From",
+        "price_yearly": "399",
+        "description": "For businesses that want an intelligent voice agent.",
+        "features": [
+          "Everything included in Professional",
+          "Voice channel with Vapi",
+          "AI voice agent",
+          "Inbound/outbound calls",
+          "Phone integration",
+          "100% customized solution"
+        ],
+        "cta": "Contact for Voice AI",
         "popular": false
       }
     ]
@@ -453,19 +469,34 @@
       "success_message": "We'll get back to you in less than 24 hours."
     }
   },
-
   "form": {
     "title": "Tell us your challenge",
     "subtitle": "Within 24h we'll propose a concrete solution and a quote with no fine print.",
     "footer_text": "No spam. No commitment. We only talk about automation.",
     "success_message": "Request received! We'll analyze your case and get back to you in under 24h.",
-    "steps": ["Your details", "Your challenge", "Context"],
+    "steps": [
+      "Your details",
+      "Your challenge",
+      "Context"
+    ],
     "step1": {
       "fields": {
-        "name": { "label": "Full name", "placeholder": "Your name" },
-        "company": { "label": "Company", "placeholder": "Your company name" },
-        "email": { "label": "Corporate email", "placeholder": "you@company.com" },
-        "phone": { "label": "Phone", "placeholder": "+34 600 000 000" }
+        "name": {
+          "label": "Full name",
+          "placeholder": "Your name"
+        },
+        "company": {
+          "label": "Company",
+          "placeholder": "Your company name"
+        },
+        "email": {
+          "label": "Corporate email",
+          "placeholder": "you@company.com"
+        },
+        "phone": {
+          "label": "Phone",
+          "placeholder": "+34 600 000 000"
+        }
       },
       "next_button": "Next",
       "errors": {
@@ -480,12 +511,42 @@
     "step2": {
       "question": "What is your biggest challenge right now?",
       "retos": [
-        { "id": "tiempo", "emoji": "🕐", "title": "I lose time on repetitive tasks", "desc": "Manual processes, Excel, tasks that repeat every day" },
-        { "id": "clientes", "emoji": "📞", "title": "I can't attend all my clients", "desc": "Missed calls, slow responses, unattended clients" },
-        { "id": "leads", "emoji": "📋", "title": "I struggle to organize and follow my leads", "desc": "I don't know where each client stands or what to do next" },
-        { "id": "empezar", "emoji": "🤝", "title": "I want to automate but don't know where to start", "desc": "I know I need to change something but don't know what" },
-        { "id": "asistente", "emoji": "💬", "title": "I need an assistant that responds for me 24/7", "desc": "WhatsApp, web, email — I want smart automatic replies" },
-        { "id": "herramientas_desconectadas", "emoji": "⚙️", "title": "My tools are not connected to each other", "desc": "CRM, email, WhatsApp, invoicing — all separate" }
+        {
+          "id": "tiempo",
+          "emoji": "🕐",
+          "title": "I lose time on repetitive tasks",
+          "desc": "Manual processes, Excel, tasks that repeat every day"
+        },
+        {
+          "id": "clientes",
+          "emoji": "📞",
+          "title": "I can't attend all my clients",
+          "desc": "Missed calls, slow responses, unattended clients"
+        },
+        {
+          "id": "leads",
+          "emoji": "📋",
+          "title": "I struggle to organize and follow my leads",
+          "desc": "I don't know where each client stands or what to do next"
+        },
+        {
+          "id": "empezar",
+          "emoji": "🤝",
+          "title": "I want to automate but don't know where to start",
+          "desc": "I know I need to change something but don't know what"
+        },
+        {
+          "id": "asistente",
+          "emoji": "💬",
+          "title": "I need an assistant that responds for me 24/7",
+          "desc": "WhatsApp, web, email — I want smart automatic replies"
+        },
+        {
+          "id": "herramientas_desconectadas",
+          "emoji": "⚙️",
+          "title": "My tools are not connected to each other",
+          "desc": "CRM, email, WhatsApp, invoicing — all separate"
+        }
       ],
       "prev_button": "Previous",
       "next_button": "Next",
@@ -496,19 +557,41 @@
     "step3": {
       "volumen_clientes": {
         "question": "How many clients or contacts do you manage per month?",
-        "options": ["Less than 50", "50 - 200", "200 - 500", "More than 500", "I don't know exactly"]
+        "options": [
+          "Less than 50",
+          "50 - 200",
+          "200 - 500",
+          "More than 500",
+          "I don't know exactly"
+        ]
       },
       "herramientas": {
         "question": "What tools do you currently use?",
         "hint": "optional, you can choose several",
-        "options": ["WhatsApp Business", "Email / Gmail", "Own CRM", "Excel / Google Sheets", "Social Media", "None in particular"]
+        "options": [
+          "WhatsApp Business",
+          "Email / Gmail",
+          "Own CRM",
+          "Excel / Google Sheets",
+          "Social Media",
+          "None in particular"
+        ]
       },
       "urgencia": {
         "question": "When do you need a solution?",
         "options": [
-          { "id": "alta", "label": "As soon as possible" },
-          { "id": "media", "label": "In 1-2 months" },
-          { "id": "baja", "label": "Just exploring" }
+          {
+            "id": "alta",
+            "label": "As soon as possible"
+          },
+          {
+            "id": "media",
+            "label": "In 1-2 months"
+          },
+          {
+            "id": "baja",
+            "label": "Just exploring"
+          }
         ]
       },
       "prev_button": "Previous",
@@ -520,8 +603,6 @@
       }
     }
   },
-
-
   "footer": {
     "brand": "OryonLabs",
     "description": "We automate lead capture, customer service, and your company's workflows.",
@@ -534,15 +615,29 @@
     "columns": {
       "services": {
         "title": "Services",
-        "links": ["AI Chatbots", "Process Automation", "System Integration", "Custom AI Agents"]
+        "links": [
+          "AI Chatbots",
+          "Process Automation",
+          "System Integration",
+          "Custom AI Agents"
+        ]
       },
       "company": {
         "title": "Company",
-        "links": ["About us", "Use cases", "FAQ", "Blog"]
+        "links": [
+          "About us",
+          "Use cases",
+          "FAQ",
+          "Blog"
+        ]
       },
       "legal": {
         "title": "Legal",
-        "links": ["Privacy", "Terms", "Cookies"]
+        "links": [
+          "Privacy",
+          "Terms",
+          "Cookies"
+        ]
       }
     },
     "contact": {
@@ -581,5 +676,370 @@
       "Request a free consultation",
       "How does AI work?"
     ]
+  },
+  "admin": {
+    "navbar": {
+      "badge": "Admin",
+      "logout": "Log out"
+    },
+    "page": {
+      "title": "Administration Panel",
+      "subtitle": "OryonX · Internal management"
+    },
+    "actions": {
+      "new_lead": "New lead",
+      "add_client": "Add client",
+      "subscription": "Subscription",
+      "invoice": "Invoice"
+    },
+    "tabs": {
+      "dashboard": "Dashboard",
+      "pipeline": "Pipeline",
+      "projects": "Projects",
+      "clients": "Clients",
+      "subscriptions": "Subscriptions",
+      "invoices": "Billing",
+      "leads": "Leads"
+    },
+    "toasts": {
+      "invoice_paid": "Invoice marked as paid",
+      "client_deleted": "Client deleted",
+      "client_status_updated": "Client status updated",
+      "lead_status_updated": "Lead status updated",
+      "lead_converted": "Lead successfully converted to client",
+      "lead_deleted": "Lead deleted",
+      "subscription_created": "Subscription created successfully",
+      "invoice_created": "Invoice generated successfully",
+      "client_created": "Client created successfully",
+      "lead_created": "Lead created successfully"
+    },
+    "common": {
+      "cancel": "Cancel",
+      "close": "Close",
+      "refresh": "Refresh",
+      "refreshing": "Refreshing...",
+      "creating": "Creating...",
+      "unexpected_error": "Unexpected error.",
+      "name_placeholder": "Full name",
+      "company_placeholder": "Company name",
+      "email_placeholder": "client@company.com",
+      "phone_placeholder": "+1 600 000 000"
+    },
+    "dashboard": {
+      "selector": {
+        "marketing": "Marketing & Acquisition",
+        "ventas": "Leads & Sales"
+      },
+      "marketing": {
+        "kpi_total": "Total leads",
+        "kpi_converted": "Converted leads",
+        "kpi_rate": "Conversion rate",
+        "kpi_rate_sub": "lead → client",
+        "leads_by_source": {
+          "title": "Leads by source",
+          "range_all": "All time",
+          "range_month": "Last month",
+          "empty": "No data for this period.",
+          "total_prefix": "Total:"
+        },
+        "conversion_by_source": {
+          "title": "Conversion by source",
+          "subtitle": "% of leads that become clients",
+          "empty": "No data for this period.",
+          "legend": "Green ≥ 30% · Orange ≥ 15% · Red < 15%"
+        },
+        "capture_trend": {
+          "title": "Acquisition trend",
+          "subtitle": "Leads captured per month",
+          "vs_prev": "vs previous month",
+          "this_month": "This month",
+          "total_label": "Total captured"
+        }
+      },
+      "ventas": {
+        "kpi_active_clients": "Active clients",
+        "kpi_mrr": "MRR",
+        "kpi_mrr_sub": "monthly recurring revenue",
+        "kpi_pending": "Pending collection",
+        "alert_pending": "invoice(s) pending collection",
+        "latest_leads_title": "Latest leads",
+        "converted_trend": {
+          "title": "Converted leads",
+          "subtitle": "Last 6 months",
+          "vs_prev": "vs previous month",
+          "total_label": "Total converted",
+          "rate_label": "Conversion rate"
+        },
+        "mrr_growth": {
+          "title": "MRR growth",
+          "subtitle": "New activations per month",
+          "vs_prev": "vs previous month",
+          "current_label": "Current MRR",
+          "new_label": "New this month"
+        },
+        "churn": {
+          "title": "Churn rate",
+          "subtitle": "Cumulative cancellations",
+          "health_low": "Healthy",
+          "health_mid": "Moderate",
+          "health_high": "High — review",
+          "active": "Active",
+          "cancelled": "Cancelled",
+          "total": "Total"
+        },
+        "funnel": {
+          "title": "Conversion funnel",
+          "subtitle": "Current pipeline snapshot",
+          "stages": {
+            "new": "New",
+            "contacted": "Contacted",
+            "qualified": "Qualified",
+            "converted": "Converted"
+          },
+          "discarded_label": "discarded",
+          "drop_off": "drop-off",
+          "of_total": "of total",
+          "empty": "No leads to display"
+        }
+      },
+      "channels": {
+        "form": "Web form",
+        "chatbot": "Chatbot",
+        "whatsapp": "WhatsApp",
+        "phone": "Phone",
+        "manual": "Manual"
+      },
+      "adquisicion": {
+        "title": "Acquisition",
+        "subtitle": "Are leads coming in?",
+        "kpi_this_month": "Leads this month",
+        "kpi_prev_month": "Previous month",
+        "kpi_avg_day": "Avg / day",
+        "kpi_avg_day_sub": "this month",
+        "channels_title": "Acquisition by channel",
+        "channels_empty": "No channel data",
+        "range_week": "This week",
+        "range_month": "This month",
+        "range_6m": "Last 6 months"
+      },
+      "conversion_section": {
+        "title": "Conversion",
+        "subtitle": "Are they converting?",
+        "kpi_rate": "Global rate",
+        "kpi_best_channel": "Best channel",
+        "kpi_best_channel_sub": "highest conversion rate",
+        "kpi_best_channel_none": "No data",
+        "kpi_unmanaged": "Unmanaged",
+        "kpi_unmanaged_sub": "leads in «new» +3 days",
+        "unmanaged_alert": "lead(s) in «new» untouched for more than 3 days"
+      },
+      "negocio": {
+        "title": "Business",
+        "subtitle": "Is the money healthy?",
+        "kpi_mrr": "MRR",
+        "kpi_mrr_sub": "recurring revenue",
+        "kpi_active": "Active clients",
+        "kpi_arpu": "ARPU",
+        "kpi_arpu_sub": "avg revenue per client",
+        "kpi_pending": "Pending",
+        "mrr_by_plan_title": "MRR by plan",
+        "mrr_by_plan_empty": "No active subscriptions",
+        "concentration_label": "of MRR in 1 client",
+        "renewals_title": "Upcoming renewals",
+        "renewal_in": "in",
+        "renewal_days": "days",
+        "no_renewals": "No renewals in 15 days",
+        "renewal_alert": "renewal(s) in less than 15 days"
+      }
+    },
+    "leads": {
+      "stats": {
+        "total": "Total leads",
+        "new": "New",
+        "converted": "Converted"
+      },
+      "toolbar": {
+        "singular": "lead",
+        "plural": "leads"
+      },
+      "table": {
+        "headers": {
+          "lead": "Lead",
+          "company": "Company",
+          "channel": "Channel",
+          "challenge": "Challenge",
+          "urgency": "Urgency",
+          "status": "Status",
+          "date": "Date",
+          "actions": "Actions"
+        },
+        "empty": "No leads registered yet.",
+        "convert": "Convert",
+        "converting": "..."
+      },
+      "detail": {
+        "title": "Lead Detail",
+        "contact_info": "Contact information",
+        "company": "Company",
+        "phone": "Phone",
+        "channel": "Channel",
+        "language": "Language",
+        "urgency": "Urgency",
+        "date": "Date",
+        "challenge": "The challenge",
+        "no_challenge": "No challenge information.",
+        "commercial_summary": "Commercial summary",
+        "no_summary": "No commercial summary recorded.",
+        "notes": "Notes",
+        "convert_btn": "Convert to client",
+        "converting_btn": "Converting..."
+      },
+      "delete": {
+        "title": "Delete lead",
+        "warning": "This action cannot be undone.",
+        "confirm": "Yes, delete",
+        "deleting": "Deleting..."
+      }
+    },
+    "clients": {
+      "table": {
+        "headers": {
+          "client": "Client",
+          "company": "Company",
+          "email": "Email",
+          "phone": "Phone",
+          "status": "Status",
+          "language": "Language",
+          "projects": "Projects",
+          "actions": "Actions"
+        },
+        "empty": "No clients available.",
+        "no_projects": "No projects",
+        "singular": "client",
+        "plural": "clients"
+      },
+      "detail": {
+        "title": "Client Details",
+        "company": "Company",
+        "phone": "Phone",
+        "language": "Language",
+        "email": "Email",
+        "projects": "Projects",
+        "no_projects": "No projects"
+      },
+      "delete": {
+        "title": "Delete client",
+        "blocked": "Cannot delete — resolve the following first:",
+        "active_sub_title": "Active subscription",
+        "active_sub_hint": "Go to the Subscriptions tab and cancel it first.",
+        "active_projects_hint": "Go to the Projects tab and close them first.",
+        "project_singular": "active project",
+        "project_plural": "active projects",
+        "understood": "Understood",
+        "warning": "This action cannot be undone.",
+        "confirm": "Yes, delete",
+        "deleting": "Deleting..."
+      }
+    },
+    "subscriptions": {
+      "kpi_mrr": "Total MRR",
+      "kpi_active": "Active subscriptions",
+      "headers": {
+        "company": "Company",
+        "plan": "Plan",
+        "setup": "Setup",
+        "monthly": "Monthly fee",
+        "start": "Start",
+        "next_billing": "Next billing",
+        "status": "Status",
+        "action": "Action"
+      },
+      "empty": "No subscriptions",
+      "per_month": "/mo"
+    },
+    "invoices": {
+      "kpi_pending_amount": "Pending collection",
+      "kpi_pending_count": "Pending invoices",
+      "headers": {
+        "number": "Invoice #",
+        "client": "Client",
+        "type": "Type",
+        "amount": "Amount",
+        "due_date": "Due date",
+        "status": "Status",
+        "action": "Action"
+      },
+      "empty": "No invoices",
+      "mark_paid": "Mark as paid"
+    },
+    "pipeline": {
+      "empty_stage": "Empty"
+    },
+    "modal_lead": {
+      "title": "New manual lead",
+      "name": "Name",
+      "company": "Company",
+      "email": "Email",
+      "phone": "Phone",
+      "channel": "Channel",
+      "client_language": "Client language",
+      "name_required": "Name is required.",
+      "submit": "Create lead",
+      "submitting": "Creating..."
+    },
+    "modal_client": {
+      "title": "Add client",
+      "name": "Name",
+      "company": "Company",
+      "email": "Email",
+      "phone": "Phone",
+      "status_label": "Status",
+      "status_active": "Active",
+      "status_inactive": "Inactive",
+      "name_required": "Name is required.",
+      "email_required": "Email is required.",
+      "email_invalid": "Invalid email.",
+      "submit": "Create client",
+      "submitting": "Creating..."
+    },
+    "modal_subscription": {
+      "title": "New subscription",
+      "client": "Client",
+      "plan": "Plan",
+      "setup_fee": "Setup fee (€)",
+      "monthly_fee": "Monthly fee (€/month)",
+      "start_date": "Start date",
+      "next_billing": "Next billing date",
+      "notes": "Notes",
+      "notes_placeholder": "Internal notes...",
+      "select_client": "Select a client",
+      "select_plan": "Select a plan",
+      "client_required": "Select a client.",
+      "plan_required": "Select a plan.",
+      "setup_required": "Setup fee required (≥ 0).",
+      "monthly_required": "Monthly fee required (> 0).",
+      "start_required": "Start date required.",
+      "submit": "Create subscription",
+      "submitting": "Creating..."
+    },
+    "modal_invoice": {
+      "title": "New invoice",
+      "client": "Client",
+      "subscription": "Subscription",
+      "subscription_optional": "(optional)",
+      "no_subscription": "No associated subscription",
+      "type": "Type",
+      "amount": "Amount (€)",
+      "invoice_number": "Invoice #",
+      "due_date": "Due date",
+      "select_client": "Select a client",
+      "select_type": "Select type",
+      "type_required": "Select a type.",
+      "amount_required": "Amount required (> 0).",
+      "due_date_required": "Due date required.",
+      "invoice_number_required": "Invoice number required.",
+      "submit": "Generate invoice",
+      "submitting": "Generating..."
+    }
   }
 }

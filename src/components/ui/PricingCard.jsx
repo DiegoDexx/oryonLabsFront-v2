@@ -5,6 +5,7 @@ export default function PricingCard({
   subtitle,
   setupRange,
   monthlyRange,
+  monthlyPrefix = '',
   perMonth = '/mes',
   setupLabel = 'Setup inicial',
   monthlyLabel = 'Mensualidad',
@@ -63,6 +64,9 @@ export default function PricingCard({
             {monthlyLabel}
           </p>
           <p className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-navy'}`}>
+            {monthlyPrefix && (
+              <span className="text-base font-normal">{monthlyPrefix} </span>
+            )}
             {monthlyRange}
             <span className={`text-sm font-normal ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
               {perMonth}

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../actions/authActions';
 import { Link } from 'react-router-dom';
 import { FaLock, FaEnvelope, FaEye, FaEyeSlash } from 'react-icons/fa';
+import logoBlue2 from '../assets/img/logo_blue2.webp';
 
 const Login = ({ onClose }) => {
   const [email, setEmail] = useState('');
@@ -53,11 +54,7 @@ const Login = ({ onClose }) => {
       <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-cyan/10 rounded-full flex items-center justify-center mx-auto mb-4">
-            <div className="w-10 h-10 bg-cyan rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">O</span>
-            </div>
-          </div>
+          <img src={logoBlue2} alt="OryonX" className="h-14 w-auto mx-auto mb-4 object-contain" />
           <h2 className="text-2xl font-bold text-navy mb-2">
             Acceso al panel
           </h2>

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Modal from "../ui/Modal";
-import { apiCreateSubscription } from "../../api/apiActions";
-import { notifySubscriptionCreated } from "../../api/webhookCalls";
+import Modal from "../../ui/Modal";
+import { apiCreateSubscription } from "../../../api/apiActions";
+import { notifySubscriptionCreated } from "../../../api/webhookCalls";
 
 
 const PLANS = [
