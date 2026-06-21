@@ -8,16 +8,16 @@
     "cta_pricing": "See plans"
   },
   "hero": {
-    "badge": "For SMBs losing clients because they don't reply fast enough",
-    "title": "Reply in seconds. Never lose another client.",
-    "title_highlight": "Never lose another client.",
-    "subtitle": "We automate lead capture, customer support, and your business workflows — with custom AI engineering, no generic templates. No more leads going cold while your team is busy with other things.",
+    "badge": "For SMBs losing leads they can't follow up fast enough",
+    "title": "Your business is getting leads. The problem is what happens next.",
+    "title_highlight": "what happens next",
+    "subtitle": "We automate the response, follow-up, and qualification of your leads so none of them go cold waiting for someone to reply. Just like we did for Renovy in the home renovation sector.",
     "cta_primary": "See how it works",
     "cta_secondary": "Talk to an expert",
     "trust_indicator_1": "Automatic response in seconds",
     "trust_indicator_2": "Visible results in 30 days",
     "trust_indicator_3": "Support included",
-    "panel_title": "OryonX — Automation Dashboard",
+    "panel_title": "Oryon Labs — Automation Dashboard",
     "panel_badge": "50+ SMBs automated",
     "metrics": {
       "leads": {
@@ -77,9 +77,9 @@
     ]
   },
   "why": {
-    "eyebrow": "WHY OryonX",
-    "title": "Stop paying for tools that don't talk to each other.",
-    "subtitle": "Most businesses spend 500–800{currency}/month on disconnected software. OryonX replaces all of it.",
+    "eyebrow": "THE PROBLEM NO ONE SOLVES",
+    "title": "You have leads. The problem is you're too slow.",
+    "subtitle": "Most business opportunities are lost within the first 2 hours. By the time you respond, your lead is already talking to a competitor.",
     "pain": {
       "label": "WHAT MOST BUSINESSES PAY TODAY",
       "item1": "Sales CRM software",
@@ -263,7 +263,7 @@
   "testimonials": {
     "badge": "Success stories",
     "title": "What our clients say",
-    "description": "Real results from companies that automated with OryonX.",
+    "description": "Real results from companies that automated with Oryon Labs.",
     "cards": [
       {
         "quote": "In 3 weeks we went from losing 40% of leads due to late response to capturing them automatically 24/7.",
@@ -273,7 +273,7 @@
         "rating": 5
       },
       {
-        "quote": "OryonX automated our appointment and follow-up system. Now our team focuses on serving, not administering.",
+        "quote": "Oryon Labs automated our appointment and follow-up system. Now our team focuses on serving, not administering.",
         "name": "Dr. Carlos Ruiz",
         "company": "Clínica BeautyMed",
         "result": "We save 3h/day",
@@ -335,19 +335,19 @@
     "terms": {
       "title": "Terms of Service",
       "lastUpdated": "Last updated: June 2025 · Version 1.0",
-      "intro": "This document sets out the terms under which OryonX provides its AI automation services. We recommend reading it carefully before purchasing any service. If you have any questions, you can contact us at hola@OryonX.com.",
+      "intro": "This document sets out the terms under which Oryon Labs provides its AI automation services. We recommend reading it carefully before purchasing any service. If you have any questions, you can contact us at hola@oryonlabs.com.",
       "sections": [
         {
           "title": "1. Purpose and acceptance",
-          "body": "These Terms of Service govern access to and use of the services offered by OryonX (the \"Agency\") through its website and associated platforms. By purchasing any of our services, the Client confirms having read, understood, and fully accepted these terms. If you do not agree with any of the conditions set out here, please refrain from using our services."
+          "body": "These Terms of Service govern access to and use of the services offered by Oryon Labs (the \"Agency\") through its website and associated platforms. By purchasing any of our services, the Client confirms having read, understood, and fully accepted these terms. If you do not agree with any of the conditions set out here, please refrain from using our services."
         },
         {
           "title": "2. Description of services",
-          "body": "OryonX provides business process automation services using artificial intelligence, including but not limited to: development and implementation of AI chatbots, CRM integration, workflow automation, lead capture and qualification, and website development. The specific scope of each service will be detailed in the commercial proposal or individual contract signed with the Client."
+          "body": "Oryon Labs provides business process automation services using artificial intelligence, including but not limited to: development and implementation of AI chatbots, CRM integration, workflow automation, lead capture and qualification, and website development. The specific scope of each service will be detailed in the commercial proposal or individual contract signed with the Client."
         },
         {
           "title": "3. Registration and user accounts",
-          "body": "To access certain features of our platform or admin panel, the Client must provide truthful, current, and complete information. The Client is responsible for keeping their access credentials confidential and for any activity carried out under their account. OryonX reserves the right to suspend or cancel accounts that breach these terms."
+          "body": "To access certain features of our platform or admin panel, the Client must provide truthful, current, and complete information. The Client is responsible for keeping their access credentials confidential and for any activity carried out under their account. Oryon Labs reserves the right to suspend or cancel accounts that breach these terms."
         },
         {
           "title": "4. Client obligations",
@@ -359,19 +359,19 @@
         },
         {
           "title": "6. Intellectual property",
-          "body": "All software, source code, designs, methodologies, and materials developed by OryonX in the course of providing the service remain the property of the Agency, unless the transfer of rights is expressly agreed in the relevant contract. The Client retains ownership of its own data, brand, and provided content."
+          "body": "All software, source code, designs, methodologies, and materials developed by Oryon Labs in the course of providing the service remain the property of the Agency, unless the transfer of rights is expressly agreed in the relevant contract. The Client retains ownership of its own data, brand, and provided content."
         },
         {
           "title": "7. Limitation of liability",
-          "body": "OryonX will provide its services with reasonable professional care but does not guarantee specific business outcomes resulting from the use of the implemented AI solutions. The Agency's liability shall, in any case, be limited to the amount actually paid by the Client in the preceding 12 months, except in cases of wilful misconduct or gross negligence."
+          "body": "Oryon Labs will provide its services with reasonable professional care but does not guarantee specific business outcomes resulting from the use of the implemented AI solutions. The Agency's liability shall, in any case, be limited to the amount actually paid by the Client in the preceding 12 months, except in cases of wilful misconduct or gross negligence."
         },
         {
           "title": "8. Data protection",
-          "body": "The processing of personal data carried out by OryonX is governed by our Privacy Policy, in accordance with the General Data Protection Regulation (GDPR) and, where applicable, the UK GDPR. When OryonX acts as a data processor on behalf of the Client, both parties may enter into a specific Data Processing Agreement (DPA)."
+          "body": "The processing of personal data carried out by Oryon Labs is governed by our Privacy Policy, in accordance with the General Data Protection Regulation (GDPR) and, where applicable, the UK GDPR. When Oryon Labs acts as a data processor on behalf of the Client, both parties may enter into a specific Data Processing Agreement (DPA)."
         },
         {
           "title": "9. Changes to these terms",
-          "body": "OryonX may modify these Terms of Service at any time to reflect legislative, technical, or commercial changes. Any modifications will be notified through our website or by email and will take effect upon publication, unless another date is specified."
+          "body": "Oryon Labs may modify these Terms of Service at any time to reflect legislative, technical, or commercial changes. Any modifications will be notified through our website or by email and will take effect upon publication, unless another date is specified."
         },
         {
           "title": "10. Governing law and jurisdiction",
@@ -385,11 +385,11 @@
     "privacy": {
       "title": "Privacy Policy",
       "lastUpdated": "Last updated: June 2025 · Version 1.0",
-      "intro": "At OryonX, we are committed to protecting your privacy and processing your personal data in accordance with the General Data Protection Regulation (GDPR) and, where applicable, the UK GDPR. This policy explains what data we collect, why, and what rights you have. If you have any questions, you can contact us at hola@OryonX.com.",
+      "intro": "At Oryon Labs, we are committed to protecting your privacy and processing your personal data in accordance with the General Data Protection Regulation (GDPR) and, where applicable, the UK GDPR. This policy explains what data we collect, why, and what rights you have. If you have any questions, you can contact us at hola@oryonlabs.com.",
       "sections": [
         {
           "title": "1. Data controller",
-          "body": "The controller responsible for the personal data collected on this website is OryonX, based in Alicante, Spain, with contact email hola@OryonX.com. For any query relating to the processing of your personal data, you can reach us at that address."
+          "body": "The controller responsible for the personal data collected on this website is Oryon Labs, based in Alicante, Spain, with contact email hola@oryonlabs.com. For any query relating to the processing of your personal data, you can reach us at that address."
         },
         {
           "title": "2. Data we collect",
@@ -401,7 +401,7 @@
         },
         {
           "title": "4. Legal basis for processing",
-          "body": "The processing of your data is based, depending on the case, on: the performance of a contract or pre-contractual relationship, your explicit consent (for example, for the newsletter or non-essential cookies), OryonX' legitimate interest in improving its services, and compliance with legal obligations."
+          "body": "The processing of your data is based, depending on the case, on: the performance of a contract or pre-contractual relationship, your explicit consent (for example, for the newsletter or non-essential cookies), Oryon Labs' legitimate interest in improving its services, and compliance with legal obligations."
         },
         {
           "title": "5. Data retention",
@@ -413,7 +413,7 @@
         },
         {
           "title": "7. Your rights",
-          "body": "You have the right to access, rectify, and erase your data, as well as to request restriction of or object to its processing and to data portability, by contacting hola@OryonX.com. You also have the right to lodge a complaint with the Spanish Data Protection Agency (AEPD) or, if you reside in the United Kingdom, with the Information Commissioner's Office (ICO), if you believe the processing does not comply with applicable law."
+          "body": "You have the right to access, rectify, and erase your data, as well as to request restriction of or object to its processing and to data portability, by contacting hola@oryonlabs.com. You also have the right to lodge a complaint with the Spanish Data Protection Agency (AEPD) or, if you reside in the United Kingdom, with the Information Commissioner's Office (ICO), if you believe the processing does not comply with applicable law."
         },
         {
           "title": "8. Cookies",
@@ -421,7 +421,7 @@
         },
         {
           "title": "9. Data security",
-          "body": "OryonX applies appropriate technical and organisational measures to protect your personal data against unauthorised access, loss, alteration, or destruction, as required by the GDPR and UK GDPR."
+          "body": "Oryon Labs applies appropriate technical and organisational measures to protect your personal data against unauthorised access, loss, alteration, or destruction, as required by the GDPR and UK GDPR."
         },
         {
           "title": "10. Changes to this privacy policy",
@@ -523,7 +523,7 @@
 
 
   "footer": {
-    "brand": "OryonX",
+    "brand": "OryonLabs",
     "description": "We automate lead capture, customer service, and your company's workflows.",
     "newsletter": {
       "title": "Subscribe to newsletter",
@@ -546,11 +546,11 @@
       }
     },
     "contact": {
-      "email": "hello@OryonX.com",
+      "email": "hello@oryonlabs.com",
       "phone": "+34 900 123 456",
       "whatsapp": "WhatsApp available"
     },
-    "copyright": "© {year} OryonX. All rights reserved."
+    "copyright": "© {year} OryonLabs. All rights reserved."
   },
   "cookies": {
     "text": "We use cookies to improve your experience. By continuing, you agree to our",
@@ -567,9 +567,9 @@
     "online_status": "Online",
     "retry": "Retry",
     "quick_questions_label": "Quick questions:",
-    "rate_limit_banner": "Message limit reached. Contact us at hello@OryonX.com",
+    "rate_limit_banner": "Message limit reached. Contact us at hello@oryonlabs.com",
     "lead_done_badge": "✅ Request received",
-    "initial_message": "Hi! I'm Ridley, OryonX' virtual assistant. How can I help you today?",
+    "initial_message": "Hi! I'm Ridley, Oryon Labs' virtual assistant. How can I help you today?",
     "placeholder": "Type your message...",
     "rate_limit_msg": "You've reached the message limit. You can continue in 1 hour or contact us directly.",
     "timeout_msg": "The connection took too long. Please try again.",
