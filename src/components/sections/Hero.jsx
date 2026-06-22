@@ -110,13 +110,13 @@ export default function Hero() {
 
           {/* ── Left Content ── */}
           {/* FIX #7: reduced vertical spacing on mobile (space-y-6 vs space-y-8) */}
-          <div className="space-y-6 lg:space-y-8 animate-fade-in-up" style={{ animationDuration: '0.7s', animationDelay: '3.2s', animationFillMode: 'both' }}>
+          <div className="space-y-6 lg:space-y-8 animate-fade-in-up" style={{ animationDuration: '0.7s', animationDelay: '0s', animationFillMode: 'both' }}>
 
             {/* Badge */}
             {/* FIX #1: rounded-2xl on mobile so it doesn't look broken when text wraps */}
             <div
               className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-2xl sm:rounded-full px-4 py-2 border border-white/10 animate-fade-in"
-              style={{ animationDelay: '3.6s', animationFillMode: 'both' }}
+              style={{ animationDelay: '0.15s', animationFillMode: 'both' }}
             >
               <span className="w-2 h-2 bg-cyan rounded-full animate-pulse flex-shrink-0" />
               <span className="text-cyan-light text-sm font-medium leading-snug">
@@ -189,7 +189,7 @@ export default function Hero() {
 
           {/* ── Right Content — Dashboard Panel ── */}
           {/* FIX #4: pb-10 on mobile so the absolute floating badge doesn't overlap content below */}
-          <div className="relative animate-slide-in-right pb-10 lg:pb-0" style={{ animationDuration: '0.8s', animationDelay: '3.4s', animationFillMode: 'both' }}>
+          <div className="relative animate-fade-in-up pb-10 lg:pb-0" style={{ animationDuration: '0.8s', animationDelay: '0.1s', animationFillMode: 'both' }}>
             {/* Glow effect */}
             <div className="absolute -inset-4 bg-gradient-to-r from-cyan/20 to-purple-500/20 rounded-3xl blur-2xl opacity-50" />
 
