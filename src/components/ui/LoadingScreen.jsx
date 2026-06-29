@@ -100,7 +100,7 @@ export default function LoadingScreen() {
             height: '100%',
             borderRadius: '9999px',
             background: 'linear-gradient(90deg, #0090C9, #38BDF8)',
-            animation: 'loadBar 2.8s ease-in-out forwards',
+            animation: 'loadBar 1.7s ease-in-out forwards',
           }}
         />
       </div>

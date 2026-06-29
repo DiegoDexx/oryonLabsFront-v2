@@ -110,12 +110,10 @@
 
 .animate-fade-in-up {
   animation: fadeInUp 500ms ease-out forwards;
-  will-change: transform, opacity;
 }
 
 .animate-slide-in-right {
   animation: slideInRight 600ms ease-out forwards;
-  will-change: transform, opacity;
 }
 
 .animate-pulse-slow {
@@ -142,7 +140,6 @@
 
 .animate-fade-in {
   animation: fadeIn 400ms ease-out forwards;
-  will-change: opacity;
 }
 
 .animate-bounce-slow {

@@ -22,8 +22,8 @@ function App() {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    const fadeTimer = setTimeout(() => setFadeOut(true), 2500);
-    const hideTimer = setTimeout(() => setLoading(false), 3100);
+    const fadeTimer = setTimeout(() => setFadeOut(true), 1800);
+    const hideTimer = setTimeout(() => setLoading(false), 2400);
     return () => { clearTimeout(fadeTimer); clearTimeout(hideTimer); };
   }, []);
 
