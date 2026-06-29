@@ -16,6 +16,7 @@ import DashboardView        from '../components/adminPanel/views/dashboard/Dashb
 import PipelineView         from '../components/adminPanel/views/PipelineView';
 import SubscriptionsView    from '../components/adminPanel/views/SubscriptionsView';
 import InvoicesView         from '../components/adminPanel/views/InvoicesView';
+import CreateSubscriptionModal from '../components/adminPanel/modals/CreateSubscriptionModal';
 import CreateInvoiceModal      from '../components/adminPanel/modals/CreateInvoiceModal';
 import CreateClientModal       from '../components/adminPanel/modals/CreateClientModal';
 import CreateLeadModal         from '../components/adminPanel/modals/CreateLeadModal';
