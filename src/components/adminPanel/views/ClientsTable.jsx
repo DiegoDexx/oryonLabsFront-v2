@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Modal from "../../ui/Modal";
 import { apiDeleteClient, apiUpdateClient } from "../../../api/apiActions";
+import { useAdminT } from "../../../context/AdminLangContext";
 
 const CLIENT_STATUS = {
   active:   "bg-green-100 text-green-700",
@@ -46,6 +47,9 @@ const DetailField = ({ label, value }) => (
 const CLOSED_STAGES = ["closed_won", "closed_lost"];
 
 const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) => {
+  const { t } = useAdminT();
+  const tc = t.clients;
+
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [deleting, setDeleting]         = useState(false);
   const [deleteError, setDeleteError]   = useState(null);
@@ -113,14 +117,14 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
       await apiUpdateClient(token, clientId, { status: newStatus });
       onStatusChange(clientId, newStatus);
     } catch (err) {
-      console.error("Error al actualizar estado:", err.message);
+      console.error("Status update error:", err.message);
     }
   };
 
   if (!clients || clients.length === 0) {
     return (
       <div className="bg-white rounded-xl border border-gray-200 p-12 text-center text-gray-400 text-sm shadow-sm">
-        No hay clientes disponibles.
+        {tc.table.empty}
       </div>
     );
   }
@@ -128,10 +132,10 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
   return (
     <>
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
-        {/* Table toolbar */}
+        {/* Toolbar */}
         <div className="flex items-center justify-between px-6 py-3 border-b border-gray-100 bg-gray-50/50">
           <p className="text-sm text-gray-500 font-medium">
-            {clients.length} cliente{clients.length !== 1 ? "s" : ""}
+            {clients.length} {clients.length !== 1 ? tc.table.plural : tc.table.singular}
           </p>
           <button
             onClick={handleRefresh}
@@ -139,7 +143,7 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
             className="flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition disabled:opacity-50"
           >
             <RefreshIcon spinning={refreshing} />
-            {refreshing ? "Actualizando..." : "Actualizar"}
+            {refreshing ? t.common.refreshing : t.common.refresh}
           </button>
         </div>
 
@@ -147,14 +151,14 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
           <table className="w-full">
             <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
-                <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Cliente</th>
-                <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:table-cell">Empresa</th>
-                <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">Email</th>
-                <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">Teléfono</th>
-                <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Estado</th>
-                <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">Idioma</th>
-                <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">Proyectos</th>
-                <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Acciones</th>
+                <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{tc.table.headers.client}</th>
+                <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:table-cell">{tc.table.headers.company}</th>
+                <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">{tc.table.headers.email}</th>
+                <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">{tc.table.headers.phone}</th>
+                <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{tc.table.headers.status}</th>
+                <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">{tc.table.headers.language}</th>
+                <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">{tc.table.headers.projects}</th>
+                <th className="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{tc.table.headers.actions}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
@@ -168,7 +172,6 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
                   <td className="px-6 py-4 text-gray-500 text-sm hidden md:table-cell">{client.email}</td>
                   <td className="px-6 py-4 text-gray-500 text-sm hidden lg:table-cell">{client.phone || "—"}</td>
 
-                  {/* Status — portal dropdown */}
                   <td className="px-6 py-4">
                     <button
                       data-dropdown
@@ -187,7 +190,7 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
                   <td className="px-6 py-4 text-gray-500 text-sm hidden lg:table-cell">
                     {client.projects?.length > 0
                       ? client.projects.map((p) => p.name).join(", ")
-                      : <em className="text-gray-400">Sin proyectos</em>
+                      : <em className="text-gray-400">{tc.table.no_projects}</em>
                     }
                   </td>
 
@@ -196,14 +199,14 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
                       <button
                         onClick={() => setViewTarget(client)}
                         className="p-1.5 text-gray-400 hover:text-blue-500 hover:bg-blue-50 rounded-lg transition"
-                        title="Ver detalles"
+                        title={tc.detail.title}
                       >
                         <EyeIcon />
                       </button>
                       <button
                         onClick={() => openDeleteModal(client)}
                         className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition"
-                        title="Eliminar cliente"
+                        title={tc.delete.title}
                       >
                         <TrashIcon />
                       </button>
@@ -239,10 +242,9 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
       )}
 
       {/* Client detail modal */}
-      <Modal isOpen={!!viewTarget} onClose={() => setViewTarget(null)} title="Client Details">
+      <Modal isOpen={!!viewTarget} onClose={() => setViewTarget(null)} title={tc.detail.title}>
         {viewTarget && (
           <div className="space-y-5">
-            {/* Header */}
             <div className="flex items-center gap-3 pb-4 border-b border-gray-100">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan/20 to-cyan/40 flex items-center justify-center text-cyan font-bold text-sm flex-shrink-0">
                 {viewTarget.name?.charAt(0)?.toUpperCase() || "?"}
@@ -256,17 +258,15 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
               </span>
             </div>
 
-            {/* Fields */}
             <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-              <DetailField label="Empresa"  value={viewTarget.company} />
-              <DetailField label="Teléfono" value={viewTarget.phone} />
-              <DetailField label="Idioma"   value={viewTarget.language === "en" ? "🇬🇧 English" : "🇪🇸 Español"} />
-              <DetailField label="Email"    value={viewTarget.email} />
+              <DetailField label={tc.detail.company}  value={viewTarget.company} />
+              <DetailField label={tc.detail.phone}    value={viewTarget.phone} />
+              <DetailField label={tc.detail.language} value={viewTarget.language === "en" ? "🇬🇧 English" : "🇪🇸 Español"} />
+              <DetailField label={tc.detail.email}    value={viewTarget.email} />
             </div>
 
-            {/* Projects */}
             <div>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Proyectos</p>
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">{tc.detail.projects}</p>
               {viewTarget.projects?.length > 0 ? (
                 <div className="flex flex-wrap gap-2">
                   {viewTarget.projects.map((p) => (
@@ -276,14 +276,14 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
                   ))}
                 </div>
               ) : (
-                <p className="text-sm text-gray-400 italic">Sin proyectos</p>
+                <p className="text-sm text-gray-400 italic">{tc.detail.no_projects}</p>
               )}
             </div>
 
             <div className="pt-1">
               <button onClick={() => setViewTarget(null)}
                 className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 transition">
-                Cerrar
+                {t.common.close}
               </button>
             </div>
           </div>
@@ -291,12 +291,12 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
       </Modal>
 
       {/* Confirm delete modal */}
-      <Modal isOpen={!!deleteTarget} onClose={closeDeleteModal} title="Eliminar cliente">
+      <Modal isOpen={!!deleteTarget} onClose={closeDeleteModal} title={tc.delete.title}>
         {deleteTarget && (() => {
           const isBlocked = !!(deleteTarget.activeSub || deleteTarget.activeProjects.length > 0);
+          const projCount = deleteTarget.activeProjects.length;
           return (
             <div className="space-y-4">
-
               {/* Client name row */}
               <div className="flex items-center gap-3 pb-3 border-b border-gray-100">
                 <div className="w-9 h-9 rounded-full bg-red-50 flex items-center justify-center text-red-500 font-bold text-sm flex-shrink-0">
@@ -305,44 +305,40 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
                 <p className="font-semibold text-navy">{deleteTarget.name}</p>
               </div>
 
-              {/* ── BLOCKED state ── */}
+              {/* BLOCKED */}
               {isBlocked && (
                 <div className="space-y-3">
                   <div className="flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-lg px-3.5 py-3">
                     <svg className="w-4 h-4 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
                     </svg>
-                    <p className="text-sm font-semibold text-amber-800">
-                      No se puede eliminar — resuelve lo siguiente primero:
-                    </p>
+                    <p className="text-sm font-semibold text-amber-800">{tc.delete.blocked}</p>
                   </div>
 
-                  {/* Active subscription blocker */}
                   {deleteTarget.activeSub && (
                     <div className="border border-orange-200 bg-orange-50 rounded-lg p-3.5 space-y-1">
                       <div className="flex items-center gap-2">
                         <svg className="w-3.5 h-3.5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                         </svg>
-                        <p className="text-xs font-bold text-orange-700 uppercase tracking-wide">Suscripción activa</p>
+                        <p className="text-xs font-bold text-orange-700 uppercase tracking-wide">{tc.delete.active_sub_title}</p>
                       </div>
                       <p className="text-sm text-orange-800">
                         Plan <span className="font-semibold">{deleteTarget.activeSub.plan}</span>
                         {deleteTarget.activeSub.monthly_fee ? ` · €${deleteTarget.activeSub.monthly_fee}/mes` : ""}
                       </p>
-                      <p className="text-xs text-orange-600">→ Ve a la pestaña <strong>Suscripciones</strong> y cancélala primero.</p>
+                      <p className="text-xs text-orange-600">→ {tc.delete.active_sub_hint}</p>
                     </div>
                   )}
 
-                  {/* Active projects blocker */}
-                  {deleteTarget.activeProjects.length > 0 && (
+                  {projCount > 0 && (
                     <div className="border border-blue-200 bg-blue-50 rounded-lg p-3.5 space-y-1.5">
                       <div className="flex items-center gap-2">
                         <svg className="w-3.5 h-3.5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
                         </svg>
                         <p className="text-xs font-bold text-blue-700 uppercase tracking-wide">
-                          {deleteTarget.activeProjects.length} proyecto{deleteTarget.activeProjects.length !== 1 ? "s" : ""} activo{deleteTarget.activeProjects.length !== 1 ? "s" : ""}
+                          {projCount} {projCount !== 1 ? tc.delete.project_plural : tc.delete.project_singular}
                         </p>
                       </div>
                       <ul className="space-y-0.5">
@@ -353,18 +349,18 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
                           </li>
                         ))}
                       </ul>
-                      <p className="text-xs text-blue-600">→ Ve a la pestaña <strong>Proyectos</strong> y ciérralos primero.</p>
+                      <p className="text-xs text-blue-600">→ {tc.delete.active_projects_hint}</p>
                     </div>
                   )}
 
                   <button type="button" onClick={closeDeleteModal}
                     className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 transition">
-                    Entendido
+                    {tc.delete.understood}
                   </button>
                 </div>
               )}
 
-              {/* ── FREE TO DELETE state ── */}
+              {/* FREE TO DELETE */}
               {!isBlocked && (
                 <>
                   <div className="text-center space-y-2 py-2">
@@ -372,12 +368,10 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
                       <div className="w-14 h-14 bg-red-50 rounded-full flex items-center justify-center text-2xl">⚠️</div>
                     </div>
                     <p className="text-sm text-gray-600 leading-relaxed">
-                      Estás a punto de eliminar a <span className="font-semibold text-navy">{deleteTarget.name}</span>.
-                      Esta acción no se puede deshacer.
+                      {tc.delete.about_to_delete} <span className="font-semibold text-navy">{deleteTarget.name}</span>. {tc.delete.warning}
                     </p>
                   </div>
 
-                  {/* API error fallback */}
                   {deleteError && (
                     <div className="flex items-start gap-2 bg-red-50 border border-red-200 rounded-lg px-3.5 py-3">
                       <svg className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -390,16 +384,15 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
                   <div className="flex gap-3 pt-1">
                     <button type="button" onClick={closeDeleteModal}
                       className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 transition">
-                      Cancelar
+                      {t.common.cancel}
                     </button>
                     <button type="button" onClick={handleDelete} disabled={deleting}
                       className="flex-1 px-4 py-2.5 rounded-lg bg-red-500 text-white text-sm font-semibold hover:bg-red-600 disabled:opacity-50 transition">
-                      {deleting ? "Eliminando..." : "Sí, eliminar"}
+                      {deleting ? tc.delete.deleting : tc.delete.confirm}
                     </button>
                   </div>
                 </>
               )}
-
             </div>
           );
         })()}

@@ -162,11 +162,18 @@ const AdminPanelInner = () => {
     showToast(t.toasts.lead_status_updated);
   };
 
-  const handleLeadConvert = (leadId) => {
+  const handleLeadConvert = (leadId, result) => {
     setLeads((prev) => prev.map((l) => l.id === leadId ? { ...l, status: 'converted' } : l));
-    showToast(t.toasts.lead_converted);
+    const msg = result?.project
+      ? t.toasts.lead_converted
+      : (t.toasts.lead_converted_existing ?? 'Lead convertido · cliente ya tenía suscripción activa');
+    showToast(msg);
     refreshClients();
     refreshLeads();
+  };
+
+  const handleLeadUpdate = (leadId, patch) => {
+    setLeads((prev) => prev.map((l) => l.id === leadId ? { ...l, ...patch } : l));
   };
 
   const handleLeadDelete = (leadId) => {
@@ -176,7 +183,7 @@ const AdminPanelInner = () => {
 
   return (
     <div className="min-h-screen bg-slate-50/70 pb-16">
-      <NavbarAdminPanel />
+      <NavbarAdminPanel onNavigate={setSelectedTab} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
 
@@ -352,10 +359,12 @@ const AdminPanelInner = () => {
             <LeadsView
               leads={leads}
               token={token}
+              users={users}
               onRefresh={refreshLeads}
               onStatusChange={handleLeadStatusChange}
               onConvert={handleLeadConvert}
               onDelete={handleLeadDelete}
+              onLeadUpdate={handleLeadUpdate}
             />
           )}
           {selectedTab === 'users' && (

@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import Modal from "../../ui/Modal";
 import { apiCreateUser, apiUpdateUser } from "../../../api/apiActions";
+import { useAdminT } from "../../../context/AdminLangContext";
 
 const INITIAL = { name: "", email: "", password: "", role: "user" };
 
-// Handles both create (user=null) and edit (user=object) modes
 const UserModal = ({ isOpen, onClose, token, onSuccess, user = null }) => {
+  const { t } = useAdminT();
+  const mu = t.modal_user;
+
   const isEdit = !!user;
+
   const [form, setForm]       = useState(INITIAL);
   const [errors, setErrors]   = useState({});
   const [loading, setLoading] = useState(false);
@@ -22,11 +26,11 @@ const UserModal = ({ isOpen, onClose, token, onSuccess, user = null }) => {
 
   const validate = () => {
     const e = {};
-    if (!form.name.trim()) e.name = "El nombre es obligatorio.";
-    if (!form.email)       e.email = "El email es obligatorio.";
-    else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) e.email = "Email inválido.";
-    if (!isEdit && !form.password)           e.password = "La contraseña es obligatoria.";
-    if (form.password && form.password.length < 8) e.password = "Mínimo 8 caracteres.";
+    if (!form.name.trim()) e.name = mu.name_required;
+    if (!form.email)       e.email = mu.email_required;
+    else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) e.email = mu.email_invalid;
+    if (!isEdit && !form.password)           e.password = mu.password_required;
+    if (form.password && form.password.length < 8) e.password = mu.password_min;
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -48,9 +52,9 @@ const UserModal = ({ isOpen, onClose, token, onSuccess, user = null }) => {
       setForm(INITIAL);
     } catch (err) {
       if (err.status === 403) {
-        setErrors({ submit: `Límite de usuarios alcanzado para tu plan. ${err.message}` });
+        setErrors({ submit: `${mu.plan_limit} ${err.message}` });
       } else {
-        setErrors({ submit: err.message || "Error inesperado." });
+        setErrors({ submit: err.message || t.common.unexpected_error });
       }
     } finally {
       setLoading(false);
@@ -70,31 +74,31 @@ const UserModal = ({ isOpen, onClose, token, onSuccess, user = null }) => {
     }`;
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title={isEdit ? "Editar usuario" : "Nuevo usuario"}>
+    <Modal isOpen={isOpen} onClose={onClose} title={isEdit ? mu.title_edit : mu.title_new}>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="block text-xs font-medium text-gray-600 mb-1.5">
-              Nombre <span className="text-red-400">*</span>
+              {mu.name} <span className="text-red-400">*</span>
             </label>
             <input
               type="text"
               value={form.name}
               onChange={handleChange("name")}
-              placeholder="Nombre completo"
+              placeholder={t.common.name_placeholder}
               className={inputClass("name")}
             />
             {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
           </div>
           <div>
-            <label className="block text-xs font-medium text-gray-600 mb-1.5">Rol</label>
+            <label className="block text-xs font-medium text-gray-600 mb-1.5">{mu.role}</label>
             <select
               value={form.role}
               onChange={handleChange("role")}
               className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm outline-none focus:border-cyan focus:ring-2 focus:ring-cyan/20 transition bg-white"
             >
-              <option value="user">Usuario</option>
-              <option value="admin">Administrador</option>
+              <option value="user">{mu.role_user}</option>
+              <option value="admin">{mu.role_admin}</option>
             </select>
           </div>
         </div>
@@ -107,7 +111,7 @@ const UserModal = ({ isOpen, onClose, token, onSuccess, user = null }) => {
             type="email"
             value={form.email}
             onChange={handleChange("email")}
-            placeholder="usuario@empresa.com"
+            placeholder={mu.email_placeholder}
             className={inputClass("email")}
           />
           {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
@@ -115,16 +119,17 @@ const UserModal = ({ isOpen, onClose, token, onSuccess, user = null }) => {
 
         <div>
           <label className="block text-xs font-medium text-gray-600 mb-1.5">
-            Contraseña{!isEdit && <span className="text-red-400"> *</span>}
+            {mu.password}
+            {!isEdit && <span className="text-red-400"> *</span>}
             {isEdit && (
-              <span className="text-gray-400 font-normal"> (dejar vacío para no cambiar)</span>
+              <span className="text-gray-400 font-normal"> {mu.password_optional}</span>
             )}
           </label>
           <input
             type="password"
             value={form.password}
             onChange={handleChange("password")}
-            placeholder={isEdit ? "••••••••" : "Mínimo 8 caracteres"}
+            placeholder={isEdit ? "••••••••" : mu.password_placeholder}
             autoComplete="new-password"
             className={inputClass("password")}
           />
@@ -143,7 +148,7 @@ const UserModal = ({ isOpen, onClose, token, onSuccess, user = null }) => {
             onClick={onClose}
             className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 transition"
           >
-            Cancelar
+            {t.common.cancel}
           </button>
           <button
             type="submit"
@@ -151,8 +156,8 @@ const UserModal = ({ isOpen, onClose, token, onSuccess, user = null }) => {
             className="flex-1 px-4 py-2.5 rounded-lg bg-navy hover:opacity-90 disabled:opacity-50 text-white text-sm font-semibold transition"
           >
             {loading
-              ? isEdit ? "Guardando..." : "Creando..."
-              : isEdit ? "Guardar cambios" : "Crear usuario"}
+              ? (isEdit ? mu.saving : mu.submitting)
+              : (isEdit ? mu.save_changes : mu.submit)}
           </button>
         </div>
       </form>

@@ -105,12 +105,12 @@ export default function Hero() {
       {/* Edge fade: softens grid borders so the navy bleeds in naturally */}
       <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-transparent to-navy/60 pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-10 lg:py-14 xl:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 xl:gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-10 md:py-12 lg:py-14 xl:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6 lg:gap-10 xl:gap-12 items-center">
 
           {/* ── Left Content ── */}
           {/* FIX #7: reduced vertical spacing on mobile (space-y-6 vs space-y-8) */}
-          <div className="space-y-6 lg:space-y-8 animate-fade-in-up" style={{ animationDuration: '0.7s', animationDelay: '0s', animationFillMode: 'both' }}>
+          <div className="space-y-6 md:space-y-7 lg:space-y-8 animate-fade-in-up" style={{ animationDuration: '0.7s', animationDelay: '0s', animationFillMode: 'both' }}>
 
             {/* Badge */}
             {/* FIX #1: rounded-2xl on mobile so it doesn't look broken when text wraps */}
@@ -126,7 +126,7 @@ export default function Hero() {
 
             {/* Headline */}
             <div className="space-y-3">
-              <h1 className="text-4xl sm:text-5xl lg:text-5xl 2xl:text-6xl font-black text-white leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl 2xl:text-6xl font-black text-white leading-tight">
                 {(() => {
                   const title = hero.title;
                   const hl = hero.title_highlight;
@@ -171,7 +171,7 @@ export default function Hero() {
 
             {/* Trust Indicators */}
             {/* FIX #8: smaller gap on mobile (gap-x-5 gap-y-2) */}
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 lg:gap-6 pt-2">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 md:gap-5 lg:gap-6 pt-2">
               <div className="flex items-center gap-2 text-gray-300 text-sm">
                 <FaCheck className="w-3.5 h-3.5 text-cyan flex-shrink-0" />
                 <span>{hero.trust_indicator_1}</span>
@@ -189,13 +189,13 @@ export default function Hero() {
 
           {/* ── Right Content — Dashboard Panel ── */}
           {/* FIX #4: pb-10 on mobile so the absolute floating badge doesn't overlap content below */}
-          <div className="relative animate-fade-in-up pb-10 lg:pb-0" style={{ animationDuration: '0.8s', animationDelay: '0.1s', animationFillMode: 'both' }}>
+          <div className="relative animate-fade-in-up pb-10 md:pb-0" style={{ animationDuration: '0.8s', animationDelay: '0.1s', animationFillMode: 'both' }}>
             {/* Glow effect */}
             <div className="absolute -inset-4 bg-gradient-to-r from-cyan/20 to-purple-500/20 rounded-3xl blur-2xl opacity-50" />
 
             {/* Panel */}
             {/* FIX #4 (panel): extra bottom padding so metrics aren't hidden behind floating badge */}
-            <div className="relative bg-navy-light/80 backdrop-blur rounded-2xl border border-white/10 p-4 sm:p-5 xl:p-6 shadow-2xl pb-6">
+            <div className="relative bg-navy-light/80 backdrop-blur rounded-2xl border border-white/10 p-4 sm:p-5 md:p-4 lg:p-5 xl:p-6 shadow-2xl pb-6">
 
               {/* Panel Header */}
               {/* FIX #2 + #3: min-w-0 + truncate on title; whitespace-nowrap + flex-shrink-0 on badge */}
@@ -273,11 +273,11 @@ export default function Hero() {
         </div>
 
         {/* Trust Bar */}
-        <div className="mt-14 lg:mt-16 xl:mt-20 pt-10 lg:pt-12 border-t border-white/10">
+        <div className="mt-14 md:mt-16 lg:mt-16 xl:mt-20 pt-10 md:pt-12 lg:pt-12 border-t border-white/10">
           <p className="text-center text-gray-400 text-sm mb-8">
             {t.trust_bar.title}
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 lg:gap-16">
+          <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
             {t.trust_bar.logos.map((logo, index) => (
               <span
                 key={index}

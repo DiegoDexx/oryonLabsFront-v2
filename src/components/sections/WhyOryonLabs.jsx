@@ -120,6 +120,13 @@ export default function WhyOryonLabs() {
             </div>
           </div>
 
+          {/* ── VS badge — mobile (grid item now, sits naturally between stacked cards; lg:hidden = display:none on desktop, so it takes zero grid space and never breaks the 2-col layout) ── */}
+          <div className="flex lg:hidden justify-center my-2 z-10 relative">
+            <div className="w-11 h-11 bg-cyan rounded-full flex items-center justify-center shadow-lg shadow-cyan/40 ring-4 ring-navy-light">
+              <span className="text-white font-black text-xs tracking-wider">VS</span>
+            </div>
+          </div>
+
           {/* ── Solution card ── */}
           <div className="bg-navy rounded-2xl border border-cyan/35 p-6 flex flex-col pricing-glow">
 
@@ -170,13 +177,6 @@ export default function WhyOryonLabs() {
               <p className="text-2xl font-black text-cyan mb-1">{fmt(why.solution.price, why.solution.per_month)}</p>
               <p className="text-gray-400 text-xs">{why.solution.description}</p>
             </div>
-          </div>
-        </div>
-
-        {/* ── VS badge — mobile (between stacked cards) ── */}
-        <div className="flex lg:hidden justify-center my-2">
-          <div className="w-11 h-11 bg-cyan rounded-full flex items-center justify-center shadow-lg shadow-cyan/40">
-            <span className="text-white font-black text-xs tracking-wider">VS</span>
           </div>
         </div>
 

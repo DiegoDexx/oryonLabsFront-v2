@@ -68,24 +68,6 @@ export default function LoadingScreen() {
           }}
         />
 
-        {/* Shimmer que cruza el logo */}
-        <div
-          className="absolute overflow-hidden"
-          style={{ width: '300px', height: '90px', borderRadius: '8px' }}
-        >
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: '-120%',
-              width: '55%',
-              height: '100%',
-              background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.12) 50%, transparent 100%)',
-              animation: 'shimmer 2.6s ease-in-out infinite 0.6s',
-            }}
-          />
-        </div>
-
         {/* Logo */}
         <img
           src={logo}
@@ -141,10 +123,6 @@ export default function LoadingScreen() {
         @keyframes glowPulse {
           0%, 100% { opacity: 0.35; transform: scaleX(0.88); }
           50%       { opacity: 0.6;  transform: scaleX(1.1);  }
-        }
-        @keyframes shimmer {
-          0%   { left: -120%; }
-          100% { left: 220%;  }
         }
         @keyframes logoFadeIn {
           0%   { opacity: 0; transform: translateY(10px); }

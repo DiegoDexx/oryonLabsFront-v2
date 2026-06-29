@@ -1,16 +1,17 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../../actions/authActions";
 import { apiLogout } from "../../api/apiActions";
 import logoBlueOx from "../../assets/img/logo_blue_ox.webp";
 import { useAdminT } from "../../context/AdminLangContext";
+import GlobalSearch from "../ui/GlobalSearch";
 
-const NavbarAdminPanel = () => {
-  const dispatch   = useDispatch();
-  const navigate   = useNavigate();
-  const token      = useSelector((state) => state.auth.token);
-  const user       = useSelector((state) => state.auth.user);
+const NavbarAdminPanel = ({ onNavigate }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const token    = useSelector((state) => state.auth.token);
+  const user     = useSelector((state) => state.auth.user);
   const [loading, setLoading] = useState(false);
   const { t, lang, setLang } = useAdminT();
 
@@ -21,23 +22,26 @@ const NavbarAdminPanel = () => {
     } catch {
       // Si falla la llamada al backend igual limpiamos la sesión local
     } finally {
-      navigate("/login");    // unmount AdminPanel antes de limpiar Redux
+      navigate("/login");
       dispatch(logoutUser());
     }
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm h-16 flex items-center px-6">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm h-16 flex items-center px-6 gap-4">
       {/* Brand */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 flex-shrink-0">
         <img src={logoBlueOx} alt="OryonX" className="h-8 w-auto object-contain brightness-0" />
-        <span className="text-xs bg-cyan/10 text-cyan font-semibold px-2 py-0.5 rounded-full">
+        <span className="text-xs bg-cyan/10 text-cyan font-semibold px-2 py-0.5 rounded-full hidden sm:block">
           {t.navbar.badge}
         </span>
       </div>
 
+      {/* Global search */}
+      <GlobalSearch onNavigate={onNavigate} />
+
       {/* Right side */}
-      <div className="ml-auto flex items-center gap-3">
+      <div className="ml-auto flex items-center gap-3 flex-shrink-0">
         {/* Lang toggle */}
         <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-0.5">
           {['es', 'en'].map((l) => (

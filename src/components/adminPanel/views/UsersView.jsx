@@ -2,27 +2,32 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { apiDeleteUser } from "../../../api/apiActions";
 import UserModal from "../modals/UserModal";
+import { useAdminT } from "../../../context/AdminLangContext";
 
 const ROLE_STYLES = {
   admin: "bg-navy/10 text-navy font-semibold",
   user:  "bg-gray-100 text-gray-600",
 };
 
-const ROLE_LABELS = {
-  admin: "Administrador",
-  user:  "Usuario",
-};
-
 const initials = (name) =>
   name?.split(" ").slice(0, 2).map((w) => w[0]).join("").toUpperCase() || "?";
 
 const UsersView = ({ users, token, onRefresh }) => {
+  const { t } = useAdminT();
+  const tu = t.users;
+  const mu = t.modal_user;
+
   const currentUser = useSelector((state) => state.auth.user);
 
   const [editTarget,   setEditTarget]   = useState(null);
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [deleting,     setDeleting]     = useState(false);
   const [deleteError,  setDeleteError]  = useState("");
+
+  const ROLE_LABELS = {
+    admin: mu.role_admin,
+    user:  mu.role_user,
+  };
 
   const handleDelete = async () => {
     setDeleting(true);
@@ -32,7 +37,7 @@ const UsersView = ({ users, token, onRefresh }) => {
       setDeleteTarget(null);
       onRefresh();
     } catch (err) {
-      setDeleteError(err.message || "Error al eliminar.");
+      setDeleteError(err.message || t.common.unexpected_error);
     } finally {
       setDeleting(false);
     }
@@ -45,12 +50,10 @@ const UsersView = ({ users, token, onRefresh }) => {
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
           <div>
             <h2 className="text-sm font-semibold text-gray-900">
-              Usuarios del panel{" "}
+              {tu.title}{" "}
               <span className="text-gray-400 font-normal">({users.length})</span>
             </h2>
-            <p className="text-xs text-gray-400 mt-0.5">
-              Acceso al panel de administración · Roles: admin / usuario
-            </p>
+            <p className="text-xs text-gray-400 mt-0.5">{tu.subtitle}</p>
           </div>
           <button
             onClick={onRefresh}
@@ -59,24 +62,22 @@ const UsersView = ({ users, token, onRefresh }) => {
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
             </svg>
-            Actualizar
+            {t.common.refresh}
           </button>
         </div>
 
         {/* Table */}
         {users.length === 0 ? (
-          <div className="py-16 text-center text-gray-400 text-sm">
-            No hay usuarios registrados.
-          </div>
+          <div className="py-16 text-center text-gray-400 text-sm">{tu.empty}</div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="text-xs text-gray-400 uppercase tracking-wide border-b border-gray-100 bg-gray-50/50">
-                  <th className="text-left px-6 py-3">Usuario</th>
-                  <th className="text-left px-6 py-3">Email</th>
-                  <th className="text-left px-6 py-3">Rol</th>
-                  <th className="text-right px-6 py-3">Acciones</th>
+                  <th className="text-left px-6 py-3">{tu.headers.user}</th>
+                  <th className="text-left px-6 py-3">{tu.headers.email}</th>
+                  <th className="text-left px-6 py-3">{tu.headers.role}</th>
+                  <th className="text-right px-6 py-3">{tu.headers.actions}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
@@ -94,7 +95,7 @@ const UsersView = ({ users, token, onRefresh }) => {
                             <span className="font-medium text-gray-900">{u.name}</span>
                             {isSelf && (
                               <span className="text-xs bg-cyan/10 text-cyan px-1.5 py-0.5 rounded-full font-medium">
-                                tú
+                                {tu.you}
                               </span>
                             )}
                           </div>
@@ -107,7 +108,7 @@ const UsersView = ({ users, token, onRefresh }) => {
                             {ROLE_LABELS[role] ?? role}
                           </span>
                         ) : (
-                          <span className="text-xs text-gray-300">Sin rol</span>
+                          <span className="text-xs text-gray-300">{tu.no_role}</span>
                         )}
                       </td>
                       <td className="px-6 py-3.5">
@@ -116,15 +117,15 @@ const UsersView = ({ users, token, onRefresh }) => {
                             onClick={() => setEditTarget(u)}
                             className="text-xs text-gray-500 hover:text-navy transition px-2.5 py-1.5 rounded-lg border border-gray-200 hover:border-navy/30 hover:bg-navy/5"
                           >
-                            Editar
+                            {tu.edit}
                           </button>
                           <button
                             onClick={() => { setDeleteTarget(u); setDeleteError(""); }}
                             disabled={isSelf}
-                            title={isSelf ? "No puedes eliminarte a ti mismo" : "Eliminar usuario"}
+                            title={isSelf ? tu.cannot_delete_self : tu.delete_btn}
                             className="text-xs text-red-500 hover:text-red-700 transition px-2.5 py-1.5 rounded-lg border border-red-100 hover:border-red-300 hover:bg-red-50 disabled:opacity-30 disabled:cursor-not-allowed"
                           >
-                            Eliminar
+                            {tu.delete_btn}
                           </button>
                         </div>
                       </td>
@@ -137,10 +138,7 @@ const UsersView = ({ users, token, onRefresh }) => {
         )}
       </div>
 
-      {/* Note about plan limits */}
-      <p className="text-xs text-gray-400 px-1">
-        El número máximo de usuarios depende del plan contratado. El backend devolverá un error si se supera el límite.
-      </p>
+      <p className="text-xs text-gray-400 px-1">{tu.plan_note}</p>
 
       {/* Edit modal */}
       <UserModal
@@ -162,9 +160,9 @@ const UsersView = ({ users, token, onRefresh }) => {
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900">¿Eliminar usuario?</h3>
+                <h3 className="font-semibold text-gray-900">{tu.confirm_delete_title}</h3>
                 <p className="text-sm text-gray-500 mt-1">
-                  Vas a eliminar a <strong className="text-gray-700">{deleteTarget.name}</strong>. Sus sesiones activas se cerrarán y no podrá acceder al panel.
+                  {tu.confirm_delete_text} <strong className="text-gray-700">{deleteTarget.name}</strong>. {tu.confirm_delete_sub}
                 </p>
               </div>
             </div>
@@ -180,14 +178,14 @@ const UsersView = ({ users, token, onRefresh }) => {
                 onClick={() => { setDeleteTarget(null); setDeleteError(""); }}
                 className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 transition"
               >
-                Cancelar
+                {t.common.cancel}
               </button>
               <button
                 onClick={handleDelete}
                 disabled={deleting}
                 className="flex-1 px-4 py-2.5 rounded-lg bg-red-500 text-white text-sm font-semibold hover:bg-red-600 disabled:opacity-50 transition"
               >
-                {deleting ? "Eliminando..." : "Eliminar"}
+                {deleting ? tu.deleting : tu.delete_btn}
               </button>
             </div>
           </div>

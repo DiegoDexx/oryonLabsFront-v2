@@ -110,7 +110,7 @@
       "item6": "Ahorra casi todo el tiempo administrativo",
       "included": "incluido",
       "price_label": "DESDE",
-      "price": "199",
+      "price": "299",
       "per_month": "/mes",
       "description": "Una sola factura. Todo integrado. Nosotros nos encargamos."
     },
@@ -205,7 +205,7 @@
       {
         "name": "Starter",
         "subtitle": "Chatbot + captación de leads + vista básica de CRM",
-        "setup_range": "€899 – €1.200",
+        "setup_range": "€650 – €1.200",
         "price_monthly": "299",
         "price_yearly": "239",
         "description": "Ideal para autónomos y negocios locales pequeños.",
@@ -241,9 +241,9 @@
       {
         "name": "Professional",
         "subtitle": "+ integraciones a medida + soporte prioritario",
-        "setup_range": "€2.000 – €2.500",
-        "price_monthly": "549",
-        "price_yearly": "439",
+        "setup_range": "€2.000 – €3.500",
+        "price_monthly": "499",
+        "price_yearly": "399",
         "description": "Para empresas que necesitan soluciones personalizadas.",
         "features": [
           "Todo lo incluido en Pro",
@@ -260,9 +260,9 @@
         "name": "Business + Voice AI",
         "subtitle": "+ canal de voz (Vapi)",
         "setup_range": "€2.500 – €3.500",
-        "price_monthly": "599",
+        "price_monthly": "549",
         "price_prefix": "Desde",
-        "price_yearly": "479",
+        "price_yearly": "439",
         "description": "Para empresas que quieren un agente de voz inteligente.",
         "features": [
           "Todo lo incluido en Professional",
@@ -907,13 +907,19 @@
         "no_summary": "Sin resumen comercial registrado.",
         "notes": "Notas",
         "convert_btn": "Convertir a cliente",
-        "converting_btn": "Convirtiendo..."
+        "converting_btn": "Convirtiendo...",
+        "priority": "Prioridad",
+        "assigned_to": "Asignado a",
+        "saving": "Guardando…",
+        "save": "Guardar",
+        "unassigned": "Sin asignar"
       },
       "delete": {
         "title": "Eliminar lead",
         "warning": "Esta acción no se puede deshacer.",
         "confirm": "Sí, eliminar",
-        "deleting": "Eliminando..."
+        "deleting": "Eliminando...",
+        "confirm_prefix": "¿Eliminar a"
       }
     },
     "clients": {
@@ -931,7 +937,8 @@
         "empty": "No hay clientes disponibles.",
         "no_projects": "Sin proyectos",
         "singular": "cliente",
-        "plural": "clientes"
+        "plural": "clientes",
+        "refresh_label": "Actualizar"
       },
       "detail": {
         "title": "Detalle del cliente",
@@ -953,7 +960,8 @@
         "understood": "Entendido",
         "warning": "Esta acción no se puede deshacer.",
         "confirm": "Sí, eliminar",
-        "deleting": "Eliminando..."
+        "deleting": "Eliminando...",
+        "about_to_delete": "Estás a punto de eliminar a"
       }
     },
     "subscriptions": {
@@ -970,7 +978,18 @@
         "action": "Acción"
       },
       "empty": "Sin suscripciones",
-      "per_month": "/mes"
+      "per_month": "/mes",
+      "detail": {
+        "title": "Detalle de Suscripción",
+        "setup": "Setup",
+        "monthly": "Mensualidad",
+        "start": "Inicio",
+        "next_billing": "Próx. factura",
+        "end_date": "Fecha fin",
+        "notes": "Notas",
+        "mrr_contribution": "Contribución MRR",
+        "active": "· Activa"
+      }
     },
     "invoices": {
       "kpi_pending_amount": "Pendiente de cobro",
@@ -1000,7 +1019,15 @@
       "client_language": "Idioma del cliente",
       "name_required": "El nombre es obligatorio.",
       "submit": "Crear lead",
-      "submitting": "Creando..."
+      "submitting": "Creando...",
+      "channels": {
+        "manual": "Manual",
+        "whatsapp": "WhatsApp",
+        "phone": "Teléfono",
+        "email": "Email",
+        "instagram": "Instagram",
+        "form": "Formulario web"
+      }
     },
     "modal_client": {
       "title": "Añadir cliente",
@@ -1054,7 +1081,103 @@
       "due_date_required": "Fecha de vencimiento requerida.",
       "invoice_number_required": "Número de factura requerido.",
       "submit": "Generar factura",
-      "submitting": "Generando..."
+      "submitting": "Generando...",
+      "types": {
+        "setup": "Setup",
+        "monthly": "Mensual",
+        "extra": "Extra"
+      },
+      "client_required": "Selecciona un cliente."
+    },
+    "search": {
+      "placeholder": "Buscar clientes, leads, facturas…",
+      "no_results": "Sin resultados para",
+      "see_all": "Ver los {n} resultados en",
+      "sections": {
+        "clients": "Clientes",
+        "leads": "Leads",
+        "invoices": "Facturas",
+        "subscriptions": "Suscripciones"
+      },
+      "result_detail": {
+        "client": "Cliente",
+        "lead": "Lead",
+        "invoice": "Factura",
+        "subscription": "Suscripción",
+        "amount": "Importe",
+        "due_date": "Vencimiento",
+        "plan": "Plan",
+        "monthly_fee": "Mensualidad",
+        "status": "Estado",
+        "navigate": "Ver en panel",
+        "close": "Cerrar"
+      }
+    },
+    "modal_user": {
+      "title_new": "Nuevo usuario",
+      "title_edit": "Editar usuario",
+      "name": "Nombre",
+      "role": "Rol",
+      "role_user": "Usuario",
+      "role_admin": "Administrador",
+      "email_placeholder": "usuario@empresa.com",
+      "password": "Contraseña",
+      "password_optional": "(dejar vacío para no cambiar)",
+      "password_placeholder": "Mínimo 8 caracteres",
+      "name_required": "El nombre es obligatorio.",
+      "email_required": "El email es obligatorio.",
+      "email_invalid": "Email inválido.",
+      "password_required": "La contraseña es obligatoria.",
+      "password_min": "Mínimo 8 caracteres.",
+      "plan_limit": "Límite de usuarios alcanzado para tu plan.",
+      "save_changes": "Guardar cambios",
+      "saving": "Guardando...",
+      "submit": "Crear usuario",
+      "submitting": "Creando..."
+    },
+    "users": {
+      "title": "Usuarios del panel",
+      "subtitle": "Acceso al panel de administración · Roles: admin / usuario",
+      "empty": "No hay usuarios registrados.",
+      "you": "tú",
+      "no_role": "Sin rol",
+      "edit": "Editar",
+      "delete_btn": "Eliminar",
+      "cannot_delete_self": "No puedes eliminarte a ti mismo",
+      "plan_note": "El número máximo de usuarios depende del plan contratado. El backend devolverá un error si se supera el límite.",
+      "headers": {
+        "user": "Usuario",
+        "email": "Email",
+        "role": "Rol",
+        "actions": "Acciones"
+      },
+      "confirm_delete_title": "¿Eliminar usuario?",
+      "confirm_delete_text": "Vas a eliminar a",
+      "confirm_delete_sub": "Sus sesiones activas se cerrarán y no podrá acceder al panel.",
+      "deleting": "Eliminando..."
+    },
+    "projects": {
+      "empty": "No hay proyectos disponibles.",
+      "no_name": "Sin nombre",
+      "no_category": "Sin categoría",
+      "no_client": "Sin cliente",
+      "no_requirements": "Sin requisitos",
+      "yes": "Sí",
+      "no": "No",
+      "headers": {
+        "project": "Proyecto",
+        "category": "Categoría",
+        "client": "Cliente",
+        "client_email": "Email cliente",
+        "requirements": "Requisitos"
+      }
+    },
+    "confirm_delete": {
+      "title": "Confirmar eliminación",
+      "prefix": "¿Eliminar",
+      "cancel": "Cancelar",
+      "confirm": "Eliminar",
+      "deleting": "Eliminando..."
     }
   }
 }

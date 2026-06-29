@@ -6,7 +6,7 @@ import ridleyImg from '../../assets/img/ridley.webp';
 import es from '../../locales/es.json';
 import en from '../../locales/en.json';
 
-const WEBHOOK_URL        = import.meta.env.VITE_CHAT_WEBHOOK_PROD_URL;
+const WEBHOOK_URL        = import.meta.env.VITE_CHAT_WEBHOOK_TEST_URL;
 const RATE_LIMIT         = 10;
 const RATE_WINDOW        = 60 * 60 * 1000;
 const TIMEOUT_MS         = 30000;

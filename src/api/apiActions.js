@@ -64,6 +64,9 @@ export const apiGetLeads = (token) =>
 export const apiSubmitLeadForm = (data) =>
   request("POST", "/api/leads", data, null);
 
+export const apiUpdateLead = (token, id, data) =>
+  request("PATCH", `/api/leads/${id}`, data, token);
+
 export const apiUpdateLeadStatus = (token, id, status) =>
   request("PATCH", `/api/leads/${id}/status`, { status }, token);
 
@@ -115,6 +118,10 @@ export const apiUpdateUser = (token, id, data) =>
 
 export const apiDeleteUser = (token, id) =>
   request("DELETE", `/api/users/${id}`, null, token);
+
+// ── Global search ─────────────────────────────────────────────────────────────
+export const apiGlobalSearch = (token, type, value) =>
+  request("GET", `/api/search?type=${encodeURIComponent(type)}&value=${encodeURIComponent(value)}`, null, token);
 
 // ── Refresh helpers ───────────────────────────────────────────────────────────
 /** Fetches all panel data in parallel. Returns { clients, leads, subscriptions, invoices, projects }. */

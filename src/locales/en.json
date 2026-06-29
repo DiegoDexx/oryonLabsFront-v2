@@ -110,7 +110,7 @@
       "item6": "Save almost all your administrative time",
       "included": "included",
       "price_label": "FROM",
-      "price": "199",
+      "price": "299",
       "per_month": "/month",
       "description": "One invoice. Fully integrated. We handle everything."
     },
@@ -205,7 +205,7 @@
       {
         "name": "Starter",
         "subtitle": "Chatbot + lead capture + basic CRM view",
-        "setup_range": "€899 – €1,200",
+        "setup_range": "€650 – €1,200",
         "price_monthly": "299",
         "price_yearly": "239",
         "description": "Ideal for freelancers and small local businesses.",
@@ -241,9 +241,9 @@
       {
         "name": "Professional",
         "subtitle": "+ custom integrations + priority support",
-        "setup_range": "€2,000 – €2,500",
-        "price_monthly": "549",
-        "price_yearly": "439",
+        "setup_range": "€2,000 – €3,500",
+        "price_monthly": "499",
+        "price_yearly": "399",
         "description": "For businesses that need customized solutions.",
         "features": [
           "Everything included in Pro",
@@ -260,9 +260,9 @@
         "name": "Business + Voice AI",
         "subtitle": "+ voice channel (Vapi)",
         "setup_range": "€2,500 – €3,500",
-        "price_monthly": "599",
+        "price_monthly": "549",
         "price_prefix": "From",
-        "price_yearly": "479",
+        "price_yearly": "439",
         "description": "For businesses that want an intelligent voice agent.",
         "features": [
           "Everything included in Professional",
@@ -907,13 +907,19 @@
         "no_summary": "No commercial summary recorded.",
         "notes": "Notes",
         "convert_btn": "Convert to client",
-        "converting_btn": "Converting..."
+        "converting_btn": "Converting...",
+        "priority": "Priority",
+        "assigned_to": "Assigned to",
+        "saving": "Saving…",
+        "save": "Save",
+        "unassigned": "Unassigned"
       },
       "delete": {
         "title": "Delete lead",
         "warning": "This action cannot be undone.",
         "confirm": "Yes, delete",
-        "deleting": "Deleting..."
+        "deleting": "Deleting...",
+        "confirm_prefix": "Delete"
       }
     },
     "clients": {
@@ -931,7 +937,8 @@
         "empty": "No clients available.",
         "no_projects": "No projects",
         "singular": "client",
-        "plural": "clients"
+        "plural": "clients",
+        "refresh_label": "Refresh"
       },
       "detail": {
         "title": "Client Details",
@@ -953,7 +960,8 @@
         "understood": "Understood",
         "warning": "This action cannot be undone.",
         "confirm": "Yes, delete",
-        "deleting": "Deleting..."
+        "deleting": "Deleting...",
+        "about_to_delete": "You are about to delete"
       }
     },
     "subscriptions": {
@@ -970,7 +978,18 @@
         "action": "Action"
       },
       "empty": "No subscriptions",
-      "per_month": "/mo"
+      "per_month": "/mo",
+      "detail": {
+        "title": "Subscription Detail",
+        "setup": "Setup",
+        "monthly": "Monthly fee",
+        "start": "Start date",
+        "next_billing": "Next billing",
+        "end_date": "End date",
+        "notes": "Notes",
+        "mrr_contribution": "MRR contribution",
+        "active": "· Active"
+      }
     },
     "invoices": {
       "kpi_pending_amount": "Pending collection",
@@ -1000,7 +1019,15 @@
       "client_language": "Client language",
       "name_required": "Name is required.",
       "submit": "Create lead",
-      "submitting": "Creating..."
+      "submitting": "Creating...",
+      "channels": {
+        "manual": "Manual",
+        "whatsapp": "WhatsApp",
+        "phone": "Phone",
+        "email": "Email",
+        "instagram": "Instagram",
+        "form": "Web form"
+      }
     },
     "modal_client": {
       "title": "Add client",
@@ -1054,7 +1081,103 @@
       "due_date_required": "Due date required.",
       "invoice_number_required": "Invoice number required.",
       "submit": "Generate invoice",
-      "submitting": "Generating..."
+      "submitting": "Generating...",
+      "types": {
+        "setup": "Setup",
+        "monthly": "Monthly",
+        "extra": "Extra"
+      },
+      "client_required": "Select a client."
+    },
+    "search": {
+      "placeholder": "Search clients, leads, invoices…",
+      "no_results": "No results for",
+      "see_all": "See all {n} results in",
+      "sections": {
+        "clients": "Clients",
+        "leads": "Leads",
+        "invoices": "Invoices",
+        "subscriptions": "Subscriptions"
+      },
+      "result_detail": {
+        "client": "Client",
+        "lead": "Lead",
+        "invoice": "Invoice",
+        "subscription": "Subscription",
+        "amount": "Amount",
+        "due_date": "Due date",
+        "plan": "Plan",
+        "monthly_fee": "Monthly fee",
+        "status": "Status",
+        "navigate": "View in panel",
+        "close": "Close"
+      }
+    },
+    "modal_user": {
+      "title_new": "New user",
+      "title_edit": "Edit user",
+      "name": "Name",
+      "role": "Role",
+      "role_user": "User",
+      "role_admin": "Administrator",
+      "email_placeholder": "user@company.com",
+      "password": "Password",
+      "password_optional": "(leave blank to keep current)",
+      "password_placeholder": "At least 8 characters",
+      "name_required": "Name is required.",
+      "email_required": "Email is required.",
+      "email_invalid": "Invalid email.",
+      "password_required": "Password is required.",
+      "password_min": "Minimum 8 characters.",
+      "plan_limit": "User limit reached for your plan.",
+      "save_changes": "Save changes",
+      "saving": "Saving...",
+      "submit": "Create user",
+      "submitting": "Creating..."
+    },
+    "users": {
+      "title": "Panel users",
+      "subtitle": "Admin panel access · Roles: admin / user",
+      "empty": "No users registered.",
+      "you": "you",
+      "no_role": "No role",
+      "edit": "Edit",
+      "delete_btn": "Delete",
+      "cannot_delete_self": "You cannot delete yourself",
+      "plan_note": "The maximum number of users depends on your plan. The backend will return an error if the limit is exceeded.",
+      "headers": {
+        "user": "User",
+        "email": "Email",
+        "role": "Role",
+        "actions": "Actions"
+      },
+      "confirm_delete_title": "Delete user?",
+      "confirm_delete_text": "You are about to delete",
+      "confirm_delete_sub": "Active sessions will be closed and they will lose panel access.",
+      "deleting": "Deleting..."
+    },
+    "projects": {
+      "empty": "No projects available.",
+      "no_name": "No name",
+      "no_category": "No category",
+      "no_client": "No client",
+      "no_requirements": "No requirements",
+      "yes": "Yes",
+      "no": "No",
+      "headers": {
+        "project": "Project",
+        "category": "Category",
+        "client": "Client",
+        "client_email": "Client email",
+        "requirements": "Requirements"
+      }
+    },
+    "confirm_delete": {
+      "title": "Confirm deletion",
+      "prefix": "Delete",
+      "cancel": "Cancel",
+      "confirm": "Delete",
+      "deleting": "Deleting..."
     }
   }
 }

@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import Modal from "../../ui/Modal";
 import { apiCreateInvoice } from "../../../api/apiActions";
+import { useAdminT } from "../../../context/AdminLangContext";
 
-const TYPES = [
-  { value: "setup",   label: "Setup" },
-  { value: "monthly", label: "Mensual" },
-  { value: "extra",   label: "Extra" },
-];
+const TYPE_KEYS = ["setup", "monthly", "extra"];
 
 const EMPTY = { clientId: "", subscriptionId: "", type: "", amount: "", dueDate: "", invoiceNumber: "" };
 
 const CreateInvoiceModal = ({ isOpen, onClose, clients, subscriptions, token, invoices, onSuccess }) => {
+  const { t } = useAdminT();
+  const mi = t.modal_invoice;
+
   const [form, setForm]      = useState(EMPTY);
   const [errors, setErrors]  = useState({});
   const [submitting, setSub] = useState(false);
@@ -35,11 +35,11 @@ const CreateInvoiceModal = ({ isOpen, onClose, clients, subscriptions, token, in
 
   const validate = () => {
     const e = {};
-    if (!form.clientId)                               e.clientId      = "Selecciona un cliente.";
-    if (!form.type)                                   e.type          = "Selecciona un tipo.";
-    if (!form.amount || parseFloat(form.amount) <= 0) e.amount        = "Importe requerido (> 0).";
-    if (!form.dueDate)                                e.dueDate       = "Fecha de vencimiento requerida.";
-    if (!form.invoiceNumber.trim())                   e.invoiceNumber = "Número de factura requerido.";
+    if (!form.clientId)                               e.clientId      = mi.client_required;
+    if (!form.type)                                   e.type          = mi.type_required;
+    if (!form.amount || parseFloat(form.amount) <= 0) e.amount        = mi.amount_required;
+    if (!form.dueDate)                                e.dueDate       = mi.due_date_required;
+    if (!form.invoiceNumber.trim())                   e.invoiceNumber = mi.invoice_number_required;
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -75,13 +75,13 @@ const CreateInvoiceModal = ({ isOpen, onClose, clients, subscriptions, token, in
   const err = "text-red-500 text-xs mt-1";
 
   return (
-    <Modal isOpen={isOpen} onClose={handleClose} title="Nueva factura">
+    <Modal isOpen={isOpen} onClose={handleClose} title={mi.title}>
       <form onSubmit={handleSubmit} className="space-y-4">
 
         <div>
-          <label className={lbl}>Cliente *</label>
+          <label className={lbl}>{mi.client} *</label>
           <select className={inp} value={form.clientId} onChange={set("clientId")}>
-            <option value="">Selecciona un cliente</option>
+            <option value="">{mi.select_client}</option>
             {clients.map((c) => (
               <option key={c.id} value={c.id}>
                 {c.name}{c.company ? ` — ${c.company}` : ""}
@@ -92,9 +92,11 @@ const CreateInvoiceModal = ({ isOpen, onClose, clients, subscriptions, token, in
         </div>
 
         <div>
-          <label className={lbl}>Suscripción <span className="text-gray-400 font-normal">(opcional)</span></label>
+          <label className={lbl}>
+            {mi.subscription} <span className="text-gray-400 font-normal">{mi.subscription_optional}</span>
+          </label>
           <select className={inp} value={form.subscriptionId} onChange={set("subscriptionId")} disabled={!form.clientId}>
-            <option value="">Sin suscripción asociada</option>
+            <option value="">{mi.no_subscription}</option>
             {clientSubs.map((s) => (
               <option key={s.id} value={s.id}>{s.plan} — €{s.monthly_fee}/mes</option>
             ))}
@@ -103,15 +105,17 @@ const CreateInvoiceModal = ({ isOpen, onClose, clients, subscriptions, token, in
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className={lbl}>Tipo *</label>
+            <label className={lbl}>{mi.type} *</label>
             <select className={inp} value={form.type} onChange={set("type")}>
-              <option value="">Selecciona tipo</option>
-              {TYPES.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
+              <option value="">{mi.select_type}</option>
+              {TYPE_KEYS.map((key) => (
+                <option key={key} value={key}>{mi.types[key]}</option>
+              ))}
             </select>
             {errors.type && <p className={err}>{errors.type}</p>}
           </div>
           <div>
-            <label className={lbl}>Importe (€) *</label>
+            <label className={lbl}>{mi.amount} *</label>
             <input type="number" min="0.01" step="0.01" className={inp} value={form.amount} onChange={set("amount")} placeholder="0.00" />
             {errors.amount && <p className={err}>{errors.amount}</p>}
           </div>
@@ -119,12 +123,12 @@ const CreateInvoiceModal = ({ isOpen, onClose, clients, subscriptions, token, in
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className={lbl}>Nº Factura *</label>
+            <label className={lbl}>{mi.invoice_number} *</label>
             <input type="text" className={inp} value={form.invoiceNumber} onChange={set("invoiceNumber")} />
             {errors.invoiceNumber && <p className={err}>{errors.invoiceNumber}</p>}
           </div>
           <div>
-            <label className={lbl}>Vencimiento *</label>
+            <label className={lbl}>{mi.due_date} *</label>
             <input type="date" className={inp} value={form.dueDate} onChange={set("dueDate")} />
             {errors.dueDate && <p className={err}>{errors.dueDate}</p>}
           </div>
@@ -135,11 +139,11 @@ const CreateInvoiceModal = ({ isOpen, onClose, clients, subscriptions, token, in
         <div className="flex gap-3 pt-2">
           <button type="button" onClick={handleClose}
             className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 transition">
-            Cancelar
+            {t.common.cancel}
           </button>
           <button type="submit" disabled={submitting}
             className="flex-1 px-4 py-2.5 rounded-lg bg-navy text-white text-sm font-semibold hover:opacity-90 disabled:opacity-50 transition">
-            {submitting ? "Generando..." : "Generar factura"}
+            {submitting ? mi.submitting : mi.submit}
           </button>
         </div>
 
