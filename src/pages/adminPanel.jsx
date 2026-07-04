@@ -112,6 +112,11 @@ const AdminPanelInner = () => {
 
   const handleClientDelete = () => { refreshClients(); showToast(t.toasts.client_deleted); };
 
+  const handleSubscriptionDelete = (subId) => {
+    setSubscriptions((prev) => prev.filter((s) => s.id !== subId));
+    showToast(t.toasts.subscription_deleted);
+  };
+
   const handleProjectDelete = (projectId) => {
     setProjects((prev) => prev.filter((p) => p.project?.id !== projectId));
     showToast(t.toasts.project_deleted);
@@ -271,7 +276,12 @@ const AdminPanelInner = () => {
               />
             )}
             {selectedTab === 'subscriptions' && (
-              <SubscriptionsView subscriptions={subscriptions} onStatusChange={handleSubscriptionStatus} />
+              <SubscriptionsView
+                subscriptions={subscriptions}
+                onStatusChange={handleSubscriptionStatus}
+                token={token}
+                onDeleteSubscription={handleSubscriptionDelete}
+              />
             )}
             {selectedTab === 'invoices' && (
               <InvoicesView invoices={invoices} onMarkPaid={handleMarkPaid} />

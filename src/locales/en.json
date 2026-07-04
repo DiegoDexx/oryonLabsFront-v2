@@ -733,7 +733,8 @@
       "user_created": "User created successfully",
       "user_updated": "User updated",
       "user_deleted": "User deleted",
-      "project_deleted": "Project deleted successfully."
+      "project_deleted": "Project deleted successfully.",
+      "subscription_deleted": "Subscription deleted successfully."
     },
     "common": {
       "cancel": "Cancel",
@@ -994,6 +995,7 @@
         "action": "Action"
       },
       "empty": "No subscriptions",
+      "delete_btn": "Delete subscription",
       "per_month": "/mo",
       "detail": {
         "title": "Subscription Detail",

@@ -99,6 +99,9 @@ export const apiCreateSubscription = (token, data) =>
 export const apiUpdateSubscriptionStatus = (token, id, status) =>
   request("PATCH", `/api/subscriptions/${id}/status`, { status }, token);
 
+export const apiDeleteSubscription = (token, id) =>
+  request("DELETE", `/api/subscriptions/${id}`, null, token);
+
 // ── Invoices ──────────────────────────────────────────────────────────────────
 export const apiGetInvoices = (token) =>
   request("GET", "/api/invoices", null, token);

@@ -733,7 +733,8 @@
       "user_created": "Usuario creado correctamente",
       "user_updated": "Usuario actualizado",
       "user_deleted": "Usuario eliminado",
-      "project_deleted": "Proyecto eliminado correctamente."
+      "project_deleted": "Proyecto eliminado correctamente.",
+      "subscription_deleted": "Suscripción eliminada correctamente."
     },
     "common": {
       "cancel": "Cancelar",
@@ -994,6 +995,7 @@
         "action": "Acción"
       },
       "empty": "Sin suscripciones",
+      "delete_btn": "Eliminar suscripción",
       "per_month": "/mes",
       "detail": {
         "title": "Detalle de Suscripción",
