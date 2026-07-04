@@ -726,7 +726,8 @@
       "lead_created": "Lead created successfully",
       "user_created": "User created successfully",
       "user_updated": "User updated",
-      "user_deleted": "User deleted"
+      "user_deleted": "User deleted",
+      "project_deleted": "Project deleted successfully."
     },
     "common": {
       "cancel": "Cancel",
@@ -1170,7 +1171,8 @@
         "client": "Client",
         "client_email": "Client email",
         "requirements": "Requirements"
-      }
+      },
+      "delete_btn": "Delete project"
     },
     "confirm_delete": {
       "title": "Confirm deletion",

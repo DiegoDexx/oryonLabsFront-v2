@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   apiGetClients, apiGetLeads, apiGetSubscriptions, apiGetInvoices, apiGetProjects,
   apiGetUsers,
-  apiUpdateProjectStage, apiUpdateSubscriptionStatus, apiMarkInvoicePaid,
+  apiUpdateProjectStage, apiDeleteProject, apiUpdateSubscriptionStatus, apiMarkInvoicePaid,
 } from '../api/apiActions';
 import NavbarAdminPanel from '../components/adminPanel/NavbarAdminPanel';
 import { AdminLangProvider, useAdminT } from '../context/AdminLangContext';
@@ -151,6 +151,11 @@ const AdminPanelInner = () => {
   };
 
   const handleClientDelete = () => { refreshClients(); showToast(t.toasts.client_deleted); };
+
+  const handleProjectDelete = (projectId) => {
+    setProjects((prev) => prev.filter((p) => p.project?.id !== projectId));
+    showToast(t.toasts.project_deleted);
+  };
 
   const handleClientStatusChange = (clientId, newStatus) => {
     setClients((prev) => prev.map((c) => c.id === clientId ? { ...c, status: newStatus } : c));
@@ -333,12 +338,23 @@ const AdminPanelInner = () => {
             <DashboardView leads={leads} clients={clients} subscriptions={subscriptions} invoices={invoices} />
           )}
           {selectedTab === 'pipeline' && (
-            <PipelineView projects={projects} onStageChange={handleStageChange} />
+            <PipelineView
+              projects={projects}
+              onStageChange={handleStageChange}
+              token={token}
+              onDeleteProject={handleProjectDelete}
+            />
           )}
           {selectedTab === 'projects' && (
-            <ProjectsTable projects={projects.map((p) => ({
-              project: p, client: p.client, requirements: p.requirements,
-            }))} />
+            <ProjectsTable
+              projects={projects.map((p) => ({
+                project: p.project,
+                client: p.client,
+                requirements: p.requirements,
+              }))}
+              token={token}
+              onDeleteProject={handleProjectDelete}
+            />
           )}
           {selectedTab === 'clients' && (
             <ClientsTable

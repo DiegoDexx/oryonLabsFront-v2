@@ -86,6 +86,9 @@ export const apiGetProjects = (token) =>
 export const apiUpdateProjectStage = (token, id, stage) =>
   request("PATCH", `/api/projects/${id}/stage`, { stage }, token);
 
+export const apiDeleteProject = (token, id) =>
+  request("DELETE", `/api/projects/${id}`, null, token);
+
 // ── Subscriptions ─────────────────────────────────────────────────────────────
 export const apiGetSubscriptions = (token) =>
   request("GET", "/api/subscriptions", null, token);

@@ -726,7 +726,8 @@
       "lead_created": "Lead creado correctamente",
       "user_created": "Usuario creado correctamente",
       "user_updated": "Usuario actualizado",
-      "user_deleted": "Usuario eliminado"
+      "user_deleted": "Usuario eliminado",
+      "project_deleted": "Proyecto eliminado correctamente."
     },
     "common": {
       "cancel": "Cancelar",
@@ -1170,7 +1171,8 @@
         "client": "Cliente",
         "client_email": "Email cliente",
         "requirements": "Requisitos"
-      }
+      },
+      "delete_btn": "Eliminar proyecto"
     },
     "confirm_delete": {
       "title": "Confirmar eliminación",
