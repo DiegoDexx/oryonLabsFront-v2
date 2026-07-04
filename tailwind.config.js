@@ -19,6 +19,16 @@ export default {
           light: '#38BDF8',
           pale: '#E0F2FE',
         },
+        crm: {
+          sidebar:  '#0B1330',
+          active:   '#15234A',
+          muted:    '#8B98B5',
+          label:    '#5C6B8A',
+          page:     '#F7F9FC',
+          accent:   '#1B86C9',
+          border:   '#E5E9F2',
+          text:     '#0B1220',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

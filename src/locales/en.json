@@ -681,7 +681,13 @@
   "admin": {
     "navbar": {
       "badge": "Admin",
-      "logout": "Log out"
+      "logout": "Log out",
+      "search_placeholder": "Search clients, leads, invoices...",
+      "language": "Language"
+    },
+    "sidebar": {
+      "ventas": "SALES",
+      "ingresos": "REVENUE"
     },
     "page": {
       "title": "Administration Panel",
@@ -742,6 +748,15 @@
       "phone_placeholder": "+1 600 000 000"
     },
     "dashboard": {
+      "greeting_morning": "Good morning",
+      "greeting_afternoon": "Good afternoon",
+      "greeting_evening": "Good evening",
+      "panel_title": "Control panel",
+      "kpi_new_leads": "New leads",
+      "kpi_active_clients": "Active clients",
+      "kpi_active_subs": "Active subscriptions",
+      "kpi_pending_invoices": "Pending invoices",
+      "kpi_pending_none": "None pending",
       "selector": {
         "marketing": "Marketing & Acquisition",
         "ventas": "Leads & Sales"

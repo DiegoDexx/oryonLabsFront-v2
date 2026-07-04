@@ -681,7 +681,13 @@
   "admin": {
     "navbar": {
       "badge": "Admin",
-      "logout": "Cerrar sesión"
+      "logout": "Cerrar sesión",
+      "search_placeholder": "Buscar clientes, leads, facturas...",
+      "language": "Idioma"
+    },
+    "sidebar": {
+      "ventas": "VENTAS",
+      "ingresos": "INGRESOS"
     },
     "page": {
       "title": "Panel de Administración",
@@ -742,6 +748,15 @@
       "phone_placeholder": "+34 600 000 000"
     },
     "dashboard": {
+      "greeting_morning": "Buenos días",
+      "greeting_afternoon": "Buenas tardes",
+      "greeting_evening": "Buenas noches",
+      "panel_title": "Panel de control",
+      "kpi_new_leads": "Nuevos leads",
+      "kpi_active_clients": "Clientes activos",
+      "kpi_active_subs": "Suscripciones activas",
+      "kpi_pending_invoices": "Facturas pendientes",
+      "kpi_pending_none": "Ninguna pendiente",
       "selector": {
         "marketing": "Marketing & Captación",
         "ventas": "Leads & Ventas"
