@@ -15,8 +15,8 @@ const FAQ = lazy(() => import('./pages/faq'));
 const AdminPanel = lazy(() => import('./pages/adminPanel'));
 const Login = lazy(() => import('./pages/login'));
 const Terms = lazy(() => import('./pages/terms'));
-const Privacy = lazy(() => import('./pages/privacy'));
-const DataDeletion = lazy(() => import('./pages/data-deletion'));
+const Privacy = lazy(() => import('./pages/legal/privacy'));
+const DataDeletion = lazy(() => import('./pages/legal/data-deletion'));
 
 function App() {
   const [loading, setLoading] = useState(true);
