@@ -448,6 +448,33 @@
       "contactTitle": "¿Tienes alguna pregunta sobre tus datos?",
       "contactText": "Nuestro equipo está disponible para resolver cualquier duda sobre el tratamiento de tu información.",
       "contactButton": "Contactar con el equipo"
+    },
+    "data-deletion": {
+      "title": "Eliminación de Datos",
+      "lastUpdated": "Última actualización: julio de 2025",
+      "intro": "En OryonX respetamos tu derecho a controlar tus datos personales. Si deseas que eliminemos la información personal que tenemos sobre ti — incluyendo datos recopilados a través de nuestro asistente de IA (Ridley) vía chat web, WhatsApp o canales de voz — puedes solicitar su eliminación en cualquier momento.",
+      "sections": [
+        {
+          "title": "Cómo solicitar la eliminación",
+          "body": "Envía un correo a management@oryonx.ai con el asunto \"Solicitud de Eliminación de Datos\", incluyendo:",
+          "items": [
+            "Tu nombre completo",
+            "El teléfono, correo electrónico o número de WhatsApp asociado a tus datos",
+            "Confirmación de que solicitas la eliminación completa de tus datos de los sistemas de OryonX"
+          ]
+        },
+        {
+          "title": "Qué sucede después",
+          "body": "Procesaremos tu solicitud en un plazo de 30 días y te confirmaremos por correo una vez que tus datos hayan sido eliminados de nuestros sistemas, incluyendo nuestro CRM, registros de leads y cualquier historial de conversación asociado. Parte de la información podrá conservarse cuando la ley lo exija (por ejemplo, registros de facturación por motivos fiscales) durante el periodo mínimo legalmente requerido. Si nos contactaste a través de WhatsApp, también puedes solicitar la eliminación de tus datos de conversación directamente a través de los controles de datos de Meta, además de contactarnos a nosotros."
+        },
+        {
+          "title": "Preguntas",
+          "body": "Si tienes alguna pregunta sobre este proceso, contáctanos en management@oryonx.ai."
+        }
+      ],
+      "contactTitle": "¿Necesitas ayuda con tus datos?",
+      "contactText": "Nuestro equipo está listo para procesar tu solicitud de eliminación y responder cualquier duda.",
+      "contactButton": "Contactar con el equipo"
     }
   },
   "contact": {
@@ -637,7 +664,8 @@
         "links": [
           "Privacidad",
           "Términos",
-          "Cookies"
+          "Cookies",
+          "Eliminación de Datos"
         ]
       }
     },

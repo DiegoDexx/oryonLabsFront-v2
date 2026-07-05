@@ -16,6 +16,7 @@ const AdminPanel = lazy(() => import('./pages/adminPanel'));
 const Login = lazy(() => import('./pages/login'));
 const Terms = lazy(() => import('./pages/terms'));
 const Privacy = lazy(() => import('./pages/privacy'));
+const DataDeletion = lazy(() => import('./pages/data-deletion'));
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -41,6 +42,7 @@ function App() {
             <Route path="faq" element={<FAQ />} />
             <Route path="terms" element={<Terms />} />
             <Route path="privacy" element={<Privacy />} />
+            <Route path="data-deletion" element={<DataDeletion />} />
           </Route>
 
           {/* Admin routes (no lang prefix) */}

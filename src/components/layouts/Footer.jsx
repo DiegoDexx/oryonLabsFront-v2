@@ -129,7 +129,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-6">
               {footer.columns.legal.links.map((link, index) => {
-                const hrefs = [`/${lang}/privacy`, `/${lang}/terms`, '#'];
+                const hrefs = [`/${lang}/privacy`, `/${lang}/terms`, '#', `/${lang}/data-deletion`];
                 return (
                   <Link key={index} to={hrefs[index] ?? '#'} className="text-gray-500 hover:text-cyan text-sm transition-colors">
                     {link}

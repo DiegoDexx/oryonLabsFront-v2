@@ -61,6 +61,16 @@ export default function LegalPage({ pageKey }) {
                 <p className="text-gray-400 leading-relaxed">
                   {section.body}
                 </p>
+                {section.items && (
+                  <ul className="mt-4 space-y-2">
+                    {section.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3 text-gray-400">
+                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
+                        <span className="leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             ))}
           </div>
