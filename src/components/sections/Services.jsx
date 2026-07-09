@@ -6,7 +6,6 @@ import en from '../../locales/en.json';
 
 const translationsByLang = { es, en };
 
-// Iconos para cada servicio
 const serviceIcons = [
   <FaComments className="w-6 h-6" />,
   <FaNetworkWired className="w-6 h-6" />,
@@ -16,7 +15,6 @@ const serviceIcons = [
   <FaCode className="w-6 h-6" />,
 ];
 
-// Colores para cada servicio
 const serviceColors = ['cyan', 'purple', 'green', 'orange', 'blue', 'indigo'];
 
 export default function Services() {
@@ -44,7 +42,7 @@ export default function Services() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 cursor-pointer">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.cards.map((service, index) => (
             <ServiceCard
               key={index}
@@ -53,6 +51,9 @@ export default function Services() {
               title={service.title}
               description={service.description}
               color={serviceColors[index]}
+              link={service.link || null}
+              comingSoon={service.coming_soon || false}
+              lang={lang}
             />
           ))}
         </div>
