@@ -109,6 +109,15 @@ export const seoData = {
       lang:        'es',
       alternates:  { es: `${BASE_URL}/es/privacy`, en: `${BASE_URL}/en/privacy`, 'x-default': `${BASE_URL}/en/privacy` },
     },
+    'data-deletion': {
+      title:       'Eliminación de Datos | OryonX',
+      description: 'Cómo solicitar la eliminación de tus datos personales recopilados por OryonX a través de WhatsApp, chat web o canales de voz.',
+      keywords:    'eliminación de datos, borrar datos personales, privacidad WhatsApp, Meta datos, RGPD',
+      url:         `${BASE_URL}/es/data-deletion`,
+      image:       OG_IMAGE_ES,
+      lang:        'es',
+      alternates:  { es: `${BASE_URL}/es/data-deletion`, en: `${BASE_URL}/en/data-deletion`, 'x-default': `${BASE_URL}/en/data-deletion` },
+    },
   },
 
   en: {
@@ -210,6 +219,15 @@ export const seoData = {
       image:       OG_IMAGE_EN,
       lang:        'en',
       alternates:  { es: `${BASE_URL}/es/privacy`, en: `${BASE_URL}/en/privacy`, 'x-default': `${BASE_URL}/en/privacy` },
+    },
+    'data-deletion': {
+      title:       'Data Deletion | OryonX',
+      description: 'How to request deletion of your personal data collected by OryonX through WhatsApp, web chat, or voice channels.',
+      keywords:    'data deletion, delete personal data, WhatsApp privacy, Meta data controls, GDPR',
+      url:         `${BASE_URL}/en/data-deletion`,
+      image:       OG_IMAGE_EN,
+      lang:        'en',
+      alternates:  { es: `${BASE_URL}/es/data-deletion`, en: `${BASE_URL}/en/data-deletion`, 'x-default': `${BASE_URL}/en/data-deletion` },
     },
   },
 };

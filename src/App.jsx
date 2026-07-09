@@ -15,7 +15,8 @@ const FAQ = lazy(() => import('./pages/faq'));
 const AdminPanel = lazy(() => import('./pages/adminPanel'));
 const Login = lazy(() => import('./pages/login'));
 const Terms = lazy(() => import('./pages/terms'));
-const Privacy = lazy(() => import('./pages/privacy'));
+const Privacy = lazy(() => import('./pages/legal/privacy'));
+const DataDeletion = lazy(() => import('./pages/legal/data-deletion'));
 const FeaturePage = lazy(() => import('./pages/featurePage'));
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
             <Route path="faq" element={<FAQ />} />
             <Route path="terms" element={<Terms />} />
             <Route path="privacy" element={<Privacy />} />
+            <Route path="data-deletion" element={<DataDeletion />} />
             <Route path="servicios/:slug" element={<FeaturePage />} />
           </Route>
 

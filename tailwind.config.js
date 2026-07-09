@@ -20,8 +20,8 @@ export default {
           pale: '#E0F2FE',
         },
         crm: {
-          sidebar:  '#0B1330',
-          active:   '#15234A',
+          sidebar:  '#0B1A3E',
+          active:   '#1A3268',
           muted:    '#8B98B5',
           label:    '#5C6B8A',
           page:     '#F7F9FC',

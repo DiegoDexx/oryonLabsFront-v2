@@ -86,7 +86,7 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
     setDeleteTarget({
       id:   client.id,
       name: client.name,
-      activeSub:      client.subscriptions?.find(s => s.status === "active") ?? null,
+      activeSub:      client.subscriptions?.find(s => s.status !== "cancelled") ?? null,
       activeProjects: client.projects?.filter(p => !CLOSED_STAGES.includes(p.stage)) ?? [],
     });
   };

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Badge, PLAN_BADGE, STATUS_BADGE } from '../shared';
 import Modal from '../../ui/Modal';
 import { useAdminT } from '../../../context/AdminLangContext';
+import { apiDeleteSubscription } from '../../../api/apiActions';
 
 const formatDate = (d, locale = 'es-ES') => {
   if (!d) return '—';
@@ -22,11 +23,40 @@ const EyeIcon = () => (
   </svg>
 );
 
-const SubscriptionsView = ({ subscriptions, onStatusChange }) => {
+const TrashIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+  </svg>
+);
+
+const SubscriptionsView = ({ subscriptions, onStatusChange, token, onDeleteSubscription }) => {
   const { t, lang } = useAdminT();
   const ts = t.subscriptions;
+  const cd = t.confirm_delete;
   const locale = lang === 'en' ? 'en-GB' : 'es-ES';
-  const [viewTarget, setViewTarget] = useState(null);
+
+  const [viewTarget,   setViewTarget]   = useState(null);
+  const [deleteTarget, setDeleteTarget] = useState(null);
+  const [deleting,     setDeleting]     = useState(false);
+  const [deleteError,  setDeleteError]  = useState(null);
+
+  const openDelete  = (s) => { setDeleteError(null); setDeleteTarget(s); };
+  const closeDelete = () => { setDeleteTarget(null); setDeleteError(null); };
+
+  const handleDelete = async () => {
+    if (!deleteTarget) return;
+    setDeleting(true);
+    setDeleteError(null);
+    try {
+      await apiDeleteSubscription(token, deleteTarget.id);
+      onDeleteSubscription(deleteTarget.id);
+      closeDelete();
+    } catch (err) {
+      setDeleteError(err.message || t.common.unexpected_error);
+    } finally {
+      setDeleting(false);
+    }
+  };
 
   const MRR = subscriptions
     .filter(s => s.status === 'active')
@@ -81,13 +111,22 @@ const SubscriptionsView = ({ subscriptions, onStatusChange }) => {
                     </select>
                   </td>
                   <td className="px-6 py-4">
-                    <button
-                      onClick={() => setViewTarget(s)}
-                      className="p-1.5 text-gray-400 hover:text-blue-500 hover:bg-blue-50 rounded-lg transition"
-                      title="Ver detalle"
-                    >
-                      <EyeIcon />
-                    </button>
+                    <div className="flex items-center gap-1">
+                      <button
+                        onClick={() => setViewTarget(s)}
+                        className="p-1.5 text-gray-400 hover:text-blue-500 hover:bg-blue-50 rounded-lg transition"
+                        title="Ver detalle"
+                      >
+                        <EyeIcon />
+                      </button>
+                      <button
+                        onClick={() => openDelete(s)}
+                        className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition"
+                        title={ts.delete_btn}
+                      >
+                        <TrashIcon />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -100,7 +139,6 @@ const SubscriptionsView = ({ subscriptions, onStatusChange }) => {
       <Modal isOpen={!!viewTarget} onClose={() => setViewTarget(null)} title={ts.detail.title}>
         {viewTarget && (
           <div className="space-y-4">
-            {/* Header */}
             <div className="flex items-center gap-3 pb-4 border-b border-gray-100">
               <div className="w-10 h-10 rounded-lg bg-cyan/10 flex items-center justify-center text-cyan font-bold text-sm flex-shrink-0">
                 {(viewTarget.client?.name || '?').charAt(0).toUpperCase()}
@@ -112,7 +150,6 @@ const SubscriptionsView = ({ subscriptions, onStatusChange }) => {
               <Badge value={viewTarget.status} map={STATUS_BADGE} />
             </div>
 
-            {/* Plan badge */}
             <div className="flex items-center gap-2">
               <Badge value={viewTarget.plan} map={PLAN_BADGE} />
               {viewTarget.status === 'active' && (
@@ -120,7 +157,6 @@ const SubscriptionsView = ({ subscriptions, onStatusChange }) => {
               )}
             </div>
 
-            {/* Details */}
             <div className="bg-gray-50 rounded-xl border border-gray-100 px-4 divide-y divide-gray-100">
               <DetailRow label={ts.detail.setup}        value={viewTarget.setup_fee    ? `€${viewTarget.setup_fee}` : null} />
               <DetailRow label={ts.detail.monthly}      value={viewTarget.monthly_fee  ? `€${viewTarget.monthly_fee}/mes` : null} />
@@ -135,7 +171,6 @@ const SubscriptionsView = ({ subscriptions, onStatusChange }) => {
               )}
             </div>
 
-            {/* MRR contribution */}
             {viewTarget.status === 'active' && viewTarget.monthly_fee && (
               <div className="bg-green-50 border border-green-100 rounded-lg px-4 py-3 flex items-center justify-between">
                 <span className="text-xs font-semibold text-green-700">{ts.detail.mrr_contribution}</span>
@@ -149,6 +184,40 @@ const SubscriptionsView = ({ subscriptions, onStatusChange }) => {
             >
               {t.common.close}
             </button>
+          </div>
+        )}
+      </Modal>
+
+      {/* Delete confirmation modal */}
+      <Modal isOpen={!!deleteTarget} onClose={closeDelete} title={cd.title}>
+        {deleteTarget && (
+          <div className="space-y-5">
+            <div className="flex justify-center">
+              <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center text-3xl">⚠️</div>
+            </div>
+            <div className="text-center space-y-1">
+              <p className="font-semibold text-navy text-lg">
+                {cd.prefix} <span className="text-red-500">{deleteTarget.plan}</span>?
+              </p>
+              <p className="text-sm text-gray-500">{deleteTarget.client?.name}</p>
+            </div>
+
+            {deleteError && (
+              <div className="bg-red-50 border border-red-200 rounded-lg px-3 py-2">
+                <p className="text-red-600 text-xs">{deleteError}</p>
+              </div>
+            )}
+
+            <div className="flex gap-3 pt-1">
+              <button type="button" onClick={closeDelete}
+                className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 transition">
+                {t.common.cancel}
+              </button>
+              <button type="button" onClick={handleDelete} disabled={deleting}
+                className="flex-1 px-4 py-2.5 rounded-lg bg-red-500 text-white text-sm font-semibold hover:bg-red-600 disabled:opacity-50 transition">
+                {deleting ? cd.deleting : cd.confirm}
+              </button>
+            </div>
           </div>
         )}
       </Modal>

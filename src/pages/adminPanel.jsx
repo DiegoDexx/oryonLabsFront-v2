@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   apiGetClients, apiGetLeads, apiGetSubscriptions, apiGetInvoices, apiGetProjects,
   apiGetUsers,
-  apiUpdateProjectStage, apiUpdateSubscriptionStatus, apiMarkInvoicePaid,
+  apiUpdateProjectStage, apiDeleteProject, apiUpdateSubscriptionStatus, apiMarkInvoicePaid,
 } from '../api/apiActions';
 import { AdminLangProvider, useAdminT } from '../context/AdminLangContext';
 import CrmSidebar from '../components/adminPanel/CrmSidebar';
@@ -110,8 +110,19 @@ const AdminPanelInner = () => {
     showToast(t.toasts.invoice_paid);
   };
 
-  const handleClientDelete       = ()                      => { refreshClients(); showToast(t.toasts.client_deleted); };
-  const handleClientStatusChange = (clientId, newStatus)   => {
+  const handleClientDelete = () => { refreshClients(); showToast(t.toasts.client_deleted); };
+
+  const handleSubscriptionDelete = (subId) => {
+    setSubscriptions((prev) => prev.filter((s) => s.id !== subId));
+    showToast(t.toasts.subscription_deleted);
+  };
+
+  const handleProjectDelete = (projectId) => {
+    setProjects((prev) => prev.filter((p) => p.project?.id !== projectId));
+    showToast(t.toasts.project_deleted);
+  };
+
+  const handleClientStatusChange = (clientId, newStatus) => {
     setClients((prev) => prev.map((c) => c.id === clientId ? { ...c, status: newStatus } : c));
     showToast(t.toasts.client_status_updated);
   };
@@ -237,12 +248,23 @@ const AdminPanelInner = () => {
               />
             )}
             {selectedTab === 'pipeline' && (
-              <PipelineView projects={projects} onStageChange={handleStageChange} />
+              <PipelineView
+                projects={projects}
+                onStageChange={handleStageChange}
+                token={token}
+                onDeleteProject={handleProjectDelete}
+              />
             )}
             {selectedTab === 'projects' && (
-              <ProjectsTable projects={projects.map((p) => ({
-                project: p, client: p.client, requirements: p.requirements,
-              }))} />
+              <ProjectsTable
+                projects={projects.map((p) => ({
+                  project: p.project,
+                  client: p.client,
+                  requirements: p.requirements,
+                }))}
+                token={token}
+                onDeleteProject={handleProjectDelete}
+              />
             )}
             {selectedTab === 'clients' && (
               <ClientsTable
@@ -254,7 +276,12 @@ const AdminPanelInner = () => {
               />
             )}
             {selectedTab === 'subscriptions' && (
-              <SubscriptionsView subscriptions={subscriptions} onStatusChange={handleSubscriptionStatus} />
+              <SubscriptionsView
+                subscriptions={subscriptions}
+                onStatusChange={handleSubscriptionStatus}
+                token={token}
+                onDeleteSubscription={handleSubscriptionDelete}
+              />
             )}
             {selectedTab === 'invoices' && (
               <InvoicesView invoices={invoices} onMarkPaid={handleMarkPaid} />
