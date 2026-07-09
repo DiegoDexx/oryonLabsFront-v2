@@ -1,4 +1,5 @@
-import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import FeaturePageLayout from '../components/sections/FeaturePageLayout';
 import HelmetSEO from '../seo/HelmetSEO';
 import { seoData } from '../seo/seoData';
@@ -11,6 +12,11 @@ const VALID_SLUGS = ['asistente-24-7', 'crm', 'desarrollo-web', 'integraciones',
 
 export default function FeaturePage() {
   const { lang, slug } = useParams();
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   const resolvedLang = ['es', 'en'].includes(lang) ? lang : 'es';
   const t = translationsByLang[resolvedLang] || translationsByLang.es;
   const fp = t.feature_pages;
