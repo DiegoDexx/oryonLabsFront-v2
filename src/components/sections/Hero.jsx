@@ -154,19 +154,20 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
                 href={`/${lang}#${lang === 'en' ? 'pricing' : 'precios'}`}
-                className="bg-cyan hover:bg-cyan-medium text-white font-semibold px-6 py-3.5 rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-cyan/25"
+                className="bg-cyan hover:bg-cyan-medium text-white font-semibold px-6 py-3.5 rounded-lg transition-all duration-200 hover:-translate-y-0.5 flex items-center justify-center gap-2 shadow-lg shadow-cyan/25"
               >
                 {hero.cta_primary}
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </a>
-              <a
-                href={`/${lang}#${lang === 'en' ? 'contact' : 'contacto'}`}
-                className="bg-white hover:bg-gray-50 text-navy font-semibold px-6 py-3.5 rounded-lg transition-all text-center"
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))}
+                className="bg-white/10 hover:bg-white/15 text-white font-semibold px-6 py-3.5 rounded-lg transition-all duration-200 hover:-translate-y-0.5 text-center border border-white/15"
               >
                 {hero.cta_secondary}
-              </a>
+              </button>
             </div>
 
             {/* Trust Indicators */}

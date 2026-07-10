@@ -23,19 +23,19 @@ const MinusIcon = () => (
 
 function FAQItem({ item, isOpen, onToggle, index }) {
   return (
-    <div className="border-b border-gray-200 last:border-0">
+    <div className="border-b border-white/10 last:border-0">
       <button
         className="w-full py-5 sm:py-6 flex items-center justify-between text-left group"
         onClick={onToggle}
         aria-expanded={isOpen}
       >
-        <span className={`text-base sm:text-lg font-semibold pr-4 transition-colors ${isOpen ? 'text-cyan' : 'text-navy group-hover:text-cyan'}`}>
+        <span className={`text-base sm:text-lg font-semibold pr-4 transition-colors ${isOpen ? 'text-cyan' : 'text-white group-hover:text-cyan'}`}>
           {item.question}
         </span>
         <span className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
           isOpen 
             ? 'bg-cyan text-white rotate-0' 
-            : 'bg-gray-100 text-gray-500 group-hover:bg-cyan/10 group-hover:text-cyan'
+            : 'bg-white/10 text-gray-300 group-hover:bg-cyan/10 group-hover:text-cyan'
         }`}>
           {isOpen ? <MinusIcon /> : <PlusIcon />}
         </span>
@@ -46,7 +46,7 @@ function FAQItem({ item, isOpen, onToggle, index }) {
           isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <p className="pb-5 sm:pb-6 text-gray-600 leading-relaxed pr-12">
+        <p className="pb-5 sm:pb-6 text-gray-300 leading-relaxed pr-12">
           {item.answer}
         </p>
       </div>
@@ -68,24 +68,24 @@ export default function FAQ() {
   };
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-gray-50">
+    <section className="py-16 sm:py-20 lg:py-24 bg-navy">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <AnimatedSection className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <span className="inline-block bg-cyan-pale text-cyan-dark text-sm font-semibold px-4 py-2 rounded-full mb-4 sm:mb-6">
+          <span className="inline-block bg-cyan/10 text-cyan-light text-sm font-semibold px-4 py-2 rounded-full mb-4 sm:mb-6 border border-cyan/20">
             {faq.badge}
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">
             {faq.title}
           </h2>
-          <p className="text-gray-600 text-base sm:text-lg">
+          <p className="text-gray-300 text-base sm:text-lg">
             {faq.description}
           </p>
         </AnimatedSection>
 
         {/* FAQ List */}
         <AnimatedSection delay={100}>
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 lg:p-8">
+          <div className="bg-navy-light/80 rounded-2xl shadow-sm border border-white/10 p-4 sm:p-6 lg:p-8">
             <StaggerContainer staggerDelay={50}>
               {faq.items.map((item, index) => (
                 <FAQItem
@@ -102,10 +102,10 @@ export default function FAQ() {
 
         {/* CTA */}
         <AnimatedSection delay={200} className="text-center mt-12">
-          <p className="text-gray-600 mb-4">{faq.cta_title}</p>
+          <p className="text-gray-300 mb-4">{faq.cta_title}</p>
           <a
             href={`/${lang}#${lang === 'en' ? 'contact' : 'contacto'}`}
-            className="inline-flex items-center gap-2 bg-navy hover:bg-navy-light text-white font-semibold px-6 py-3 rounded-lg transition-all"
+            className="inline-flex items-center gap-2 bg-cyan hover:bg-cyan-medium text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
           >
             {faq.cta_button}
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

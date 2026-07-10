@@ -1,10 +1,11 @@
 ﻿import { useLocation } from 'react-router-dom';
 import {
   FaUser, FaComments, FaEnvelope, FaBolt, FaMobileAlt, FaClock,
-  FaRobot, FaChartBar, FaNetworkWired, FaHeadset,
+  FaRobot, FaChartBar, FaNetworkWired, FaHeadset, FaExclamationTriangle,
 } from 'react-icons/fa';
 import logoBlue2 from '../../assets/img/logo_blue2.webp';
 import useCurrency from '../../hooks/useCurrency';
+import { AnimatedSection } from '../ui/AnimatedSection';
 import es from '../../locales/es.json';
 import en from '../../locales/en.json';
 
@@ -25,23 +26,28 @@ export default function WhyOryonLabs() {
     return `${approx ? '~' : ''}${symbol}${num}${period}`;
   };
 
+  // Máx. 5 líneas por card (ver Fase 2.1) — se omite el ítem 6 (más "meta", sin precio/badge)
   const painItems = [
     { Icon: FaUser,      text: why.pain.item1, price: why.pain.price1 },
     { Icon: FaComments,  text: why.pain.item2, price: why.pain.price2 },
     { Icon: FaEnvelope,  text: why.pain.item3, price: why.pain.price3 },
     { Icon: FaBolt,      text: why.pain.item4, price: why.pain.price4 },
     { Icon: FaMobileAlt, text: why.pain.item5, price: why.pain.price5 },
-    { Icon: FaClock,     text: why.pain.item6, price: null },
   ];
 
   const solutionItems = [
-    { Icon: FaRobot,        text: why.solution.item1, included: true },
+    { Icon: FaRobot,        text: why.solution.item1, included: true, highlight: true },
     { Icon: FaChartBar,     text: why.solution.item2, included: true },
     { Icon: FaEnvelope,     text: why.solution.item3, included: true },
     { Icon: FaNetworkWired, text: why.solution.item4, included: true },
     { Icon: FaHeadset,      text: why.solution.item5, included: true },
-    { Icon: FaClock,        text: why.solution.item6, included: false },
   ];
+
+  // Badge de ahorro: rango alto de la competencia (peor caso) menos el precio OryonX
+  const [, painHigh] = why.pain.total.split(/[–-]/).map((n) => parseInt(n.replace(/\D/g, ''), 10));
+  const oryonPrice = parseInt(why.solution.price, 10);
+  const maxSavings = Math.floor(Math.max(painHigh - oryonPrice, 0) / 10) * 10;
+  const savingsText = why.savings_badge.replace('{amount}', `${symbol}${maxSavings}`);
 
   return (
     <section className="relative bg-navy-light py-24 overflow-hidden">
@@ -61,7 +67,7 @@ export default function WhyOryonLabs() {
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section header */}
-        <div className="text-center mb-14">
+        <AnimatedSection className="text-center mb-14">
           <p className="text-cyan text-xs font-bold uppercase tracking-[0.25em] mb-5">
             {why.eyebrow}
           </p>
@@ -71,20 +77,28 @@ export default function WhyOryonLabs() {
           <p className="text-gray-400 text-base max-w-xl mx-auto leading-relaxed">
             {why.subtitle.replace('{currency}', symbol)}
           </p>
-        </div>
+        </AnimatedSection>
+
+        {/* Savings badge — primer elemento que el ojo captura tras el titular */}
+        <AnimatedSection delay={40} className="flex justify-center mb-10">
+          <div className="inline-flex items-center gap-2 bg-cyan text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-lg shadow-cyan/30">
+            <FaBolt className="w-3.5 h-3.5 flex-shrink-0" />
+            {savingsText}
+          </div>
+        </AnimatedSection>
 
         {/* Comparison cards */}
-        <div className="relative grid grid-cols-1 lg:grid-cols-2 lg:gap-8 gap-4 items-stretch">
+        <AnimatedSection delay={80} className="relative grid grid-cols-1 lg:grid-cols-2 lg:gap-8 gap-4 items-stretch">
 
           {/* ── Pain card ── */}
-          <div className="bg-navy rounded-2xl border border-white/10 p-6 flex flex-col">
+          <div className="bg-navy rounded-2xl border border-white/10 p-8 flex flex-col">
             <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.18em] mb-5">
               {why.pain.label}
             </p>
 
-            <div className="space-y-3 flex-1">
+            <div className="flex-1 divide-y divide-white/5">
               {painItems.map(({ Icon, text, price }, i) => (
-                <div key={i} className="flex items-center justify-between gap-3">
+                <div key={i} className="flex items-center justify-between gap-3 py-4 first:pt-0">
                   <div className="flex items-center gap-3 min-w-0">
                     <div className="w-7 h-7 bg-white/5 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Icon className="w-3 h-3 text-gray-500" />
@@ -104,11 +118,14 @@ export default function WhyOryonLabs() {
               ))}
             </div>
 
-            <div className="mt-6 pt-5 border-t border-white/10">
+            <div className="mt-8 pt-6 border-t border-white/10">
               <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.18em] mb-2">
                 {why.pain.total_label}
               </p>
-              <p className="text-2xl font-black text-red-400 mb-1">{fmt(why.pain.total, why.pain.per_month)}</p>
+              <div className="flex items-center gap-2 mb-1">
+                <FaExclamationTriangle className="w-4 h-4 text-red-500 flex-shrink-0" />
+                <p className="text-xl font-black text-red-500">{fmt(why.pain.total, why.pain.per_month)}</p>
+              </div>
               <p className="text-gray-500 text-xs">{why.pain.description}</p>
             </div>
           </div>
@@ -128,7 +145,7 @@ export default function WhyOryonLabs() {
           </div>
 
           {/* ── Solution card ── */}
-          <div className="bg-navy rounded-2xl border border-cyan/35 p-6 flex flex-col pricing-glow">
+          <div className="bg-navy rounded-2xl border border-cyan/35 p-8 flex flex-col pricing-glow">
 
             {/* Card header: logo + name */}
             <div className="flex items-center gap-3 mb-3">
@@ -148,14 +165,16 @@ export default function WhyOryonLabs() {
               {why.solution.eyebrow}
             </p>
 
-            <div className="space-y-3 flex-1">
-              {solutionItems.map(({ Icon, text, included }, i) => (
-                <div key={i} className="flex items-center justify-between gap-3">
+            <div className="flex-1 divide-y divide-cyan/10">
+              {solutionItems.map(({ Icon, text, included, highlight }, i) => (
+                <div key={i} className="flex items-center justify-between gap-3 py-4 first:pt-0">
                   <div className="flex items-center gap-3 min-w-0">
                     <div className="w-7 h-7 bg-cyan/10 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Icon className="w-3 h-3 text-cyan" />
                     </div>
-                    <span className="text-gray-200 text-sm leading-snug">{text}</span>
+                    <span className={`text-sm leading-snug ${highlight ? 'text-white font-semibold' : 'text-gray-200'}`}>
+                      {text}
+                    </span>
                   </div>
                   {included ? (
                     <span className="text-cyan text-[11px] font-semibold flex-shrink-0 bg-cyan/10 border border-cyan/20 px-2 py-0.5 rounded-full">
@@ -170,25 +189,27 @@ export default function WhyOryonLabs() {
               ))}
             </div>
 
-            <div className="mt-6 pt-5 border-t border-cyan/20">
-              <p className="text-cyan text-[10px] font-bold uppercase tracking-[0.18em] mb-2">
+            <div className="mt-8 pt-6 border-t border-cyan/20">
+              <p className="text-cyan text-[10px] font-bold uppercase tracking-[0.15em] mb-2">
                 {why.solution.price_label}
               </p>
-              <p className="text-2xl font-black text-cyan mb-1">{fmt(why.solution.price, why.solution.per_month)}</p>
+              <p className="text-4xl lg:text-4xl font-black text-cyan mb-2 leading-none tracking-tight">
+                {fmt(why.solution.price, why.solution.per_month)}
+              </p>
               <p className="text-gray-400 text-xs">{why.solution.description}</p>
             </div>
           </div>
-        </div>
+        </AnimatedSection>
 
         {/* Testimonial */}
-        <div className="mt-10 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-6 max-w-2xl mx-auto">
+        <AnimatedSection delay={160} className="mt-10 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-6 max-w-2xl mx-auto">
           <p className="text-cyan text-3xl leading-none font-serif mb-2">"</p>
           <p className="text-gray-300 text-sm leading-relaxed mb-3">{why.testimonial.text}</p>
           <p className="text-gray-500 text-xs">{why.testimonial.author}</p>
-        </div>
+        </AnimatedSection>
 
-        {/* CTAs */}
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
+        {/* CTA — un único botón sólido; el secundario queda como link de menor peso */}
+        <AnimatedSection delay={220} className="mt-8 flex flex-col items-center gap-3">
           <a
             href={`/${lang}#${lang === 'en' ? 'pricing' : 'precios'}`}
             className="bg-cyan hover:bg-cyan-medium text-white font-semibold px-6 py-3.5 rounded-lg transition-all flex items-center gap-2 shadow-lg shadow-cyan/25"
@@ -197,11 +218,11 @@ export default function WhyOryonLabs() {
           </a>
           <button
             onClick={() => window.dispatchEvent(new CustomEvent('open-chatbot'))}
-            className="bg-transparent hover:bg-white/5 text-white font-semibold px-6 py-3.5 rounded-lg transition-all border border-white/30"
+            className="text-gray-400 hover:text-white text-sm font-medium underline underline-offset-4 decoration-gray-500 hover:decoration-white transition-colors"
           >
             {why.cta.secondary}
           </button>
-        </div>
+        </AnimatedSection>
 
       </div>
     </section>

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import PricingCard from '../ui/PricingCard';
 import ComparisonTable from '../ui/ComparisonTable';
+import { AnimatedSection } from '../ui/AnimatedSection';
 import useCurrency from '../../hooks/useCurrency';
 import es from '../../locales/es.json';
 import en from '../../locales/en.json';
@@ -80,23 +81,23 @@ export default function Pricing() {
   };
 
   return (
-    <section id={lang === 'en' ? 'pricing' : 'precios'} className="bg-gray-50">
+    <section id={lang === 'en' ? 'pricing' : 'precios'} className="bg-navy">
       {/* Header + compact cards */}
       <div className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="inline-block bg-cyan-pale text-cyan-dark text-sm font-semibold px-4 py-2 rounded-full mb-6">
+          <AnimatedSection className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block bg-cyan/10 text-cyan-light text-sm font-semibold px-4 py-2 rounded-full mb-6 border border-cyan/20">
               {pricing.badge}
             </span>
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-navy mb-6">
+            <h2 className="text-4xl lg:text-5xl font-extrabold text-white mb-6">
               {pricing.title}
               <br />
               <span className="text-cyan">{pricing.title_highlight}</span>
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed">{pricing.description}</p>
-          </div>
+            <p className="text-gray-300 text-lg leading-relaxed">{pricing.description}</p>
+          </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch mb-10">
+          <AnimatedSection delay={120} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch mb-10">
             {pricing.plans.map((plan, index) => (
               <PricingCard
                 key={plan.name}
@@ -121,7 +122,7 @@ export default function Pricing() {
                 lang={lang}
               />
             ))}
-          </div>
+          </AnimatedSection>
 
           <div className="text-center">
             <a

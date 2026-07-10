@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function ServiceCard({ icon, badge, title, description, color = 'cyan', link, comingSoon = false, lang = 'es' }) {
+export default function ServiceCard({ icon, badge, title, description, color = 'cyan', link, comingSoon = false, lang = 'es', className = '' }) {
   const colorClasses = {
     cyan: 'bg-cyan text-white',
     purple: 'bg-purple-500 text-white',
@@ -68,13 +68,13 @@ export default function ServiceCard({ icon, badge, title, description, color = '
     </>
   );
 
-  const baseClass = `group bg-white rounded-2xl p-8 border border-gray-100 transition-all duration-300 ${
+  const baseClass = `group flex flex-col bg-white rounded-2xl p-8 border border-gray-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${
     link
-      ? 'hover:border-cyan/30 hover:shadow-xl cursor-pointer'
+      ? 'hover:border-cyan/30 cursor-pointer'
       : comingSoon
       ? 'opacity-75 cursor-default'
       : ''
-  }`;
+  } ${className}`;
 
   if (link) {
     return (

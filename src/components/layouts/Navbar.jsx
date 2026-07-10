@@ -103,7 +103,7 @@ export default function Navbar() {
             </a>
             <a
               href={`/${lang}#${lang === 'en' ? 'pricing' : 'precios'}`}
-              className="bg-cyan hover:bg-cyan-medium text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-all flex items-center gap-2"
+              className="bg-cyan hover:bg-cyan-medium text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2 shadow-lg shadow-cyan/20"
             >
               {nav.cta_pricing}
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

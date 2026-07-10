@@ -81,6 +81,7 @@
     "eyebrow": "POR QUÉ OryonX",
     "title": "Deja de pagar por herramientas que no se comunican entre sí.",
     "subtitle": "La mayoría de empresas gasta 500–800{currency}/mes en software desconectado. OryonX lo reemplaza todo.",
+    "savings_badge": "Ahorras hasta {amount}/mes",
     "pain": {
       "label": "LO QUE LA MAYORÍA DE EMPRESAS PAGA HOY",
       "item1": "Software CRM de ventas",

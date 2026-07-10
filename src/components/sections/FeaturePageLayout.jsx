@@ -2,6 +2,12 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FaCheck, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { useInView } from '../../hooks/useInView';
+import {
+  ChatbotHeroVisual,
+  IntegrationsHeroVisual,
+  CustomAIHeroVisual,
+  CRMHeroVisual,
+} from './HeroVisuals';
 
 /* ── Count-up hook ─────────────────────────────────────────── */
 function useCountUp(figureStr, duration = 1800, active = false) {
@@ -54,154 +60,6 @@ function FadeIn({ children, delay = 0, y = 24, className = '' }) {
 }
 
 /* ── Professional hero illustrations ──────────────────────── */
-const AsistenteIll = () => (
-  <svg viewBox="0 0 260 360" fill="none" className="w-full h-full">
-    <defs>
-      <linearGradient id="a-body" x1="0" y1="0" x2="0.4" y2="1">
-        <stop offset="0%" stopColor="#1E3A70" />
-        <stop offset="100%" stopColor="#0B1D45" />
-      </linearGradient>
-      <linearGradient id="a-bubble" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stopColor="#0090C9" stopOpacity="0.9" />
-        <stop offset="100%" stopColor="#0369A1" stopOpacity="0.9" />
-      </linearGradient>
-      <filter id="a-glow">
-        <feGaussianBlur stdDeviation="6" result="b" />
-        <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
-      </filter>
-    </defs>
-    {/* Phone body */}
-    <rect x="28" y="6" width="204" height="348" rx="32" fill="url(#a-body)" stroke="white" strokeOpacity="0.08" strokeWidth="1.5" />
-    {/* Screen */}
-    <rect x="36" y="22" width="188" height="316" rx="24" fill="#060F27" />
-    {/* Dynamic island / notch */}
-    <rect x="108" y="25" width="44" height="10" rx="5" fill="#0A1530" />
-    {/* App bar */}
-    <rect x="36" y="38" width="188" height="50" fill="#0090C9" fillOpacity="0.1" />
-    <circle cx="60" cy="63" r="15" fill="#0090C9" fillOpacity="0.35" />
-    <circle cx="60" cy="59" r="5.5" fill="#0090C9" fillOpacity="0.7" />
-    <path d="M47 72 Q60 65 73 72" fill="#0090C9" fillOpacity="0.3" />
-    <rect x="84" y="57" width="72" height="7" rx="3.5" fill="white" fillOpacity="0.6" />
-    <rect x="84" y="68" width="48" height="5" rx="2.5" fill="white" fillOpacity="0.22" />
-    {/* Online dot */}
-    <circle cx="71" cy="47" r="5.5" fill="#22C55E" />
-    <circle cx="71" cy="47" r="3" fill="#4ADE80" />
-    {/* Separator */}
-    <line x1="36" y1="88" x2="224" y2="88" stroke="white" strokeOpacity="0.05" />
-    {/* Bot bubble 1 */}
-    <rect x="42" y="96" width="128" height="34" rx="17" fill="url(#a-bubble)" />
-    <rect x="52" y="105" width="96" height="6" rx="3" fill="white" fillOpacity="0.75" />
-    <rect x="52" y="116" width="66" height="6" rx="3" fill="white" fillOpacity="0.45" />
-    {/* User bubble 1 */}
-    <rect x="118" y="140" width="100" height="26" rx="13" fill="white" fillOpacity="0.09" stroke="white" strokeOpacity="0.07" strokeWidth="1" />
-    <rect x="130" y="149" width="68" height="6" rx="3" fill="white" fillOpacity="0.4" />
-    {/* Bot bubble 2 */}
-    <rect x="42" y="176" width="148" height="50" rx="17" fill="url(#a-bubble)" fillOpacity="0.8" />
-    <rect x="52" y="185" width="118" height="6" rx="3" fill="white" fillOpacity="0.75" />
-    <rect x="52" y="196" width="100" height="6" rx="3" fill="white" fillOpacity="0.55" />
-    <rect x="52" y="207" width="72" height="6" rx="3" fill="white" fillOpacity="0.3" />
-    {/* User bubble 2 */}
-    <rect x="120" y="236" width="98" height="26" rx="13" fill="white" fillOpacity="0.09" stroke="white" strokeOpacity="0.07" strokeWidth="1" />
-    <rect x="132" y="245" width="60" height="6" rx="3" fill="white" fillOpacity="0.4" />
-    {/* Typing indicator */}
-    <rect x="42" y="272" width="64" height="28" rx="14" fill="#0090C9" fillOpacity="0.28" />
-    <circle cx="56" cy="286" r="3.5" fill="white" fillOpacity="0.65" />
-    <circle cx="68" cy="286" r="3.5" fill="white" fillOpacity="0.42" />
-    <circle cx="80" cy="286" r="3.5" fill="white" fillOpacity="0.22" />
-    {/* Input bar */}
-    <rect x="42" y="312" width="140" height="32" rx="16" fill="white" fillOpacity="0.05" stroke="white" strokeOpacity="0.07" strokeWidth="1" />
-    <rect x="54" y="324" width="72" height="6" rx="3" fill="white" fillOpacity="0.1" />
-    <circle cx="210" cy="328" r="12" fill="#0090C9" fillOpacity="0.85" filter="url(#a-glow)" />
-    <path d="M205 328 L213 325 L213 331 Z" fill="white" />
-    {/* Home indicator */}
-    <rect x="100" y="352" width="60" height="4" rx="2" fill="white" fillOpacity="0.12" />
-    {/* Notification badge */}
-    <circle cx="222" cy="32" r="14" fill="#F97316" filter="url(#a-glow)" />
-    <text x="222" y="37" textAnchor="middle" fill="white" fontSize="11" fontWeight="bold">3</text>
-    {/* WhatsApp badge */}
-    <circle cx="183" cy="63" r="10" fill="#25D366" />
-    <path d="M183 58 C179 58 176 61 176 64.5 C176 65.8 176.4 67 177.2 68 L176 70.5 L178.8 69.5 C179.8 70 180.9 70.3 182.1 70.3 C186 70.3 189 67.3 189 63.8 C189 60.3 186.3 58 183 58Z" fill="white" fillOpacity="0.85" />
-  </svg>
-);
-
-const CRMIll = () => (
-  <svg viewBox="0 0 320 240" fill="none" className="w-full h-full">
-    <defs>
-      <linearGradient id="crm-bg" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#0F1F4A" />
-        <stop offset="100%" stopColor="#080F28" />
-      </linearGradient>
-      <linearGradient id="crm-bar1" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#0090C9" />
-        <stop offset="100%" stopColor="#0369A1" />
-      </linearGradient>
-      <linearGradient id="crm-bar2" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#22C55E" />
-        <stop offset="100%" stopColor="#16A34A" />
-      </linearGradient>
-    </defs>
-    {/* Panel */}
-    <rect width="320" height="240" rx="16" fill="url(#crm-bg)" stroke="white" strokeOpacity="0.06" strokeWidth="1" />
-    {/* Header */}
-    <rect x="0" y="0" width="320" height="44" rx="16" fill="white" fillOpacity="0.04" />
-    <rect x="0" y="32" width="320" height="12" fill="white" fillOpacity="0.04" />
-    <rect x="14" y="14" width="90" height="8" rx="4" fill="#0090C9" fillOpacity="0.55" />
-    <rect x="14" y="26" width="55" height="5" rx="2.5" fill="white" fillOpacity="0.18" />
-    <circle cx="292" cy="22" r="10" fill="white" fillOpacity="0.05" stroke="white" strokeOpacity="0.08" strokeWidth="1" />
-    <circle cx="292" cy="22" r="4" fill="#0090C9" fillOpacity="0.7" />
-    <circle cx="270" cy="22" r="10" fill="white" fillOpacity="0.05" stroke="white" strokeOpacity="0.08" strokeWidth="1" />
-    <rect x="264" y="18" width="12" height="2" rx="1" fill="white" fillOpacity="0.5" />
-    <rect x="264" y="22" width="12" height="2" rx="1" fill="white" fillOpacity="0.35" />
-    <rect x="264" y="26" width="8" height="2" rx="1" fill="white" fillOpacity="0.2" />
-    {/* KPI cards */}
-    <rect x="12" y="52" width="88" height="56" rx="10" fill="white" fillOpacity="0.04" stroke="white" strokeOpacity="0.06" strokeWidth="1" />
-    <rect x="22" y="61" width="44" height="5" rx="2.5" fill="white" fillOpacity="0.2" />
-    <rect x="22" y="74" width="36" height="12" rx="4" fill="url(#crm-bar1)" fillOpacity="0.9" />
-    <rect x="22" y="91" width="55" height="5" rx="2.5" fill="#22C55E" fillOpacity="0.6" />
-
-    <rect x="114" y="52" width="88" height="56" rx="10" fill="white" fillOpacity="0.04" stroke="white" strokeOpacity="0.06" strokeWidth="1" />
-    <rect x="124" y="61" width="50" height="5" rx="2.5" fill="white" fillOpacity="0.2" />
-    <rect x="124" y="74" width="42" height="12" rx="4" fill="url(#crm-bar2)" fillOpacity="0.9" />
-    <rect x="124" y="91" width="40" height="5" rx="2.5" fill="#22C55E" fillOpacity="0.6" />
-
-    <rect x="216" y="52" width="92" height="56" rx="10" fill="white" fillOpacity="0.04" stroke="white" strokeOpacity="0.06" strokeWidth="1" />
-    <rect x="226" y="61" width="55" height="5" rx="2.5" fill="white" fillOpacity="0.2" />
-    <rect x="226" y="74" width="30" height="12" rx="4" fill="#F97316" fillOpacity="0.8" />
-    <rect x="226" y="91" width="48" height="5" rx="2.5" fill="#F97316" fillOpacity="0.45" />
-
-    {/* Pipeline columns */}
-    <rect x="12" y="118" width="88" height="10" rx="5" fill="#0090C9" fillOpacity="0.15" />
-    <rect x="18" y="121" width="44" height="4" rx="2" fill="#0090C9" fillOpacity="0.5" />
-    <rect x="12" y="134" width="88" height="16" rx="8" fill="white" fillOpacity="0.05" stroke="white" strokeOpacity="0.07" strokeWidth="1" />
-    <rect x="20" y="139" width="56" height="6" rx="3" fill="white" fillOpacity="0.3" />
-    <rect x="12" y="156" width="88" height="16" rx="8" fill="white" fillOpacity="0.05" stroke="white" strokeOpacity="0.07" strokeWidth="1" />
-    <rect x="20" y="161" width="40" height="6" rx="3" fill="white" fillOpacity="0.2" />
-    <rect x="12" y="178" width="88" height="16" rx="8" fill="#0090C9" fillOpacity="0.15" stroke="#0090C9" strokeOpacity="0.2" strokeWidth="1" />
-    <rect x="20" y="183" width="48" height="6" rx="3" fill="#0090C9" fillOpacity="0.5" />
-
-    <rect x="114" y="118" width="88" height="10" rx="5" fill="#F97316" fillOpacity="0.15" />
-    <rect x="120" y="121" width="44" height="4" rx="2" fill="#F97316" fillOpacity="0.5" />
-    <rect x="114" y="134" width="88" height="16" rx="8" fill="white" fillOpacity="0.05" stroke="white" strokeOpacity="0.07" strokeWidth="1" />
-    <rect x="122" y="139" width="62" height="6" rx="3" fill="white" fillOpacity="0.3" />
-    <rect x="114" y="156" width="88" height="16" rx="8" fill="white" fillOpacity="0.05" stroke="white" strokeOpacity="0.07" strokeWidth="1" />
-    <rect x="122" y="161" width="50" height="6" rx="3" fill="white" fillOpacity="0.2" />
-
-    <rect x="216" y="118" width="92" height="10" rx="5" fill="#22C55E" fillOpacity="0.15" />
-    <rect x="222" y="121" width="44" height="4" rx="2" fill="#22C55E" fillOpacity="0.5" />
-    <rect x="216" y="134" width="92" height="16" rx="8" fill="white" fillOpacity="0.05" stroke="white" strokeOpacity="0.07" strokeWidth="1" />
-    <rect x="224" y="139" width="68" height="6" rx="3" fill="white" fillOpacity="0.3" />
-    <rect x="216" y="156" width="92" height="16" rx="8" fill="#22C55E" fillOpacity="0.15" stroke="#22C55E" strokeOpacity="0.2" strokeWidth="1" />
-    <rect x="224" y="161" width="45" height="6" rx="3" fill="#22C55E" fillOpacity="0.5" />
-
-    {/* Score badge */}
-    <rect x="22" y="202" width="66" height="26" rx="8" fill="#0090C9" fillOpacity="0.2" stroke="#0090C9" strokeOpacity="0.3" strokeWidth="1" />
-    <rect x="30" y="210" width="20" height="5" rx="2.5" fill="white" fillOpacity="0.3" />
-    <rect x="55" y="210" width="24" height="5" rx="2.5" fill="#0090C9" fillOpacity="0.8" />
-    <rect x="30" y="219" width="50" height="3" rx="1.5" fill="white" fillOpacity="0.1" />
-    <rect x="30" y="219" width="38" height="3" rx="1.5" fill="#0090C9" fillOpacity="0.5" />
-  </svg>
-);
-
 const WebIll = () => (
   <svg viewBox="0 0 320 230" fill="none" className="w-full h-full">
     <defs>
@@ -262,150 +120,16 @@ const WebIll = () => (
   </svg>
 );
 
-const IntegrationsIll = () => (
-  <svg viewBox="0 0 320 240" fill="none" className="w-full h-full">
-    <defs>
-      <radialGradient id="int-center" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#0090C9" stopOpacity="0.4" />
-        <stop offset="100%" stopColor="#0090C9" stopOpacity="0" />
-      </radialGradient>
-      <filter id="int-glow">
-        <feGaussianBlur stdDeviation="5" result="b" />
-        <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
-      </filter>
-    </defs>
-    {/* Ambient glow */}
-    <circle cx="160" cy="120" r="80" fill="url(#int-center)" />
-    {/* Connection lines */}
-    <line x1="160" y1="120" x2="55" y2="42" stroke="#0090C9" strokeOpacity="0.25" strokeWidth="1.5" strokeDasharray="5 4" />
-    <line x1="160" y1="120" x2="280" y2="42" stroke="#0090C9" strokeOpacity="0.25" strokeWidth="1.5" strokeDasharray="5 4" />
-    <line x1="160" y1="120" x2="28" y2="148" stroke="#0090C9" strokeOpacity="0.25" strokeWidth="1.5" strokeDasharray="5 4" />
-    <line x1="160" y1="120" x2="292" y2="148" stroke="#0090C9" strokeOpacity="0.25" strokeWidth="1.5" strokeDasharray="5 4" />
-    <line x1="160" y1="120" x2="160" y2="215" stroke="#0090C9" strokeOpacity="0.25" strokeWidth="1.5" strokeDasharray="5 4" />
-    {/* Data packets on lines */}
-    <circle cx="107" cy="81" r="4" fill="#0090C9" fillOpacity="0.7" />
-    <circle cx="220" cy="81" r="4" fill="#0090C9" fillOpacity="0.5" />
-    <circle cx="94" cy="134" r="4" fill="#0090C9" fillOpacity="0.6" />
-    <circle cx="226" cy="134" r="4" fill="#0090C9" fillOpacity="0.4" />
-    <circle cx="160" cy="167" r="4" fill="#0090C9" fillOpacity="0.55" />
-    {/* Center hub */}
-    <circle cx="160" cy="120" r="30" fill="#0090C9" fillOpacity="0.15" stroke="#0090C9" strokeOpacity="0.4" strokeWidth="2" filter="url(#int-glow)" />
-    <circle cx="160" cy="120" r="18" fill="#0090C9" fillOpacity="0.5" />
-    <circle cx="160" cy="120" r="10" fill="#0090C9" fillOpacity="0.9" />
-    <rect x="153" y="116" width="14" height="8" rx="2" fill="white" fillOpacity="0.9" />
-    <path d="M156 120 H164 M160 116 V124" stroke="#0090C9" strokeWidth="1.5" strokeLinecap="round" />
-    {/* Satellite nodes */}
-    {/* WhatsApp */}
-    <circle cx="55" cy="42" r="22" fill="#0F1F4A" stroke="#25D366" strokeOpacity="0.5" strokeWidth="1.5" />
-    <circle cx="55" cy="42" r="12" fill="#25D366" fillOpacity="0.2" />
-    <rect x="47" y="36" width="16" height="12" rx="4" fill="#25D366" fillOpacity="0.7" />
-    <rect x="50" y="53" width="22" height="5" rx="2.5" fill="white" fillOpacity="0.3" />
-    {/* Email */}
-    <circle cx="280" cy="42" r="22" fill="#0F1F4A" stroke="#F97316" strokeOpacity="0.5" strokeWidth="1.5" />
-    <rect x="268" y="34" width="24" height="16" rx="4" fill="#F97316" fillOpacity="0.2" stroke="#F97316" strokeOpacity="0.4" strokeWidth="1" />
-    <path d="M268 34 L280 44 L292 34" stroke="#F97316" strokeOpacity="0.6" strokeWidth="1.2" fill="none" />
-    <rect x="262" y="53" width="36" height="5" rx="2.5" fill="white" fillOpacity="0.3" />
-    {/* CRM */}
-    <circle cx="28" cy="148" r="22" fill="#0F1F4A" stroke="#0090C9" strokeOpacity="0.5" strokeWidth="1.5" />
-    <rect x="17" y="140" width="22" height="16" rx="4" fill="#0090C9" fillOpacity="0.25" />
-    <rect x="20" y="143" width="7" height="10" rx="2" fill="#0090C9" fillOpacity="0.6" />
-    <rect x="29" y="146" width="7" height="7" rx="2" fill="#0090C9" fillOpacity="0.4" />
-    <rect x="5" y="163" width="46" height="5" rx="2.5" fill="white" fillOpacity="0.3" />
-    {/* Calendar */}
-    <circle cx="292" cy="148" r="22" fill="#0F1F4A" stroke="#A855F7" strokeOpacity="0.5" strokeWidth="1.5" />
-    <rect x="280" y="138" width="24" height="20" rx="4" fill="#A855F7" fillOpacity="0.2" stroke="#A855F7" strokeOpacity="0.3" strokeWidth="1" />
-    <line x1="280" y1="143" x2="304" y2="143" stroke="#A855F7" strokeOpacity="0.5" strokeWidth="1" />
-    <circle cx="287" cy="150" r="2" fill="#A855F7" fillOpacity="0.6" />
-    <circle cx="293" cy="150" r="2" fill="#A855F7" fillOpacity="0.6" />
-    <circle cx="299" cy="150" r="2" fill="#A855F7" fillOpacity="0.4" />
-    <rect x="269" y="163" width="46" height="5" rx="2.5" fill="white" fillOpacity="0.3" />
-    {/* Invoice */}
-    <circle cx="160" cy="215" r="22" fill="#0F1F4A" stroke="#22C55E" strokeOpacity="0.5" strokeWidth="1.5" />
-    <rect x="149" y="205" width="22" height="20" rx="3" fill="#22C55E" fillOpacity="0.2" stroke="#22C55E" strokeOpacity="0.3" strokeWidth="1" />
-    <rect x="153" y="209" width="14" height="3" rx="1.5" fill="white" fillOpacity="0.5" />
-    <rect x="153" y="214" width="10" height="3" rx="1.5" fill="white" fillOpacity="0.35" />
-    <rect x="153" y="219" width="12" height="3" rx="1.5" fill="white" fillOpacity="0.25" />
-  </svg>
-);
 
-const CustomAIIll = () => (
-  <svg viewBox="0 0 320 240" fill="none" className="w-full h-full">
-    <defs>
-      <radialGradient id="ai-glow1" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#F97316" stopOpacity="0.35" />
-        <stop offset="100%" stopColor="#F97316" stopOpacity="0" />
-      </radialGradient>
-      <radialGradient id="ai-glow2" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#0090C9" stopOpacity="0.3" />
-        <stop offset="100%" stopColor="#0090C9" stopOpacity="0" />
-      </radialGradient>
-      <filter id="ai-node-glow">
-        <feGaussianBlur stdDeviation="4" result="b" />
-        <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
-      </filter>
-    </defs>
-    {/* Ambient glows */}
-    <circle cx="252" cy="80" r="50" fill="url(#ai-glow1)" />
-    <circle cx="90" cy="140" r="50" fill="url(#ai-glow2)" />
-    {/* Layer labels */}
-    <rect x="20" y="12" width="42" height="14" rx="7" fill="white" fillOpacity="0.06" />
-    <rect x="126" y="12" width="42" height="14" rx="7" fill="white" fillOpacity="0.06" />
-    <rect x="232" y="12" width="42" height="14" rx="7" fill="white" fillOpacity="0.06" />
-    <rect x="26" y="15" width="30" height="5" rx="2.5" fill="white" fillOpacity="0.3" />
-    <rect x="132" y="15" width="30" height="5" rx="2.5" fill="white" fillOpacity="0.3" />
-    <rect x="238" y="15" width="30" height="5" rx="2.5" fill="white" fillOpacity="0.3" />
-    {/* Layer 1 nodes (input) */}
-    {[44, 84, 124, 164, 204].map((y, i) => (
-      <g key={`l1-${i}`}>
-        <circle cx="40" cy={y} r="11" fill="#0090C9" fillOpacity="0.2" stroke="#0090C9" strokeOpacity="0.35" strokeWidth="1.5" />
-        <circle cx="40" cy={y} r="5" fill="#0090C9" fillOpacity="0.6" />
-      </g>
-    ))}
-    {/* Layer 2 nodes (hidden) */}
-    {[54, 94, 134, 174].map((y, i) => (
-      <g key={`l2-${i}`}>
-        <circle cx="147" cy={y} r="14" fill="#0090C9" fillOpacity="0.22" stroke="#0090C9" strokeOpacity="0.4" strokeWidth="1.5" />
-        <circle cx="147" cy={y} r="7" fill="#0090C9" fillOpacity="0.7" />
-      </g>
-    ))}
-    {/* Layer 3 nodes (output - highlighted) */}
-    {[80, 148].map((y, i) => (
-      <g key={`l3-${i}`}>
-        <circle cx="260" cy={y} r="22" fill="#F97316" fillOpacity="0.1" stroke="#F97316" strokeOpacity="0.4" strokeWidth="2" filter="url(#ai-node-glow)" />
-        <circle cx="260" cy={y} r="12" fill="#F97316" fillOpacity="0.5" />
-        <circle cx="260" cy={y} r="6" fill="#F97316" fillOpacity="0.9" />
-      </g>
-    ))}
-    {/* Connections L1→L2 */}
-    {[44, 84, 124, 164, 204].map((y1) =>
-      [54, 94, 134, 174].map((y2, j) => (
-        <line key={`c1-${y1}-${j}`} x1="51" y1={y1} x2="133" y2={y2} stroke="#0090C9" strokeOpacity="0.09" strokeWidth="1" />
-      ))
-    )}
-    {/* Connections L2→L3 */}
-    {[54, 94, 134, 174].map((y1, i) =>
-      [80, 148].map((y2, j) => (
-        <line key={`c2-${i}-${j}`} x1="161" y1={y1} x2="238" y2={y2} stroke="#0090C9" strokeOpacity="0.15" strokeWidth="1" />
-      ))
-    )}
-    {/* Active path highlight */}
-    <line x1="51" y1="124" x2="133" y2="94" stroke="#0090C9" strokeOpacity="0.6" strokeWidth="1.5" />
-    <line x1="161" y1="94" x2="238" y2="80" stroke="#F97316" strokeOpacity="0.5" strokeWidth="1.5" />
-    {/* Output label */}
-    <rect x="230" y="108" width="60" height="20" rx="10" fill="#F97316" fillOpacity="0.15" stroke="#F97316" strokeOpacity="0.3" strokeWidth="1" />
-    <rect x="238" y="114" width="44" height="6" rx="3" fill="#F97316" fillOpacity="0.5" />
-  </svg>
-);
-
-function HeroIllustration({ slug }) {
+function HeroIllustration({ slug, lang }) {
   const map = {
-    'asistente-24-7': <AsistenteIll />,
-    crm: <CRMIll />,
+    'asistente-24-7': <ChatbotHeroVisual lang={lang} />,
+    crm: <CRMHeroVisual lang={lang} />,
     'desarrollo-web': <WebIll />,
-    integraciones: <IntegrationsIll />,
-    'custom-ai': <CustomAIIll />,
+    integraciones: <IntegrationsHeroVisual lang={lang} />,
+    'custom-ai': <CustomAIHeroVisual lang={lang} />,
   };
-  return map[slug] || <AsistenteIll />;
+  return map[slug] || <ChatbotHeroVisual lang={lang} />;
 }
 
 /* ── Staggered how-it-works section ───────────────────────── */
@@ -598,7 +322,7 @@ export default function FeaturePageLayout({ pageData, fp, lang }) {
             style={{ opacity: mounted ? 1 : 0, transition: 'opacity 1100ms 500ms' }}
           >
             <div className="w-full max-w-sm max-h-96 flex items-center justify-center drop-shadow-2xl">
-              <HeroIllustration slug={pageData.slug} />
+              <HeroIllustration slug={pageData.slug} lang={lang} />
             </div>
           </div>
         </div>

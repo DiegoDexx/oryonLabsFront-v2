@@ -188,6 +188,18 @@
   animation: borderGradient 2s ease-in-out infinite;
 }
 
+/* Dash-offset flow para líneas de integración (sugiere sincronización) */
+@keyframes dashFlow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.animate-dash-flow {
+  stroke-dasharray: 5 5;
+  animation: dashFlow 1s linear infinite;
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   *,
