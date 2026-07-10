@@ -18,6 +18,7 @@ const Terms = lazy(() => import('./pages/terms'));
 const Privacy = lazy(() => import('./pages/legal/privacy'));
 const DataDeletion = lazy(() => import('./pages/legal/data-deletion'));
 const FeaturePage = lazy(() => import('./pages/featurePage'));
+const BlogPage = lazy(() => import('./pages/blog'));
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -41,6 +42,7 @@ function App() {
           <Route path="/:lang" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="faq" element={<FAQ />} />
+            <Route path="blog" element={<BlogPage />} />
             <Route path="terms" element={<Terms />} />
             <Route path="privacy" element={<Privacy />} />
             <Route path="data-deletion" element={<DataDeletion />} />

@@ -85,13 +85,17 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-white mb-6">{footer.columns.company.title}</h3>
             <ul className="space-y-4">
-              {footer.columns.company.links.map((link, index) => (
-                <li key={index}>
-                  <a href="#" className="text-gray-400 hover:text-cyan text-sm transition-colors">
-                    {link}
-                  </a>
-                </li>
-              ))}
+              {footer.columns.company.links.map((link, index) => {
+                const paths = [`/${lang}/aboutus`, `/${lang}/servicios`, `/${lang}/faq`, `/${lang}/blog`];
+                const to = paths[index] || '#';
+                return (
+                  <li key={index}>
+                    <Link to={to} className="text-gray-400 hover:text-cyan text-sm transition-colors">
+                      {link}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

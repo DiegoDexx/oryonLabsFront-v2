@@ -441,7 +441,7 @@
             {
               "feature": "Clasificación automática de leads",
               "values": [
-                false,
+                true,
                 true,
                 true,
                 true
@@ -459,7 +459,7 @@
             {
               "feature": "Resúmenes comerciales con IA",
               "values": [
-                false,
+                true,
                 true,
                 true,
                 true
@@ -468,7 +468,7 @@
             {
               "feature": "Dashboard de métricas",
               "values": [
-                false,
+                true,
                 true,
                 true,
                 true

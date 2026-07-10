@@ -53,6 +53,8 @@ export default function PricingCard({
 
   const voiceFeatureSlug = voiceFeature?.link ? `/${lang}/servicios/${voiceFeature.link}` : null;
 
+  const contactAnchor = lang === 'en' ? '#contact' : '#contacto';
+
   return (
     <div
       className={`relative rounded-2xl p-7 flex flex-col transition-all duration-300 hover:scale-[1.02] ${
@@ -105,16 +107,25 @@ export default function PricingCard({
         </div>
       </div>
 
-      {/* CTA */}
-      <button
-        className={`w-full py-3 rounded-lg font-semibold transition-all mb-6 ${
+      {/* CTA: primary links to contact form */}
+      <a
+        href={contactAnchor}
+        className={`w-full inline-flex items-center justify-center py-3 rounded-lg font-semibold transition-all mb-4 ${
           isPopular || isDark
             ? 'bg-cyan hover:bg-cyan-medium text-white'
             : 'bg-navy hover:opacity-90 text-white'
         }`}
       >
         {ctaText}
-      </button>
+      </a>
+
+      {/* Secondary quick CTA */}
+      <a
+        href={contactAnchor}
+        className="w-full inline-flex items-center justify-center py-2 rounded-lg font-medium text-sm border border-gray-200 hover:bg-gray-50 transition-colors mb-6"
+      >
+        {lang === 'en' ? 'Request free analysis' : 'Solicitar análisis gratuito'}
+      </a>
 
       {/* Key features */}
       <div className={`border-t ${isDark ? 'border-white/10' : 'border-gray-100'} pt-5 flex-1`}>

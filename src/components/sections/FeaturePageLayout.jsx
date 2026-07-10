@@ -8,6 +8,18 @@ import {
   CustomAIHeroVisual,
   CRMHeroVisual,
 } from './HeroVisuals';
+import tradesIllustration from '../../assets/img/illustrations_features/Trades_and_constructions.webp';
+import clinicIllustration from '../../assets/img/illustrations_features/AI_Clinic_PhoneAssistant.webp';
+import servicesIllustration from '../../assets/img/illustrations_features/AI_for_24-7Services (locksmiths, breakdown).webp';
+import crmMarketingIllustration from '../../assets/img/illustrations_features/AI_CRM1_BusinessMarketing.webp';
+import crmLadderIllustration from '../../assets/img/illustrations_features/AI_CRM2_IncreaseLadder.webp';
+import appFatigueIllustration from '../../assets/img/illustrations_features/BusinessAppFatigue.webp';
+import competitiveAdvantageIllustration from '../../assets/img/illustrations_features/BusinessesseekingcompetitiveAdvantage.webp';
+import highVolumeIllustration from '../../assets/img/illustrations_features/Highvolumebusinesses.webp';
+import smallTeamIllustration from '../../assets/img/illustrations_features/SmallTeam.webp';
+import manualProcessesIllustration from '../../assets/img/illustrations_features/StressedAssistanDoingManuelThings.webp';
+import genericIllustration from '../../assets/img/illustrations_features/AI_SaaS_Generic_Illustration1.webp';
+// BlogSection is now a standalone page; keep component in repo for reuse
 
 /* ── Count-up hook ─────────────────────────────────────────── */
 function useCountUp(figureStr, duration = 1800, active = false) {
@@ -130,6 +142,24 @@ function HeroIllustration({ slug, lang }) {
     'custom-ai': <CustomAIHeroVisual lang={lang} />,
   };
   return map[slug] || <ChatbotHeroVisual lang={lang} />;
+}
+
+function selectForWhoIllustration(sector) {
+  const key = sector.toLowerCase();
+
+  if (key.includes('trades') || key.includes('constru')) return tradesIllustration;
+  if (key.includes('clinic') || key.includes('clinica') || key.includes('salon')) return clinicIllustration;
+  if (key.includes('24/7') || key.includes('cerrajer') || key.includes('grua') || key.includes('locksmith') || key.includes('breakdown')) return servicesIllustration;
+
+  if (key.includes('publicidad') || key.includes('advertising') || key.includes('marketing')) return crmMarketingIllustration;
+  if (key.includes('small team') || key.includes('equipos pequenos') || key.includes('small teams')) return smallTeamIllustration;
+  if (key.includes('growing business') || key.includes('negocios en crecimiento') || key.includes('high-volume') || key.includes('volumen alto')) return highVolumeIllustration;
+
+  if (key.includes('app fatigue') || key.includes('app fatigue')) return appFatigueIllustration;
+  if (key.includes('manual') || key.includes('manuales') || key.includes('processes') || key.includes('procesos')) return manualProcessesIllustration;
+  if (key.includes('tools') || key.includes('herramientas') || key.includes('competitive') || key.includes('competitiva') || key.includes('advantage') || key.includes('independencia') || key.includes('independence') || key.includes('technical independence')) return competitiveAdvantageIllustration;
+
+  return genericIllustration;
 }
 
 /* ── Staggered how-it-works section ───────────────────────── */
@@ -341,44 +371,118 @@ export default function FeaturePageLayout({ pageData, fp, lang }) {
       {/* ── Cómo funciona ─────────────────────────────────── */}
       <HowItWorksSection steps={pageData.how_it_works} label={fp.how_it_works_label} />
 
-      {/* ── Qué incluye + Para quién ──────────────────────── */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <FadeIn className="flex flex-col">
-            <span className="inline-block bg-cyan-pale text-cyan-dark text-sm font-semibold px-4 py-2 rounded-full mb-8 self-start">
-              {fp.what_includes_label}
-            </span>
-            <ul className="space-y-3.5">
-              {pageData.what_includes.map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-cyan-pale flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <FaCheck className="w-2.5 h-2.5 text-cyan" />
-                  </span>
-                  <span className="text-gray-700 text-sm leading-relaxed">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </FadeIn>
+      {/* ── Qué incluye + Para quién (redesigned with images + CTAs) ──────────────────────── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            <FadeIn className="flex flex-col rounded-[28px] border border-gray-200 bg-slate-50 p-10 shadow-sm">
+              <div className="mb-8 max-w-xl">
+                <span className="inline-flex items-center gap-2 rounded-full bg-cyan-pale px-4 py-2 text-cyan-dark text-sm font-semibold">
+                  {fp.what_includes_label}
+                </span>
+                <h2 className="mt-6 text-3xl lg:text-4xl font-extrabold text-navy">
+                  {lang === 'en' ? 'Everything included for your team' : 'Todo lo incluido para tu equipo'}
+                </h2>
+                <p className="mt-4 text-gray-600 leading-relaxed">
+                  {lang === 'en'
+                    ? 'A clear package of features designed for fast implementation, lead control, and automated follow-up.'
+                    : 'Un paquete claro de funcionalidades diseñado para una implementación rápida, control de leads y seguimiento automatizado.'}
+                </p>
+              </div>
+              <div className="space-y-4">
+                {pageData.what_includes.map((item, i) => (
+                  <div key={i} className="flex gap-4 rounded-3xl border border-gray-200 bg-white px-5 py-4 shadow-sm">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-pale text-cyan">
+                      <FaCheck className="w-4 h-4" />
+                    </span>
+                    <p className="text-sm leading-6 text-gray-700">{item}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                <Link
+                  to={`${basePath}#${pricingAnchor}`}
+                  className="inline-flex items-center justify-center rounded-full bg-cyan px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan/20 transition hover:bg-cyan-medium"
+                >
+                  {pageData.cta_plans_text}
+                </Link>
+                <Link
+                  to={`${basePath}#${contactAnchor}`}
+                  className="inline-flex items-center justify-center rounded-full border border-cyan text-cyan px-6 py-3 text-sm font-semibold transition hover:bg-cyan/10"
+                >
+                  {fp.cta_expert}
+                </Link>
+              </div>
+              <div className="mt-10 rounded-[24px] border border-gray-100 bg-gradient-to-br from-cyan-50 to-white p-6">
+                <p className="text-xs uppercase tracking-[0.22em] text-cyan-dark font-semibold mb-3">
+                  {lang === 'en' ? 'Professional SaaS design' : 'Diseño SaaS profesional'}
+                </p>
+                <p className="text-sm leading-relaxed text-gray-600">
+                  {lang === 'en'
+                    ? 'These cards are designed to communicate trust, clarity and the ideal audience for each product area — just like the top SaaS brands.'
+                    : 'Estas tarjetas están diseñadas para comunicar confianza, claridad y el público ideal de cada área del producto — al estilo de las grandes marcas SaaS.'}
+                </p>
+              </div>
+            </FadeIn>
 
-          <FadeIn delay={150} className="flex flex-col">
-            <span className="inline-block bg-cyan-pale text-cyan-dark text-sm font-semibold px-4 py-2 rounded-full mb-8 self-start">
-              {fp.for_who_label}
-            </span>
-            <div className="space-y-4">
-              {pageData.for_who.map((item, i) => (
-                <div key={i} className="bg-gray-50 rounded-xl p-5 border border-gray-100 hover:border-cyan/25 transition-colors group">
-                  <p className="font-bold text-navy text-sm mb-1">{item.sector}</p>
-                  <p className="text-gray-600 text-sm mb-3 leading-relaxed">{item.description}</p>
-                  <span className="inline-flex items-center gap-1.5 text-cyan-dark text-xs font-bold bg-cyan-pale px-3 py-1 rounded-full">
-                    <FaCheck className="w-2.5 h-2.5" />
-                    {item.result}
+            <FadeIn delay={150} className="flex flex-col gap-6">
+              <div className="rounded-[28px] border border-gray-200 bg-slate-50 p-8 shadow-sm">
+                <div className="flex flex-col gap-4">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-cyan-pale px-4 py-2 text-cyan-dark text-sm font-semibold">
+                    {fp.for_who_label}
                   </span>
+                  <h3 className="text-2xl font-bold text-navy">
+                    {lang === 'en'
+                      ? 'Who gets the most value'
+                      : 'Para quién es esto'}
+                  </h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {lang === 'en'
+                      ? 'Clear use cases for teams that need lead visibility, predictable workflows, and faster sales cycles.'
+                      : 'Casos de uso claros para equipos que necesitan visibilidad de leads, procesos predecibles y ciclos de venta más rápidos.'}
+                  </p>
                 </div>
-              ))}
-            </div>
-          </FadeIn>
+              </div>
+
+              <div className="grid grid-cols-1 gap-6">
+                {pageData.for_who.map((item, i) => (
+                  <article key={i} className="group cursor-pointer overflow-hidden rounded-[28px] border border-gray-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    <div className="relative h-52 overflow-hidden bg-slate-100">
+                      <img
+                        alt={item.sector}
+                        src={selectForWhoIllustration(item.sector)}
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/30 transition duration-500 group-hover:bg-black/15" />
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-5 py-4 text-white">
+                        <p className="text-xs uppercase tracking-[0.24em] text-cyan-200 font-semibold">{lang === 'en' ? 'Target' : 'Audiencia'}</p>
+                        <p className="mt-2 text-xl font-bold leading-tight">{item.sector}</p>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <p className="text-sm text-gray-600 leading-relaxed mb-5">{item.description}</p>
+                      <div className="flex flex-wrap items-center gap-3">
+                        <span className="inline-flex items-center gap-2 rounded-full bg-cyan-pale px-3 py-2 text-xs font-semibold text-cyan-dark">
+                          <FaCheck className="w-3.5 h-3.5" />
+                          {item.result}
+                        </span>
+                        <Link
+                          to={`${basePath}#${contactAnchor}`}
+                          className="text-sm font-semibold text-cyan hover:text-cyan-dark"
+                        >
+                          {lang === 'en' ? 'Contact us about this' : 'Contacta sobre esto'}
+                        </Link>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </section>
+
+      {/* Blog moved to a dedicated page (accessible from Footer). */}
 
       {/* ── Stat block with animated counter ─────────────── */}
       <StatBlock stat={pageData.stat} label={fp.stat_label} />

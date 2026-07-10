@@ -441,7 +441,7 @@
             {
               "feature": "Automatic lead classification",
               "values": [
-                false,
+                true,
                 true,
                 true,
                 true
@@ -459,7 +459,7 @@
             {
               "feature": "AI business summaries",
               "values": [
-                false,
+                true,
                 true,
                 true,
                 true
@@ -468,7 +468,7 @@
             {
               "feature": "Metrics dashboard",
               "values": [
-                false,
+                true,
                 true,
                 true,
                 true
