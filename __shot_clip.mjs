@@ -1,0 +1,15 @@
+import { chromium } from 'playwright-core';
+import { execSync } from 'node:child_process';
+const executablePath = execSync('find / -maxdepth 8 -iname "chrome" -path "*chromium*" -type f 2>/dev/null | head -1').toString().trim();
+const browser = await chromium.launch({ executablePath });
+const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+await page.goto('http://localhost:5183/en', { waitUntil: 'networkidle' });
+await page.waitForTimeout(2600);
+await page.evaluate(() => document.getElementById('comparison').scrollIntoView({block:'start'}));
+await page.waitForTimeout(300);
+// scroll a bit more so header title clears and table starts near top
+await page.evaluate(() => window.scrollBy(0, 60));
+await page.waitForTimeout(300);
+await page.screenshot({ path: '/tmp/shots/table_header_area.png' });
+await page.locator('table').screenshot({ path: '/tmp/shots/table_only.png' });
+await browser.close();

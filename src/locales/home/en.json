@@ -1,0 +1,939 @@
+{
+  "nav": {
+    "services": "Services",
+    "pricing": "Pricing",
+    "process": "Process",
+    "contact": "Contact",
+    "cta_login": "Talk to an expert",
+    "cta_pricing": "See plans"
+  },
+  "hero": {
+    "badge": "For SMBs losing leads they can't follow up fast enough",
+    "title": "Your business is getting leads. The problem is what happens next.",
+    "title_highlight": "what happens next",
+    "subtitle": "We automate the response, follow-up, and qualification of your leads so none of them go cold waiting for someone to reply. Just like we did for Renovy in the home renovation sector.",
+    "subtitle_short": "We automate lead response and follow-up with AI. No more cold leads.",
+    "cta_primary": "See how it works",
+    "cta_secondary": "Talk to an expert",
+    "trust_indicator_1": "Automatic response in seconds",
+    "trust_indicator_2": "Visible results in 30 days",
+    "trust_indicator_3": "Support included",
+    "panel_title": "Oryon Labs — Automation Dashboard",
+    "panel_badge": "50+ SMBs automated",
+    "metrics": {
+      "leads": {
+        "value": "2.4k",
+        "label": "Leads/month",
+        "sublabel": "+180%"
+      },
+      "response": {
+        "value": "18",
+        "unit": "min",
+        "label": "Response time",
+        "sublabel": "-91%"
+      },
+      "savings": {
+        "value": "8.2",
+        "currency": "€",
+        "unit": "k",
+        "label": "Saved",
+        "sublabel": "+monthly"
+      }
+    },
+    "automation_items": [
+      {
+        "icon": "💬",
+        "label": "Lead captured via chatbot",
+        "status": "Active"
+      },
+      {
+        "icon": "🧠",
+        "label": "AI data enrichment",
+        "status": "Active"
+      },
+      {
+        "icon": "🔗",
+        "label": "Auto-assigned to CRM",
+        "status": "Active"
+      },
+      {
+        "icon": "✉️",
+        "label": "Welcome email sent",
+        "status": "Active"
+      }
+    ],
+    "time_saved": {
+      "title": "3h/day saved",
+      "subtitle": "per company on average"
+    }
+  },
+  "trust_bar": {
+    "title": "Companies that stopped losing leads to slow response",
+    "logos": [
+      "INMOBILIARIA VIVA",
+      "CLÍNICA BEAUTYMED",
+      "E-SHOP STYLE",
+      "LEXPRO ABOGADOS",
+      "MEDCENTER"
+    ]
+  },
+  "why": {
+    "eyebrow": "THE PROBLEM NO ONE SOLVES",
+    "title": "You have leads. The problem is you're too slow.",
+    "subtitle": "Most business opportunities are lost within the first 2 hours. By the time you respond, your lead is already talking to a competitor.",
+    "savings_badge": "Save up to {amount}/month",
+    "pain": {
+      "label": "WHAT MOST BUSINESSES PAY TODAY",
+      "item1": "Sales CRM software",
+      "price1": "~80",
+      "item2": "AI chat & support platform",
+      "price2": "~120",
+      "item3": "Email marketing tool",
+      "price3": "~60",
+      "item4": "Workflow & task automation",
+      "price4": "~80",
+      "item5": "WhatsApp Business messaging",
+      "price5": "~40",
+      "item6": "Countless hours lost to manual admin work",
+      "total_label": "MONTHLY TOTAL",
+      "total": "500–800",
+      "per_month": "/month",
+      "description": "Multiple invoices. Zero integration. You manage everything."
+    },
+    "solution": {
+      "label": "Fully integrated",
+      "eyebrow": "ONE PLATFORM. EVERYTHING INCLUDED.",
+      "item1": "AI Chatbot (Ridley)",
+      "item2": "CRM + Pipeline",
+      "item3": "Email & WhatsApp Automation",
+      "item4": "Workflow Infrastructure",
+      "item5": "Dedicated support",
+      "item6": "Save almost all your administrative time",
+      "included": "included",
+      "price_label": "FROM",
+      "price": "299",
+      "per_month": "/month",
+      "description": "One invoice. Fully integrated. We handle everything."
+    },
+    "testimonial": {
+      "text": "Renovy went from losing 40% of their enquiries due to slow response to capturing, qualifying, and assigning them in real time, 24 hours a day.",
+      "author": "— Real case: Renovy, home renovation sector"
+    },
+    "cta": {
+      "primary": "See our plans →",
+      "secondary": "Talk to us first"
+    }
+  },
+  "services": {
+    "badge": "How we solve it",
+    "title": "One system.",
+    "title_highlight": "Everything handled.",
+    "description": "We don't sell you loose tools. We build the complete system that captures, responds, qualifies, and follows up on your leads — so you don't have to think about it.",
+    "cta_primary": "See all services",
+    "cta_secondary": "Special case? Let's talk",
+    "cards": [
+      {
+        "badge": "24/7 Assistant",
+        "title": "Respond to every client. Every channel. Every hour.",
+        "description": "Your business gets enquiries at any hour. A smart chatbot replies in seconds, qualifies the lead, and logs it to your CRM automatically. You find out when they're already warm.",
+        "link": "asistente-24-7"
+      },
+      {
+        "badge": "Follow-up",
+        "title": "Follow-up that never forgets",
+        "description": "Cold leads warm up on their own. We send reminders and follow-up sequences via WhatsApp or email — without anyone on your team having to remember.",
+        "link": "crm"
+      },
+      {
+        "badge": "First response",
+        "title": "First response in seconds, not hours",
+        "description": "78% of customers choose the provider who responds first. Your AI agent replies instantly and alerts your team when the lead is ready to close.",
+        "link": "asistente-24-7"
+      },
+      {
+        "badge": "Everything connected",
+        "title": "All your tools talking to each other",
+        "description": "WhatsApp, email, CRM, calendar — all synced in real time. No manual data copying, no leads lost between platforms.",
+        "link": "integraciones"
+      },
+      {
+        "badge": "Full visibility",
+        "title": "Know exactly how many leads you're losing (and why)",
+        "description": "Real-time dashboard: leads received, response time, conversions. Make decisions based on data, not gut feeling.",
+        "link": "crm"
+      },
+      {
+        "badge": "Custom AI",
+        "title": "Built for your sector, not the other way around",
+        "description": "Renovation, real estate, clinics, legal — we build the system that fits how your business actually works.",
+        "link": "custom-ai"
+      }
+    ]
+  },
+  "process": {
+    "badge": "How we work",
+    "title": "4 steps to transform your business",
+    "description": "A proven process that takes your company from idea to measurable results in less than 30 days.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Diagnosis",
+        "description": "We analyze your current processes, identify bottlenecks, and define automation opportunities with the highest ROI."
+      },
+      {
+        "number": "02",
+        "title": "Design",
+        "description": "We design optimized and customized workflows for your business. Visual prototypes before building."
+      },
+      {
+        "number": "03",
+        "title": "Implementation",
+        "description": "We build and integrate the automations. We connect all the tools. Complete testing before going to production."
+      },
+      {
+        "number": "04",
+        "title": "Results",
+        "description": "We launch, measure, and optimize. Continuous support so the AI improves over time. Visible results from day one."
+      }
+    ]
+  },
+  "pricing": {
+    "badge": "Plans and pricing",
+    "title": "Clear investment.",
+    "title_highlight": "Measurable results.",
+    "description": "No forced annual contracts. No fine print. Start, scale, and cancel whenever you want.",
+    "toggle_monthly": "Monthly",
+    "toggle_yearly": "Yearly",
+    "discount_badge": "Save 20%",
+    "setup_label": "Initial setup",
+    "monthly_label": "Monthly fee",
+    "per_month": "/month",
+    "plans": [
+      {
+        "name": "Starter",
+        "subtitle": "Chatbot + lead capture + basic CRM",
+        "setup_range": "€650 – €1,200",
+        "price_monthly": "299",
+        "price_yearly": "239",
+        "description": "Ideal for freelancers and small local businesses.",
+        "features": [
+          "Intelligent chatbot 24/7",
+          {
+            "text": "Automatic lead capture",
+            "link": "crm"
+          },
+          {
+            "text": "Basic CRM view",
+            "link": "crm"
+          },
+          "Email to administrator",
+          {
+            "text": "Basic WhatsApp/Telegram",
+            "link": "integraciones"
+          },
+          "Email support"
+        ],
+        "cta": "Start with Starter",
+        "popular": false,
+        "key_features": [
+          {
+            "text": "AI chatbot 24/7 on your website",
+            "link": "asistente-24-7"
+          },
+          {
+            "text": "Automatic lead capture",
+            "link": "crm"
+          },
+          {
+            "text": "Basic unified CRM",
+            "link": "crm"
+          }
+        ]
+      },
+      {
+        "name": "Pro",
+        "subtitle": "+ auto classification + WhatsApp + Voice AI",
+        "setup_range": "€1,200 – €2,000",
+        "price_monthly": "399",
+        "price_yearly": "319",
+        "description": "For SMEs that want advanced automation.",
+        "voice_note": "Includes 150 voice min/month",
+        "voice_feature": {
+          "text": "150 voice min included (~50 calls/month)",
+          "tooltip": "AI voice minutes and calls managed by Ridley. Additional usage available — see usage conditions.",
+          "link": "asistente-24-7"
+        },
+        "features": [
+          "Everything included in Starter",
+          {
+            "text": "Automatic lead classification",
+            "link": "crm"
+          },
+          {
+            "text": "Full WhatsApp Business",
+            "link": "integraciones"
+          },
+          {
+            "text": "Business summaries with AI",
+            "link": "custom-ai"
+          },
+          {
+            "text": "Metrics dashboard",
+            "link": "crm"
+          },
+          "Priority support"
+        ],
+        "cta": "Start with Pro",
+        "popular": true,
+        "key_features": [
+          "Everything in Starter +",
+          {
+            "text": "Full WhatsApp Business",
+            "link": "integraciones"
+          },
+          {
+            "text": "Lead classification & scoring",
+            "link": "crm"
+          }
+        ]
+      },
+      {
+        "name": "Professional",
+        "subtitle": "+ custom integrations + extended Voice AI",
+        "setup_range": "€2,000 – €3,500",
+        "price_monthly": "499",
+        "price_yearly": "399",
+        "description": "For businesses that need customized solutions.",
+        "voice_note": "Includes 300 voice min/month",
+        "voice_feature": {
+          "text": "300 voice min included (~100 calls/month)",
+          "tooltip": "AI voice minutes and calls managed by Ridley. Additional usage available — see usage conditions.",
+          "link": "asistente-24-7"
+        },
+        "features": [
+          "Everything included in Pro",
+          {
+            "text": "Custom integrations",
+            "link": "integraciones"
+          },
+          "Priority support 24/7",
+          {
+            "text": "Advanced CRM",
+            "link": "crm"
+          },
+          {
+            "text": "Custom reports",
+            "link": "crm"
+          },
+          "Dedicated account manager"
+        ],
+        "cta": "Request Professional",
+        "popular": false,
+        "key_features": [
+          "Everything in Pro +",
+          {
+            "text": "Custom integrations",
+            "link": "integraciones"
+          },
+          "Dedicated account manager"
+        ]
+      },
+      {
+        "name": "Business + Voice AI",
+        "subtitle": "+ AI voice agent as main channel",
+        "setup_range": "€2,500 – €3,500",
+        "price_monthly": "549",
+        "price_prefix": "From",
+        "price_yearly": "439",
+        "description": "For businesses that want an intelligent voice agent.",
+        "features": [
+          "Everything included in Professional",
+          {
+            "text": "AI voice channel with Vapi",
+            "link": "asistente-24-7"
+          },
+          {
+            "text": "AI voice agent as main channel",
+            "link": "asistente-24-7"
+          },
+          "Automated inbound/outbound calls",
+          "Dedicated phone number",
+          {
+            "text": "100% customised solution",
+            "link": "custom-ai"
+          }
+        ],
+        "cta": "Contact for Voice AI",
+        "popular": false,
+        "key_features": [
+          "Everything in Professional +",
+          {
+            "text": "AI voice agent as main channel",
+            "link": "asistente-24-7"
+          },
+          {
+            "text": "Dedicated number + custom voice persona",
+            "link": "asistente-24-7"
+          },
+          {
+            "text": "100% customised solution",
+            "link": "custom-ai"
+          }
+        ]
+      }
+    ],
+    "comparison": {
+      "title": "Compare all plans in detail",
+      "anchor_id": "comparison",
+      "link_text": "See full comparison ↓",
+      "voice_note": "* AI voice minutes managed by Ridley. Additional usage available.",
+      "consult_label": "Consult",
+      "closing_cta": {
+        "title": "Not sure which plan fits?",
+        "subtitle": "Tell us about your business and we'll recommend the right plan within 24h — no obligation.",
+        "cta": "Talk to an expert →"
+      },
+      "plan_names": [
+        "Starter",
+        "Pro",
+        "Professional",
+        "Business + Voice AI"
+      ],
+      "categories": [
+        {
+          "label": "Lead capture & CRM",
+          "rows": [
+            {
+              "feature": "AI chatbot 24/7",
+              "values": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "Automatic lead capture",
+              "values": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "Basic CRM included",
+              "values": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "Admin email notifications",
+              "values": [
+                true,
+                true,
+                true,
+                true
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Advanced automation",
+          "rows": [
+            {
+              "feature": "Automatic lead classification",
+              "values": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "Full WhatsApp Business",
+              "values": [
+                false,
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "AI business summaries",
+              "values": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "Metrics dashboard",
+              "values": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "Custom integrations",
+              "values": [
+                false,
+                false,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "Advanced CRM",
+              "values": [
+                false,
+                false,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "Custom reports",
+              "values": [
+                false,
+                false,
+                true,
+                true
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Voice AI *",
+          "rows": [
+            {
+              "feature": "Voice minutes/month",
+              "type": "value",
+              "values": [
+                "0",
+                "150 min",
+                "300 min",
+                "Consult"
+              ]
+            },
+            {
+              "feature": "Approx. calls/month",
+              "type": "value",
+              "values": [
+                "—",
+                "~50",
+                "~100",
+                "Consult"
+              ]
+            },
+            {
+              "feature": "Full AI voice channel (Vapi)",
+              "values": [
+                false,
+                false,
+                false,
+                true
+              ]
+            },
+            {
+              "feature": "Dedicated phone number",
+              "values": [
+                false,
+                false,
+                false,
+                true
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Support & account",
+          "rows": [
+            {
+              "feature": "Support",
+              "type": "value",
+              "values": [
+                "Email",
+                "Priority",
+                "Priority + Manager",
+                "Dedicated SLA"
+              ]
+            },
+            {
+              "feature": "Dedicated account manager",
+              "values": [
+                false,
+                false,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "Dedicated SLA",
+              "values": [
+                false,
+                false,
+                false,
+                true
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "micro_faq": {
+      "title": "The questions we get asked most about plans",
+      "items": [
+        {
+          "question": "What happens if I use more voice minutes than included?",
+          "answer": "You can keep using the service. Additional usage is billed per minute at the agreed rate. Contact us before activating voice to know the current conditions — we prefer to discuss it upfront rather than surprise you with a bill."
+        },
+        {
+          "question": "Can I change plan?",
+          "answer": "Yes, at any time. Upgrades take effect immediately. Downgrades apply from the next billing cycle. No penalties or additional costs."
+        },
+        {
+          "question": "Is there a minimum commitment?",
+          "answer": "No. All plans are month-to-month. You can cancel whenever you want with no extra cost. The initial setup is a one-off payment, not an ongoing monthly fee."
+        },
+        {
+          "question": "Is the setup fee mandatory?",
+          "answer": "Yes — and for good reason: it's the configuration work that ensures everything works from day one. Agent training, integrations, workflows and testing. It's a one-off payment, not a rental."
+        }
+      ]
+    },
+    "custom_case": {
+      "title": "Your business doesn't fit a standard plan?",
+      "subtitle": "We design bespoke solutions for businesses with specific needs. Tell us your case.",
+      "cta": "Talk to us →"
+    },
+    "pricing_form": {
+      "title": "Tell us about your project",
+      "subtitle": "We respond in under 24 hours with a concrete proposal.",
+      "capa1": {
+        "name_label": "Name",
+        "name_placeholder": "Your name",
+        "company_label": "Company",
+        "company_placeholder": "Company name",
+        "email_label": "Email",
+        "email_placeholder": "you@company.com",
+        "phone_label": "Phone",
+        "phone_placeholder": "+44 7700 900000",
+        "sector_label": "Sector",
+        "sector_placeholder": "Select your sector",
+        "sector_options": [
+          "Trades & construction",
+          "Dental clinic or healthcare",
+          "Estate agency",
+          "Hair salon or beauty",
+          "24/7 service (locksmith, breakdown...)",
+          "Other"
+        ],
+        "reto_label": "Main challenge",
+        "reto_hint": "You can select more than one",
+        "reto_options": [
+          "I miss calls outside business hours",
+          "I take too long to send quotes",
+          "I don't know which ads are working",
+          "I'm still doing processes manually",
+          "Other"
+        ],
+        "submit": "Request free analysis →",
+        "submitting": "Sending...",
+        "errors": {
+          "name": "Name is required.",
+          "email": "Email is required.",
+          "email_invalid": "Invalid email.",
+          "sector": "Please select a sector.",
+          "reto": "Please select at least one challenge."
+        }
+      },
+      "capa2": {
+        "title": "One last step",
+        "subtitle": "To prepare the best proposal, we need to know a little more.",
+        "volume_label": "How many contacts do you manage per month?",
+        "volume_options": [
+          "Under 50",
+          "50-200",
+          "200-500",
+          "Over 500"
+        ],
+        "urgency_label": "When do you want to get started?",
+        "urgency_options": [
+          "As soon as possible",
+          "In 1-2 months",
+          "Just exploring"
+        ],
+        "notes_label": "Anything specific you want to solve?",
+        "notes_placeholder": "Tell us briefly (optional)...",
+        "submit": "Send request",
+        "submitting": "Sending...",
+        "success_title": "Request received!",
+        "success_message": "Our team will contact you within 24 hours with a personalised proposal."
+      }
+    }
+  },
+  "testimonials": {
+    "badge": "Success stories",
+    "title": "What our clients say",
+    "description": "Real results from companies that automated with Oryon Labs.",
+    "cards": [
+      {
+        "quote": "In 3 weeks we went from losing 40% of leads due to late response to capturing them automatically 24/7.",
+        "name": "María Gómez",
+        "company": "Inmobiliaria Viva",
+        "result": "+40% leads in 30 days",
+        "rating": 5
+      },
+      {
+        "quote": "Oryon Labs automated our appointment and follow-up system. Now our team focuses on serving, not administering.",
+        "name": "Dr. Carlos Ruiz",
+        "company": "Clínica BeautyMed",
+        "result": "We save 3h/day",
+        "rating": 5
+      },
+      {
+        "quote": "The chatbot qualifies leads before they talk to us. The quality of opportunities improved drastically.",
+        "name": "Laura Martínez",
+        "company": "E-Shop Style",
+        "result": "300% ROI in 60 days",
+        "rating": 5
+      }
+    ]
+  },
+  "contact": {
+    "badge": "Contact",
+    "title": "Ready to automate?",
+    "description": "Tell us about your project. We'll respond in less than 24 hours.",
+    "form": {
+      "name_label": "Full name",
+      "name_placeholder": "Your name",
+      "email_label": "Email",
+      "email_placeholder": "you@company.com",
+      "company_label": "Company",
+      "company_placeholder": "Your company name",
+      "service_label": "Which service interests you?",
+      "message_label": "Tell us about your project",
+      "message_placeholder": "Briefly describe your needs...",
+      "submit": "Send message",
+      "submitting": "Sending...",
+      "success_title": "Message sent!",
+      "success_message": "We'll get back to you in less than 24 hours."
+    }
+  },
+  "form": {
+    "title": "Tell us your challenge",
+    "subtitle": "Within 24h we'll propose a concrete solution and a quote with no fine print.",
+    "footer_text": "No spam. No commitment. We only talk about automation.",
+    "success_message": "Request received! We'll analyze your case and get back to you in under 24h.",
+    "steps": [
+      "Your details",
+      "Your challenge",
+      "Context"
+    ],
+    "step1": {
+      "fields": {
+        "name": {
+          "label": "Full name",
+          "placeholder": "Your name"
+        },
+        "company": {
+          "label": "Company",
+          "placeholder": "Your company name"
+        },
+        "email": {
+          "label": "Corporate email",
+          "placeholder": "you@company.com"
+        },
+        "phone": {
+          "label": "Phone",
+          "placeholder": "+34 600 000 000"
+        }
+      },
+      "next_button": "Next",
+      "errors": {
+        "name_required": "Name is required.",
+        "email_required": "Email is required.",
+        "email_invalid": "Invalid email.",
+        "company_required": "Company is required.",
+        "phone_required": "Phone is required.",
+        "phone_invalid": "Invalid phone (numbers only, 7-15 digits)."
+      }
+    },
+    "step2": {
+      "question": "What is your biggest challenge right now?",
+      "retos": [
+        {
+          "id": "tiempo",
+          "emoji": "🕐",
+          "title": "I lose time on repetitive tasks",
+          "desc": "Manual processes, Excel, tasks that repeat every day"
+        },
+        {
+          "id": "clientes",
+          "emoji": "📞",
+          "title": "I can't attend all my clients",
+          "desc": "Missed calls, slow responses, unattended clients"
+        },
+        {
+          "id": "leads",
+          "emoji": "📋",
+          "title": "I struggle to organize and follow my leads",
+          "desc": "I don't know where each client stands or what to do next"
+        },
+        {
+          "id": "empezar",
+          "emoji": "🤝",
+          "title": "I want to automate but don't know where to start",
+          "desc": "I know I need to change something but don't know what"
+        },
+        {
+          "id": "asistente",
+          "emoji": "💬",
+          "title": "I need an assistant that responds for me 24/7",
+          "desc": "WhatsApp, web, email — I want smart automatic replies"
+        },
+        {
+          "id": "herramientas_desconectadas",
+          "emoji": "⚙️",
+          "title": "My tools are not connected to each other",
+          "desc": "CRM, email, WhatsApp, invoicing — all separate"
+        }
+      ],
+      "prev_button": "Previous",
+      "next_button": "Next",
+      "errors": {
+        "reto_required": "Please select your main challenge."
+      }
+    },
+    "step3": {
+      "volumen_clientes": {
+        "question": "How many clients or contacts do you manage per month?",
+        "options": [
+          "Less than 50",
+          "50 - 200",
+          "200 - 500",
+          "More than 500",
+          "I don't know exactly"
+        ]
+      },
+      "herramientas": {
+        "question": "What tools do you currently use?",
+        "hint": "optional, you can choose several",
+        "options": [
+          "WhatsApp Business",
+          "Email / Gmail",
+          "Own CRM",
+          "Excel / Google Sheets",
+          "Social Media",
+          "None in particular"
+        ]
+      },
+      "urgencia": {
+        "question": "When do you need a solution?",
+        "options": [
+          {
+            "id": "alta",
+            "label": "As soon as possible"
+          },
+          {
+            "id": "media",
+            "label": "In 1-2 months"
+          },
+          {
+            "id": "baja",
+            "label": "Just exploring"
+          }
+        ]
+      },
+      "prev_button": "Previous",
+      "submit_button": "Request free analysis",
+      "submitting": "Sending...",
+      "errors": {
+        "volumen_clientes_required": "Please indicate how many contacts you manage.",
+        "urgencia_required": "Please indicate when you need a solution."
+      }
+    }
+  },
+  "footer": {
+    "brand": "OryonLabs",
+    "description": "We automate lead capture, customer service, and your company's workflows.",
+    "newsletter": {
+      "title": "Subscribe to newsletter",
+      "placeholder": "you@email.com",
+      "button": "Subscribe",
+      "privacy": "We respect your privacy. No spam."
+    },
+    "columns": {
+      "services": {
+        "title": "Services",
+        "links": [
+          "AI Chatbots",
+          "Process Automation",
+          "System Integration",
+          "Custom AI Agents"
+        ]
+      },
+      "company": {
+        "title": "Company",
+        "links": [
+          "About us",
+          "Use cases",
+          "FAQ",
+          "Blog"
+        ]
+      },
+      "legal": {
+        "title": "Legal",
+        "links": [
+          "Privacy",
+          "Terms",
+          "Cookies",
+          "Data Deletion"
+        ]
+      }
+    },
+    "contact": {
+      "email": "hello@oryonlabs.com",
+      "phone": "+34 900 123 456",
+      "whatsapp": "WhatsApp available"
+    },
+    "copyright": "© {year} OryonLabs. All rights reserved."
+  },
+  "cookies": {
+    "text": "We use cookies to improve your experience. By continuing, you agree to our",
+    "link": "cookie policy",
+    "accept": "Accept",
+    "reject": "Decline"
+  },
+  "exit": {
+    "text": "Leaving without automating your business?",
+    "cta": "Talk to Ridley →"
+  },
+  "chatbot": {
+    "header_title": "Ridley — Oryon Assistant",
+    "online_status": "Online",
+    "retry": "Retry",
+    "quick_questions_label": "Quick questions:",
+    "rate_limit_banner": "Message limit reached. Contact us at hello@oryonlabs.com",
+    "lead_done_badge": "✅ Request received",
+    "initial_message": "Hi! I'm Ridley, Oryon Labs' virtual assistant. How can I help you today?",
+    "placeholder": "Type your message...",
+    "rate_limit_msg": "You've reached the message limit. You can continue in 1 hour or contact us directly.",
+    "timeout_msg": "The connection took too long. Please try again.",
+    "error_msg": "Connection error. Please try again.",
+    "lead_confirmed_msg": "✅ Done! Our team will get in touch with you shortly.",
+    "quick_questions": [
+      "What services do you offer?",
+      "View plans and pricing",
+      "Request a free consultation",
+      "How does AI work?"
+    ]
+  }
+}

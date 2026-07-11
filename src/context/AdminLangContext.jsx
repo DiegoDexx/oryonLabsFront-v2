@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react';
-import es from '../locales/es.json';
-import en from '../locales/en.json';
+import es from '../locales/adminpanel/es.json';
+import en from '../locales/adminpanel/en.json';
 
 const TRANSLATIONS = { es, en };
 
@@ -16,7 +16,7 @@ export const AdminLangProvider = ({ children }) => {
     setLangState(l);
   };
 
-  const t = (TRANSLATIONS[lang] || TRANSLATIONS.es).admin;
+  const t = TRANSLATIONS[lang] || TRANSLATIONS.es;
 
   return (
     <AdminLangContext.Provider value={{ lang, setLang, t }}>

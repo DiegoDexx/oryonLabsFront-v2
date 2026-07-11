@@ -5,8 +5,8 @@ import PricingCard from '../ui/PricingCard';
 import ComparisonTable from '../ui/ComparisonTable';
 import { AnimatedSection } from '../ui/AnimatedSection';
 import useCurrency from '../../hooks/useCurrency';
-import es from '../../locales/es.json';
-import en from '../../locales/en.json';
+import es from '../../locales/home/es.json';
+import en from '../../locales/home/en.json';
 
 const translationsByLang = { es, en };
 
@@ -140,7 +140,13 @@ export default function Pricing() {
       </div>
 
       {/* Full comparison table */}
-      <ComparisonTable comparison={pricing.comparison} lang={lang} />
+      <ComparisonTable
+        comparison={pricing.comparison}
+        plans={pricing.plans}
+        symbol={symbol}
+        perMonth={pricing.per_month}
+        lang={lang}
+      />
 
       {/* Custom case bar */}
       <CustomCaseBar customCase={pricing.custom_case} lang={lang} />

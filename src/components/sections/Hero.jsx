@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { FaCircle, FaCheck } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
-import es from '../../locales/es.json';
-import en from '../../locales/en.json';
+import es from '../../locales/home/es.json';
+import en from '../../locales/home/en.json';
 
 const translationsByLang = { es, en };
 

@@ -3,8 +3,8 @@ import { useParams, useLocation } from 'react-router-dom';
 import FeaturePageLayout from '../components/sections/FeaturePageLayout';
 import HelmetSEO from '../seo/HelmetSEO';
 import { seoData } from '../seo/seoData';
-import es from '../locales/es.json';
-import en from '../locales/en.json';
+import es from '../locales/services/es.json';
+import en from '../locales/services/en.json';
 
 const translationsByLang = { es, en };
 
@@ -18,8 +18,7 @@ export default function FeaturePage() {
     window.scrollTo(0, 0);
   }, [location.pathname]);
   const resolvedLang = ['es', 'en'].includes(lang) ? lang : 'es';
-  const t = translationsByLang[resolvedLang] || translationsByLang.es;
-  const fp = t.feature_pages;
+  const fp = translationsByLang[resolvedLang] || translationsByLang.es;
   const seo = seoData[resolvedLang]?.[slug];
 
   if (!VALID_SLUGS.includes(slug) || !fp?.pages?.[slug]) {

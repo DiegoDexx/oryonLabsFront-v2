@@ -1,0 +1,41 @@
+{
+  "badge": "FAQ",
+  "title": "Everything you need to know",
+  "description": "We answer your questions about automation and artificial intelligence.",
+  "items": [
+    {
+      "question": "What is an AI agent and how can it help my business?",
+      "answer": "An AI agent is an automated system that performs specific tasks like answering questions, capturing leads, or scheduling appointments. It reduces costs, eliminates human error, and works 24/7 without rest."
+    },
+    {
+      "question": "How long does it take to implement automation?",
+      "answer": "Most projects are operational in 2-4 weeks. The exact time depends on the complexity of the integration needed and the tools you already use."
+    },
+    {
+      "question": "Do I need technical knowledge?",
+      "answer": "No. We handle all the technical implementation. You only need to dedicate 1-2 hours to the initial setup to tell us how your business works."
+    },
+    {
+      "question": "What if I already have tools configured?",
+      "answer": "Perfect. We integrate your existing CRM, email marketing, and other tools. No need to change everything you have working."
+    },
+    {
+      "question": "How is ROI measured for automation?",
+      "answer": "We track key metrics such as leads captured, response time, automated tasks, and operational costs. Real-time dashboard included."
+    },
+    {
+      "question": "Does support include updates?",
+      "answer": "Yes. All plans include technical support and maintenance updates. Pro and higher plans include monthly optimizations."
+    },
+    {
+      "question": "Can I cancel at any time?",
+      "answer": "Absolutely. No long-term contracts. You can cancel whenever you want without penalty. Your setup belongs to you."
+    },
+    {
+      "question": "Do you work with companies of any size?",
+      "answer": "We work with freelancers, startups, SMBs, and mid-sized companies. We scale with you according to your growth needs."
+    }
+  ],
+  "cta_title": "Have more questions?",
+  "cta_button": "Talk to an expert"
+}

@@ -1,0 +1,939 @@
+{
+  "nav": {
+    "services": "Servicios",
+    "pricing": "Precios",
+    "process": "Proceso",
+    "contact": "Contacto",
+    "cta_login": "Hablar con un experto",
+    "cta_pricing": "Ver planes"
+  },
+  "hero": {
+    "badge": "Para pymes que pierden clientes por no responder a tiempo",
+    "title": "Responde en segundos. No pierdas ni un cliente más.",
+    "title_highlight": "No pierdas ni un cliente más.",
+    "subtitle": "Automatizamos la captación de leads, la atención al cliente y tus flujos de trabajo — con ingeniería de IA a medida. Sin plantillas genéricas. Sin leads que se enfríen mientras tu equipo está ocupado.",
+    "subtitle_short": "Automatizamos la respuesta y seguimiento de tus leads con IA. Ninguno se enfría esperando.",
+    "cta_primary": "Ver cómo funciona",
+    "cta_secondary": "Hablar con un experto",
+    "trust_indicator_1": "Respuesta automática en segundos",
+    "trust_indicator_2": "Resultados visibles en 30 días",
+    "trust_indicator_3": "Soporte incluido",
+    "panel_title": "OryonX — Panel de automatizaciones",
+    "panel_badge": "50+ PyMEs automatizadas",
+    "metrics": {
+      "leads": {
+        "value": "2.4k",
+        "label": "Leads/mes",
+        "sublabel": "+180%"
+      },
+      "response": {
+        "value": "18",
+        "unit": "min",
+        "label": "Respuesta",
+        "sublabel": "-91%"
+      },
+      "savings": {
+        "value": "8.2",
+        "currency": "€",
+        "unit": "k",
+        "label": "Ahorrado",
+        "sublabel": "+monthly"
+      }
+    },
+    "automation_items": [
+      {
+        "icon": "💬",
+        "label": "Lead captado vía chatbot",
+        "status": "Activo"
+      },
+      {
+        "icon": "🧠",
+        "label": "Enriquecimiento de datos IA",
+        "status": "Activo"
+      },
+      {
+        "icon": "🔗",
+        "label": "Asignado a CRM automáticamente",
+        "status": "Activo"
+      },
+      {
+        "icon": "✉️",
+        "label": "Email de bienvenida enviado",
+        "status": "Activo"
+      }
+    ],
+    "time_saved": {
+      "title": "3h/día ahorradas",
+      "subtitle": "por empresa de media"
+    }
+  },
+  "trust_bar": {
+    "title": "Empresas que ya automatizan con OryonX",
+    "logos": [
+      "INMOBILIARIA VIVA",
+      "CLÍNICA BEAUTYMED",
+      "E-SHOP STYLE",
+      "LEXPRO ABOGADOS",
+      "MEDCENTER"
+    ]
+  },
+  "why": {
+    "eyebrow": "POR QUÉ OryonX",
+    "title": "Deja de pagar por herramientas que no se comunican entre sí.",
+    "subtitle": "La mayoría de empresas gasta 500–800{currency}/mes en software desconectado. OryonX lo reemplaza todo.",
+    "savings_badge": "Ahorras hasta {amount}/mes",
+    "pain": {
+      "label": "LO QUE LA MAYORÍA DE EMPRESAS PAGA HOY",
+      "item1": "Software CRM de ventas",
+      "price1": "~80",
+      "item2": "Plataforma de chat y soporte IA",
+      "price2": "~120",
+      "item3": "Herramienta de email marketing",
+      "price3": "~60",
+      "item4": "Automatización de flujos y tareas",
+      "price4": "~80",
+      "item5": "Mensajería por WhatsApp Business",
+      "price5": "~40",
+      "item6": "Más horas innecesarias de gestión administrativa",
+      "total_label": "TOTAL MENSUAL",
+      "total": "500–800",
+      "per_month": "/mes",
+      "description": "Múltiples facturas. Sin integración. Lo gestionas tú solo."
+    },
+    "solution": {
+      "label": "Todo integrado",
+      "eyebrow": "UNA PLATAFORMA. TODO INCLUIDO.",
+      "item1": "Chatbot IA (Ridley)",
+      "item2": "CRM + Pipeline",
+      "item3": "Email y WhatsApp Automation",
+      "item4": "Infraestructura de flujos",
+      "item5": "Soporte dedicado",
+      "item6": "Ahorra casi todo el tiempo administrativo",
+      "included": "incluido",
+      "price_label": "DESDE",
+      "price": "299",
+      "per_month": "/mes",
+      "description": "Una sola factura. Todo integrado. Nosotros nos encargamos."
+    },
+    "testimonial": {
+      "text": "Renovy redujo su coste operativo un 60% en los primeros 30 días con OryonX.",
+      "author": "— Cliente Renovy, sector reformas del hogar"
+    },
+    "cta": {
+      "primary": "Ver nuestros planes →",
+      "secondary": "Primero, hablemos"
+    }
+  },
+  "services": {
+    "badge": "Cómo lo solucionamos",
+    "title": "Un sistema.",
+    "title_highlight": "Todo resuelto.",
+    "description": "No te vendemos herramientas sueltas. Montamos el sistema completo que capta, responde, cualifica y hace seguimiento de tus leads — sin que tú tengas que pensar en ello.",
+    "cta_primary": "Ver todos los servicios",
+    "cta_secondary": "¿Caso especial? Hablemos",
+    "cards": [
+      {
+        "badge": "Asistente 24/7",
+        "title": "Responde a cada cliente, en cada canal, a cada hora",
+        "description": "Tu negocio recibe contactos a cualquier hora. Un chatbot inteligente responde en segundos, cualifica al lead y lo registra en tu CRM automáticamente. Tú te enteras cuando ya está caliente.",
+        "link": "asistente-24-7"
+      },
+      {
+        "badge": "Seguimiento",
+        "title": "Seguimiento que no se olvida ni se cansa",
+        "description": "Los leads fríos se calientan solos. Enviamos recordatorios y secuencias de seguimiento por WhatsApp o email sin que nadie en tu equipo tenga que acordarse.",
+        "link": "crm"
+      },
+      {
+        "badge": "Primera respuesta",
+        "title": "Primera respuesta en segundos, no en horas",
+        "description": "El 78% de clientes elige al proveedor que responde primero. Tu agente IA responde al instante y avisa a tu equipo cuando el lead está listo para cerrar.",
+        "link": "asistente-24-7"
+      },
+      {
+        "badge": "Todo conectado",
+        "title": "Todas tus herramientas hablan entre sí",
+        "description": "WhatsApp, email, CRM, calendario — todo sincronizado en tiempo real. Sin copiar datos a mano, sin leads perdidos entre plataformas.",
+        "link": "integraciones"
+      },
+      {
+        "badge": "Visibilidad total",
+        "title": "Sabes exactamente cuántos leads pierdes (y por qué)",
+        "description": "Dashboard en tiempo real: leads recibidos, tiempo de respuesta, conversiones. Tomas decisiones con datos, no con intuición.",
+        "link": "crm"
+      },
+      {
+        "badge": "Custom AI",
+        "title": "Solución a medida para tu sector",
+        "description": "Reformas, inmobiliaria, clínicas, legal — construimos el sistema adaptado a cómo funciona tu negocio, no al revés.",
+        "link": "custom-ai"
+      }
+    ]
+  },
+  "process": {
+    "badge": "Cómo trabajamos",
+    "title": "4 pasos para transformar tu negocio",
+    "description": "Un proceso probado que lleva tu empresa de la idea a resultados medibles en menos de 30 días.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Diagnóstico",
+        "description": "Analizamos tus procesos actuales, identificamos cuellos de botella y definimos oportunidades de automatización con mayor ROI."
+      },
+      {
+        "number": "02",
+        "title": "Diseño",
+        "description": "Diseñamos flujos de trabajo optimizados y personalizados para tu negocio. Prototipos visuales antes de construir."
+      },
+      {
+        "number": "03",
+        "title": "Implementación",
+        "description": "Construimos e integramos las automatizaciones. Conectamos todas las herramientas. Testing completo antes de salir a producción."
+      },
+      {
+        "number": "04",
+        "title": "Resultados",
+        "description": "Lanzamos, medimos y optimizamos. Soporte continuo para que la IA mejore con el tiempo. Resultados visibles desde el día uno."
+      }
+    ]
+  },
+  "pricing": {
+    "badge": "Planes y precios",
+    "title": "Inversión clara.",
+    "title_highlight": "Resultados medibles.",
+    "description": "Sin contratos anuales forzados. Sin letra pequeña. Empieza, escala y cancela cuando quieras.",
+    "toggle_monthly": "Mensual",
+    "toggle_yearly": "Anual",
+    "discount_badge": "Ahorra 20%",
+    "setup_label": "Setup inicial",
+    "monthly_label": "Mensualidad",
+    "per_month": "/mes",
+    "plans": [
+      {
+        "name": "Starter",
+        "subtitle": "Chatbot + captación de leads + CRM básico",
+        "setup_range": "€650 – €1.200",
+        "price_monthly": "299",
+        "price_yearly": "239",
+        "description": "Ideal para autónomos y negocios locales pequeños.",
+        "key_features": [
+          {
+            "text": "Chatbot IA 24/7 en web",
+            "link": "asistente-24-7"
+          },
+          {
+            "text": "Captación automática de leads",
+            "link": "crm"
+          },
+          {
+            "text": "CRM unificado básico",
+            "link": "crm"
+          }
+        ],
+        "features": [
+          "Chatbot inteligente 24/7",
+          {
+            "text": "Captación automática de leads",
+            "link": "crm"
+          },
+          {
+            "text": "Vista básica de CRM",
+            "link": "crm"
+          },
+          "Email al administrador",
+          {
+            "text": "WhatsApp/Telegram básico",
+            "link": "integraciones"
+          },
+          "Soporte por email"
+        ],
+        "cta": "Empezar con Starter",
+        "popular": false
+      },
+      {
+        "name": "Pro",
+        "subtitle": "+ clasificación automática + WhatsApp + voz IA",
+        "setup_range": "€1.200 – €2.000",
+        "price_monthly": "399",
+        "price_yearly": "319",
+        "description": "Para pymes que quieren automatización avanzada.",
+        "voice_note": "Incluye 150 min de voz al mes",
+        "voice_feature": {
+          "text": "150 min de voz incluidos (~50 llamadas/mes)",
+          "tooltip": "Minutos y llamadas de voz IA gestionados por Ridley. Uso adicional disponible — consulta condiciones.",
+          "link": "asistente-24-7"
+        },
+        "key_features": [
+          "Todo lo de Starter +",
+          {
+            "text": "WhatsApp Business completo",
+            "link": "integraciones"
+          },
+          {
+            "text": "Clasificación y scoring de leads",
+            "link": "crm"
+          }
+        ],
+        "features": [
+          "Todo lo incluido en Starter",
+          {
+            "text": "Clasificación automática de leads",
+            "link": "crm"
+          },
+          {
+            "text": "WhatsApp Business completo",
+            "link": "integraciones"
+          },
+          {
+            "text": "Resúmenes comerciales con IA",
+            "link": "custom-ai"
+          },
+          {
+            "text": "Dashboard de métricas",
+            "link": "crm"
+          },
+          "Soporte prioritario"
+        ],
+        "cta": "Empezar con Pro",
+        "popular": true
+      },
+      {
+        "name": "Professional",
+        "subtitle": "+ integraciones a medida + voz IA ampliada",
+        "setup_range": "€2.000 – €3.500",
+        "price_monthly": "499",
+        "price_yearly": "399",
+        "description": "Para empresas que necesitan soluciones personalizadas.",
+        "voice_note": "Incluye 300 min de voz al mes",
+        "voice_feature": {
+          "text": "300 min de voz incluidos (~100 llamadas/mes)",
+          "tooltip": "Minutos y llamadas de voz IA gestionados por Ridley. Uso adicional disponible — consulta condiciones.",
+          "link": "asistente-24-7"
+        },
+        "key_features": [
+          "Todo lo de Pro +",
+          {
+            "text": "Integraciones a medida",
+            "link": "integraciones"
+          },
+          "Gestor de cuenta dedicado"
+        ],
+        "features": [
+          "Todo lo incluido en Pro",
+          {
+            "text": "Integraciones a medida",
+            "link": "integraciones"
+          },
+          "Soporte prioritario 24/7",
+          {
+            "text": "CRM avanzado",
+            "link": "crm"
+          },
+          {
+            "text": "Reportes personalizados",
+            "link": "crm"
+          },
+          "Gestor de cuenta dedicado"
+        ],
+        "cta": "Solicitar Professional",
+        "popular": false
+      },
+      {
+        "name": "Business + Voice AI",
+        "subtitle": "+ agente de voz IA como canal principal",
+        "setup_range": "€2.500 – €3.500",
+        "price_monthly": "549",
+        "price_prefix": "Desde",
+        "price_yearly": "439",
+        "description": "Para empresas que quieren un agente de voz inteligente como canal principal.",
+        "key_features": [
+          "Todo lo de Professional +",
+          {
+            "text": "Agente de voz IA como canal principal",
+            "link": "asistente-24-7"
+          },
+          {
+            "text": "Número dedicado + persona de voz personalizada",
+            "link": "asistente-24-7"
+          },
+          {
+            "text": "Solución 100% personalizada",
+            "link": "custom-ai"
+          }
+        ],
+        "features": [
+          "Todo lo incluido en Professional",
+          {
+            "text": "Canal de voz IA con Vapi",
+            "link": "asistente-24-7"
+          },
+          {
+            "text": "Agente de voz IA como canal principal",
+            "link": "asistente-24-7"
+          },
+          "Llamadas entrantes/salientes automatizadas",
+          "Número de teléfono dedicado",
+          {
+            "text": "Solución 100% personalizada",
+            "link": "custom-ai"
+          }
+        ],
+        "cta": "Contactar para Voice AI",
+        "popular": false
+      }
+    ],
+    "comparison": {
+      "title": "Compara todos los planes en detalle",
+      "anchor_id": "comparativa",
+      "link_text": "Ver comparativa completa ↓",
+      "voice_note": "* Minutos de voz IA gestionados por Ridley. Uso adicional disponible.",
+      "consult_label": "Consultar",
+      "closing_cta": {
+        "title": "¿No sabes qué plan encaja contigo?",
+        "subtitle": "Cuéntanos tu caso y te recomendamos el plan adecuado en menos de 24h — sin compromiso.",
+        "cta": "Hablar con un experto →"
+      },
+      "plan_names": [
+        "Starter",
+        "Pro",
+        "Professional",
+        "Business + Voice AI"
+      ],
+      "categories": [
+        {
+          "label": "Captación y CRM",
+          "rows": [
+            {
+              "feature": "Chatbot IA 24/7",
+              "values": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "Captación automática de leads",
+              "values": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "CRM básico incluido",
+              "values": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "Email al administrador",
+              "values": [
+                true,
+                true,
+                true,
+                true
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Automatización avanzada",
+          "rows": [
+            {
+              "feature": "Clasificación automática de leads",
+              "values": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "WhatsApp Business completo",
+              "values": [
+                false,
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "Resúmenes comerciales con IA",
+              "values": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "Dashboard de métricas",
+              "values": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "Integraciones a medida",
+              "values": [
+                false,
+                false,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "CRM avanzado",
+              "values": [
+                false,
+                false,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "Reportes personalizados",
+              "values": [
+                false,
+                false,
+                true,
+                true
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Voz IA *",
+          "rows": [
+            {
+              "feature": "Minutos de voz/mes",
+              "type": "value",
+              "values": [
+                "0",
+                "150 min",
+                "300 min",
+                "Consultar"
+              ]
+            },
+            {
+              "feature": "Llamadas aprox./mes",
+              "type": "value",
+              "values": [
+                "—",
+                "~50",
+                "~100",
+                "Consultar"
+              ]
+            },
+            {
+              "feature": "Canal de voz IA completo (Vapi)",
+              "values": [
+                false,
+                false,
+                false,
+                true
+              ]
+            },
+            {
+              "feature": "Número de teléfono dedicado",
+              "values": [
+                false,
+                false,
+                false,
+                true
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Soporte y cuenta",
+          "rows": [
+            {
+              "feature": "Soporte",
+              "type": "value",
+              "values": [
+                "Email",
+                "Prioritario",
+                "Prior. + Gestor",
+                "SLA dedicado"
+              ]
+            },
+            {
+              "feature": "Gestor de cuenta dedicado",
+              "values": [
+                false,
+                false,
+                true,
+                true
+              ]
+            },
+            {
+              "feature": "SLA dedicado",
+              "values": [
+                false,
+                false,
+                false,
+                true
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "micro_faq": {
+      "title": "Lo que más nos preguntan sobre los planes",
+      "items": [
+        {
+          "question": "¿Qué pasa si uso más minutos de voz de los incluidos?",
+          "answer": "Puedes seguir usando el servicio. El uso adicional se factura por minuto consumido a tarifa acordada. Contacta con nosotros antes de activar la voz para conocer las condiciones vigentes — preferimos hablarlo antes que sorprenderte con una factura."
+        },
+        {
+          "question": "¿Puedo cambiar de plan?",
+          "answer": "Sí, en cualquier momento. Si subes de plan, el cambio es inmediato. Si bajas, se aplica en el siguiente ciclo de facturación. Sin penalizaciones ni costes adicionales."
+        },
+        {
+          "question": "¿Hay permanencia o compromiso mínimo?",
+          "answer": "No. Todos los planes son mes a mes. Puedes cancelar cuando quieras sin coste adicional. El setup inicial es un pago único, no una mensualidad más."
+        },
+        {
+          "question": "¿El setup es obligatorio?",
+          "answer": "Sí, y por una razón: es el trabajo de configuración que garantiza que todo funciona desde el primer día — agente entrenado, integraciones, flujos y pruebas. Es un pago único. No es un alquiler."
+        }
+      ]
+    },
+    "custom_case": {
+      "title": "¿Tu negocio no encaja en un plan estándar?",
+      "subtitle": "Diseñamos soluciones a medida para negocios con necesidades específicas. Cuéntanos tu caso.",
+      "cta": "Hablar con nosotros →"
+    },
+    "pricing_form": {
+      "title": "Cuéntanos tu proyecto",
+      "subtitle": "Respondemos en menos de 24 horas con una propuesta concreta.",
+      "capa1": {
+        "name_label": "Nombre",
+        "name_placeholder": "Tu nombre",
+        "company_label": "Empresa",
+        "company_placeholder": "Nombre de tu empresa",
+        "email_label": "Email",
+        "email_placeholder": "tu@empresa.com",
+        "phone_label": "Teléfono",
+        "phone_placeholder": "+34 600 000 000",
+        "sector_label": "Sector",
+        "sector_placeholder": "Selecciona tu sector",
+        "sector_options": [
+          "Trades y construcción",
+          "Clínica dental o salud",
+          "Inmobiliaria",
+          "Peluquería o salón de belleza",
+          "Servicio 24/7 (cerrajero, grúa...)",
+          "Otro"
+        ],
+        "reto_label": "Reto principal",
+        "reto_hint": "Puedes elegir varios",
+        "reto_options": [
+          "Pierdo llamadas fuera de horario",
+          "Tardo en dar presupuestos",
+          "No sé qué anuncio funciona",
+          "Sigo procesos a mano",
+          "Otro"
+        ],
+        "submit": "Solicitar análisis gratuito →",
+        "submitting": "Enviando...",
+        "errors": {
+          "name": "El nombre es obligatorio.",
+          "email": "El email es obligatorio.",
+          "email_invalid": "Email inválido.",
+          "sector": "Selecciona un sector.",
+          "reto": "Selecciona al menos un reto."
+        }
+      },
+      "capa2": {
+        "title": "Un último paso",
+        "subtitle": "Para preparar la mejor propuesta, necesitamos saber un poco más.",
+        "volume_label": "¿Cuántos contactos gestionas al mes?",
+        "volume_options": [
+          "Menos de 50",
+          "50-200",
+          "200-500",
+          "Más de 500"
+        ],
+        "urgency_label": "¿Cuándo quieres empezar?",
+        "urgency_options": [
+          "Lo antes posible",
+          "En 1-2 meses",
+          "Solo estoy explorando"
+        ],
+        "notes_label": "¿Algo específico que quieras resolver?",
+        "notes_placeholder": "Cuéntanos brevemente (opcional)...",
+        "submit": "Enviar solicitud",
+        "submitting": "Enviando...",
+        "success_title": "¡Solicitud recibida!",
+        "success_message": "Nuestro equipo te contactará en menos de 24 horas con una propuesta personalizada."
+      }
+    }
+  },
+  "testimonials": {
+    "badge": "Casos de éxito",
+    "title": "Lo que dicen nuestros clientes",
+    "description": "Resultados reales de empresas que automatizaron con OryonX.",
+    "cards": [
+      {
+        "quote": "En 3 semanas pasamos de perder el 40% de leads por respuesta tardía a capturarlos automáticamente 24/7.",
+        "name": "María Gómez",
+        "company": "Inmobiliaria Viva",
+        "result": "+40% leads en 30 días",
+        "rating": 5
+      },
+      {
+        "quote": "OryonX automatizó nuestro sistema de citas y seguimiento. Ahora nuestro equipo se enfoca en atender, no en administrar.",
+        "name": "Dr. Carlos Ruiz",
+        "company": "Clínica BeautyMed",
+        "result": "Ahorramos 3h/día",
+        "rating": 5
+      },
+      {
+        "quote": "El chatbot cualifica leads antes de que hablen con nosotros. La calidad de las oportunidades mejoró drásticamente.",
+        "name": "Laura Martínez",
+        "company": "E-Shop Style",
+        "result": "ROI 300% en 60 días",
+        "rating": 5
+      }
+    ]
+  },
+  "contact": {
+    "badge": "Contacto",
+    "title": "¿Listo para automatizar?",
+    "description": "Cuéntanos sobre tu proyecto. Responderemos en menos de 24 horas.",
+    "form": {
+      "name_label": "Nombre completo",
+      "name_placeholder": "Tu nombre",
+      "email_label": "Email",
+      "email_placeholder": "tu@empresa.com",
+      "company_label": "Empresa",
+      "company_placeholder": "Nombre de tu empresa",
+      "service_label": "¿Qué servicio te interesa?",
+      "message_label": "Cuéntanos sobre tu proyecto",
+      "message_placeholder": "Describe brevemente tus necesidades...",
+      "submit": "Enviar mensaje",
+      "submitting": "Enviando...",
+      "success_title": "¡Mensaje enviado!",
+      "success_message": "Nos pondremos en contacto contigo en menos de 24 horas."
+    }
+  },
+  "form": {
+    "title": "Cuéntanos tu reto",
+    "subtitle": "En 24h te proponemos una solución concreta y un presupuesto sin letra pequeña.",
+    "footer_text": "Sin spam. Sin compromiso. Solo hablamos de automatización.",
+    "success_message": "¡Solicitud recibida! Analizaremos tu caso y te contactamos en menos de 24h.",
+    "steps": [
+      "Tus datos",
+      "Tu reto",
+      "Contexto"
+    ],
+    "step1": {
+      "fields": {
+        "name": {
+          "label": "Nombre completo",
+          "placeholder": "Tu nombre"
+        },
+        "company": {
+          "label": "Empresa",
+          "placeholder": "Nombre de tu empresa"
+        },
+        "email": {
+          "label": "Email corporativo",
+          "placeholder": "tu@empresa.com"
+        },
+        "phone": {
+          "label": "Teléfono",
+          "placeholder": "+34 600 000 000"
+        }
+      },
+      "next_button": "Siguiente",
+      "errors": {
+        "name_required": "El nombre es obligatorio.",
+        "email_required": "El email es obligatorio.",
+        "email_invalid": "Correo inválido.",
+        "company_required": "La empresa es obligatoria.",
+        "phone_required": "El teléfono es obligatorio.",
+        "phone_invalid": "Teléfono inválido (solo números, 7-15 dígitos)."
+      }
+    },
+    "step2": {
+      "question": "¿Cuál es tu mayor reto ahora mismo?",
+      "retos": [
+        {
+          "id": "tiempo",
+          "emoji": "🕐",
+          "title": "Pierdo tiempo en tareas repetitivas",
+          "desc": "Procesos manuales, Excel, tareas que se repiten cada día"
+        },
+        {
+          "id": "clientes",
+          "emoji": "📞",
+          "title": "No puedo atender a todos mis clientes",
+          "desc": "Llamadas perdidas, respuestas lentas, clientes sin atender"
+        },
+        {
+          "id": "leads",
+          "emoji": "📋",
+          "title": "Me cuesta organizar y seguir mis leads",
+          "desc": "No sé en qué punto está cada cliente ni qué hacer después"
+        },
+        {
+          "id": "empezar",
+          "emoji": "🤝",
+          "title": "Quiero automatizar pero no sé por dónde empezar",
+          "desc": "Tengo claro que necesito cambiar algo pero no sé el qué"
+        },
+        {
+          "id": "asistente",
+          "emoji": "💬",
+          "title": "Necesito un asistente que responda por mí 24/7",
+          "desc": "WhatsApp, web, email — quiero respuestas automáticas inteligentes"
+        },
+        {
+          "id": "herramientas_desconectadas",
+          "emoji": "⚙️",
+          "title": "Mis herramientas no están conectadas entre sí",
+          "desc": "CRM, email, WhatsApp, facturación — todo por separado"
+        }
+      ],
+      "prev_button": "Anterior",
+      "next_button": "Siguiente",
+      "errors": {
+        "reto_required": "Selecciona tu principal reto."
+      }
+    },
+    "step3": {
+      "volumen_clientes": {
+        "question": "¿Cuántos clientes o contactos gestionas al mes?",
+        "options": [
+          "Menos de 50",
+          "50 - 200",
+          "200 - 500",
+          "Más de 500",
+          "No lo sé exactamente"
+        ]
+      },
+      "herramientas": {
+        "question": "¿Qué herramientas usas actualmente?",
+        "hint": "opcional, puedes elegir varias",
+        "options": [
+          "WhatsApp Business",
+          "Email / Gmail",
+          "CRM propio",
+          "Excel / Google Sheets",
+          "Redes Sociales",
+          "Ninguna en especial"
+        ]
+      },
+      "urgencia": {
+        "question": "¿Cuándo necesitas una solución?",
+        "options": [
+          {
+            "id": "alta",
+            "label": "Lo antes posible"
+          },
+          {
+            "id": "media",
+            "label": "En 1-2 meses"
+          },
+          {
+            "id": "baja",
+            "label": "Solo estoy explorando"
+          }
+        ]
+      },
+      "prev_button": "Anterior",
+      "submit_button": "Solicitar análisis gratuito",
+      "submitting": "Enviando...",
+      "errors": {
+        "volumen_clientes_required": "Indica cuántos contactos gestionas.",
+        "urgencia_required": "Indica cuándo necesitas una solución."
+      }
+    }
+  },
+  "footer": {
+    "brand": "OryonX",
+    "description": "Automatizamos la captación de leads, la atención al cliente y los flujos de trabajo de tu empresa.",
+    "newsletter": {
+      "title": "Suscríbete al newsletter",
+      "placeholder": "tu@email.com",
+      "button": "Suscribirse",
+      "privacy": "Respetamos tu privacidad. Sin spam."
+    },
+    "columns": {
+      "services": {
+        "title": "Servicios",
+        "links": [
+          "Chatbots IA",
+          "Automatización de procesos",
+          "Integración de sistemas",
+          "Agentes IA personalizados"
+        ]
+      },
+      "company": {
+        "title": "Empresa",
+        "links": [
+          "Sobre nosotros",
+          "Casos de uso",
+          "FAQ",
+          "Blog"
+        ]
+      },
+      "legal": {
+        "title": "Legal",
+        "links": [
+          "Privacidad",
+          "Términos",
+          "Cookies",
+          "Eliminación de Datos"
+        ]
+      }
+    },
+    "contact": {
+      "email": "hola@OryonX.com",
+      "phone": "+34 900 123 456",
+      "whatsapp": "WhatsApp disponible"
+    },
+    "copyright": "© {year} OryonX. Todos los derechos reservados."
+  },
+  "cookies": {
+    "text": "Usamos cookies para mejorar tu experiencia. Al continuar, aceptas nuestra",
+    "link": "política de cookies",
+    "accept": "Aceptar",
+    "reject": "Rechazar"
+  },
+  "exit": {
+    "text": "¿Te vas sin automatizar tu negocio?",
+    "cta": "Hablar con Ridley →"
+  },
+  "chatbot": {
+    "header_title": "Ridley — Asistente Oryon",
+    "online_status": "En línea",
+    "retry": "Reintentar",
+    "quick_questions_label": "Preguntas rápidas:",
+    "rate_limit_banner": "Límite alcanzado. Contáctanos en hola@OryonX.com",
+    "lead_done_badge": "✅ Solicitud recibida",
+    "initial_message": "¡Hola! Soy Ridley, el asistente virtual de OryonX. ¿En qué puedo ayudarte hoy?",
+    "placeholder": "Escribe tu mensaje...",
+    "rate_limit_msg": "Has alcanzado el límite de mensajes. Puedes continuar en 1 hora o contactarnos directamente.",
+    "timeout_msg": "La conexión tardó demasiado. Por favor inténtalo de nuevo.",
+    "error_msg": "Error de conexión. Por favor inténtalo de nuevo.",
+    "lead_confirmed_msg": "✅ ¡Listo! Nuestro equipo se pondrá en contacto contigo pronto.",
+    "quick_questions": [
+      "¿Qué servicios ofrecéis?",
+      "Ver planes y precios",
+      "Solicitar consulta gratuita",
+      "¿Cómo funciona la IA?"
+    ]
+  }
+}

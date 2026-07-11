@@ -1,0 +1,52 @@
+{
+  "backLink": "Volver al inicio",
+  "badge": "Documentación legal",
+  "title": "Términos de Servicio",
+  "lastUpdated": "Última actualización: junio de 2025 · Versión 1.0",
+  "intro": "Este documento establece las condiciones bajo las cuales OryonX presta sus servicios de automatización con inteligencia artificial. Le recomendamos leerlo detenidamente antes de contratar cualquier servicio. Si tiene alguna duda, puede contactarnos en hola@OryonX.com.",
+  "sections": [
+    {
+      "title": "1. Objeto y aceptación",
+      "body": "Los presentes Términos de Servicio regulan el acceso y uso de los servicios ofrecidos por OryonX (en adelante, \"la Agencia\") a través de su sitio web y plataformas asociadas. Al contratar cualquiera de nuestros servicios, el Cliente declara haber leído, comprendido y aceptado íntegramente estos términos. Si no está de acuerdo con alguna de las condiciones aquí expuestas, le rogamos que se abstenga de utilizar nuestros servicios."
+    },
+    {
+      "title": "2. Descripción de los servicios",
+      "body": "OryonX ofrece servicios de automatización de procesos empresariales mediante inteligencia artificial, incluyendo pero no limitándose a: desarrollo e implementación de chatbots IA, integración con sistemas CRM, automatización de flujos de trabajo, captación y cualificación de leads, y desarrollo de páginas web. El alcance específico de cada servicio se detallará en la propuesta comercial o contrato individual suscrito con el Cliente."
+    },
+    {
+      "title": "3. Registro y cuentas de usuario",
+      "body": "Para acceder a determinadas funcionalidades de nuestra plataforma o panel de administración, el Cliente deberá proporcionar información veraz, actual y completa. El Cliente es responsable de mantener la confidencialidad de sus credenciales de acceso y de toda actividad realizada bajo su cuenta. OryonX se reserva el derecho de suspender o cancelar cuentas que incumplan estos términos."
+    },
+    {
+      "title": "4. Obligaciones del cliente",
+      "body": "El Cliente se compromete a proporcionar la información, accesos y materiales necesarios para la correcta prestación del servicio dentro de los plazos acordados. Asimismo, se obliga a utilizar los servicios contratados de forma lícita, sin infringir derechos de terceros ni la normativa vigente en materia de protección de datos, propiedad intelectual o comercio electrónico."
+    },
+    {
+      "title": "5. Precios y condiciones de pago",
+      "body": "Los precios de los servicios se especifican en la propuesta comercial correspondiente y se expresan en euros (€), salvo indicación contraria. El pago se realizará según las condiciones acordadas (mensual, único o por hitos). El impago reiterado podrá conllevar la suspensión temporal o definitiva del servicio, sin perjuicio de las acciones legales que correspondan."
+    },
+    {
+      "title": "6. Propiedad intelectual",
+      "body": "Todo el software, código fuente, diseños, metodologías y materiales desarrollados por OryonX en el marco de la prestación del servicio son propiedad de la Agencia, salvo que se acuerde expresamente la cesión de derechos en el contrato correspondiente. El Cliente conserva la titularidad de sus propios datos, marca y contenidos proporcionados."
+    },
+    {
+      "title": "7. Limitación de responsabilidad",
+      "body": "OryonX prestará sus servicios con la diligencia profesional habitual, pero no garantiza resultados comerciales específicos derivados del uso de las soluciones de IA implementadas. La responsabilidad de la Agencia, en cualquier caso, quedará limitada al importe efectivamente abonado por el Cliente en los últimos 12 meses, salvo en los supuestos de dolo o negligencia grave."
+    },
+    {
+      "title": "8. Protección de datos",
+      "body": "El tratamiento de datos personales realizado por OryonX se rige por nuestra Política de Privacidad, conforme al Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD). Cuando OryonX actúe como encargado del tratamiento de datos del Cliente, ambas partes podrán suscribir un Acuerdo de Tratamiento de Datos (DPA) específico."
+    },
+    {
+      "title": "9. Modificación de los términos",
+      "body": "OryonX podrá modificar los presentes Términos de Servicio en cualquier momento para adaptarlos a cambios legislativos, técnicos o comerciales. Las modificaciones serán notificadas a través de nuestro sitio web o por correo electrónico, y entrarán en vigor desde su publicación, salvo que se indique otra fecha."
+    },
+    {
+      "title": "10. Legislación aplicable y jurisdicción",
+      "body": "Estos Términos de Servicio se rigen por la legislación española vigente. Para cualquier controversia derivada de la interpretación o ejecución de los mismos, ambas partes, con renuncia a cualquier otro fuero que pudiera corresponderles, se someten a la jurisdicción de los Juzgados y Tribunales de la ciudad de Alicante."
+    }
+  ],
+  "contactTitle": "¿Tienes alguna pregunta legal?",
+  "contactText": "Nuestro equipo está disponible para resolver cualquier duda sobre nuestros términos.",
+  "contactButton": "Contactar con el equipo"
+}

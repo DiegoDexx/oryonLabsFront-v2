@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AnimatedSection } from '../ui/AnimatedSection';
 import { StaggerContainer } from '../ui/StaggerContainer';
-import es from '../../locales/es.json';
-import en from '../../locales/en.json';
+import es from '../../locales/faq/es.json';
+import en from '../../locales/faq/en.json';
 
 const translationsByLang = { es, en };
 
@@ -58,8 +58,7 @@ export default function FAQ() {
   const location = useLocation();
   const pathLang = location.pathname.split('/')[1];
   const lang = ['es', 'en'].includes(pathLang) ? pathLang : 'es';
-  const t = translationsByLang[lang] || translationsByLang.es;
-  const faq = t.faq;
+  const faq = translationsByLang[lang] || translationsByLang.es;
   
   const [openIndex, setOpenIndex] = useState(0);
 

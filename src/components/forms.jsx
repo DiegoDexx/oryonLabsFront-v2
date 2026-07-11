@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import es from "../locales/es.json";
-import en from "../locales/en.json";
+import es from "../locales/home/es.json";
+import en from "../locales/home/en.json";
 import SuccessModal from "./successModal";
 
 const N8N_URL = import.meta.env.VITE_FORM_WEBHOOK_PROD_URL; // Cambia según entorno (usar VITE_FORM_WEBHOOK_PROD_URL para producción)

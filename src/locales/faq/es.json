@@ -1,0 +1,41 @@
+{
+  "badge": "Preguntas frecuentes",
+  "title": "Todo lo que necesitas saber",
+  "description": "Resolvemos tus dudas sobre automatización e inteligencia artificial.",
+  "items": [
+    {
+      "question": "¿Qué es un agente de IA y cómo puede ayudar mi negocio?",
+      "answer": "Un agente de IA es un sistema automatizado que realiza tareas específicas como responder preguntas, capturar leads o programar citas. Reduce costos, elimina errores humanos y trabaja 24/7 sin descanso."
+    },
+    {
+      "question": "¿Cuánto tiempo lleva implementar una automatización?",
+      "answer": "La mayoría de proyectos están operativos en 2-4 semanas. El tiempo exacto depende de la complejidad de la integración necesaria y de las herramientas que ya uses."
+    },
+    {
+      "question": "¿Necesito conocimientos técnicos?",
+      "answer": "No. Nosotros nos encargamos de toda la implementación técnica. Tú solo necesitas dedicar 1-2 horas a la configuración inicial para contarnos cómo funciona tu negocio."
+    },
+    {
+      "question": "¿Qué pasa si ya tengo herramientas configuradas?",
+      "answer": "Perfecto. Integramos tu CRM, email marketing y otras herramientas existentes. No es necesario cambiar todo lo que tienes funcionando."
+    },
+    {
+      "question": "¿Cómo se mide el ROI de la automatización?",
+      "answer": "Trackamos métricas clave como leads capturados, tiempo de respuesta, tareas automatizadas y costos operativos. Dashboard en tiempo real incluido."
+    },
+    {
+      "question": "¿El soporte incluye actualizaciones?",
+      "answer": "Sí. Todos los planes incluyen soporte técnico y actualizaciones de mantenimiento. Los planes Pro y superiores incluyen optimizaciones mensuales."
+    },
+    {
+      "question": "¿Puedo cancelar en cualquier momento?",
+      "answer": "Absolutamente. No hay contratos de permanencia. Puedes cancelar cuando quieras sin penalización. Tu setup te pertenece."
+    },
+    {
+      "question": "¿Trabajan con empresas de cualquier tamaño?",
+      "answer": "Trabajamos con autónomos, startups, pymes y empresas medianas. Escalamos contigo según tus necesidades de crecimiento."
+    }
+  ],
+  "cta_title": "¿Tienes más preguntas?",
+  "cta_button": "Hablar con un experto"
+}

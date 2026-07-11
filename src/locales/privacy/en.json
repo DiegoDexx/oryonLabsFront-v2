@@ -1,0 +1,52 @@
+{
+  "backLink": "Back to home",
+  "badge": "Legal documentation",
+  "title": "Privacy Policy",
+  "lastUpdated": "Last updated: June 2025 · Version 1.0",
+  "intro": "At Oryon Labs, we are committed to protecting your privacy and processing your personal data in accordance with the General Data Protection Regulation (GDPR) and, where applicable, the UK GDPR. This policy explains what data we collect, why, and what rights you have. If you have any questions, you can contact us at hola@oryonlabs.com.",
+  "sections": [
+    {
+      "title": "1. Data controller",
+      "body": "The controller responsible for the personal data collected on this website is Oryon Labs, based in Alicante, Spain, with contact email hola@oryonlabs.com. For any query relating to the processing of your personal data, you can reach us at that address."
+    },
+    {
+      "title": "2. Data we collect",
+      "body": "We collect the data you voluntarily provide through contact forms, our website chatbot, or when purchasing services: name, email address, phone number, company, and any additional information you choose to share. We also automatically collect browsing data (IP address, device type, pages visited) through cookies and similar technologies."
+    },
+    {
+      "title": "3. Purpose of processing",
+      "body": "We use your personal data to: respond to your enquiries and requests, manage the contractual relationship and delivery of our services, send commercial communications (where consent has been given), improve our website and services, and comply with applicable legal obligations."
+    },
+    {
+      "title": "4. Legal basis for processing",
+      "body": "The processing of your data is based, depending on the case, on: the performance of a contract or pre-contractual relationship, your explicit consent (for example, for the newsletter or non-essential cookies), Oryon Labs' legitimate interest in improving its services, and compliance with legal obligations."
+    },
+    {
+      "title": "5. Data retention",
+      "body": "We retain your personal data for as long as necessary to fulfil the purpose for which it was collected and, where applicable, for the periods required by law (for example, tax or accounting obligations). Data from unattended contact forms is deleted after a reasonable period if no business relationship is established."
+    },
+    {
+      "title": "6. Recipients and international transfers",
+      "body": "Your data may be shared with technology service providers (hosting, CRM, automation and artificial intelligence tools) acting as data processors under contract. When these providers are located outside the European Economic Area or the United Kingdom, we ensure the transfer is carried out with appropriate safeguards (Standard Contractual Clauses or other mechanisms recognised under the GDPR and UK GDPR)."
+    },
+    {
+      "title": "7. Your rights",
+      "body": "You have the right to access, rectify, and erase your data, as well as to request restriction of or object to its processing and to data portability, by contacting hola@oryonlabs.com. You also have the right to lodge a complaint with the Spanish Data Protection Agency (AEPD) or, if you reside in the United Kingdom, with the Information Commissioner's Office (ICO), if you believe the processing does not comply with applicable law."
+    },
+    {
+      "title": "8. Cookies",
+      "body": "This website uses first-party and third-party cookies for technical, analytical, and personalisation purposes. You can review and manage your preferences at any time through the cookie settings panel available on our website."
+    },
+    {
+      "title": "9. Data security",
+      "body": "Oryon Labs applies appropriate technical and organisational measures to protect your personal data against unauthorised access, loss, alteration, or destruction, as required by the GDPR and UK GDPR."
+    },
+    {
+      "title": "10. Changes to this privacy policy",
+      "body": "This Privacy Policy may be updated to reflect legislative changes or changes to our data processing practices. Any significant change will be communicated through our website, indicating the date of the last update."
+    }
+  ],
+  "contactTitle": "Have a question about your data?",
+  "contactText": "Our team is available to answer any questions about how we handle your information.",
+  "contactButton": "Contact our team"
+}

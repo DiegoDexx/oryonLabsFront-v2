@@ -2,17 +2,24 @@ import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaArrowLeft, FaFileAlt } from 'react-icons/fa';
 import { HelmetSEO, seoData } from '../../seo';
-import es from '../../locales/es.json';
-import en from '../../locales/en.json';
+import termsEs from '../../locales/terms/es.json';
+import termsEn from '../../locales/terms/en.json';
+import privacyEs from '../../locales/privacy/es.json';
+import privacyEn from '../../locales/privacy/en.json';
+import dataDeletionEs from '../../locales/data-deletion/es.json';
+import dataDeletionEn from '../../locales/data-deletion/en.json';
 
-const translationsByLang = { es, en };
+const TRANSLATIONS_BY_PAGE = {
+  terms: { es: termsEs, en: termsEn },
+  privacy: { es: privacyEs, en: privacyEn },
+  'data-deletion': { es: dataDeletionEs, en: dataDeletionEn },
+};
 
 export default function LegalPage({ pageKey }) {
   const location = useLocation();
   const lang = location.pathname.split('/')[1] === 'en' ? 'en' : 'es';
-  const t = translationsByLang[lang] || translationsByLang.es;
-  const legal = t.legal;
-  const content = legal[pageKey];
+  const content = TRANSLATIONS_BY_PAGE[pageKey][lang];
+  const legal = content;
   const seo = seoData[lang][pageKey];
 
   //scroll to top when the page changes

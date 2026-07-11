@@ -1,0 +1,438 @@
+{
+  "back_to_pricing": "View plans →",
+  "cta_expert": "Talk to an expert",
+  "how_it_works_label": "How it works",
+  "what_includes_label": "What's included",
+  "for_who_label": "Who it's for",
+  "stat_label": "The stat that changes everything",
+  "faq_label": "Frequently asked questions",
+  "related_label": "Discover the rest of the system",
+  "coming_soon": "Coming soon",
+  "pages": {
+    "asistente-24-7": {
+      "slug": "asistente-24-7",
+      "hero_title": "Answers every customer. On every channel. Around the clock.",
+      "hero_subtitle": "Your AI assistant covers web chat, WhatsApp and phone 24 hours a day, so you can focus on your work.",
+      "cta_plans_text": "View plans that include it",
+      "stat": {
+        "figure": "85%",
+        "text": "of customers who can't reach a business the first time never call back.",
+        "source": "Business AI Agents UK, 2026"
+      },
+      "how_it_works": [
+        {
+          "step": "01",
+          "title": "Installed across your channels",
+          "description": "We connect the assistant to your website, WhatsApp Business and phone line without touching your existing infrastructure."
+        },
+        {
+          "step": "02",
+          "title": "Responds instantly",
+          "description": "Every message and call is answered in seconds, the lead is qualified and automatically logged."
+        },
+        {
+          "step": "03",
+          "title": "Alerts you when it matters",
+          "description": "You get a notification with the lead summary ready to close. You only step in when there's real business."
+        }
+      ],
+      "what_includes": [
+        "Intelligent chatbot on your website, trained on your business",
+        "WhatsApp Business with automatic 24/7 responses",
+        "AI voice agent that answers calls out of hours (Pro+ plans)",
+        "Automatic qualification: the assistant asks what you would ask",
+        "Smart handover: if the lead needs human attention, it passes it over with full context",
+        "Unified history: every conversation logged in your CRM"
+      ],
+      "for_who": [
+        {
+          "sector": "Trades & construction",
+          "description": "The plumber is on site. The electrician's hands are full. The assistant responds while they work.",
+          "result": "+40% leads captured out of hours"
+        },
+        {
+          "sector": "Clinics & salons",
+          "description": "Appointments requested at 11pm. Without an assistant, they go to the competitor who does respond.",
+          "result": "Automatic bookings 24/7 without a receptionist"
+        },
+        {
+          "sector": "24/7 services (locksmiths, breakdown)",
+          "description": "Every missed call is an emergency solved by someone else. The assistant never sleeps.",
+          "result": "0 unanswered calls"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Does the assistant sound robotic?",
+          "answer": "No. It uses advanced conversational AI trained for each sector. Leads don't notice it's an AI — and when they do, they usually appreciate the speed."
+        },
+        {
+          "question": "What if the lead asks something the assistant can't resolve?",
+          "answer": "It hands over to you or your team with the full conversation context, so the lead doesn't have to repeat themselves."
+        },
+        {
+          "question": "How long until it's live?",
+          "answer": "Days, not weeks. We handle everything: train the assistant on your business, connect it to your channels and test before launch."
+        }
+      ],
+      "related": [
+        {
+          "title": "CRM & follow-up",
+          "slug": "crm"
+        },
+        {
+          "title": "All your tools connected",
+          "slug": "integraciones"
+        },
+        {
+          "title": "Custom AI solution",
+          "slug": "custom-ai"
+        },
+        {
+          "title": "Website development",
+          "slug": "desarrollo-web"
+        }
+      ]
+    },
+    "crm": {
+      "slug": "crm",
+      "hero_title": "Every lead in one place. Every pound accounted for.",
+      "hero_subtitle": "A CRM built for service SMEs — not for you to learn, but to run itself.",
+      "cta_plans_text": "View plans with CRM",
+      "stat": {
+        "figure": "23%",
+        "text": "of revenue is lost through poor timing in lead follow-up.",
+        "source": "UK SME AI Communication Report, 2025"
+      },
+      "how_it_works": [
+        {
+          "step": "01",
+          "title": "Automatic capture",
+          "description": "Every lead from your website, WhatsApp, phone and forms goes directly into the CRM — no manual data copying."
+        },
+        {
+          "step": "02",
+          "title": "Intelligent classification",
+          "description": "AI scores each lead by conversion probability and tells you which ones to prioritise."
+        },
+        {
+          "step": "03",
+          "title": "Follow-up without effort",
+          "description": "Automated reminders, emails and follow-up messages. Cold leads warm up on their own."
+        }
+      ],
+      "what_includes": [
+        "Visual lead pipeline with customisable stages",
+        "Automatic AI lead scoring",
+        "Channel attribution: know which ad or channel generates each lead",
+        "Real-time metrics dashboard",
+        "Complete history for every lead across all channels",
+        "Data export and custom reports"
+      ],
+      "for_who": [
+        {
+          "sector": "Businesses investing in advertising",
+          "description": "Know exactly which Google ad or Instagram campaign generates real business — and which is wasted spend.",
+          "result": "Measurable ad ROI from day 1"
+        },
+        {
+          "sector": "Small teams",
+          "description": "No time to learn Salesforce or HubSpot. This CRM works from day one because we configure it.",
+          "result": "Operational in 48 hours"
+        },
+        {
+          "sector": "Growing businesses",
+          "description": "When you go from 10 to 50 leads a month, you need a system — not a spreadsheet.",
+          "result": "+35% average conversion rate"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is it like HubSpot or Salesforce?",
+          "answer": "No. You configure those yourself. We configure and maintain this one, adapted to your business. No training, no learning curve."
+        },
+        {
+          "question": "Can I view metrics on mobile?",
+          "answer": "Yes. Responsive dashboard accessible from any device, no extra app needed."
+        },
+        {
+          "question": "What happens to my existing leads?",
+          "answer": "We migrate them during onboarding with no data loss. You bring your history, we organise it."
+        }
+      ],
+      "related": [
+        {
+          "title": "AI Assistant 24/7",
+          "slug": "asistente-24-7"
+        },
+        {
+          "title": "All your tools connected",
+          "slug": "integraciones"
+        },
+        {
+          "title": "Custom AI solution",
+          "slug": "custom-ai"
+        },
+        {
+          "title": "Website development",
+          "slug": "desarrollo-web"
+        }
+      ]
+    },
+    "desarrollo-web": {
+      "slug": "desarrollo-web",
+      "hero_title": "Your website isn't a brochure. It's your best salesperson.",
+      "hero_subtitle": "We design and build websites that capture leads from day one — with AI built in, not bolted on.",
+      "cta_plans_text": "View plans that include it",
+      "stat": {
+        "figure": "78%",
+        "text": "of customers choose the provider who responds first. Your website is who gives the first response.",
+        "source": "OryonX data"
+      },
+      "how_it_works": [
+        {
+          "step": "01",
+          "title": "Bespoke design",
+          "description": "No templates. Your website is designed for your sector, your brand and your way of selling."
+        },
+        {
+          "step": "02",
+          "title": "AI built in from the start",
+          "description": "The chatbot and lead capture come as standard. Not a plugin added afterwards."
+        },
+        {
+          "step": "03",
+          "title": "Optimised to convert",
+          "description": "SEO, page speed and design focused on turning visitors into leads from the first click."
+        }
+      ],
+      "what_includes": [
+        "Professional web design tailored to your sector and brand",
+        "Native integration with OryonX AI assistant and CRM",
+        "Technical and content SEO from launch",
+        "Fully responsive (mobile, tablet, desktop)",
+        "Intelligent forms connected to your lead pipeline",
+        "Professional hosting and maintenance included in monthly fee"
+      ],
+      "for_who": [
+        {
+          "sector": "Businesses without a website or with an outdated one",
+          "description": "If your website is more than 3 years old, it probably isn't capturing leads. This one will.",
+          "result": "Active leads from day 1 of launch"
+        },
+        {
+          "sector": "Businesses that want everything integrated",
+          "description": "Website + chatbot + CRM + follow-up — one provider, one system, zero friction.",
+          "result": "No managing multiple suppliers"
+        },
+        {
+          "sector": "Businesses that want technical independence",
+          "description": "We maintain, update and improve it. You forget about your IT support.",
+          "result": "Technical support always included"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Can I keep my current domain?",
+          "answer": "Yes. We work with your existing domain. If you want a new one, we help you get it too."
+        },
+        {
+          "question": "How long does it take?",
+          "answer": "Standard sites in 2-3 weeks. More complex projects, 4-6 weeks. Always with partial deliverables so you see progress throughout."
+        },
+        {
+          "question": "Does it include hosting?",
+          "answer": "Yes. High-speed professional hosting included in the monthly fee. No separate billing surprises."
+        }
+      ],
+      "related": [
+        {
+          "title": "AI Assistant 24/7",
+          "slug": "asistente-24-7"
+        },
+        {
+          "title": "CRM & follow-up",
+          "slug": "crm"
+        },
+        {
+          "title": "All your tools connected",
+          "slug": "integraciones"
+        },
+        {
+          "title": "Custom AI solution",
+          "slug": "custom-ai"
+        }
+      ]
+    },
+    "integraciones": {
+      "slug": "integraciones",
+      "hero_title": "Stop copying data between apps.",
+      "hero_subtitle": "We connect your WhatsApp, email, calendar, invoicing and CRM so information flows automatically — without anyone moving it manually.",
+      "cta_plans_text": "View plans with integrations",
+      "stat": {
+        "figure": "60-70%",
+        "text": "of team time is spent on routine queries and tasks that could be automated.",
+        "source": "UK SME Communication Report"
+      },
+      "how_it_works": [
+        {
+          "step": "01",
+          "title": "We map your tools",
+          "description": "We identify every app you use today and how data flows between them. Without assuming anything."
+        },
+        {
+          "step": "02",
+          "title": "We connect everything",
+          "description": "A lead in WhatsApp appears in the CRM, creates a calendar task and triggers a welcome email — automatically."
+        },
+        {
+          "step": "03",
+          "title": "We maintain the connections",
+          "description": "APIs change, tools update. We make sure everything keeps working."
+        }
+      ],
+      "what_includes": [
+        "Integrations with WhatsApp Business, email and calendars (Google, Outlook)",
+        "Connection with invoicing and accounting tools",
+        "Workflow automations (lead enters → task created → email sent)",
+        "Real-time sync between systems",
+        "Continuous monitoring and maintenance of integrations",
+        "Bespoke integrations for tools specific to your sector"
+      ],
+      "for_who": [
+        {
+          "sector": "Businesses with app fatigue",
+          "description": "You have 5 apps and copy data between them manually. That ends today.",
+          "result": "0 minutes/day copying data"
+        },
+        {
+          "sector": "Businesses with manual processes",
+          "description": "If someone on your team spends time 'moving data' from one place to another, we automate that.",
+          "result": "3-5 hours/week recovered per person"
+        },
+        {
+          "sector": "Businesses that like their current tools",
+          "description": "We don't make you change. We connect what you already have and make it work together.",
+          "result": "Existing investment multiplied"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Does it work with my invoicing software?",
+          "answer": "We work with most tools on the market. If yours has an API, we connect it. If not, we find alternatives."
+        },
+        {
+          "question": "What if an integration breaks?",
+          "answer": "We monitor and fix it ourselves. You don't notice — or if it's visible, we alert you before you spot the problem."
+        },
+        {
+          "question": "Can I request new integrations later?",
+          "answer": "Yes, integrations are added as you need them, especially on Professional and Business+Voice plans."
+        }
+      ],
+      "related": [
+        {
+          "title": "AI Assistant 24/7",
+          "slug": "asistente-24-7"
+        },
+        {
+          "title": "CRM & follow-up",
+          "slug": "crm"
+        },
+        {
+          "title": "Website development",
+          "slug": "desarrollo-web"
+        },
+        {
+          "title": "Custom AI solution",
+          "slug": "custom-ai"
+        }
+      ]
+    },
+    "custom-ai": {
+      "slug": "custom-ai",
+      "hero_title": "Your business isn't generic. Your AI shouldn't be either.",
+      "hero_subtitle": "We design AI solutions specific to how your business works — not templates you try to adapt.",
+      "cta_plans_text": "View plans with Custom AI",
+      "stat": {
+        "figure": "67%",
+        "text": "of SMEs that adopt AI see revenue growth of +20%.",
+        "source": "McKinsey AI Report, 2025"
+      },
+      "how_it_works": [
+        {
+          "step": "01",
+          "title": "We analyse your operations",
+          "description": "We study your processes, bottlenecks and where AI can have the most impact for your specific business."
+        },
+        {
+          "step": "02",
+          "title": "We design the solution",
+          "description": "We build an AI system tailored to your workflow, sector and way of selling — not a generic template."
+        },
+        {
+          "step": "03",
+          "title": "We deploy and optimise",
+          "description": "We go live and improve continuously with real data from your business. Every week it learns more."
+        }
+      ],
+      "what_includes": [
+        "Process analysis and automation opportunity map",
+        "Custom AI flow design for your sector",
+        "Configurable pricing guardrails per service (AI Quoting)",
+        "Voice agent with personality and tone adapted to your brand",
+        "Monthly performance reports generated by AI",
+        "Continuous iteration: the system improves with every real interaction"
+      ],
+      "for_who": [
+        {
+          "sector": "Businesses with unique processes",
+          "description": "If what you do doesn't fit generic software, you need something built for you.",
+          "result": "System that reflects how you work"
+        },
+        {
+          "sector": "High-volume businesses",
+          "description": "When you have 100+ leads/month, a generic system doesn't scale. A bespoke one does.",
+          "result": "Scalability without hiring more staff"
+        },
+        {
+          "sector": "Businesses seeking competitive advantage",
+          "description": "An AI trained on your data and sector is something your competition can't copy.",
+          "result": "Long-term defensive advantage"
+        }
+      ],
+      "faq": [
+        {
+          "question": "How much does a bespoke solution cost?",
+          "answer": "It depends on scope. Professional and Business+Voice plans include significant customisation. For more special projects, we talk — always with a fixed quote before starting."
+        },
+        {
+          "question": "Can I start with a standard plan and move to custom later?",
+          "answer": "Yes, that's the recommended route. Many clients start with Pro and scale up. The system is designed to grow with you."
+        },
+        {
+          "question": "Does the AI learn from my business over time?",
+          "answer": "Yes. The system optimises continuously with real data from your interactions. The more it's used, the better it responds."
+        }
+      ],
+      "related": [
+        {
+          "title": "AI Assistant 24/7",
+          "slug": "asistente-24-7"
+        },
+        {
+          "title": "CRM & follow-up",
+          "slug": "crm"
+        },
+        {
+          "title": "All your tools connected",
+          "slug": "integraciones"
+        },
+        {
+          "title": "Website development",
+          "slug": "desarrollo-web"
+        }
+      ]
+    }
+  }
+}

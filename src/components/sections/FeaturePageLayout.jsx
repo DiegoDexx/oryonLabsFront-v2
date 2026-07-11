@@ -288,7 +288,6 @@ export default function FeaturePageLayout({ pageData, fp, lang }) {
 
   return (
     <div className="bg-white min-h-screen">
-
       {/* ── Hero ──────────────────────────────────────────── */}
       <section className="relative min-h-screen bg-navy text-white flex items-center overflow-hidden">
         {/* Ambient orbs */}
@@ -369,10 +368,10 @@ export default function FeaturePageLayout({ pageData, fp, lang }) {
       </section>
 
       {/* ── Cómo funciona ─────────────────────────────────── */}
-      <HowItWorksSection steps={pageData.how_it_works} label={fp.how_it_works_label} />
+      <HowItWorksSection id={lang === 'en' ? 'how-it-works' : 'como-funciona'} steps={pageData.how_it_works} label={fp.how_it_works_label} />
 
       {/* ── Qué incluye + Para quién (redesigned with images + CTAs) ──────────────────────── */}
-      <section className="py-20 bg-white">
+      <section id={lang === 'en' ? 'what-includes' : 'que-incluye'} className="py-20 bg-white scroll-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <FadeIn className="flex flex-col rounded-[28px] border border-gray-200 bg-slate-50 p-10 shadow-sm">
@@ -444,7 +443,7 @@ export default function FeaturePageLayout({ pageData, fp, lang }) {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 gap-6">
+              <div id={lang === 'en' ? 'for-who' : 'para-quien'} className="grid grid-cols-1 gap-6">
                 {pageData.for_who.map((item, i) => (
                   <article key={i} className="group cursor-pointer overflow-hidden rounded-[28px] border border-gray-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
                     <div className="relative h-52 overflow-hidden bg-slate-100">
@@ -488,7 +487,7 @@ export default function FeaturePageLayout({ pageData, fp, lang }) {
       <StatBlock stat={pageData.stat} label={fp.stat_label} />
 
       {/* ── Mini FAQ ──────────────────────────────────────── */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section id="faq" className="py-20 px-4 bg-gray-50 scroll-mt-28">
         <div className="max-w-3xl mx-auto">
           <FadeIn>
             <span className="inline-block bg-cyan-pale text-cyan-dark text-sm font-semibold px-4 py-2 rounded-full mb-8">
@@ -506,7 +505,7 @@ export default function FeaturePageLayout({ pageData, fp, lang }) {
       </section>
 
       {/* ── CTA doble ─────────────────────────────────────── */}
-      <section className="py-20 px-4 bg-navy text-white text-center relative overflow-hidden">
+      <section id="cta" className="py-20 px-4 bg-navy text-white text-center relative overflow-hidden scroll-mt-28">
         <div className="absolute inset-0 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse 60% 80% at 50% 100%, rgba(0,144,201,0.1) 0%, transparent 70%)' }} />
         <FadeIn className="relative max-w-2xl mx-auto">

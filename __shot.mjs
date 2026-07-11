@@ -1,0 +1,22 @@
+import { chromium } from 'playwright-core';
+import { execSync } from 'node:child_process';
+const executablePath = execSync('find / -maxdepth 8 -iname "chrome" -path "*chromium*" -type f 2>/dev/null | head -1').toString().trim();
+const browser = await chromium.launch({ executablePath });
+const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+const errors = [];
+page.on('pageerror', (e) => errors.push(e.message));
+page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+await page.goto('http://localhost:5183/en#comparison', { waitUntil: 'networkidle' });
+await page.waitForTimeout(2600);
+// scroll to comparison table
+await page.evaluate(() => document.getElementById('comparison')?.scrollIntoView());
+await page.waitForTimeout(600);
+await page.screenshot({ path: '/tmp/shots/table_top.png' });
+await page.evaluate(() => window.scrollBy(0, 400));
+await page.waitForTimeout(400);
+await page.screenshot({ path: '/tmp/shots/table_mid.png' });
+await page.evaluate(() => window.scrollBy(0, 500));
+await page.waitForTimeout(400);
+await page.screenshot({ path: '/tmp/shots/table_bottom.png' });
+if (errors.length) console.log('ERRORS:', errors);
+await browser.close();

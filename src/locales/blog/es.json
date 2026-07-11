@@ -1,0 +1,77 @@
+{
+  "hero": {
+    "eyebrow": "Blog estratégico",
+    "title": "Beneficios y ROIs que puede traer a tu negocio",
+    "subtitle": "Descubre cómo la atención inmediata, la automatización y el seguimiento inteligente transforman cada cliente potencial en un ingreso real.",
+    "cta_list": "Ver publicaciones"
+  },
+  "panel": {
+    "metric_label": "ROI",
+    "metric_value": "+35%",
+    "metric_tag": "Conversión"
+  },
+  "list": {
+    "eyebrow": "Contenido que genera acción",
+    "title": "Artículos para impulsar decisiones comerciales",
+    "subtitle": "Cada tarjeta abre un mini artículo en un modal, así puedes leer sin perder el flujo de navegación."
+  },
+  "card": {
+    "badge": "ROI real",
+    "read_more": "Ver mini artículo →"
+  },
+  "cta": {
+    "eyebrow": "¿Listo para convertir ideas en ingresos?",
+    "title": "Lleva las ideas del blog a tu negocio",
+    "subtitle": "Agenda una demo o solicita una asesoría para convertir los aprendizajes en resultados medibles desde el primer mes."
+  },
+  "buttons": {
+    "contact": "Hablar con un experto",
+    "plans": "Ver planes"
+  },
+  "posts": {
+    "ia-para-captacion-clientes": {
+      "title": "Cómo la IA puede ayudar a tu negocio y a captar clientes",
+      "excerpt": "Casos prácticos y tácticas para automatizar la captación y el seguimiento de leads con IA.",
+      "date": "01 de junio de 2026",
+      "content": [
+        "Cuando un cliente potencial llama o escribe, no está dispuesto a esperar. Contactar en los primeros minutos multiplica drásticamente la probabilidad de conversión.",
+        "Estudios académicos y del sector muestran que responder en menos de 5 minutos aumenta significativamente la posibilidad de conectar y cualificar un lead.",
+        "Un asistente de IA no sustituye al equipo comercial: elimina el tiempo muerto entre el interés del cliente y la primera respuesta, atiende 24/7 y registra todo en el CRM.",
+        "El objetivo es recuperar esos minutos críticos: la velocidad de respuesta es hoy uno de los factores más determinantes en la conversión."
+      ]
+    },
+    "fin-de-la-administracion-manual": {
+      "title": "La administración manual de tareas básicas está condenada",
+      "excerpt": "Por qué automatizar procesos administrativos es clave para crecimiento y ahorro de costes.",
+      "date": "12 de mayo de 2026",
+      "content": [
+        "Los empleados de una pyme dedican una parte importante de su jornada a tareas administrativas repetitivas que no generan ingresos.",
+        "Automatizar procesos reduce errores, ahorra horas y permite que el equipo se enfoque en lo que aporta valor real al negocio.",
+        "Integrar herramientas evita duplicidades y mejora la calidad de los datos en el CRM, lo que se traduce en decisiones comerciales más acertadas.",
+        "La automatización es una inversión que reduce costes ocultos y desbloquea capacidad para escalar."
+      ]
+    },
+    "apollo-b2b-y-colaboracion": {
+      "title": "Nuestra futura implementación de Apollo y colaboración B2B",
+      "excerpt": "Cómo planeamos integrar Apollo para mejorar el rendimiento y las integraciones B2B.",
+      "date": "20 de abril de 2026",
+      "content": [
+        "Estamos trabajando en integrar Apollo.io para alimentar flujos de captación activa con listas B2B filtradas por ICP.",
+        "El objetivo es aplicar nuestro motor de cualificación para priorizar empresas con mayor probabilidad de conversión en campañas outbound.",
+        "La integración incluirá deduplicación y normalización antes de llegar al CRM para evitar contactar al mismo prospecto desde canales distintos.",
+        "Compartiremos resultados reales en este blog cuando la funcionalidad esté disponible para clientes."
+      ]
+    },
+    "ecosistema-de-automatizacion": {
+      "title": "Implementamos un ecosistema que te ayuda",
+      "excerpt": "Componentes y servicios que forman el ecosistema OryonX para automatizar ventas y atención.",
+      "date": "08 de marzo de 2026",
+      "content": [
+        "Tener muchas herramientas sin integración es peor que no tener ninguna: fragmenta la información y genera trabajo manual.",
+        "Un ecosistema centralizado reduce errores hasta en un 75% en tareas repetitivas y mejora la experiencia del cliente.",
+        "Nuestra propuesta es un sistema unificado: asistente de voz, CRM, motor de administración e integraciones nativas con tu web.",
+        "Así, el propietario del negocio deja de gestionar herramientas y empieza a tomar decisiones con datos reales."
+      ]
+    }
+  }
+}

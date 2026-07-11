@@ -1,0 +1,77 @@
+{
+  "hero": {
+    "eyebrow": "Strategic blog",
+    "title": "Benefits and ROI AI can bring to your business",
+    "subtitle": "Discover how immediate response, automation and smart follow-up turn every lead into measurable revenue.",
+    "cta_list": "View posts"
+  },
+  "panel": {
+    "metric_label": "ROI",
+    "metric_value": "+35%",
+    "metric_tag": "Conversion"
+  },
+  "list": {
+    "eyebrow": "Actionable content",
+    "title": "Articles to drive commercial decisions",
+    "subtitle": "Each card opens a mini-article in a modal so you can read without losing navigation flow."
+  },
+  "card": {
+    "badge": "Real ROI",
+    "read_more": "Read mini-article →"
+  },
+  "cta": {
+    "eyebrow": "Ready to turn ideas into revenue?",
+    "title": "Bring blog insights to your business",
+    "subtitle": "Book a demo or request a consultation to convert learnings into measurable results from month one."
+  },
+  "buttons": {
+    "contact": "Talk to an expert",
+    "plans": "See plans"
+  },
+  "posts": {
+    "ia-para-captacion-clientes": {
+      "title": "How AI can help your business capture customers",
+      "excerpt": "Practical cases and tactics to automate lead capture and follow-up with AI.",
+      "date": "June 1, 2026",
+      "content": [
+        "When a potential customer calls or messages, they are not willing to wait. Responding within minutes greatly increases conversion chances.",
+        "Academic and industry research shows that contacting a prospect within the first 5 minutes multiplies the probability of connecting and qualifying the lead.",
+        "An AI assistant does not replace your sales team: it removes dead time between interest and first response, handles 24/7 coverage and logs everything into the CRM.",
+        "The goal is to recover those critical minutes: response speed is one of the most decisive factors for conversion today."
+      ]
+    },
+    "fin-de-la-administracion-manual": {
+      "title": "The end of manual administration",
+      "excerpt": "Why automating administrative processes is key to growth and cost savings.",
+      "date": "May 12, 2026",
+      "content": [
+        "Employees in SMBs spend a large portion of their day on repetitive administrative tasks that do not generate revenue.",
+        "Automating processes reduces errors, saves hours, and lets the team focus on activities that create real business value.",
+        "Integrating tools prevents duplicated data and improves CRM quality, leading to better commercial decisions.",
+        "Automation is an investment that uncovers hidden costs and unlocks capacity to scale."
+      ]
+    },
+    "apollo-b2b-y-colaboracion": {
+      "title": "Our upcoming Apollo integration and B2B collaboration",
+      "excerpt": "How we plan to integrate Apollo to improve performance and B2B outreach.",
+      "date": "April 20, 2026",
+      "content": [
+        "We are working on integrating Apollo.io to feed outbound flows with ICP-filtered B2B lists.",
+        "The idea is to apply our qualification engine to prioritise companies with higher conversion probability for outbound campaigns.",
+        "The integration will include deduplication and normalization before data reaches the CRM to avoid contacting the same prospect from multiple channels.",
+        "We will publish real results here on the blog when the feature is available to customers."
+      ]
+    },
+    "ecosistema-de-automatizacion": {
+      "title": "We build an ecosystem that helps you",
+      "excerpt": "Components and services that form the OryonX ecosystem to automate sales and support.",
+      "date": "March 8, 2026",
+      "content": [
+        "Having many unconnected tools is worse than having none: it fragments information and creates manual work.",
+        "A centralised ecosystem reduces errors by up to 75% in repetitive tasks and improves customer experience.",
+        "Our proposal is a unified system: voice assistant, CRM, admin engine and native integrations with your website.",
+        "This way, business owners stop managing tools and start making decisions based on real data."
+      ]
+    }
+  }
+}

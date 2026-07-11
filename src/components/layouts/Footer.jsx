@@ -1,8 +1,8 @@
 ﻿import { Link, useLocation } from 'react-router-dom';
 import { FaTwitter, FaLinkedin, FaInstagram, FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
 import completeLogo from '../../assets/img/logo_blue_ox.webp';
-import es from '../../locales/es.json';
-import en from '../../locales/en.json';
+import es from '../../locales/home/es.json';
+import en from '../../locales/home/en.json';
 
 const translationsByLang = { es, en };
 

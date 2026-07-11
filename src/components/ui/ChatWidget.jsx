@@ -3,8 +3,8 @@ import { FaPaperPlane, FaRobot, FaTimes, FaRedo } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 import { buildSystemPrompt } from '../../config/chatPrompt';
 import ridleyImg from '../../assets/img/ridley.webp';
-import es from '../../locales/es.json';
-import en from '../../locales/en.json';
+import es from '../../locales/home/es.json';
+import en from '../../locales/home/en.json';
 
 const WEBHOOK_URL        = import.meta.env.VITE_CHAT_WEBHOOK_PROD_URL;
 const RATE_LIMIT         = 10;

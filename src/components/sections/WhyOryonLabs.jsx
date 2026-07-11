@@ -6,8 +6,8 @@ import {
 import logoBlue2 from '../../assets/img/logo_blue2.webp';
 import useCurrency from '../../hooks/useCurrency';
 import { AnimatedSection } from '../ui/AnimatedSection';
-import es from '../../locales/es.json';
-import en from '../../locales/en.json';
+import es from '../../locales/home/es.json';
+import en from '../../locales/home/en.json';
 
 const translationsByLang = { es, en };
 

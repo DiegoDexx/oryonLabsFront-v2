@@ -1,0 +1,29 @@
+{
+  "backLink": "Back to home",
+  "badge": "Legal documentation",
+  "title": "Data Deletion",
+  "lastUpdated": "Last updated: July 2025",
+  "intro": "OryonX respects your right to control your personal data. If you would like us to delete the personal information we hold about you — including data collected through our AI assistant (Ridley) via web chat, WhatsApp, or voice channels — you can request deletion at any time.",
+  "sections": [
+    {
+      "title": "How to request deletion",
+      "body": "Send an email to management@oryonx.ai with the subject line \"Data Deletion Request\", including:",
+      "items": [
+        "Your full name",
+        "The phone number, email address, or WhatsApp number associated with your data",
+        "Confirmation that you are requesting full deletion of your data from OryonX's systems"
+      ]
+    },
+    {
+      "title": "What happens next",
+      "body": "We will process your request within 30 days and confirm by email once your data has been removed from our systems, including our CRM, lead records, and any associated conversation history. Some information may be retained where required by law (e.g. billing records for tax compliance) for the minimum period legally required. If you contacted us through WhatsApp, you may also request deletion of your WhatsApp conversation data directly through Meta's own data controls, in addition to contacting us."
+    },
+    {
+      "title": "Questions",
+      "body": "If you have any questions about this process, contact us at management@oryonx.ai."
+    }
+  ],
+  "contactTitle": "Need help with your data?",
+  "contactText": "Our team is ready to process your deletion request and answer any questions.",
+  "contactButton": "Contact our team"
+}
