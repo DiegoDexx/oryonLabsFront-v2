@@ -13,7 +13,6 @@ export default function PricingCard({
   monthlyLabel = 'Mensualidad',
   keyFeatures = [],
   voiceFeature = null,
-  voiceNote = null,
   isPopular = false,
   ctaText = 'Empezar',
   isDark = false,
@@ -61,6 +60,11 @@ export default function PricingCard({
         isDark
           ? 'bg-navy text-white shadow-2xl'
           : 'bg-white border border-gray-200 text-navy hover:border-cyan/50 hover:shadow-xl'
+      } ${
+        /* Pro sits in the middle of 3 cards — a permanent lift (not just on
+           hover) makes sure it reads as "the recommended one" regardless of
+           serial position (Efecto de Posición Serial). */
+        isPopular ? 'md:-translate-y-2 ring-1 ring-cyan/40' : ''
       }`}
     >
       {isPopular && (
@@ -78,8 +82,9 @@ export default function PricingCard({
         )}
       </div>
 
-      {/* Pricing */}
-      <div className="mb-5 space-y-3">
+      {/* Pricing — grouped as its own block (Ley de Proximidad), with more
+          room below before the CTA so the two don't blur together. */}
+      <div className={`mb-7 space-y-3 pb-5 border-b ${isDark ? 'border-white/10' : 'border-gray-100'}`}>
         <div>
           <p className={`text-xs uppercase tracking-wider mb-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
             {setupLabel}
@@ -99,18 +104,15 @@ export default function PricingCard({
               {perMonth}
             </span>
           </p>
-          {voiceNote && (
-            <p className={`text-xs mt-1.5 font-medium ${isDark ? 'text-orange-300' : 'text-orange-600'}`}>
-              {voiceNote}
-            </p>
-          )}
         </div>
       </div>
 
-      {/* CTA: primary links to contact form */}
+      {/* CTA — a single primary action per card (Ley de Hick). The former
+          second button ("Solicitar análisis gratuito") is now a lighter-weight
+          text link so it doesn't compete with the primary choice. */}
       <a
         href={contactAnchor}
-        className={`w-full inline-flex items-center justify-center py-3 rounded-lg font-semibold transition-all mb-4 ${
+        className={`w-full inline-flex items-center justify-center py-3 rounded-lg font-semibold transition-all ${
           isPopular || isDark
             ? 'bg-cyan hover:bg-cyan-medium text-white'
             : 'bg-navy hover:opacity-90 text-white'
@@ -118,13 +120,13 @@ export default function PricingCard({
       >
         {ctaText}
       </a>
-
-      {/* Secondary quick CTA */}
       <a
         href={contactAnchor}
-        className="w-full inline-flex items-center justify-center py-2 rounded-lg font-medium text-sm border border-gray-200 hover:bg-gray-50 transition-colors mb-6"
+        className={`w-full text-center text-xs font-medium mt-2.5 mb-6 hover:underline ${
+          isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-cyan'
+        }`}
       >
-        {lang === 'en' ? 'Request free analysis' : 'Solicitar análisis gratuito'}
+        {lang === 'en' ? 'Or request a free analysis' : 'O solicita un análisis gratuito'}
       </a>
 
       {/* Key features */}

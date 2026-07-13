@@ -2,6 +2,7 @@ import { lazy, Suspense, useState, useEffect } from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import Breadcrumb from '../ui/Breadcrumb';
 import CookieBanner from '../ui/CookieBanner';
 import StickyMobileCTA from '../ui/StickyMobileCTA';
 import ExitIntent from '../ui/ExitIntent';
@@ -51,7 +52,10 @@ export default function Layout() {
   return (
     <>
       <Navbar />
-      <main><Outlet /></main>
+      <main>
+        <Breadcrumb />
+        <Outlet />
+      </main>
       <Footer />
       {chatReady && (
         <Suspense fallback={null}>

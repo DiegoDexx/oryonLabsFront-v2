@@ -19,6 +19,8 @@ const Privacy = lazy(() => import('./pages/legal/privacy'));
 const DataDeletion = lazy(() => import('./pages/legal/data-deletion'));
 const FeaturePage = lazy(() => import('./pages/featurePage'));
 const BlogPage = lazy(() => import('./pages/blog'));
+const AboutUs = lazy(() => import('./pages/aboutus'));
+const Contacto = lazy(() => import('./pages/contacto'));
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -47,6 +49,8 @@ function App() {
             <Route path="privacy" element={<Privacy />} />
             <Route path="data-deletion" element={<DataDeletion />} />
             <Route path="servicios/:slug" element={<FeaturePage />} />
+            <Route path="aboutus" element={<AboutUs />} />
+            <Route path="contacto" element={<Contacto />} />
           </Route>
 
           {/* Admin routes (no lang prefix) */}

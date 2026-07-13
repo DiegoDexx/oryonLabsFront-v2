@@ -16,7 +16,7 @@ const serviceIcons = [
   <FaCode className="w-6 h-6" />,
 ];
 
-const serviceColors = ['cyan', 'purple', 'green', 'orange', 'blue', 'indigo'];
+const serviceColors = ['cyan', 'navy', 'cyan', 'navy', 'cyan', 'navy'];
 
 export default function Services() {
   const location = useLocation();

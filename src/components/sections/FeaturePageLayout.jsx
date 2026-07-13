@@ -2,23 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FaCheck, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { useInView } from '../../hooks/useInView';
+import { SERVICE_ORDER } from '../../config/services';
 import {
   ChatbotHeroVisual,
   IntegrationsHeroVisual,
   CustomAIHeroVisual,
   CRMHeroVisual,
 } from './HeroVisuals';
-import tradesIllustration from '../../assets/img/illustrations_features/Trades_and_constructions.webp';
-import clinicIllustration from '../../assets/img/illustrations_features/AI_Clinic_PhoneAssistant.webp';
-import servicesIllustration from '../../assets/img/illustrations_features/AI_for_24-7Services (locksmiths, breakdown).webp';
-import crmMarketingIllustration from '../../assets/img/illustrations_features/AI_CRM1_BusinessMarketing.webp';
-import crmLadderIllustration from '../../assets/img/illustrations_features/AI_CRM2_IncreaseLadder.webp';
-import appFatigueIllustration from '../../assets/img/illustrations_features/BusinessAppFatigue.webp';
-import competitiveAdvantageIllustration from '../../assets/img/illustrations_features/BusinessesseekingcompetitiveAdvantage.webp';
-import highVolumeIllustration from '../../assets/img/illustrations_features/Highvolumebusinesses.webp';
-import smallTeamIllustration from '../../assets/img/illustrations_features/SmallTeam.webp';
-import manualProcessesIllustration from '../../assets/img/illustrations_features/StressedAssistanDoingManuelThings.webp';
-import genericIllustration from '../../assets/img/illustrations_features/AI_SaaS_Generic_Illustration1.webp';
 // BlogSection is now a standalone page; keep component in repo for reuse
 
 /* ── Count-up hook ─────────────────────────────────────────── */
@@ -144,23 +134,127 @@ function HeroIllustration({ slug, lang }) {
   return map[slug] || <ChatbotHeroVisual lang={lang} />;
 }
 
-function selectForWhoIllustration(sector) {
-  const key = sector.toLowerCase();
+/* ── Managed-service panel mockups ────────────────────────────
+   Brand positioning is "done-for-you", not a self-serve tool, so
+   the "Qué incluye" and "Para quién es" blocks reuse the same
+   dark dashboard-mockup language as CRMHeroVisual (see
+   HeroVisuals.jsx) instead of generic checkmark lists / stock
+   illustrations. This also removes the dependency on the old
+   illustration set, which was inconsistent in style across cards
+   and had at least one image with English text baked into the
+   artwork ("REPAIR MASTER") on an otherwise Spanish-language site. */
+const PANEL_ACCENTS = ['#0090C9', '#22C55E', '#F97316', '#A855F7'];
 
-  if (key.includes('trades') || key.includes('constru')) return tradesIllustration;
-  if (key.includes('clinic') || key.includes('clinica') || key.includes('salon')) return clinicIllustration;
-  if (key.includes('24/7') || key.includes('cerrajer') || key.includes('grua') || key.includes('locksmith') || key.includes('breakdown')) return servicesIllustration;
-
-  if (key.includes('publicidad') || key.includes('advertising') || key.includes('marketing')) return crmMarketingIllustration;
-  if (key.includes('small team') || key.includes('equipos pequenos') || key.includes('small teams')) return smallTeamIllustration;
-  if (key.includes('growing business') || key.includes('negocios en crecimiento') || key.includes('high-volume') || key.includes('volumen alto')) return highVolumeIllustration;
-
-  if (key.includes('app fatigue') || key.includes('app fatigue')) return appFatigueIllustration;
-  if (key.includes('manual') || key.includes('manuales') || key.includes('processes') || key.includes('procesos')) return manualProcessesIllustration;
-  if (key.includes('tools') || key.includes('herramientas') || key.includes('competitive') || key.includes('competitiva') || key.includes('advantage') || key.includes('independencia') || key.includes('independence') || key.includes('technical independence')) return competitiveAdvantageIllustration;
-
-  return genericIllustration;
+function IncludesPanel({ items, lang }) {
+  return (
+    <div className="rounded-[24px] bg-navy p-5 shadow-xl shadow-navy/10 border border-white/5">
+      <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+        <span className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wide text-white/50">
+          <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse-slow" />
+          {lang === 'en' ? 'Managed for you' : 'Gestionado por nosotros'}
+        </span>
+        <span className="text-[11px] font-semibold text-white/40">
+          {items.length} {lang === 'en' ? 'active' : 'activas'}
+        </span>
+      </div>
+      <div className="space-y-2">
+        {items.map((item, i) => {
+          const accent = PANEL_ACCENTS[i % PANEL_ACCENTS.length];
+          return (
+            <div
+              key={i}
+              className="relative flex items-center justify-between gap-3 overflow-hidden rounded-lg border border-white/5 bg-white/[0.04] py-2.5 pl-3.5 pr-3"
+            >
+              <span className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: accent }} />
+              <p className="text-[13px] leading-5 text-white/85">{item}</p>
+              <span
+                className="inline-flex flex-shrink-0 items-center gap-1 rounded-full bg-white/5 px-2 py-1 text-[9px] font-bold uppercase tracking-wide"
+                style={{ color: accent }}
+              >
+                <span className="h-1 w-1 rounded-full" style={{ backgroundColor: accent }} />
+                {lang === 'en' ? 'Active' : 'Activo'}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
+
+const SECTOR_LABEL_STOPWORDS = new Set([
+  'con', 'de', 'del', 'la', 'el', 'los', 'las', 'y', 'o', 'que', 'ya', 'les',
+  'para', 'sin', 'su', 'tu', 'a', 'en', 'un', 'una', 'and', 'with', 'for', 'the', 'of', 'an',
+]);
+
+function sectorInitials(sector) {
+  const words = sector.replace(/[()]/g, '').split(/\s+/).filter(Boolean);
+  const significant = words.filter((w) => w.length > 2 && !SECTOR_LABEL_STOPWORDS.has(w.toLowerCase()));
+  const source = significant.length ? significant : words;
+  // Sectors on the same page often share an opening phrase ("Negocios que
+  // quieren…"), so pairing the first + last significant word keeps the
+  // initials distinct instead of always landing on the shared prefix.
+  const pick = source.length > 1 ? [source[0], source[source.length - 1]] : source;
+  return pick.map((w) => w[0]).join('').toUpperCase();
+}
+
+function AudiencePanel({ sector, result, index, lang }) {
+  const accent = PANEL_ACCENTS[index % PANEL_ACCENTS.length];
+  const bars = [4, 7, 5, 9, 6, 10];
+  return (
+    <div className="relative h-52 overflow-hidden bg-navy p-5 flex flex-col justify-between">
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex items-center gap-3 min-w-0">
+          <span
+            className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl text-sm font-bold text-white"
+            style={{ backgroundColor: accent }}
+          >
+            {sectorInitials(sector)}
+          </span>
+          <div className="min-w-0">
+            <p className="text-[10px] uppercase tracking-[0.22em] text-cyan-200/70 font-semibold">
+              {lang === 'en' ? 'Target' : 'Audiencia'}
+            </p>
+            <p className="mt-1 text-lg font-bold leading-tight text-white truncate">{sector}</p>
+          </div>
+        </div>
+        <span className="flex flex-shrink-0 items-center gap-1 text-[9px] font-bold uppercase text-green-400">
+          <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse-slow" />
+          {lang === 'en' ? 'Live' : 'En vivo'}
+        </span>
+      </div>
+      <div className="flex items-end justify-between gap-3">
+        <div className="flex items-end gap-[3px] h-8">
+          {bars.map((h, i) => (
+            <div
+              key={i}
+              className="w-2 rounded-sm"
+              style={{ height: `${h * 2.2}px`, backgroundColor: accent, opacity: 0.55 }}
+            />
+          ))}
+        </div>
+        <p className="text-right text-xs font-bold leading-snug text-white/90 max-w-[55%]">{result}</p>
+      </div>
+    </div>
+  );
+}
+
+/* ── "Para quién es" segmentation criterion ───────────────────
+   INCONSISTENCY (flagged, not resolved here — needs a content
+   decision, not a code fix): asistente-24-7 groups audiences by
+   business vertical (trades, clinics, locksmiths/breakdown),
+   while crm / desarrollo-web / integraciones / custom-ai group
+   them by pain point / symptom (app fatigue, manual processes,
+   wanting a competitive edge...). These are two different
+   segmentation logics living side by side in the same site.
+   `pageData.for_who_segmentation` (see locales/services/*.json)
+   makes the criterion swappable per page via config instead of
+   hardcoding it, so whichever segmentation the business settles
+   on can be applied without touching this component again. */
+const SEGMENTATION_LABELS = {
+  vertical: { en: 'Segmented by industry', es: 'Segmentado por sector' },
+  symptom: { en: 'Segmented by need', es: 'Segmentado por necesidad' },
+};
 
 /* ── Staggered how-it-works section ───────────────────────── */
 function HowItWorksSection({ steps, label }) {
@@ -280,6 +374,12 @@ export default function FeaturePageLayout({ pageData, fp, lang }) {
   const pricingAnchor = lang === 'en' ? 'pricing' : 'precios';
   const contactAnchor = lang === 'en' ? 'contact' : 'contacto';
 
+  const currentIndex = SERVICE_ORDER.indexOf(pageData.slug);
+  const prevSlug = SERVICE_ORDER[(currentIndex - 1 + SERVICE_ORDER.length) % SERVICE_ORDER.length];
+  const nextSlug = SERVICE_ORDER[(currentIndex + 1) % SERVICE_ORDER.length];
+  const prevTitle = fp.nav_titles?.[prevSlug];
+  const nextTitle = fp.nav_titles?.[nextSlug];
+
   const heroStyle = (delay, y = 20) => ({
     opacity: mounted ? 1 : 0,
     transform: mounted ? 'translateY(0)' : `translateY(${y}px)`,
@@ -312,11 +412,30 @@ export default function FeaturePageLayout({ pageData, fp, lang }) {
           <div>
             <Link
               to={`${basePath}#${pricingAnchor}`}
-              className="inline-flex items-center gap-2 text-cyan/60 text-sm mb-10 hover:text-cyan transition-colors"
+              className="inline-flex items-center gap-2 text-cyan/60 text-sm mb-4 hover:text-cyan transition-colors"
               style={heroStyle(0, 10)}
             >
               ← {fp.back_to_pricing}
             </Link>
+            {prevTitle && nextTitle && (
+              <div
+                className="flex flex-wrap items-center gap-x-8 gap-y-2 mb-10"
+                style={heroStyle(60, 10)}
+              >
+                <Link
+                  to={`${basePath}/servicios/${prevSlug}`}
+                  className="inline-flex items-center gap-1.5 text-cyan/50 text-xs sm:text-sm font-medium hover:text-cyan transition-colors"
+                >
+                  <span aria-hidden="true">←</span> {prevTitle}
+                </Link>
+                <Link
+                  to={`${basePath}/servicios/${nextSlug}`}
+                  className="inline-flex items-center gap-1.5 text-cyan/50 text-xs sm:text-sm font-medium hover:text-cyan transition-colors"
+                >
+                  {nextTitle} <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            )}
             <h1
               className="text-4xl lg:text-5xl xl:text-6xl font-extrabold mb-6 leading-[1.08]"
               style={heroStyle(100)}
@@ -388,16 +507,7 @@ export default function FeaturePageLayout({ pageData, fp, lang }) {
                     : 'Un paquete claro de funcionalidades diseñado para una implementación rápida, control de leads y seguimiento automatizado.'}
                 </p>
               </div>
-              <div className="space-y-4">
-                {pageData.what_includes.map((item, i) => (
-                  <div key={i} className="flex gap-4 rounded-3xl border border-gray-200 bg-white px-5 py-4 shadow-sm">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-pale text-cyan">
-                      <FaCheck className="w-4 h-4" />
-                    </span>
-                    <p className="text-sm leading-6 text-gray-700">{item}</p>
-                  </div>
-                ))}
-              </div>
+              <IncludesPanel items={pageData.what_includes} lang={lang} />
               <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 <Link
                   to={`${basePath}#${pricingAnchor}`}
@@ -412,24 +522,21 @@ export default function FeaturePageLayout({ pageData, fp, lang }) {
                   {fp.cta_expert}
                 </Link>
               </div>
-              <div className="mt-10 rounded-[24px] border border-gray-100 bg-gradient-to-br from-cyan-50 to-white p-6">
-                <p className="text-xs uppercase tracking-[0.22em] text-cyan-dark font-semibold mb-3">
-                  {lang === 'en' ? 'Professional SaaS design' : 'Diseño SaaS profesional'}
-                </p>
-                <p className="text-sm leading-relaxed text-gray-600">
-                  {lang === 'en'
-                    ? 'These cards are designed to communicate trust, clarity and the ideal audience for each product area — just like the top SaaS brands.'
-                    : 'Estas tarjetas están diseñadas para comunicar confianza, claridad y el público ideal de cada área del producto — al estilo de las grandes marcas SaaS.'}
-                </p>
-              </div>
             </FadeIn>
 
             <FadeIn delay={150} className="flex flex-col gap-6">
               <div className="rounded-[28px] border border-gray-200 bg-slate-50 p-8 shadow-sm">
                 <div className="flex flex-col gap-4">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-cyan-pale px-4 py-2 text-cyan-dark text-sm font-semibold">
-                    {fp.for_who_label}
-                  </span>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-cyan-pale px-4 py-2 text-cyan-dark text-sm font-semibold">
+                      {fp.for_who_label}
+                    </span>
+                    {pageData.for_who_segmentation && (
+                      <span className="text-xs font-medium text-gray-400">
+                        {SEGMENTATION_LABELS[pageData.for_who_segmentation]?.[lang]}
+                      </span>
+                    )}
+                  </div>
                   <h3 className="text-2xl font-bold text-navy">
                     {lang === 'en'
                       ? 'Who gets the most value'
@@ -446,18 +553,7 @@ export default function FeaturePageLayout({ pageData, fp, lang }) {
               <div id={lang === 'en' ? 'for-who' : 'para-quien'} className="grid grid-cols-1 gap-6">
                 {pageData.for_who.map((item, i) => (
                   <article key={i} className="group cursor-pointer overflow-hidden rounded-[28px] border border-gray-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
-                    <div className="relative h-52 overflow-hidden bg-slate-100">
-                      <img
-                        alt={item.sector}
-                        src={selectForWhoIllustration(item.sector)}
-                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-black/30 transition duration-500 group-hover:bg-black/15" />
-                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-5 py-4 text-white">
-                        <p className="text-xs uppercase tracking-[0.24em] text-cyan-200 font-semibold">{lang === 'en' ? 'Target' : 'Audiencia'}</p>
-                        <p className="mt-2 text-xl font-bold leading-tight">{item.sector}</p>
-                      </div>
-                    </div>
+                    <AudiencePanel sector={item.sector} result={item.result} index={i} lang={lang} />
                     <div className="p-6">
                       <p className="text-sm text-gray-600 leading-relaxed mb-5">{item.description}</p>
                       <div className="flex flex-wrap items-center gap-3">
@@ -465,6 +561,11 @@ export default function FeaturePageLayout({ pageData, fp, lang }) {
                           <FaCheck className="w-3.5 h-3.5" />
                           {item.result}
                         </span>
+                        {item.illustrative && (
+                          <span className="text-[11px] text-gray-400">
+                            {fp.illustrative_figure_label}
+                          </span>
+                        )}
                         <Link
                           to={`${basePath}#${contactAnchor}`}
                           className="text-sm font-semibold text-cyan hover:text-cyan-dark"

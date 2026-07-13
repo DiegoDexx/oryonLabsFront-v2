@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { AnimatedSection } from '../ui/AnimatedSection';
+import { useInView } from '../../hooks/useInView';
 import es from '../../locales/home/es.json';
 import en from '../../locales/home/en.json';
 
@@ -28,6 +29,16 @@ export default function Process() {
   const t = translationsByLang[lang] || translationsByLang.es;
   const process = t.process;
 
+  // One inView tracker per step (fixed at 4, matching `icons`), used to
+  // drive a progress stepper — the block should read as a sequence with a
+  // "you're on step 2 of 4" state as you scroll, not 4 disconnected cards
+  // (Efecto Zeigarnik).
+  const step0 = useInView({ threshold: 0.4, triggerOnce: true });
+  const step1 = useInView({ threshold: 0.4, triggerOnce: true });
+  const step2 = useInView({ threshold: 0.4, triggerOnce: true });
+  const step3 = useInView({ threshold: 0.4, triggerOnce: true });
+  const stepInViews = [step0, step1, step2, step3];
+
   return (
     <section id={lang === 'en' ? 'process' : 'proceso'} className="py-16 sm:py-20 lg:py-24 bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,17 +55,41 @@ export default function Process() {
           </p>
         </AnimatedSection>
 
+        {/* Progress stepper — fills in as each step scrolls into view */}
+        <div className="hidden lg:flex items-center max-w-3xl mx-auto mb-12">
+          {process.steps.map((step, index) => (
+            <div key={step.number} className={`flex items-center ${index < process.steps.length - 1 ? 'flex-1' : ''}`}>
+              <div
+                className={`flex-shrink-0 w-9 h-9 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-all duration-500 ${
+                  stepInViews[index].inView
+                    ? 'bg-cyan border-cyan text-white scale-110'
+                    : 'bg-transparent border-white/15 text-white/40'
+                }`}
+              >
+                {step.number}
+              </div>
+              {index < process.steps.length - 1 && (
+                <div
+                  className={`flex-1 h-0.5 mx-2 transition-colors duration-700 ${
+                    stepInViews[index + 1].inView ? 'bg-cyan' : 'bg-white/10'
+                  }`}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+
         {/* Steps */}
         <div className="relative">
           {/* Conector line en desktop */}
           <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan/30 to-transparent" />
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {process.steps.map((step, index) => {
               const IconComponent = icons[index];
               return (
                 <AnimatedSection key={step.number} delay={index * 150}>
-                  <div className="relative group h-full">
+                  <div ref={stepInViews[index].ref} className="relative group h-full">
                     {/* Card */}
                     <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm h-full hover:border-cyan/30 hover:bg-white/10 transition-all duration-300">
                       {/* Number */}

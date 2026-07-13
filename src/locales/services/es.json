@@ -8,11 +8,19 @@
   "faq_label": "Preguntas frecuentes",
   "related_label": "Descubre el resto del sistema",
   "coming_soon": "Próximamente",
+  "illustrative_figure_label": "Cifra ilustrativa",
+  "nav_titles": {
+    "asistente-24-7": "Asistente IA 24/7",
+    "crm": "CRM y seguimiento",
+    "desarrollo-web": "Desarrollo web",
+    "integraciones": "Integraciones",
+    "custom-ai": "Solución a medida"
+  },
   "pages": {
     "asistente-24-7": {
       "slug": "asistente-24-7",
       "hero_title": "Responde a cada cliente. En cada canal. A cada hora.",
-      "hero_subtitle": "Tu asistente IA atiende por web, WhatsApp y telefono las 24 horas mientras tu te centras en tu trabajo.",
+      "hero_subtitle": "Tu asistente IA atiende por web, WhatsApp y teléfono las 24 horas mientras tú te centras en tu trabajo.",
       "cta_plans_text": "Ver planes que lo incluyen",
       "stat": {
         "figure": "85%",
@@ -23,56 +31,58 @@
         {
           "step": "01",
           "title": "Se instala en tus canales",
-          "description": "Conectamos el asistente a tu web, WhatsApp Business y linea telefonica sin tocar tu infraestructura actual."
+          "description": "Conectamos el asistente a tu web, WhatsApp Business y línea telefónica sin tocar tu infraestructura actual."
         },
         {
           "step": "02",
           "title": "Responde al instante",
-          "description": "Cada mensaje y llamada se responde en segundos, cualifica al lead y lo registra automaticamente."
+          "description": "Cada mensaje y llamada se responde en segundos, cualifica al lead y lo registra automáticamente."
         },
         {
           "step": "03",
           "title": "Te avisa cuando importa",
-          "description": "Recibes una notificacion con el resumen del lead listo para cerrar. Solo intervienes cuando hay negocio real."
+          "description": "Recibes una notificación con el resumen del lead listo para cerrar. Solo intervienes cuando hay negocio real."
         }
       ],
       "what_includes": [
         "Chatbot inteligente en tu web entrenado con tu negocio",
-        "WhatsApp Business con respuestas automaticas 24/7",
+        "WhatsApp Business con respuestas automáticas 24/7",
         "Agente de voz IA que contesta llamadas fuera de horario (planes Pro+)",
-        "Cualificacion automatica: el asistente pregunta lo que tu preguntarias",
-        "Derivacion inteligente: si el lead necesita atencion humana, te lo pasa con contexto",
-        "Historial unificado: cada conversacion queda registrada en tu CRM"
+        "Cualificación automática: el asistente pregunta lo que tú preguntarías",
+        "Derivación inteligente: si el lead necesita atención humana, te lo pasa con contexto",
+        "Historial unificado: cada conversación queda registrada en tu CRM"
       ],
+      "for_who_segmentation": "vertical",
       "for_who": [
         {
-          "sector": "Trades y construccion",
-          "description": "El fontanero esta en la obra. El electricista tiene las manos ocupadas. El asistente responde mientras ellos trabajan.",
-          "result": "+40% leads capturados fuera de horario"
+          "sector": "Trades y construcción",
+          "description": "El fontanero está en la obra. El electricista tiene las manos ocupadas. El asistente responde mientras ellos trabajan.",
+          "result": "+40% leads capturados fuera de horario",
+          "illustrative": true
         },
         {
-          "sector": "Clinicas y salones",
-          "description": "Citas que se piden a las 11 de la noche. Sin asistente, se van al competidor que si responde.",
-          "result": "Citas automaticas 24/7 sin recepcionista"
+          "sector": "Clínicas y salones",
+          "description": "Citas que se piden a las 11 de la noche. Sin asistente, se van al competidor que sí responde.",
+          "result": "Citas automáticas 24/7 sin recepcionista"
         },
         {
-          "sector": "Servicios 24/7 (cerrajeros, gruas)",
+          "sector": "Servicios 24/7 (cerrajeros, grúas)",
           "description": "Cada llamada perdida es una emergencia que resuelve otro. El asistente nunca duerme.",
           "result": "0 llamadas sin respuesta"
         }
       ],
       "faq": [
         {
-          "question": "El asistente suena robotico?",
+          "question": "El asistente suena robótico?",
           "answer": "No. Usa IA conversacional avanzada entrenada para cada sector. Los leads no notan que es una IA."
         },
         {
-          "question": "Que pasa si el lead pide algo que el asistente no puede resolver?",
-          "answer": "Lo deriva a ti o a tu equipo con todo el contexto de la conversacion, sin que el lead tenga que repetirse."
+          "question": "Qué pasa si el lead pide algo que el asistente no puede resolver?",
+          "answer": "Lo deriva a ti o a tu equipo con todo el contexto de la conversación, sin que el lead tenga que repetirse."
         },
         {
-          "question": "Cuanto tarda en estar activo?",
-          "answer": "Dias, no semanas. Nosotros lo configuramos todo: entrenamos al asistente, lo conectamos a tus canales y hacemos pruebas antes de lanzar."
+          "question": "Cuánto tarda en estar activo?",
+          "answer": "Días, no semanas. Nosotros lo configuramos todo: entrenamos al asistente, lo conectamos a tus canales y hacemos pruebas antes de lanzar."
         }
       ],
       "related": [
@@ -85,7 +95,7 @@
           "slug": "integraciones"
         },
         {
-          "title": "Solucion a medida",
+          "title": "Solución a medida",
           "slug": "custom-ai"
         },
         {
@@ -97,7 +107,7 @@
     "crm": {
       "slug": "crm",
       "hero_title": "Cada lead, en un solo sitio. Cada euro, justificado.",
-      "hero_subtitle": "Un CRM construido para pymes de servicios no para que tu aprendas a usarlo, sino para que funcione solo.",
+      "hero_subtitle": "Un CRM construido para pymes de servicios no para que tú aprendas a usarlo, sino para que funcione solo.",
       "cta_plans_text": "Ver planes con CRM",
       "stat": {
         "figure": "23%",
@@ -107,57 +117,58 @@
       "how_it_works": [
         {
           "step": "01",
-          "title": "Captura automatica",
-          "description": "Cada lead de web, WhatsApp, telefono y formularios entra directamente al CRM sin que nadie copie datos a mano."
+          "title": "Captura automática",
+          "description": "Cada lead de web, WhatsApp, teléfono y formularios entra directamente al CRM sin que nadie copie datos a mano."
         },
         {
           "step": "02",
-          "title": "Clasificacion inteligente",
-          "description": "La IA puntua cada lead por probabilidad de conversion y te dice cuales atender primero."
+          "title": "Clasificación inteligente",
+          "description": "La IA puntúa cada lead por probabilidad de conversión y te dice cuáles atender primero."
         },
         {
           "step": "03",
           "title": "Seguimiento sin esfuerzo",
-          "description": "Recordatorios, emails y mensajes de seguimiento automaticos. Los leads frios se calientan solos."
+          "description": "Recordatorios, emails y mensajes de seguimiento automáticos. Los leads fríos se calientan solos."
         }
       ],
       "what_includes": [
         "Pipeline visual de leads con estados personalizables",
-        "Lead scoring automatico por IA",
-        "Atribucion por canal: sabes que anuncio o canal genera cada lead",
-        "Dashboard de metricas en tiempo real",
+        "Lead scoring automático por IA",
+        "Atribución por canal: sabes qué anuncio o canal genera cada lead",
+        "Dashboard de métricas en tiempo real",
         "Historial completo de cada lead desde todos los canales",
-        "Exportacion de datos y reportes personalizados"
+        "Exportación de datos y reportes personalizados"
       ],
+      "for_who_segmentation": "symptom",
       "for_who": [
         {
           "sector": "Negocios que invierten en publicidad",
-          "description": "Sabes exactamente que anuncio de Google o campana de Instagram genera negocio real.",
-          "result": "ROI de publicidad medible desde el dia 1"
+          "description": "Sabes exactamente qué anuncio de Google o campaña de Instagram genera negocio real.",
+          "result": "ROI de publicidad medible desde el día 1"
         },
         {
-          "sector": "Equipos pequenos",
-          "description": "Sin tiempo para aprender Salesforce ni HubSpot. Este CRM funciona desde el primer dia porque lo configuramos nosotros.",
+          "sector": "Equipos pequeños",
+          "description": "Sin tiempo para aprender Salesforce ni HubSpot. Este CRM funciona desde el primer día porque lo configuramos nosotros.",
           "result": "Operativo en 48 horas"
         },
         {
           "sector": "Negocios en crecimiento",
           "description": "Cuando pasas de 10 a 50 leads al mes, necesitas un sistema, no un cuaderno.",
-          "result": "+35% tasa de conversion media"
+          "result": "+35% tasa de conversión media"
         }
       ],
       "faq": [
         {
           "question": "Es como HubSpot o Salesforce?",
-          "answer": "No. Esos los configuras tu. Este lo configuramos nosotros y lo mantenemos adaptado a tu negocio."
+          "answer": "No. Esos los configuras tú. Este lo configuramos nosotros y lo mantenemos adaptado a tu negocio."
         },
         {
-          "question": "Puedo ver las metricas desde el movil?",
-          "answer": "Si. Dashboard responsive accesible desde cualquier dispositivo, sin instalar ninguna app adicional."
+          "question": "Puedo ver las métricas desde el móvil?",
+          "answer": "Sí. Dashboard responsive accesible desde cualquier dispositivo, sin instalar ninguna app adicional."
         },
         {
-          "question": "Que pasa con mis leads actuales?",
-          "answer": "Los migramos durante el onboarding sin perdida de datos. Traes tu historial, nosotros lo organizamos."
+          "question": "Qué pasa con mis leads actuales?",
+          "answer": "Los migramos durante el onboarding sin pérdida de datos. Traes tu historial, nosotros lo organizamos."
         }
       ],
       "related": [
@@ -170,7 +181,7 @@
           "slug": "integraciones"
         },
         {
-          "title": "Solucion a medida",
+          "title": "Solución a medida",
           "slug": "custom-ai"
         },
         {
@@ -182,7 +193,7 @@
     "desarrollo-web": {
       "slug": "desarrollo-web",
       "hero_title": "Tu web no es un folleto. Es tu mejor comercial.",
-      "hero_subtitle": "Disenamos y construimos webs que captan leads desde el primer dia con IA integrada, no pegada encima.",
+      "hero_subtitle": "Diseñamos y construimos webs que captan leads desde el primer día con IA integrada, no pegada encima.",
       "cta_plans_text": "Ver planes que lo incluyen",
       "stat": {
         "figure": "78%",
@@ -192,57 +203,58 @@
       "how_it_works": [
         {
           "step": "01",
-          "title": "Diseno a medida",
-          "description": "No plantillas. Tu web se disena para tu sector, tu marca y tu forma de vender."
+          "title": "Diseño a medida",
+          "description": "No plantillas. Tu web se diseña para tu sector, tu marca y tu forma de vender."
         },
         {
           "step": "02",
           "title": "IA integrada de serie",
-          "description": "El chatbot y la captacion de leads vienen de fabrica. No es un plugin que anadir despues."
+          "description": "El chatbot y la captación de leads vienen de fábrica. No es un plugin que añadir después."
         },
         {
           "step": "03",
           "title": "Optimizada para convertir",
-          "description": "SEO, velocidad de carga y diseno pensado para que el visitante se convierta en lead desde el primer clic."
+          "description": "SEO, velocidad de carga y diseño pensado para que el visitante se convierta en lead desde el primer clic."
         }
       ],
       "what_includes": [
-        "Diseno web profesional adaptado a tu sector y marca",
-        "Integracion nativa con el asistente IA y el CRM de OryonX",
-        "SEO tecnico y de contenido desde el lanzamiento",
-        "Responsive completo (movil, tablet, desktop)",
+        "Diseño web profesional adaptado a tu sector y marca",
+        "Integración nativa con el asistente IA y el CRM de OryonX",
+        "SEO técnico y de contenido desde el lanzamiento",
+        "Responsive completo (móvil, tablet, desktop)",
         "Formularios inteligentes conectados al pipeline de leads",
         "Hosting profesional y mantenimiento incluidos en la mensualidad"
       ],
+      "for_who_segmentation": "symptom",
       "for_who": [
         {
           "sector": "Negocios sin web o con web obsoleta",
-          "description": "Si tu web tiene mas de 3 anos, probablemente no capta leads. Esta si.",
-          "result": "Leads activos desde el dia 1 del lanzamiento"
+          "description": "Si tu web tiene más de 3 años, probablemente no capta leads. Esta sí.",
+          "result": "Leads activos desde el día 1 del lanzamiento"
         },
         {
           "sector": "Negocios que quieren todo integrado",
           "description": "Web + chatbot + CRM + seguimiento, un solo proveedor, un solo sistema, cero fricciones.",
-          "result": "Sin gestionar multiples proveedores"
+          "result": "Sin gestionar múltiples proveedores"
         },
         {
-          "sector": "Negocios que quieren independencia tecnica",
-          "description": "Nosotros lo mantenemos, lo actualizamos y lo mejoramos. Tu te olvidas de tu informatico.",
-          "result": "Soporte tecnico incluido siempre"
+          "sector": "Negocios que quieren independencia técnica",
+          "description": "Nosotros lo mantenemos, lo actualizamos y lo mejoramos. Tú te olvidas de tu informático.",
+          "result": "Soporte técnico incluido siempre"
         }
       ],
       "faq": [
         {
           "question": "Puedo mantener mi dominio actual?",
-          "answer": "Si. Trabajamos con tu dominio existente. Si quieres uno nuevo, tambien te ayudamos a conseguirlo."
+          "answer": "Sí. Trabajamos con tu dominio existente. Si quieres uno nuevo, también te ayudamos a conseguirlo."
         },
         {
-          "question": "Cuanto tarda?",
-          "answer": "Webs estandar en 2-3 semanas. Proyectos mas complejos, 4-6 semanas. Siempre con entregables parciales para que vayas viendo el avance."
+          "question": "Cuánto tarda?",
+          "answer": "Webs estándar en 2-3 semanas. Proyectos más complejos, 4-6 semanas. Siempre con entregables parciales para que vayas viendo el avance."
         },
         {
           "question": "Incluye hosting?",
-          "answer": "Si. Hosting profesional de alta velocidad incluido en la mensualidad. Sin sorpresas de facturacion por separado."
+          "answer": "Sí. Hosting profesional de alta velocidad incluido en la mensualidad. Sin sorpresas de facturación por separado."
         }
       ],
       "related": [
@@ -259,7 +271,7 @@
           "slug": "integraciones"
         },
         {
-          "title": "Solucion a medida",
+          "title": "Solución a medida",
           "slug": "custom-ai"
         }
       ]
@@ -267,18 +279,18 @@
     "integraciones": {
       "slug": "integraciones",
       "hero_title": "Deja de copiar datos entre apps.",
-      "hero_subtitle": "Conectamos tu WhatsApp, email, calendario, facturacion y CRM para que la informacion fluya sola.",
+      "hero_subtitle": "Conectamos tu WhatsApp, email, calendario, facturación y CRM para que la información fluya sola.",
       "cta_plans_text": "Ver planes con integraciones",
       "stat": {
         "figure": "60-70%",
-        "text": "del tiempo del equipo se dedica a consultas y tareas rutinarias que podrian automatizarse.",
+        "text": "del tiempo del equipo se dedica a consultas y tareas rutinarias que podrían automatizarse.",
         "source": "UK SME Communication Report"
       },
       "how_it_works": [
         {
           "step": "01",
           "title": "Mapeamos tus herramientas",
-          "description": "Identificamos todas las apps que usas hoy y como se relacionan los datos entre ellas."
+          "description": "Identificamos todas las apps que usas hoy y cómo se relacionan los datos entre ellas."
         },
         {
           "step": "02",
@@ -293,41 +305,44 @@
       ],
       "what_includes": [
         "Integraciones con WhatsApp Business, email y calendarios (Google, Outlook)",
-        "Conexion con herramientas de facturacion y contabilidad",
-        "Automatizaciones de flujo de trabajo (lead entra, tarea se crea, email se envia)",
-        "Sincronizacion en tiempo real entre sistemas",
-        "Monitorizacion y mantenimiento continuo de las integraciones",
-        "Integraciones a medida para herramientas especificas de tu sector"
+        "Conexión con herramientas de facturación y contabilidad",
+        "Automatizaciones de flujo de trabajo (lead entra, tarea se crea, email se envía)",
+        "Sincronización en tiempo real entre sistemas",
+        "Monitorización y mantenimiento continuo de las integraciones",
+        "Integraciones a medida para herramientas específicas de tu sector"
       ],
+      "for_who_segmentation": "symptom",
       "for_who": [
         {
           "sector": "Negocios con app fatigue",
           "description": "Tienes 5 apps y copias datos entre ellas a mano. Eso se acaba hoy.",
-          "result": "0 minutos al dia en copiar datos"
+          "result": "0 minutos al día en copiar datos",
+          "illustrative": true
         },
         {
           "sector": "Negocios con procesos manuales",
           "description": "Si alguien en tu equipo dedica tiempo a pasar datos de un sitio a otro, eso lo automatizamos.",
-          "result": "3-5 horas/semana recuperadas por persona"
+          "result": "3-5 horas/semana recuperadas por persona",
+          "illustrative": true
         },
         {
           "sector": "Negocios con herramientas que ya les gustan",
           "description": "No te obligamos a cambiar. Conectamos lo que ya tienes y hacemos que funcione junto.",
-          "result": "Inversion existente multiplicada"
+          "result": "Inversión existente multiplicada"
         }
       ],
       "faq": [
         {
-          "question": "Funciona con mi software de facturacion?",
-          "answer": "Trabajamos con la mayoria de herramientas del mercado. Si la tuya tiene API, la conectamos. Si no, buscamos alternativas."
+          "question": "Funciona con mi software de facturación?",
+          "answer": "Trabajamos con la mayoría de herramientas del mercado. Si la tuya tiene API, la conectamos. Si no, buscamos alternativas."
         },
         {
-          "question": "Que pasa si una integracion se rompe?",
-          "answer": "La monitorizamos y la reparamos nosotros. Tu no te enteras, o si es algo visible, te avisamos antes del problema."
+          "question": "Qué pasa si una integración se rompe?",
+          "answer": "La monitorizamos y la reparamos nosotros. Tú no te enteras, o si es algo visible, te avisamos antes del problema."
         },
         {
-          "question": "Puedo pedir nuevas integraciones despues?",
-          "answer": "Si, las integraciones se anaden segun necesites, especialmente en los planes Professional y Business+Voice."
+          "question": "Puedo pedir nuevas integraciones después?",
+          "answer": "Sí, las integraciones se añaden según necesites, especialmente en los planes Professional y Business+Voice."
         }
       ],
       "related": [
@@ -344,15 +359,15 @@
           "slug": "desarrollo-web"
         },
         {
-          "title": "Solucion a medida",
+          "title": "Solución a medida",
           "slug": "custom-ai"
         }
       ]
     },
     "custom-ai": {
       "slug": "custom-ai",
-      "hero_title": "Tu negocio no es generico. Tu IA tampoco deberia serlo.",
-      "hero_subtitle": "Disenamos soluciones de inteligencia artificial especificas para como funciona tu negocio, no plantillas que intentas adaptar.",
+      "hero_title": "Tu negocio no es genérico. Tu IA tampoco debería serlo.",
+      "hero_subtitle": "Diseñamos soluciones de inteligencia artificial específicas para cómo funciona tu negocio, no plantillas que intentas adaptar.",
       "cta_plans_text": "Ver planes con Custom AI",
       "stat": {
         "figure": "67%",
@@ -363,37 +378,38 @@
         {
           "step": "01",
           "title": "Analizamos tu operativa",
-          "description": "Estudiamos tus procesos, tus cuellos de botella y donde la IA puede tener mas impacto."
+          "description": "Estudiamos tus procesos, tus cuellos de botella y dónde la IA puede tener más impacto."
         },
         {
           "step": "02",
-          "title": "Disenamos la solucion",
+          "title": "Diseñamos la solución",
           "description": "Construimos un sistema de IA adaptado a tu flujo de trabajo, tu sector y tu forma de vender."
         },
         {
           "step": "03",
           "title": "Desplegamos y optimizamos",
-          "description": "Lo ponemos en produccion y lo mejoramos continuamente con datos reales. Cada semana aprende mas."
+          "description": "Lo ponemos en producción y lo mejoramos continuamente con datos reales. Cada semana aprende más."
         }
       ],
       "what_includes": [
-        "Analisis de procesos y mapa de oportunidades de automatizacion",
-        "Diseno de flujos de IA personalizados para tu sector",
+        "Análisis de procesos y mapa de oportunidades de automatización",
+        "Diseño de flujos de IA personalizados para tu sector",
         "Guardrails de precios y presupuestos configurables por servicio",
         "Agente de voz con personalidad y tono adaptados a tu marca",
         "Informes mensuales de rendimiento generados por IA",
-        "Iteracion continua: el sistema mejora con cada interaccion real"
+        "Iteración continua: el sistema mejora con cada interacción real"
       ],
+      "for_who_segmentation": "symptom",
       "for_who": [
         {
-          "sector": "Negocios con procesos unicos",
-          "description": "Si lo que haces no encaja en un software generico, necesitas algo construido para ti.",
-          "result": "Sistema que refleja como trabajas tu"
+          "sector": "Negocios con procesos únicos",
+          "description": "Si lo que haces no encaja en un software genérico, necesitas algo construido para ti.",
+          "result": "Sistema que refleja cómo trabajas tú"
         },
         {
           "sector": "Negocios con volumen alto",
-          "description": "Cuando tienes mas de 100 leads al mes, un sistema generico no escala. Uno a medida si.",
-          "result": "Escalabilidad sin contratar mas personal"
+          "description": "Cuando tienes más de 100 leads al mes, un sistema genérico no escala. Uno a medida sí.",
+          "result": "Escalabilidad sin contratar más personal"
         },
         {
           "sector": "Negocios que quieren ventaja competitiva",
@@ -403,16 +419,16 @@
       ],
       "faq": [
         {
-          "question": "Cuanto cuesta una solucion a medida?",
-          "answer": "Depende del alcance. Los planes Professional y Business+Voice incluyen personalizacion significativa. Para proyectos especiales, hablamos con presupuesto cerrado antes de empezar."
+          "question": "Cuánto cuesta una solución a medida?",
+          "answer": "Depende del alcance. Los planes Professional y Business+Voice incluyen personalización significativa. Para proyectos especiales, hablamos con presupuesto cerrado antes de empezar."
         },
         {
-          "question": "Puedo empezar con un plan estandar y pasar a custom despues?",
-          "answer": "Si, es la ruta recomendada. Muchos clientes empiezan con Pro y escalan. El sistema esta pensado para crecer contigo."
+          "question": "Puedo empezar con un plan estándar y pasar a custom después?",
+          "answer": "Sí, es la ruta recomendada. Muchos clientes empiezan con Pro y escalan. El sistema está pensado para crecer contigo."
         },
         {
           "question": "La IA aprende de mi negocio con el tiempo?",
-          "answer": "Si. El sistema se optimiza continuamente con datos reales de tus interacciones. Cuanto mas se usa, mejor responde."
+          "answer": "Sí. El sistema se optimiza continuamente con datos reales de tus interacciones. Cuanto más se usa, mejor responde."
         }
       ],
       "related": [

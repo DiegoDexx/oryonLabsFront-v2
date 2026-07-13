@@ -1,22 +1,16 @@
 import { Link } from 'react-router-dom';
 
 export default function ServiceCard({ icon, badge, title, description, color = 'cyan', link, comingSoon = false, lang = 'es', className = '' }) {
+  {/* Single brand color family (navy/cyan) so the 6-card grid reads as
+      one system, not six unrelated categories — see Ley de Pragnanz. */}
   const colorClasses = {
     cyan: 'bg-cyan text-white',
-    purple: 'bg-purple-500 text-white',
-    green: 'bg-emerald-500 text-white',
-    orange: 'bg-orange-500 text-white',
-    blue: 'bg-blue-500 text-white',
-    indigo: 'bg-indigo-500 text-white',
+    navy: 'bg-navy text-white',
   };
 
   const badgeColors = {
     cyan: 'bg-cyan-pale text-cyan-dark',
-    purple: 'bg-purple-100 text-purple-700',
-    green: 'bg-emerald-100 text-emerald-700',
-    orange: 'bg-orange-100 text-orange-700',
-    blue: 'bg-blue-100 text-blue-700',
-    indigo: 'bg-indigo-100 text-indigo-700',
+    navy: 'bg-navy/10 text-navy',
   };
 
   const cardContent = (

@@ -1,0 +1,29 @@
+{
+  "hero": {
+    "eyebrow": "Contacto",
+    "title": "Hablemos",
+    "subtitle": "Cuéntanos qué necesitas. Te respondemos en menos de 24h."
+  },
+  "info": {
+    "title": "Contacto directo",
+    "email_label": "Email",
+    "phone_label": "Teléfono",
+    "whatsapp_label": "WhatsApp"
+  },
+  "form": {
+    "name": { "label": "Nombre", "placeholder": "Tu nombre", "error": "Introduce tu nombre" },
+    "email": {
+      "label": "Email",
+      "placeholder": "tu@email.com",
+      "error_required": "Introduce tu email",
+      "error_invalid": "Introduce un email válido"
+    },
+    "company": { "label": "Empresa (opcional)", "placeholder": "Nombre de tu empresa" },
+    "phone": { "label": "Teléfono (opcional)", "placeholder": "+34 600 000 000" },
+    "message": { "label": "Mensaje", "placeholder": "Cuéntanos en qué podemos ayudarte", "error": "Escribe un mensaje" },
+    "submit": "Enviar mensaje",
+    "submitting": "Enviando...",
+    "success_title": "¡Mensaje enviado!",
+    "success_message": "Gracias por escribirnos. Te responderemos en menos de 24h."
+  }
+}

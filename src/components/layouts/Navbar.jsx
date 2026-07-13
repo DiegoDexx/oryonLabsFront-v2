@@ -95,7 +95,7 @@ export default function Navbar() {
             <SelectIdiom isScrolled={isScrolled} />
             <a
               href={`/${lang}#${lang === 'en' ? 'contact' : 'contacto'}`}
-              className={`text-sm font-medium transition-colors ${
+              className={`text-sm font-medium transition-colors py-3 ${
                 isScrolled ? 'text-gray-700 hover:text-cyan' : 'text-white/90 hover:text-white'
               }`}
             >
@@ -103,7 +103,7 @@ export default function Navbar() {
             </a>
             <a
               href={`/${lang}#${lang === 'en' ? 'pricing' : 'precios'}`}
-              className="bg-cyan hover:bg-cyan-medium text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2 shadow-lg shadow-cyan/20"
+              className="bg-cyan hover:bg-cyan-medium text-white text-sm font-medium px-5 py-3 rounded-lg transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2 shadow-lg shadow-cyan/20"
             >
               {nav.cta_pricing}
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -115,7 +115,8 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 rounded-lg ${isScrolled ? 'text-gray-700' : 'text-white'}`}
+            className={`md:hidden p-2.5 rounded-lg ${isScrolled ? 'text-gray-700' : 'text-white'}`}
+            aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
           >
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {isMobileMenuOpen ? (

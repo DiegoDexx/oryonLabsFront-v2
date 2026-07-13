@@ -273,7 +273,14 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Trust Bar */}
+        {/* Trust Bar — separated from the CTA block above by both a
+            border-t divider and generous top padding, so it doesn't read
+            as part of the same action group (Ley de Proximidad). */}
+        {/* TODO(business): t.trust_bar.logos (src/locales/home/*.json) are
+            generic sector-style placeholder names ("INMOBILIARIA VIVA",
+            "CLÍNICA BEAUTYMED"...), not confirmed real client names/logos.
+            Confirm real client names/logos before shipping this as social
+            proof, or relabel the section so it doesn't imply named clients. */}
         <div className="mt-14 md:mt-16 lg:mt-16 xl:mt-20 pt-10 md:pt-12 lg:pt-12 border-t border-white/10">
           <p className="text-center text-gray-400 text-sm mb-8">
             {t.trust_bar.title}

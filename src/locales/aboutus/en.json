@@ -1,0 +1,66 @@
+{
+  "breadcrumb_label": "About us",
+  "hero": {
+    "eyebrow": "Our mission",
+    "title": "About OryonX",
+    "text": "At OryonX we believe artificial intelligence shouldn't be a privilege reserved for large corporations with their own data teams. Our mission is to bring that same technology within reach of anyone building a service business from scratch, and of those who've already built something big: automating the repetitive, capturing every opportunity, and giving business owners back the time they lose today to admin work. We don't sell software you have to learn — we build, configure and maintain the system for you, so AI stops being a technical promise and becomes measurable results from month one."
+  },
+  "values": {
+    "eyebrow": "How we work",
+    "title": "What makes us different",
+    "subtitle": "Four principles that guide every project, not corporate wall art.",
+    "items": [
+      {
+        "title": "We don't sell tools, we own the outcome",
+        "text": "We don't hand you software to configure yourself. We build, configure and maintain the system — the result is our responsibility, not yours."
+      },
+      {
+        "title": "AI shouldn't only be for those who can afford it",
+        "text": "We bring the same technology large corporations use to businesses that never had access to it or the technical team to implement it."
+      },
+      {
+        "title": "A real person, not a ticket",
+        "text": "Every client has someone from our team behind them, not a generic support queue. When something breaks, we're the ones who fix it."
+      },
+      {
+        "title": "We learn from real clients, not demos",
+        "text": "Every system we build gets validated against a real business first, with real data — it doesn't reach new clients until it actually works."
+      }
+    ]
+  },
+  "journey": {
+    "eyebrow": "Our origin",
+    "title": "Where we come from",
+    "badge": "2026 — Where it all began",
+    "text": "Our journey begins in the middle of the AI and SaaS boom, at a moment when most of these tools only benefited large corporations and those who already had the resources or technical know-how to implement them. We saw that gap and decided to close it: bringing the same technology big companies use to service businesses that never had access to it, without requiring them to become technical experts to benefit from it. That's how OryonX was born."
+  },
+  "team": {
+    "eyebrow": "Team",
+    "title": "Meet the team",
+    "subtitle": "The people behind OryonX, building the system that automates your business.",
+    "members": {
+      "rene": {
+        "name": "René Medina",
+        "role": "CEO & Founder — Sales & Financial Department Leader",
+        "bio": "Leads OryonX's commercial and financial strategy, focused on building long-term relationships with every client, not just closing contracts."
+      },
+      "diego": {
+        "name": "Diego Alejandro",
+        "role": "CTO & Co-founder — Full-Stack Developer",
+        "bio": "Designs and builds OryonX's entire technical infrastructure end to end, from the CRM to the voice and AI assistants."
+      },
+      "benjy": {
+        "name": "Benjy Poli",
+        "role": "Marketing & Social Media Department Leader",
+        "bio": "Shapes how the world discovers OryonX, building the brand and social presence from the ground up."
+      }
+    }
+  },
+  "cta": {
+    "eyebrow": "What's next?",
+    "title": "You've met the team. Meet the system.",
+    "subtitle": "This is the same team that configures and maintains your automation. Let's talk about your business, or check out the available plans.",
+    "cta_expert": "Talk to an expert",
+    "cta_plans": "See plans"
+  }
+}

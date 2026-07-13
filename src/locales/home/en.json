@@ -1,4 +1,5 @@
 {
+  "breadcrumb_home": "Home",
   "nav": {
     "services": "Services",
     "pricing": "Pricing",
@@ -77,43 +78,156 @@
       "MEDCENTER"
     ]
   },
+  "system_tabs": {
+    "badge": "How the system works",
+    "title": "Everything your business needs,",
+    "title_highlight": "in one platform.",
+    "subtitle": "Web chat, multichannel, CRM and voice AI — integrated and working together from day one.",
+    "cta": "See live demo →",
+    "roadmap_badge": "Coming soon",
+    "illustrative_label": "Illustrative figure",
+    "tabs": [
+      {
+        "tab_label": "Web chat 24/7",
+        "title": "AI chatbot on your website, available 24/7",
+        "description": "Ridley captures, qualifies and manages every lead automatically from your website. No wait time, no lost leads.",
+        "checks": [
+          { "text": "Instant response", "status": "active" },
+          { "text": "Automatic qualification", "status": "active" },
+          { "text": "Direct CRM integration", "status": "active" },
+          { "text": "Multilingual", "status": "active" }
+        ],
+        "mockup": {
+          "header_name": "Ridley — AI Assistant",
+          "header_status": "Online now",
+          "header_domain": "chat.oryonx.ai",
+          "messages": [
+            { "from": "user", "text": "Hi, I'm interested in a bathroom renovation, how much does it cost?" },
+            { "from": "bot", "text": "Hi! I'm Ridley, Renovy's assistant. Can you tell me the bathroom's size and which city you're in?" },
+            { "from": "user", "text": "About 6m², I'm in Madrid." },
+            { "from": "bot", "text": "A full renovation of 6m² in Madrid usually runs €4,500–7,000 depending on finishes. Want me to connect you with a specialist for an exact quote?" }
+          ],
+          "input_placeholder": "Type a message..."
+        }
+      },
+      {
+        "tab_label": "Multichannel AI",
+        "title": "One AI assistant across all your channels",
+        "description": "Ridley already handles WhatsApp natively. Telegram and Instagram are coming soon — same assistant, same history, nothing different to configure per channel.",
+        "checks": [
+          { "text": "WhatsApp Business integrated", "status": "active" },
+          { "text": "Telegram", "status": "roadmap" },
+          { "text": "Instagram", "status": "roadmap" },
+          { "text": "Unified history in CRM", "status": "active" }
+        ],
+        "mockup": {
+          "channels_tab": { "whatsapp": "WhatsApp", "telegram": "Telegram", "instagram": "Instagram" },
+          "status": "Ridley active",
+          "messages": [
+            { "from": "user", "text": "Hi, I saw your ad, I want pricing info" },
+            { "from": "bot", "text": "Hi! I'm Ridley 👋 Can you tell me your name and the city where you need the renovation?" },
+            { "from": "user", "text": "I'm Pedro, in Valencia" },
+            { "from": "bot", "text": "Great, Pedro 😊 We have a team in Valencia. An advisor will contact you today before 6pm." }
+          ],
+          "footer_label": "Ridley manages every channel from a single panel:",
+          "channels": [
+            { "text": "WhatsApp", "status": "active" },
+            { "text": "Telegram", "status": "roadmap" },
+            { "text": "Instagram", "status": "roadmap" },
+            { "text": "Web Chat", "status": "active" },
+            { "text": "Voice AI", "status": "active" }
+          ]
+        }
+      },
+      {
+        "tab_label": "Unified CRM",
+        "title": "Unified CRM with a visual pipeline",
+        "description": "All your leads, clients and opportunities in a single panel. No exporting to Excel. No information lost between channels.",
+        "checks": [
+          { "text": "Visual stage-based pipeline", "status": "active" },
+          { "text": "Complete contact history", "status": "active" },
+          { "text": "Real-time KPIs", "status": "active" },
+          { "text": "Mobile access", "status": "active" }
+        ],
+        "mockup": {
+          "sidebar": ["Dashboard", "Pipeline", "Leads", "Clients", "Proposals", "Automations", "Users", "Settings"],
+          "header_title": "OryonX CRM",
+          "panel_title": "Dashboard",
+          "kpis": [
+            { "label": "New leads", "value": "44" },
+            { "label": "Active clients", "value": "23" },
+            { "label": "Proposals sent", "value": "19" },
+            { "label": "Pending invoices", "value": "0" }
+          ],
+          "chart_title": "Acquisition",
+          "chart_subtitle": "Leads per month",
+          "channel_chart_title": "By acquisition channel",
+          "badge_growth": "+200% leads vs last month",
+          "badge_new_today": "3 new today",
+          "badge_new_today_sub": "in real time"
+        }
+      },
+      {
+        "tab_label": "Voice AI",
+        "title": "AI voice agent that answers every call",
+        "description": "Your business never sends a customer to voicemail. Ridley answers, understands the need and books the visit — day or night.",
+        "checks": [
+          { "text": "Immediate response, 24/7", "status": "active" },
+          { "text": "Real-time transcription", "status": "active" },
+          { "text": "AI post-call summary", "status": "active" },
+          { "text": "CRM integration", "status": "active" }
+        ],
+        "mockup": {
+          "header_status": "Incoming call — Pedro Jiménez",
+          "phone_number": "+34 644 567 890",
+          "channel_label": "Voice AI · Renovy",
+          "duration": "01:42",
+          "transcript_label": "LIVE TRANSCRIPT",
+          "ia_label": "AI",
+          "customer_label": "Customer",
+          "transcript": [
+            { "speaker": "ia", "text": "Thanks for calling Renovy, how can I help you?" },
+            { "speaker": "cliente", "text": "Hi, I wanted some information about a kitchen renovation." },
+            { "speaker": "ia", "text": "Sure, which city is the property in and roughly how many square meters is the kitchen?" },
+            { "speaker": "cliente", "text": "Valencia, about 10 m²." }
+          ],
+          "footer_label": "Automatic summary when the call ends"
+        }
+      }
+    ]
+  },
   "why": {
-    "eyebrow": "THE PROBLEM NO ONE SOLVES",
-    "title": "You have leads. The problem is you're too slow.",
-    "subtitle": "Most business opportunities are lost within the first 2 hours. By the time you respond, your lead is already talking to a competitor.",
+    "eyebrow": "WHY OryonX",
+    "title": "Stop paying for tools",
+    "title_highlight": "that don't talk to each other.",
+    "subtitle": "Most businesses spend {currency}500–800/month on disconnected software. OryonX replaces all of it.",
     "savings_badge": "Save up to {amount}/month",
-    "pain": {
-      "label": "WHAT MOST BUSINESSES PAY TODAY",
-      "item1": "Sales CRM software",
-      "price1": "~80",
-      "item2": "AI chat & support platform",
-      "price2": "~120",
-      "item3": "Email marketing tool",
-      "price3": "~60",
-      "item4": "Workflow & task automation",
-      "price4": "~80",
-      "item5": "WhatsApp Business messaging",
-      "price5": "~40",
-      "item6": "Countless hours lost to manual admin work",
-      "total_label": "MONTHLY TOTAL",
-      "total": "500–800",
+    "price": "299",
+    "table": {
+      "window_title": "Cost comparison",
+      "col_tool": "Tool",
+      "col_today": "Today",
+      "col_today_sub": "Separate tools",
+      "col_oryonx": "OryonX",
+      "col_oryonx_sub": "Fully integrated",
+      "included_label": "Included",
       "per_month": "/month",
-      "description": "Multiple invoices. Zero integration. You manage everything."
-    },
-    "solution": {
-      "label": "Fully integrated",
-      "eyebrow": "ONE PLATFORM. EVERYTHING INCLUDED.",
-      "item1": "AI Chatbot (Ridley)",
-      "item2": "CRM + Pipeline",
-      "item3": "Email & WhatsApp Automation",
-      "item4": "Workflow Infrastructure",
-      "item5": "Dedicated support",
-      "item6": "Save almost all your administrative time",
-      "included": "included",
-      "price_label": "FROM",
-      "price": "299",
-      "per_month": "/month",
-      "description": "One invoice. Fully integrated. We handle everything."
+      "rows": [
+        { "tool": "Sales CRM software", "price": "~80" },
+        { "tool": "AI chat & support platform", "price": "~120" },
+        { "tool": "Email marketing tool", "price": "~60" },
+        { "tool": "Workflow & task automation", "price": "~80" },
+        { "tool": "WhatsApp Business messaging", "price": "~40" }
+      ],
+      "admin_row": {
+        "tool": "Administrative management",
+        "today_value": "~3-5h/week",
+        "oryonx_value": "0h — automated"
+      },
+      "total_label": "Monthly total",
+      "total_today": "500–800",
+      "total_estimated_label": "estimated",
+      "total_before_prefix": "vs."
     },
     "testimonial": {
       "text": "Renovy went from losing 40% of their enquiries due to slow response to capturing, qualifying, and assigning them in real time, 24 hours a day.",

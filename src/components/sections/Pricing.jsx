@@ -42,6 +42,42 @@ function MicroFAQ({ faq }) {
   );
 }
 
+// Business + Voice AI is a real paid tier, but showing it as a 4th column
+// alongside Starter/Pro/Professional turns pricing into a 4-way decision
+// (Ley de Hick). It's pulled out into its own "enterprise" row below the
+// 3 main cards instead, so the primary choice stays a 3-way comparison.
+function BusinessTierBar({ plan, symbol, pricing, lang }) {
+  if (!plan) return null;
+  const contactAnchor = lang === 'en' ? '#contact' : '#contacto';
+  const monthly = `${symbol}${plan.price_monthly}`;
+
+  return (
+    <div className="rounded-2xl border border-cyan/20 bg-gradient-to-r from-navy-light to-navy p-8 flex flex-col lg:flex-row items-start lg:items-center gap-6">
+      <div className="flex-1 min-w-0">
+        <span className="inline-block bg-cyan/10 text-cyan-light text-xs font-semibold px-3 py-1 rounded-full mb-3 border border-cyan/20">
+          {lang === 'en' ? 'Enterprise / custom' : 'A medida / enterprise'}
+        </span>
+        <h3 className="text-xl font-bold text-white mb-1">{plan.name}</h3>
+        <p className="text-gray-300 text-sm max-w-lg">{plan.subtitle}</p>
+      </div>
+      <div className="flex-shrink-0 text-left lg:text-right">
+        <p className="text-xs uppercase tracking-wider text-gray-400 mb-0.5">{pricing.monthly_label}</p>
+        <p className="text-2xl font-bold text-white whitespace-nowrap">
+          {plan.price_prefix && <span className="text-sm font-normal mr-1">{plan.price_prefix}</span>}
+          {monthly}
+          <span className="text-sm font-normal text-gray-400">{pricing.per_month}</span>
+        </p>
+      </div>
+      <a
+        href={contactAnchor}
+        className="flex-shrink-0 bg-cyan hover:bg-cyan-medium text-white font-semibold px-7 py-3 rounded-lg transition-all whitespace-nowrap w-full lg:w-auto text-center"
+      >
+        {plan.cta}
+      </a>
+    </div>
+  );
+}
+
 function CustomCaseBar({ customCase, lang }) {
   if (!customCase) return null;
   const anchor = lang === 'en' ? '#contact' : '#contacto';
@@ -97,8 +133,8 @@ export default function Pricing() {
             <p className="text-gray-300 text-lg leading-relaxed">{pricing.description}</p>
           </AnimatedSection>
 
-          <AnimatedSection delay={120} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch mb-10">
-            {pricing.plans.map((plan, index) => (
+          <AnimatedSection delay={120} className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch mb-6">
+            {pricing.plans.slice(0, 3).map((plan, index) => (
               <PricingCard
                 key={plan.name}
                 name={plan.name}
@@ -115,13 +151,16 @@ export default function Pricing() {
                 monthlyLabel={pricing.monthly_label}
                 keyFeatures={plan.key_features || []}
                 voiceFeature={plan.voice_feature || null}
-                voiceNote={plan.voice_note || null}
                 isPopular={plan.popular}
                 ctaText={plan.cta}
                 isDark={index === 1}
                 lang={lang}
               />
             ))}
+          </AnimatedSection>
+
+          <AnimatedSection delay={160} className="mb-10">
+            <BusinessTierBar plan={pricing.plans[3]} symbol={symbol} pricing={pricing} lang={lang} />
           </AnimatedSection>
 
           <div className="text-center">

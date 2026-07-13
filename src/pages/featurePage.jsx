@@ -5,10 +5,9 @@ import HelmetSEO from '../seo/HelmetSEO';
 import { seoData } from '../seo/seoData';
 import es from '../locales/services/es.json';
 import en from '../locales/services/en.json';
+import { SERVICE_ORDER } from '../config/services';
 
 const translationsByLang = { es, en };
-
-const VALID_SLUGS = ['asistente-24-7', 'crm', 'desarrollo-web', 'integraciones', 'custom-ai'];
 
 export default function FeaturePage() {
   const { lang, slug } = useParams();
@@ -21,7 +20,7 @@ export default function FeaturePage() {
   const fp = translationsByLang[resolvedLang] || translationsByLang.es;
   const seo = seoData[resolvedLang]?.[slug];
 
-  if (!VALID_SLUGS.includes(slug) || !fp?.pages?.[slug]) {
+  if (!SERVICE_ORDER.includes(slug) || !fp?.pages?.[slug]) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 text-navy">
         <div className="text-center">

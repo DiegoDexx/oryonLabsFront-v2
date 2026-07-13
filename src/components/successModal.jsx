@@ -1,6 +1,6 @@
 import { FaCheckCircle, FaTimes } from "react-icons/fa";
 
-const SuccessModal = ({ show, onClose, message }) => {
+const SuccessModal = ({ show, onClose, message, title }) => {
   if (!show) return null;
 
   return (
@@ -17,7 +17,7 @@ const SuccessModal = ({ show, onClose, message }) => {
           <FaCheckCircle className="w-10 h-10 text-green-500" />
         </div>
 
-        <h2 className="text-2xl font-bold text-navy mb-3">¡Solicitud enviada!</h2>
+        <h2 className="text-2xl font-bold text-navy mb-3">{title || "¡Solicitud enviada!"}</h2>
         <p className="text-gray-600 mb-6">
           {message || "Tu solicitud ha sido procesada correctamente."}
         </p>

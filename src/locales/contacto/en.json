@@ -1,0 +1,29 @@
+{
+  "hero": {
+    "eyebrow": "Contact",
+    "title": "Let's talk",
+    "subtitle": "Tell us what you need. We'll get back to you within 24h."
+  },
+  "info": {
+    "title": "Direct contact",
+    "email_label": "Email",
+    "phone_label": "Phone",
+    "whatsapp_label": "WhatsApp"
+  },
+  "form": {
+    "name": { "label": "Name", "placeholder": "Your name", "error": "Enter your name" },
+    "email": {
+      "label": "Email",
+      "placeholder": "you@email.com",
+      "error_required": "Enter your email",
+      "error_invalid": "Enter a valid email"
+    },
+    "company": { "label": "Company (optional)", "placeholder": "Your company name" },
+    "phone": { "label": "Phone (optional)", "placeholder": "+44 7000 000000" },
+    "message": { "label": "Message", "placeholder": "Tell us how we can help", "error": "Write a message" },
+    "submit": "Send message",
+    "submitting": "Sending...",
+    "success_title": "Message sent!",
+    "success_message": "Thanks for reaching out. We'll get back to you within 24h."
+  }
+}
