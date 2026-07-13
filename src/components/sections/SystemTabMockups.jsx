@@ -241,7 +241,7 @@ export function VoiceMockup({ data }) {
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 min-w-0">
             <FaPhoneAlt className="w-3.5 h-3.5 text-green-400 flex-shrink-0" />
-            <p className="text-white text-sm font-semibold truncate">{data.header_status}</p>
+            <p className="text-white text-xs sm:text-sm font-semibold truncate">{data.header_status}</p>
           </div>
           <span className="inline-flex items-center gap-1.5 text-red-400 text-xs font-bold flex-shrink-0">
             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse-slow" />

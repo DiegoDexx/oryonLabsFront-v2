@@ -22,7 +22,7 @@ function highlightStat(text) {
 // a compact badge reads as a product/system state.
 function StatusBadge({ children }) {
   return (
-    <span className="inline-flex items-center rounded-full bg-cyan-pale text-cyan-dark text-xs font-semibold px-2.5 py-1">
+    <span className="inline-flex items-center rounded-full bg-cyan-pale text-cyan-dark text-[10px] sm:text-xs font-semibold px-2 sm:px-2.5 py-1 leading-tight">
       {children}
     </span>
   );
@@ -50,6 +50,12 @@ export default function WhyOryonLabs() {
   const maxSavings = Math.floor(Math.max(painHigh - oryonPrice, 0) / 10) * 10;
   const savingsText = why.savings_badge.replace('{amount}', `${symbol}${maxSavings}`);
 
+  // Shared column template for every row — the tool-name column needs more
+  // room than the price/badge columns, especially on mobile where equal
+  // thirds forced numbers to wrap mid-value. Reverts to even thirds at sm+
+  // where there's enough width for it not to matter.
+  const rowGrid = 'grid grid-cols-[36%_28%_36%] sm:grid-cols-3';
+
   return (
     <section className="relative bg-navy py-24 overflow-hidden">
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,8 +80,9 @@ export default function WhyOryonLabs() {
         {/* Floating comparison panel — flat cream card, no gradients/glow,
             just a functional shadow to lift it off the navy background. */}
         <AnimatedSection delay={80} className="relative rounded-[2.5rem] bg-[#FAF9F6] shadow-2xl shadow-black/30 overflow-hidden">
-          {/* Continuous light-blue tint behind the whole OryonX column */}
-          <div className="absolute inset-y-0 right-0 w-1/3 bg-cyan-pale/50" aria-hidden="true" />
+          {/* Continuous light-blue tint behind the whole OryonX column —
+              width matches the 3rd column of `rowGrid` at each breakpoint */}
+          <div className="absolute inset-y-0 right-0 w-[36%] sm:w-1/3 bg-cyan-pale/50" aria-hidden="true" />
 
           <div className="relative">
             {/* App window chrome — same traffic-light treatment as the
@@ -89,30 +96,30 @@ export default function WhyOryonLabs() {
             </div>
 
             {/* Header row */}
-            <div className="grid grid-cols-3 border-b border-black/5">
-              <div className="px-3 sm:px-8 py-5">
-                <p className="text-[11px] sm:text-xs font-bold uppercase tracking-wide text-gray-400">{table.col_tool}</p>
+            <div className={`${rowGrid} border-b border-black/5`}>
+              <div className="px-2.5 sm:px-8 py-4 sm:py-5">
+                <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wide text-gray-400">{table.col_tool}</p>
               </div>
-              <div className="px-3 sm:px-6 py-5 text-right">
-                <p className="text-[11px] sm:text-xs font-bold uppercase tracking-wide text-gray-400">{table.col_today}</p>
-                <p className="text-[10px] sm:text-[11px] text-gray-400 mt-0.5">{table.col_today_sub}</p>
+              <div className="px-2 sm:px-6 py-4 sm:py-5 text-right">
+                <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wide text-gray-400">{table.col_today}</p>
+                <p className="hidden sm:block text-[11px] text-gray-400 mt-0.5">{table.col_today_sub}</p>
               </div>
-              <div className="px-3 sm:px-6 py-5">
-                <p className="text-[11px] sm:text-xs font-bold uppercase tracking-wide text-cyan-dark">{table.col_oryonx}</p>
-                <p className="text-[10px] sm:text-[11px] text-cyan-dark/70 mt-0.5">{table.col_oryonx_sub}</p>
+              <div className="px-2 sm:px-6 py-4 sm:py-5">
+                <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wide text-cyan-dark">{table.col_oryonx}</p>
+                <p className="hidden sm:block text-[11px] text-cyan-dark/70 mt-0.5">{table.col_oryonx_sub}</p>
               </div>
             </div>
 
             {/* Tool rows */}
             {table.rows.map((row, i) => (
-              <div key={i} className="grid grid-cols-3 border-b border-black/5 sm:hover:bg-black/[0.025] transition-colors duration-150">
-                <div className="px-3 sm:px-8 py-3.5 flex items-center">
-                  <span className="text-sm font-medium text-navy">{row.tool}</span>
+              <div key={i} className={`${rowGrid} border-b border-black/5 sm:hover:bg-black/[0.025] transition-colors duration-150`}>
+                <div className="px-2.5 sm:px-8 py-3.5 flex items-center">
+                  <span className="text-xs sm:text-sm font-medium text-navy">{row.tool}</span>
                 </div>
-                <div className="px-3 sm:px-6 py-3.5 flex items-center justify-end">
-                  <span className="text-sm font-semibold text-gray-600 tabular-nums text-right">{fmt(row.price, table.per_month)}</span>
+                <div className="px-2 sm:px-6 py-3.5 flex items-center justify-end">
+                  <span className="text-xs sm:text-sm font-semibold text-gray-600 tabular-nums text-right whitespace-nowrap">{fmt(row.price, table.per_month)}</span>
                 </div>
-                <div className="px-3 sm:px-6 py-3.5 flex items-center">
+                <div className="px-2 sm:px-6 py-3.5 flex items-center">
                   {/* Status badge — no icon inside. The column tint already
                       carries the visual weight; a repeated check 6 times
                       over would just be redundant noise. */}
@@ -123,34 +130,34 @@ export default function WhyOryonLabs() {
 
             {/* Administrative management row — concrete figures, not vague
                 "time saved" language. */}
-            <div className="grid grid-cols-3 border-b border-black/5 sm:hover:bg-black/[0.025] transition-colors duration-150">
-              <div className="px-3 sm:px-8 py-3.5 flex items-center">
-                <span className="text-sm font-medium text-navy">{table.admin_row.tool}</span>
+            <div className={`${rowGrid} border-b border-black/5 sm:hover:bg-black/[0.025] transition-colors duration-150`}>
+              <div className="px-2.5 sm:px-8 py-3.5 flex items-center">
+                <span className="text-xs sm:text-sm font-medium text-navy">{table.admin_row.tool}</span>
               </div>
-              <div className="px-3 sm:px-6 py-3.5 flex items-center justify-end">
-                <span className="text-sm font-semibold text-gray-600 tabular-nums text-right">{table.admin_row.today_value}</span>
+              <div className="px-2 sm:px-6 py-3.5 flex items-center justify-end">
+                <span className="text-xs sm:text-sm font-semibold text-gray-600 tabular-nums text-right whitespace-nowrap">{table.admin_row.today_value}</span>
               </div>
-              <div className="px-3 sm:px-6 py-3.5 flex items-center">
+              <div className="px-2 sm:px-6 py-3.5 flex items-center">
                 <StatusBadge>{table.admin_row.oryonx_value}</StatusBadge>
               </div>
             </div>
 
             {/* Total row */}
-            <div className="grid grid-cols-3 bg-black/[0.03]">
-              <div className="px-3 sm:px-8 py-6 flex items-center">
-                <span className="text-sm font-bold text-navy">{table.total_label}</span>
+            <div className={`${rowGrid} bg-black/[0.03]`}>
+              <div className="px-2.5 sm:px-8 py-5 sm:py-6 flex items-center">
+                <span className="text-xs sm:text-sm font-bold text-navy">{table.total_label}</span>
               </div>
-              <div className="px-3 sm:px-6 py-6 flex flex-col justify-center items-end text-right">
-                <span className="text-base font-bold text-gray-700 tabular-nums">{fmt(table.total_today, table.per_month)}</span>
-                <span className="text-[11px] text-gray-400 mt-0.5">{table.total_estimated_label}</span>
+              <div className="px-2 sm:px-6 py-5 sm:py-6 flex flex-col justify-center items-end text-right">
+                <span className="text-sm sm:text-base font-bold text-gray-700 tabular-nums whitespace-nowrap">{fmt(table.total_today, table.per_month)}</span>
+                <span className="text-[10px] sm:text-[11px] text-gray-400 mt-0.5">{table.total_estimated_label}</span>
               </div>
-              <div className="px-3 sm:px-6 py-6 flex flex-col justify-center items-end text-right gap-1">
-                <span className="text-xl sm:text-2xl font-extrabold text-cyan-dark leading-none tabular-nums">
+              <div className="px-2 sm:px-6 py-5 sm:py-6 flex flex-col justify-center items-end text-right gap-1">
+                <span className="text-lg sm:text-2xl font-extrabold text-cyan-dark leading-none tabular-nums whitespace-nowrap">
                   {fmt(why.price, table.per_month)}
                 </span>
                 {/* Key persuasion element — must read clearly, not fade into
                     the background like a footnote. */}
-                <span className="text-sm sm:text-base font-bold text-gray-600 tabular-nums line-through decoration-gray-400">
+                <span className="text-xs sm:text-base font-bold text-gray-600 tabular-nums whitespace-nowrap line-through decoration-gray-400">
                   {table.total_before_prefix} {fmt(table.total_today, table.per_month)}
                 </span>
               </div>

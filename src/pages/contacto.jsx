@@ -162,10 +162,7 @@ export default function ContactoPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t.form.company.label}{' '}
-                  <span className="text-gray-400 font-normal">
-                    {lang === 'en' ? '(optional)' : '(opcional)'}
-                  </span>
+                  {t.form.company.label}
                 </label>
                 <input
                   type="text"
@@ -177,10 +174,7 @@ export default function ContactoPage() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t.form.phone.label}{' '}
-                  <span className="text-gray-400 font-normal">
-                    {lang === 'en' ? '(optional)' : '(opcional)'}
-                  </span>
+                  {t.form.phone.label}
                 </label>
                 <input
                   type="text"

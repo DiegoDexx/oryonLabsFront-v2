@@ -127,7 +127,11 @@ export default function TeamExpandGrid({ members }) {
                 </div>
                 <div className="min-w-0">
                   <h3 className="font-bold text-navy text-sm leading-snug truncate">{m.name}</h3>
-                  <p className="text-cyan text-xs font-semibold truncate">{m.role}</p>
+                  {/* No truncate here — role titles are real information
+                      ("CEO & Founder — Sales & Financial Dept."), cutting
+                      them off with an ellipsis loses content rather than
+                      just visually tightening the row. Let it wrap. */}
+                  <p className="text-cyan text-xs font-semibold leading-snug">{m.role}</p>
                 </div>
               </div>
               <BioReveal active={active}>
