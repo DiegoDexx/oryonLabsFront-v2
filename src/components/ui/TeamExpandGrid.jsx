@@ -72,7 +72,10 @@ export default function TeamExpandGrid({ members }) {
   return (
     <>
       {/* ── Desktop: 3 columns, active one grows ──────────────── */}
-      <div className="hidden md:flex gap-5 items-start">
+      {/* items-stretch (the flex default, stated explicitly here since it's
+          load-bearing) so all 3 cards always share the row's tallest height
+          — driven by whichever card is active/has its bio open. */}
+      <div className="hidden md:flex gap-5 items-stretch">
         {members.map((m) => {
           const active = m.id === activeId;
           return (
@@ -83,15 +86,31 @@ export default function TeamExpandGrid({ members }) {
               aria-pressed={active}
               onClick={() => toggle(m.id)}
               onKeyDown={(e) => handleKeyDown(e, m.id)}
-              className={`cursor-pointer rounded-[28px] overflow-hidden border bg-white shadow-sm transition-all duration-300 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 ${
-                active ? 'border-cyan/30 shadow-lg' : 'border-gray-200 hover:border-cyan/30'
+              className={`flex flex-col cursor-pointer rounded-[28px] overflow-hidden border-2 transition-all duration-300 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 ${
+                active
+                  ? 'border-cyan bg-cyan-pale/20 shadow-lg shadow-cyan/15'
+                  : 'border-gray-200 bg-white shadow-sm hover:border-cyan/40'
               }`}
               style={{ flexGrow: active ? 2.4 : 1, flexBasis: 0, minWidth: 0 }}
             >
-              <div className="w-full h-72 overflow-hidden bg-slate-100">
-                <Avatar name={m.name} photo={m.photo} color={m.color} className="text-3xl" />
+              {/* Fixed portrait aspect-ratio at all times — only the
+                  column's width changes when a card becomes active, never
+                  the photo's crop/shape. Uses the padding-top percentage
+                  technique rather than the `aspect-ratio` property: nested
+                  inside a stretched flex row + flex-grow'd flex-col, plain
+                  `aspect-ratio` measurably resolved to the wrong ratio for
+                  some cards (a real layout bug, verified via getBoundingClientRect,
+                  not just a visual guess). Padding-percentage height is
+                  derived purely from the resolved width, sidestepping that.
+                  No radius of its own: relies on the card's own
+                  rounded+overflow-hidden for its corners, so they can't
+                  drift out of alignment. */}
+              <div className="relative w-full flex-shrink-0 bg-slate-100" style={{ paddingTop: '133.333%' }}>
+                <div className="absolute inset-0">
+                  <Avatar name={m.name} photo={m.photo} color={m.color} className="text-3xl" />
+                </div>
               </div>
-              <div className="p-5">
+              <div className="p-5 flex-1 flex flex-col justify-start">
                 <h3 className="font-bold text-navy leading-snug">{m.name}</h3>
                 <p className="text-cyan text-sm font-semibold mt-0.5">{m.role}</p>
                 <BioReveal active={active}>
