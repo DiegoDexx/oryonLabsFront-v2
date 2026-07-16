@@ -7,7 +7,7 @@
   "sections": [
     {
       "title": "How to request deletion",
-      "body": "Send an email to management@oryonx.ai with the subject line \"Data Deletion Request\", including:",
+      "body": "Send an email to support@oryonx.ai with the subject line \"Data Deletion Request\", including:",
       "items": [
         "Your full name",
         "The phone number, email address, or WhatsApp number associated with your data",
@@ -20,7 +20,7 @@
     },
     {
       "title": "Questions",
-      "body": "If you have any questions about this process, contact us at management@oryonx.ai."
+      "body": "If you have any questions about this process, contact us at support@oryonx.ai."
     }
   ],
   "contactTitle": "Need help with your data?",

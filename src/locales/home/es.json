@@ -1014,7 +1014,7 @@
       }
     },
     "contact": {
-      "email": "hola@OryonX.com",
+      "email": "support@oryonx.ai",
       "phone": "+34 900 123 456",
       "whatsapp": "WhatsApp disponible"
     },
@@ -1035,7 +1035,7 @@
     "online_status": "En línea",
     "retry": "Reintentar",
     "quick_questions_label": "Preguntas rápidas:",
-    "rate_limit_banner": "Límite alcanzado. Contáctanos en hola@OryonX.com",
+    "rate_limit_banner": "Límite alcanzado. Contáctanos en support@oryonx.ai",
     "lead_done_badge": "✅ Solicitud recibida",
     "initial_message": "¡Hola! Soy Ridley, el asistente virtual de OryonX. ¿En qué puedo ayudarte hoy?",
     "placeholder": "Escribe tu mensaje...",

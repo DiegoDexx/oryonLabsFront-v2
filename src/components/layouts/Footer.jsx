@@ -1,5 +1,5 @@
 ﻿import { Link, useLocation } from 'react-router-dom';
-import { FaTwitter, FaLinkedin, FaInstagram, FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
+import { FaInstagram, FaTiktok, FaReddit, FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
 import completeLogo from '../../assets/img/logo_blue_ox.webp';
 import es from '../../locales/home/es.json';
 import en from '../../locales/home/en.json';
@@ -41,28 +41,31 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://twitter.com"
+                href="https://instagram.com/oryonxai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-cyan flex items-center justify-center transition-all"
-              >
-                <FaTwitter className="w-4 h-4" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-cyan flex items-center justify-center transition-all"
-              >
-                <FaLinkedin className="w-4 h-4" />
-              </a>
-              <a
-                href="https://instagram.com/oryonx"
-                target="_blank"
-                rel="noopener noreferrer"
+                aria-label="Instagram"
                 className="w-10 h-10 rounded-full bg-cyan hover:bg-cyan-medium flex items-center justify-center transition-all"
               >
                 <FaInstagram className="w-4 h-4" />
+              </a>
+              <a
+                href="https://tiktok.com/@oryonxai"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-cyan flex items-center justify-center transition-all"
+              >
+                <FaTiktok className="w-4 h-4" />
+              </a>
+              <a
+                href="https://reddit.com/oryonxai"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Reddit"
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-cyan flex items-center justify-center transition-all"
+              >
+                <FaReddit className="w-4 h-4" />
               </a>
             </div>
           </div>

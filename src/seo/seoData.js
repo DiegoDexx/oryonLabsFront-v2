@@ -284,7 +284,7 @@ export const SCHEMA_LD = {
   serviceType: ['AI Automation', 'Chatbot Development', 'Workflow Automation', 'Web Development'],
   contactPoint: {
     '@type':       'ContactPoint',
-    email:         'hello@oryonx.ai',
+    email:         'support@oryonx.ai',
     contactType:   'customer service',
   },
 };

@@ -17,9 +17,6 @@ export default function ContactoPage() {
   const pathLang = location.pathname.split('/')[1];
   const lang = ['es', 'en'].includes(pathLang) ? pathLang : 'es';
   const t = translationsByLang[lang] || translationsByLang.es;
-  // NOTE: footer contact info differs between es/en locales post-rebrand (es uses
-  // hola@OryonX.com, en still has hello@oryonlabs.com) — reusing as-is per Footer,
-  // flagging for Diego to confirm/fix rather than changing it here.
   const contact = (homeTranslationsByLang[lang] || homeTranslationsByLang.es).footer.contact;
   const seo = seoData[lang]?.contacto;
 

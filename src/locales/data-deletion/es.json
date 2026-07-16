@@ -7,7 +7,7 @@
   "sections": [
     {
       "title": "Cómo solicitar la eliminación",
-      "body": "Envía un correo a management@oryonx.ai con el asunto \"Solicitud de Eliminación de Datos\", incluyendo:",
+      "body": "Envía un correo a support@oryonx.ai con el asunto \"Solicitud de Eliminación de Datos\", incluyendo:",
       "items": [
         "Tu nombre completo",
         "El teléfono, correo electrónico o número de WhatsApp asociado a tus datos",
@@ -20,7 +20,7 @@
     },
     {
       "title": "Preguntas",
-      "body": "Si tienes alguna pregunta sobre este proceso, contáctanos en management@oryonx.ai."
+      "body": "Si tienes alguna pregunta sobre este proceso, contáctanos en support@oryonx.ai."
     }
   ],
   "contactTitle": "¿Necesitas ayuda con tus datos?",

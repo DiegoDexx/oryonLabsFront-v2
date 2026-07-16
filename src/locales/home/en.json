@@ -1014,7 +1014,7 @@
       }
     },
     "contact": {
-      "email": "hello@oryonlabs.com",
+      "email": "support@oryonx.ai",
       "phone": "+34 900 123 456",
       "whatsapp": "WhatsApp available"
     },
@@ -1035,7 +1035,7 @@
     "online_status": "Online",
     "retry": "Retry",
     "quick_questions_label": "Quick questions:",
-    "rate_limit_banner": "Message limit reached. Contact us at hello@oryonlabs.com",
+    "rate_limit_banner": "Message limit reached. Contact us at support@oryonx.ai",
     "lead_done_badge": "✅ Request received",
     "initial_message": "Hi! I'm Ridley, Oryon Labs' virtual assistant. How can I help you today?",
     "placeholder": "Type your message...",

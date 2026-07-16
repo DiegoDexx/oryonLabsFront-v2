@@ -122,7 +122,7 @@ const FAQWebConsultora = () => {
           <p className="text-gray-600 mb-4">¿No encuentras tu pregunta?</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
-              onClick={() => copyToClipboard('hola@oryonx.ai')}
+              onClick={() => copyToClipboard('support@oryonx.ai')}
               className="flex items-center gap-2 bg-cyan hover:bg-cyan-medium text-white px-6 py-3 rounded-lg font-medium transition-all"
             >
               {copied ? (
