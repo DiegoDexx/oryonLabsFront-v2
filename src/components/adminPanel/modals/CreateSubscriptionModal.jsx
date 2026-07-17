@@ -4,11 +4,15 @@ import { apiCreateSubscription } from "../../../api/apiActions";
 import { notifySubscriptionCreated } from "../../../api/webhookCalls";
 import { useAdminT } from "../../../context/AdminLangContext";
 
+// Internal `value`s are shared with the backend/CRM (suggested_plan enum) —
+// do not rename them. Only `label` (what admin users see) follows the
+// public rename: old "Pro" → "Growth", old "Professional" → "Pro",
+// old "Voice AI" → "Business".
 const PLANS = [
   { value: "starter",      label: "Starter" },
-  { value: "pro",          label: "Pro" },
-  { value: "professional", label: "Professional" },
-  { value: "voice_ai",     label: "Voice AI" },
+  { value: "pro",          label: "Growth" },
+  { value: "professional", label: "Pro" },
+  { value: "voice_ai",     label: "Business" },
 ];
 
 const EMPTY = { clientId: "", plan: "", setupFee: "", monthlyFee: "", startDate: "", nextBillingDate: "", notes: "" };

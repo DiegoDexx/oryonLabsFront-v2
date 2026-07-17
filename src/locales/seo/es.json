@@ -1,0 +1,77 @@
+{
+  "home": {
+    "title": "OryonX | Recepcionista IA y Captación de Leads para PyMEs",
+    "description": "Deja de perder llamadas y leads. OryonX crea asistentes de IA que responden tus llamadas, WhatsApp y web las 24 horas — para que ninguna consulta se quede sin respuesta.",
+    "keywords": "recepcionista IA para pymes, asistente IA 24/7 para negocios, no perder llamadas clientes, automatización captación de leads"
+  },
+  "asistente-24-7": {
+    "title": "Asistente IA 24/7 para Empresas | Recepcionista Virtual — OryonX",
+    "description": "No pierdas ni un lead más. Nuestro asistente IA responde a cada consulta en tu web, WhatsApp y teléfono las 24 horas — capturando, cualificando y registrando leads automáticamente.",
+    "keywords": "asistente IA 24/7 para negocios, recepcionista IA para pymes, no perder llamadas clientes, chatbot empresas"
+  },
+  "crm": {
+    "title": "CRM con IA para PyMEs | Captación Automática de Leads — OryonX",
+    "description": "Un CRM que funciona solo. Captación automática de leads, scoring con IA, seguimiento y panel de métricas en tiempo real — para que no pierdas ninguna oportunidad por responder tarde.",
+    "keywords": "automatización captación de leads, CRM con IA, gestión de leads, seguimiento automático"
+  },
+  "desarrollo-web": {
+    "title": "Desarrollo Web con IA para Empresas | Web que Capta Leads — OryonX",
+    "description": "Una web que capta leads desde el primer día. Diseñamos y desarrollamos sitios con IA integrada — chatbot, CRM y SEO técnico. Sin plantillas. La tuya.",
+    "keywords": "desarrollo web con IA, web que capta leads, diseño web con chatbot, página web empresa"
+  },
+  "integraciones": {
+    "title": "Integraciones y Automatización de Procesos | Chatbot WhatsApp — OryonX",
+    "description": "Deja de copiar datos entre apps. Conectamos tu WhatsApp, email, calendario, CRM y facturación para que la información fluya sola — sin que nadie la mueva a mano.",
+    "keywords": "chatbot IA WhatsApp empresas, automatización captación de leads, integraciones empresas, automatización procesos"
+  },
+  "custom-ai": {
+    "title": "IA Personalizada por Sector (Reformas, Clínicas) | OryonX",
+    "description": "Tu negocio no es genérico. Tu IA tampoco debería serlo. Diseñamos sistemas de IA a medida para reformas, clínicas e inmobiliarias, entrenados con tus datos y tu forma de trabajar.",
+    "keywords": "IA personalizada empresas, recepcionista IA para pymes, soluciones IA a medida, IA para negocio local"
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes | OryonX",
+    "description": "Todo sobre automatización e IA para empresas. Resolvemos tus dudas sobre agentes inteligentes, implementación y ROI.",
+    "keywords": "FAQ automatización, preguntas IA empresas, dudas chatbot"
+  },
+  "blog": {
+    "title": "Blog | Automatización e IA para Empresas — OryonX",
+    "description": "Artículos prácticos sobre asistentes IA, captación de leads y automatización — casos reales de negocios que ya usan IA.",
+    "keywords": "blog automatización IA, guías IA empresas, casos de éxito automatización"
+  },
+  "aboutus": {
+    "title": "Sobre Nosotros | OryonX",
+    "description": "Conoce al equipo detrás de OryonX y nuestra misión: llevar la automatización con IA al alcance de cualquier negocio de servicios.",
+    "keywords": "sobre OryonX, equipo OryonX, agencia de IA Alicante, quiénes somos"
+  },
+  "contacto": {
+    "title": "Contacto | Habla con un Experto en IA — OryonX",
+    "description": "Habla con el equipo de OryonX. Cuéntanos tu reto y te respondemos en menos de 24h.",
+    "keywords": "contacto OryonX, hablar con un experto, solicitar demo IA"
+  },
+  "terms": {
+    "title": "Términos de Servicio | OryonX",
+    "description": "Condiciones de uso y contratación de los servicios de automatización con IA de OryonX.",
+    "keywords": "términos de servicio, condiciones de uso, legal OryonX"
+  },
+  "privacy": {
+    "title": "Política de Privacidad | OryonX",
+    "description": "Cómo recopilamos, usamos y protegemos tus datos personales conforme al RGPD.",
+    "keywords": "política de privacidad, protección de datos, RGPD, OryonX"
+  },
+  "data-deletion": {
+    "title": "Eliminación de Datos | OryonX",
+    "description": "Cómo solicitar la eliminación de tus datos personales recopilados por OryonX a través de WhatsApp, chat web o canales de voz.",
+    "keywords": "eliminación de datos, borrar datos personales, privacidad WhatsApp, Meta datos, RGPD"
+  },
+  "servicios": {
+    "title": "Servicios de Automatización IA | OryonX",
+    "description": "Captación de leads 24/7, agentes IA de soporte, flujos de trabajo automatizados. Infraestructura de IA a medida para tu negocio.",
+    "keywords": "chatbots IA, automatización procesos, agentes soporte, integración sistemas"
+  },
+  "precios": {
+    "title": "Precios y Planes | OryonX",
+    "description": "Planes de automatización IA desde 299€/mes. Sin contratos anuales. Setup incluido. Escalabilidad garantizada.",
+    "keywords": "precios automatización IA, planes chatbot, coste agentes IA"
+  }
+}

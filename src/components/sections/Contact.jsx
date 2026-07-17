@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { FaEnvelope, FaPhone, FaWhatsapp, FaCheckCircle } from 'react-icons/fa';
 import ProjectRequestForm from '../forms.jsx';
+import useContactPhone from '../../hooks/useContactPhone';
 import es from '../../locales/home/es.json';
 import en from '../../locales/home/en.json';
 
@@ -26,6 +27,7 @@ export default function Contact() {
   const t = translationsByLang[lang] || translationsByLang.es;
   const contact = t.contact;
   const benefits = lang === 'en' ? benefitsEn : benefitsEs;
+  const { phone } = useContactPhone();
 
   return (
     <section id={lang === 'en' ? 'contact' : 'contacto'} className="py-24 bg-white">
@@ -69,9 +71,9 @@ export default function Contact() {
                 <FaEnvelope className="w-4 h-4 text-cyan" />
                 <span>{t.footer.contact.email}</span>
               </a>
-              <a href={`tel:${t.footer.contact.phone.replace(/\s/g, '')}`} className="flex items-center gap-3 text-gray-300 hover:text-cyan transition-colors">
+              <a href={`tel:${phone.replace(/\s/g, '')}`} className="flex items-center gap-3 text-gray-300 hover:text-cyan transition-colors">
                 <FaPhone className="w-4 h-4 text-cyan" />
-                <span>{t.footer.contact.phone}</span>
+                <span>{phone}</span>
               </a>
               <div className="flex items-center gap-3 text-gray-300">
                 <FaWhatsapp className="w-4 h-4 text-cyan" />

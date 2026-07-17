@@ -412,25 +412,25 @@ export default function FeaturePageLayout({ pageData, fp, lang }) {
           <div>
             <Link
               to={`${basePath}#${pricingAnchor}`}
-              className="inline-flex items-center gap-2 text-cyan/60 text-sm mb-4 hover:text-cyan transition-colors"
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-medium px-4 py-2 rounded-full mb-4 transition-colors"
               style={heroStyle(0, 10)}
             >
               ← {fp.back_to_pricing}
             </Link>
             {prevTitle && nextTitle && (
               <div
-                className="flex flex-wrap items-center gap-x-8 gap-y-2 mb-10"
+                className="flex flex-wrap items-center gap-3 mb-10"
                 style={heroStyle(60, 10)}
               >
                 <Link
                   to={`${basePath}/servicios/${prevSlug}`}
-                  className="inline-flex items-center gap-1.5 text-cyan/50 text-xs sm:text-sm font-medium hover:text-cyan transition-colors"
+                  className="inline-flex items-center gap-1.5 bg-cyan/10 hover:bg-cyan/20 border border-cyan/25 text-cyan-light text-xs sm:text-sm font-medium px-3.5 py-1.5 rounded-full transition-colors"
                 >
                   <span aria-hidden="true">←</span> {prevTitle}
                 </Link>
                 <Link
                   to={`${basePath}/servicios/${nextSlug}`}
-                  className="inline-flex items-center gap-1.5 text-cyan/50 text-xs sm:text-sm font-medium hover:text-cyan transition-colors"
+                  className="inline-flex items-center gap-1.5 bg-cyan/10 hover:bg-cyan/20 border border-cyan/25 text-cyan-light text-xs sm:text-sm font-medium px-3.5 py-1.5 rounded-full transition-colors"
                 >
                   {nextTitle} <span aria-hidden="true">→</span>
                 </Link>

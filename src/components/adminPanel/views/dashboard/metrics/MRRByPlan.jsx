@@ -1,4 +1,5 @@
 import { useAdminT } from '../../../../../context/AdminLangContext';
+import { PLAN_LABEL } from '../../../shared';
 
 const PLAN_COLORS = {
   starter:      { bar: 'bg-gray-400',   pill: 'bg-gray-100 text-gray-700'     },
@@ -57,8 +58,8 @@ const MRRByPlan = ({ subscriptions }) => {
               <div key={plan}>
                 <div className="flex items-center justify-between mb-1.5">
                   <div className="flex items-center gap-2">
-                    <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-full capitalize ${cfg.pill}`}>
-                      {plan.replace('_', ' ')}
+                    <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-full ${cfg.pill}`}>
+                      {PLAN_LABEL[plan] || plan.replace('_', ' ')}
                     </span>
                     <span className="text-xs text-gray-400">{count} sub{count !== 1 ? 's' : ''}</span>
                   </div>

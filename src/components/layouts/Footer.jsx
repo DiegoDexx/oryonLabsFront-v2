@@ -1,6 +1,7 @@
 ﻿import { Link, useLocation } from 'react-router-dom';
 import { FaInstagram, FaTiktok, FaReddit, FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
 import completeLogo from '../../assets/img/logo_blue_ox.webp';
+import useContactPhone from '../../hooks/useContactPhone';
 import es from '../../locales/home/es.json';
 import en from '../../locales/home/en.json';
 
@@ -13,6 +14,7 @@ export default function Footer() {
   const t = translationsByLang[lang] || translationsByLang.es;
   const footer = t.footer;
   const currentYear = new Date().getFullYear();
+  const { phone } = useContactPhone();
 
   return (
     <footer id="footer" className="bg-navy text-white">
@@ -114,8 +116,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 text-gray-400 text-sm">
                 <FaPhone className="w-4 h-4 text-cyan" />
-                <a href={`tel:${footer.contact.phone.replace(/\s/g, '')}`} className="hover:text-cyan transition-colors">
-                  {footer.contact.phone}
+                <a href={`tel:${phone.replace(/\s/g, '')}`} className="hover:text-cyan transition-colors">
+                  {phone}
                 </a>
               </li>
               <li className="flex items-center gap-3 text-gray-400 text-sm">

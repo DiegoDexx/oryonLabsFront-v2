@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Badge, PLAN_BADGE, STATUS_BADGE } from '../shared';
+import { Badge, PLAN_BADGE, PLAN_LABEL, STATUS_BADGE } from '../shared';
 import Modal from '../../ui/Modal';
 import { useAdminT } from '../../../context/AdminLangContext';
 import { apiDeleteSubscription } from '../../../api/apiActions';
@@ -96,7 +96,7 @@ const SubscriptionsView = ({ subscriptions, onStatusChange, token, onDeleteSubsc
               ) : subscriptions.map(s => (
                 <tr key={s.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 font-medium text-navy">{s.client?.name || '—'}</td>
-                  <td className="px-6 py-4"><Badge value={s.plan} map={PLAN_BADGE} /></td>
+                  <td className="px-6 py-4"><Badge value={s.plan} label={PLAN_LABEL[s.plan] || s.plan} map={PLAN_BADGE} /></td>
                   <td className="px-6 py-4 text-gray-600">€{s.setup_fee}</td>
                   <td className="px-6 py-4 text-gray-600">€{s.monthly_fee}{ts.per_month}</td>
                   <td className="px-6 py-4 text-gray-500 text-sm">{s.start_date}</td>
@@ -151,7 +151,7 @@ const SubscriptionsView = ({ subscriptions, onStatusChange, token, onDeleteSubsc
             </div>
 
             <div className="flex items-center gap-2">
-              <Badge value={viewTarget.plan} map={PLAN_BADGE} />
+              <Badge value={viewTarget.plan} label={PLAN_LABEL[viewTarget.plan] || viewTarget.plan} map={PLAN_BADGE} />
               {viewTarget.status === 'active' && (
                 <span className="text-xs text-green-600 font-medium">{ts.detail.active}</span>
               )}
@@ -197,7 +197,7 @@ const SubscriptionsView = ({ subscriptions, onStatusChange, token, onDeleteSubsc
             </div>
             <div className="text-center space-y-1">
               <p className="font-semibold text-navy text-lg">
-                {cd.prefix} <span className="text-red-500">{deleteTarget.plan}</span>?
+                {cd.prefix} <span className="text-red-500">{PLAN_LABEL[deleteTarget.plan] || deleteTarget.plan}</span>?
               </p>
               <p className="text-sm text-gray-500">{deleteTarget.client?.name}</p>
             </div>

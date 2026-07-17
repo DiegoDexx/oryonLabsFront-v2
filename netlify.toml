@@ -1,5 +1,5 @@
 [build]
-  publish = "dist" # Ajusta esto a tu carpeta de construcción si es diferente
+  publish = "dist" # 
   command = "npm run build"
 
   

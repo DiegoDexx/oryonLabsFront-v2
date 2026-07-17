@@ -25,8 +25,8 @@ const ROUTES = {
     variant: 'dark',
   },
   contacto: {
-    es: () => import('../../locales/contacto/es.json'),
-    en: () => import('../../locales/contacto/en.json'),
+    es: () => import('../../locales/contact/es.json'),
+    en: () => import('../../locales/contact/en.json'),
     label: (data) => data.hero.eyebrow,
     variant: 'dark',
   },

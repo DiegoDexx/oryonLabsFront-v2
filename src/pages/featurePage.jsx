@@ -33,16 +33,7 @@ export default function FeaturePage() {
 
   return (
     <>
-      {seo && (
-        <HelmetSEO
-          title={seo.title}
-          description={seo.description}
-          keywords={seo.keywords}
-          url={seo.url}
-          lang={resolvedLang}
-          alternates={seo.alternates}
-        />
-      )}
+      {seo && <HelmetSEO {...seo} />}
       <FeaturePageLayout
         pageData={fp.pages[slug]}
         fp={fp}

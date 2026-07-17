@@ -5,6 +5,18 @@ export const PLAN_BADGE = {
   voice_ai:     'bg-purple-100 text-purple-700',
 };
 
+// Display labels for the public-facing plan rename (old Pro → Growth, old
+// Professional → Pro, old "Voice AI" → Business). The internal `starter`/
+// `pro`/`professional`/`voice_ai` values above are shared with the
+// backend/CRM (suggested_plan enum) and must NOT be renamed — only what
+// admin users see here changes.
+export const PLAN_LABEL = {
+  starter:      'Starter',
+  pro:          'Growth',
+  professional: 'Pro',
+  voice_ai:     'Business',
+};
+
 export const STATUS_BADGE = {
   active:    'bg-green-100 text-green-700',
   paused:    'bg-yellow-100 text-yellow-700',
@@ -27,9 +39,9 @@ export const StatCard = ({ label, value, sub, color = 'cyan' }) => (
   </div>
 );
 
-export const Badge = ({ value, map, fallback = 'bg-gray-100 text-gray-600' }) => (
+export const Badge = ({ value, label, map, fallback = 'bg-gray-100 text-gray-600' }) => (
   <span className={`inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full ${map?.[value] || fallback}`}>
-    {value || '—'}
+    {label ?? value ?? '—'}
   </span>
 );
 

@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import Modal from "../../ui/Modal";
 import { apiDeleteClient, apiUpdateClient } from "../../../api/apiActions";
 import { useAdminT } from "../../../context/AdminLangContext";
+import { PLAN_LABEL } from "../shared";
 
 const CLIENT_STATUS = {
   active:   "bg-green-100 text-green-700",
@@ -324,7 +325,7 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
                         <p className="text-xs font-bold text-orange-700 uppercase tracking-wide">{tc.delete.active_sub_title}</p>
                       </div>
                       <p className="text-sm text-orange-800">
-                        Plan <span className="font-semibold">{deleteTarget.activeSub.plan}</span>
+                        Plan <span className="font-semibold">{PLAN_LABEL[deleteTarget.activeSub.plan] || deleteTarget.activeSub.plan}</span>
                         {deleteTarget.activeSub.monthly_fee ? ` · €${deleteTarget.activeSub.monthly_fee}/mes` : ""}
                       </p>
                       <p className="text-xs text-orange-600">→ {tc.delete.active_sub_hint}</p>

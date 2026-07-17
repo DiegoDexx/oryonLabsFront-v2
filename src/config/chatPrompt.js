@@ -1,4 +1,11 @@
-﻿export function buildSystemPrompt(lang = 'es') {
+﻿// TODO(pending backend coordination): the public plan names were renamed
+// (old "Pro"→"Growth", old "Professional"→"Pro", old "Business + Voice AI"
+// →"Business"), but this prompt's PLANES line and the suggested_plan enum
+// values below (starter/pro/professional/voice_ai) were intentionally left
+// untouched here — suggested_plan flows to the CRM/backend, and this file's
+// prices are already stale versus src/locales/home/*.json besides. Update
+// both together once the backend side of the rename is confirmed.
+export function buildSystemPrompt(lang = 'es') {
   const isEn = lang === 'en';
   return `Eres Ridley, asistente de OryonX (automatización IA para PyMEs). Chat web.
 IDIOMA: Solo ${isEn ? 'English' : 'español'}. ESTILO: Breve, texto plano, sin asteriscos, sin markdown, 1 pregunta/mensaje.

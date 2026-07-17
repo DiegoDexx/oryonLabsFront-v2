@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
-import es from '../locales/contacto/es.json';
-import en from '../locales/contacto/en.json';
+import useContactPhone from '../hooks/useContactPhone';
+import es from '../locales/contact/es.json';
+import en from '../locales/contact/en.json';
 import homeEs from '../locales/home/es.json';
 import homeEn from '../locales/home/en.json';
 import { seoData } from '../seo/seoData';
@@ -18,6 +19,7 @@ export default function ContactoPage() {
   const lang = ['es', 'en'].includes(pathLang) ? pathLang : 'es';
   const t = translationsByLang[lang] || translationsByLang.es;
   const contact = (homeTranslationsByLang[lang] || homeTranslationsByLang.es).footer.contact;
+  const { phone: contactPhone } = useContactPhone();
   const seo = seoData[lang]?.contacto;
 
   const [name, setName] = useState('');
@@ -60,16 +62,7 @@ export default function ContactoPage() {
 
   return (
     <div className="bg-white min-h-screen">
-      {seo && (
-        <HelmetSEO
-          title={seo.title}
-          description={seo.description}
-          keywords={seo.keywords}
-          url={seo.url}
-          lang={lang}
-          alternates={seo.alternates}
-        />
-      )}
+      {seo && <HelmetSEO {...seo} />}
 
       {/* ── Hero corto ──────────────────────────────────────── */}
       <section className="relative bg-navy text-white overflow-hidden">
@@ -104,13 +97,13 @@ export default function ContactoPage() {
                   {contact.email}
                 </span>
               </a>
-              <a href={`tel:${contact.phone.replace(/\s/g, '')}`} className="flex items-center gap-3 text-gray-300 hover:text-cyan transition-colors">
+              <a href={`tel:${contactPhone.replace(/\s/g, '')}`} className="flex items-center gap-3 text-gray-300 hover:text-cyan transition-colors">
                 <span className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
                   <FaPhone className="w-4 h-4 text-cyan" />
                 </span>
                 <span>
                   <span className="block text-xs text-gray-400">{t.info.phone_label}</span>
-                  {contact.phone}
+                  {contactPhone}
                 </span>
               </a>
               <div className="flex items-center gap-3 text-gray-300">

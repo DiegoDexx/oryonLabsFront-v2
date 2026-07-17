@@ -32,16 +32,7 @@ export default function AboutUsPage() {
 
   return (
     <div className="bg-white min-h-screen">
-      {seo && (
-        <HelmetSEO
-          title={seo.title}
-          description={seo.description}
-          keywords={seo.keywords}
-          url={seo.url}
-          lang={lang}
-          alternates={seo.alternates}
-        />
-      )}
+      {seo && <HelmetSEO {...seo} />}
 
       {/* ── Hero de misión ──────────────────────────────────── */}
       <section className="relative bg-navy text-white overflow-hidden">

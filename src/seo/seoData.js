@@ -1,271 +1,88 @@
-﻿const BASE_URL   = 'https://oryonx.ai';
+import seoTextEs from '../locales/seo/es.json';
+import seoTextEn from '../locales/seo/en.json';
+
+const BASE_URL    = 'https://oryonx.ai';
 const OG_IMAGE_ES = `${BASE_URL}/og-image-es.png`;
 const OG_IMAGE_EN = `${BASE_URL}/og-image-en.png`;
 
-const ALTERNATES = {
-  es:          `${BASE_URL}/es`,
-  en:          `${BASE_URL}/en`,
-  'x-default': `${BASE_URL}/en`,
+const seoText = { es: seoTextEs, en: seoTextEn };
+
+// Relative path (no leading slash) per page key, per language. Only the
+// legacy "servicios"/"precios" (es) vs "services"/"pricing" (en) pair
+// diverges in name between languages — everything else shares the slug.
+const PATHS = {
+  'asistente-24-7': { es: 'servicios/asistente-24-7', en: 'servicios/asistente-24-7' },
+  crm:              { es: 'servicios/crm',            en: 'servicios/crm' },
+  'desarrollo-web': { es: 'servicios/desarrollo-web', en: 'servicios/desarrollo-web' },
+  integraciones:    { es: 'servicios/integraciones',  en: 'servicios/integraciones' },
+  'custom-ai':      { es: 'servicios/custom-ai',      en: 'servicios/custom-ai' },
+  faq:              { es: 'faq',                      en: 'faq' },
+  blog:             { es: 'blog',                     en: 'blog' },
+  terms:            { es: 'terms',                    en: 'terms' },
+  privacy:          { es: 'privacy',                  en: 'privacy' },
+  'data-deletion':  { es: 'data-deletion',             en: 'data-deletion' },
+  aboutus:          { es: 'aboutus',                   en: 'aboutus' },
+  contacto:         { es: 'contacto',                  en: 'contacto' },
 };
 
-export const seoData = {
-  es: {
-    'asistente-24-7': {
-      title:       'Asistente IA 24/7 para Empresas | OryonX',
-      description: 'No pierdas ni un lead más. Nuestro asistente IA responde a cada consulta en tu web, WhatsApp y teléfono las 24 horas — capturando, cualificando y registrando leads automáticamente.',
-      keywords:    'asistente IA 24/7, chatbot empresas, captura de leads automática, IA WhatsApp Business, recepcionista virtual IA',
-      url:         `${BASE_URL}/es/servicios/asistente-24-7`,
-      image:       OG_IMAGE_ES,
-      lang:        'es',
-      alternates:  { es: `${BASE_URL}/es/servicios/asistente-24-7`, en: `${BASE_URL}/en/servicios/asistente-24-7`, 'x-default': `${BASE_URL}/en/servicios/asistente-24-7` },
-    },
-    crm: {
-      title:       'CRM con IA para PyMEs | OryonX',
-      description: 'Un CRM que funciona solo. Captación automática de leads, scoring con IA, seguimiento y panel de métricas en tiempo real — para que no pierdas ninguna oportunidad por responder tarde.',
-      keywords:    'CRM con IA, gestión de leads, seguimiento automático, scoring de leads, software CRM PyME',
-      url:         `${BASE_URL}/es/servicios/crm`,
-      image:       OG_IMAGE_ES,
-      lang:        'es',
-      alternates:  { es: `${BASE_URL}/es/servicios/crm`, en: `${BASE_URL}/en/servicios/crm`, 'x-default': `${BASE_URL}/en/servicios/crm` },
-    },
-    'desarrollo-web': {
-      title:       'Desarrollo Web con IA para Empresas | OryonX',
-      description: 'Una web que capta leads desde el primer día. Diseñamos y desarrollamos sitios con IA integrada — chatbot, CRM y SEO técnico. Sin plantillas. La tuya.',
-      keywords:    'desarrollo web con IA, web que capta leads, diseño web con chatbot, página web empresa Alicante, web con inteligencia artificial',
-      url:         `${BASE_URL}/es/servicios/desarrollo-web`,
-      image:       OG_IMAGE_ES,
-      lang:        'es',
-      alternates:  { es: `${BASE_URL}/es/servicios/desarrollo-web`, en: `${BASE_URL}/en/servicios/desarrollo-web`, 'x-default': `${BASE_URL}/en/servicios/desarrollo-web` },
-    },
-    integraciones: {
-      title:       'Integraciones y Automatización de Procesos | OryonX',
-      description: 'Deja de copiar datos entre apps. Conectamos tu WhatsApp, email, calendario, CRM y facturación para que la información fluya sola — sin que nadie la mueva a mano.',
-      keywords:    'integraciones empresas, automatización procesos, conectar WhatsApp CRM, automatización n8n, API integraciones PyME',
-      url:         `${BASE_URL}/es/servicios/integraciones`,
-      image:       OG_IMAGE_ES,
-      lang:        'es',
-      alternates:  { es: `${BASE_URL}/es/servicios/integraciones`, en: `${BASE_URL}/en/servicios/integraciones`, 'x-default': `${BASE_URL}/en/servicios/integraciones` },
-    },
-    'custom-ai': {
-      title:       'IA Personalizada para tu Negocio | OryonX',
-      description: 'Tu negocio no es genérico. Tu IA tampoco debería serlo. Diseñamos e implementamos sistemas de IA a medida entrenados con tus datos, sector y forma de trabajar.',
-      keywords:    'IA personalizada empresas, soluciones IA a medida, automatización IA PyME, agente de voz IA, IA para negocio local',
-      url:         `${BASE_URL}/es/servicios/custom-ai`,
-      image:       OG_IMAGE_ES,
-      lang:        'es',
-      alternates:  { es: `${BASE_URL}/es/servicios/custom-ai`, en: `${BASE_URL}/en/servicios/custom-ai`, 'x-default': `${BASE_URL}/en/servicios/custom-ai` },
-    },
-    home: {
-      title:       'OryonX | Agencia de IA en Alicante — Automatización para PyMEs',
-      description: 'Agencia de inteligencia artificial en Alicante. Automatizamos la captación de leads, atención al cliente y flujos de trabajo de tu empresa con IA a medida. Sin conocimientos técnicos.',
-      keywords:    'agencia de IA en Alicante, automatización con inteligencia artificial, chatbot para empresas, automatización de procesos, creación de páginas web con IA',
-      url:         `${BASE_URL}/es`,
-      image:       OG_IMAGE_ES,
-      lang:        'es',
-      alternates:  ALTERNATES,
-    },
-    faq: {
-      title:       'Preguntas Frecuentes | OryonX',
-      description: 'Todo sobre automatización e IA para empresas. Resolvemos tus dudas sobre agentes inteligentes, implementación y ROI.',
-      keywords:    'FAQ automatización, preguntas IA empresas, dudas chatbot',
-      url:         `${BASE_URL}/es/faq`,
-      image:       OG_IMAGE_ES,
-      lang:        'es',
-      alternates:  { es: `${BASE_URL}/es/faq`, en: `${BASE_URL}/en/faq`, 'x-default': `${BASE_URL}/en/faq` },
-    },
-    servicios: {
-      title:       'Servicios de Automatización IA | OryonX',
-      description: 'Captación de leads 24/7, agentes IA de soporte, flujos de trabajo automatizados. Infraestructura de IA a medida para tu negocio.',
-      keywords:    'chatbots IA, automatización procesos, agentes soporte, integración sistemas',
-      url:         `${BASE_URL}/es/servicios`,
-      image:       OG_IMAGE_ES,
-      lang:        'es',
-      alternates:  { es: `${BASE_URL}/es/servicios`, en: `${BASE_URL}/en/services`, 'x-default': `${BASE_URL}/en/services` },
-    },
-    precios: {
-      title:       'Precios y Planes | OryonX',
-      description: 'Planes de automatización IA desde 199€/mes. Sin contratos anuales. Setup incluido. Escalabilidad garantizada.',
-      keywords:    'precios automatización IA, planes chatbot, coste agentes IA',
-      url:         `${BASE_URL}/es/precios`,
-      image:       OG_IMAGE_ES,
-      lang:        'es',
-      alternates:  { es: `${BASE_URL}/es/precios`, en: `${BASE_URL}/en/pricing`, 'x-default': `${BASE_URL}/en/pricing` },
-    },
-    terms: {
-      title:       'Términos de Servicio | OryonX',
-      description: 'Condiciones de uso y contratación de los servicios de automatización con IA de OryonX.',
-      keywords:    'términos de servicio, condiciones de uso, legal OryonX',
-      url:         `${BASE_URL}/es/terms`,
-      image:       OG_IMAGE_ES,
-      lang:        'es',
-      alternates:  { es: `${BASE_URL}/es/terms`, en: `${BASE_URL}/en/terms`, 'x-default': `${BASE_URL}/en/terms` },
-    },
-    privacy: {
-      title:       'Política de Privacidad | OryonX',
-      description: 'Cómo recopilamos, usamos y protegemos tus datos personales conforme al RGPD.',
-      keywords:    'política de privacidad, protección de datos, RGPD, OryonX',
-      url:         `${BASE_URL}/es/privacy`,
-      image:       OG_IMAGE_ES,
-      lang:        'es',
-      alternates:  { es: `${BASE_URL}/es/privacy`, en: `${BASE_URL}/en/privacy`, 'x-default': `${BASE_URL}/en/privacy` },
-    },
-    'data-deletion': {
-      title:       'Eliminación de Datos | OryonX',
-      description: 'Cómo solicitar la eliminación de tus datos personales recopilados por OryonX a través de WhatsApp, chat web o canales de voz.',
-      keywords:    'eliminación de datos, borrar datos personales, privacidad WhatsApp, Meta datos, RGPD',
-      url:         `${BASE_URL}/es/data-deletion`,
-      image:       OG_IMAGE_ES,
-      lang:        'es',
-      alternates:  { es: `${BASE_URL}/es/data-deletion`, en: `${BASE_URL}/en/data-deletion`, 'x-default': `${BASE_URL}/en/data-deletion` },
-    },
-    aboutus: {
-      title:       'Sobre Nosotros | OryonX',
-      description: 'Conoce al equipo detrás de OryonX y nuestra misión: llevar la automatización con IA al alcance de cualquier negocio de servicios.',
-      keywords:    'sobre OryonX, equipo OryonX, agencia de IA Alicante, quiénes somos',
-      url:         `${BASE_URL}/es/aboutus`,
-      image:       OG_IMAGE_ES,
-      lang:        'es',
-      alternates:  { es: `${BASE_URL}/es/aboutus`, en: `${BASE_URL}/en/aboutus`, 'x-default': `${BASE_URL}/en/aboutus` },
-    },
-    contacto: {
-      title:       'Contacto | OryonX',
-      description: 'Habla con el equipo de OryonX. Cuéntanos tu reto y te respondemos en menos de 24h.',
-      keywords:    'contacto OryonX, hablar con un experto, solicitar demo IA',
-      url:         `${BASE_URL}/es/contacto`,
-      image:       OG_IMAGE_ES,
-      lang:        'es',
-      alternates:  { es: `${BASE_URL}/es/contacto`, en: `${BASE_URL}/en/contacto`, 'x-default': `${BASE_URL}/en/contacto` },
-    },
-  },
+// Text-only key per language differs here ("servicios"/"precios" in
+// es.json vs "services"/"pricing" in en.json) — kept as separate entries
+// below rather than forced into PATHS, since the lookup key itself changes.
+const LEGACY_ENTRIES = [
+  { esKey: 'servicios', esPath: 'servicios', enKey: 'services', enPath: 'services' },
+  { esKey: 'precios',   esPath: 'precios',   enKey: 'pricing',  enPath: 'pricing' },
+];
 
-  en: {
-    'asistente-24-7': {
-      title:       'AI Assistant 24/7 for UK Businesses | OryonX',
-      description: 'Never miss another lead. Our AI assistant responds to every enquiry on your website, WhatsApp and phone line 24/7 — capturing, qualifying and logging leads automatically.',
-      keywords:    'AI assistant for business UK, 24/7 chatbot, WhatsApp AI, lead capture automation, AI receptionist UK',
-      url:         `${BASE_URL}/en/servicios/asistente-24-7`,
-      image:       OG_IMAGE_EN,
-      lang:        'en',
-      alternates:  { es: `${BASE_URL}/es/servicios/asistente-24-7`, en: `${BASE_URL}/en/servicios/asistente-24-7`, 'x-default': `${BASE_URL}/en/servicios/asistente-24-7` },
-    },
-    crm: {
-      title:       'AI CRM for UK Small Businesses | OryonX',
-      description: 'A CRM that runs itself. Automatic lead capture, AI scoring, follow-up sequences and a real-time dashboard — so you never lose a lead to slow follow-up again.',
-      keywords:    'AI CRM UK, lead management software, automated follow-up, lead scoring, small business CRM UK',
-      url:         `${BASE_URL}/en/servicios/crm`,
-      image:       OG_IMAGE_EN,
-      lang:        'en',
-      alternates:  { es: `${BASE_URL}/es/servicios/crm`, en: `${BASE_URL}/en/servicios/crm`, 'x-default': `${BASE_URL}/en/servicios/crm` },
-    },
-    'desarrollo-web': {
-      title:       'AI-Powered Website Development for UK SMEs | OryonX',
-      description: 'A website that captures leads from day one. We design and build sites with AI built in — chatbot, CRM integration and SEO-optimised. Not a template. Yours.',
-      keywords:    'AI website development UK, lead-generating website, web design with chatbot, SME website UK, website with AI',
-      url:         `${BASE_URL}/en/servicios/desarrollo-web`,
-      image:       OG_IMAGE_EN,
-      lang:        'en',
-      alternates:  { es: `${BASE_URL}/es/servicios/desarrollo-web`, en: `${BASE_URL}/en/servicios/desarrollo-web`, 'x-default': `${BASE_URL}/en/servicios/desarrollo-web` },
-    },
-    integraciones: {
-      title:       'Business Integrations & Workflow Automation | OryonX',
-      description: 'Stop copying data between apps. We connect your WhatsApp, email, calendar, CRM and invoicing so information flows automatically — without anyone moving it manually.',
-      keywords:    'business integrations UK, workflow automation, WhatsApp CRM integration, no-code automation, API integrations for SMEs',
-      url:         `${BASE_URL}/en/servicios/integraciones`,
-      image:       OG_IMAGE_EN,
-      lang:        'en',
-      alternates:  { es: `${BASE_URL}/es/servicios/integraciones`, en: `${BASE_URL}/en/servicios/integraciones`, 'x-default': `${BASE_URL}/en/servicios/integraciones` },
-    },
-    'custom-ai': {
-      title:       'Custom AI Solutions for UK SMEs | OryonX',
-      description: 'Your business isn\'t generic — your AI shouldn\'t be either. We design and build bespoke AI systems trained on your data, sector and way of working.',
-      keywords:    'custom AI solutions UK, bespoke AI for business, AI automation consultancy UK, AI for SMEs, AI voice agent UK',
-      url:         `${BASE_URL}/en/servicios/custom-ai`,
-      image:       OG_IMAGE_EN,
-      lang:        'en',
-      alternates:  { es: `${BASE_URL}/es/servicios/custom-ai`, en: `${BASE_URL}/en/servicios/custom-ai`, 'x-default': `${BASE_URL}/en/servicios/custom-ai` },
-    },
-    home: {
-      title:       'OryonX | AI Agency in Spain & UK — Automation for SMBs',
-      description: 'AI automation agency based in Spain and the UK. We automate lead capture, customer support and business workflows with custom AI. No technical knowledge required.',
-      keywords:    'AI agency, AI agency UK, automation agency, business automation, chatbot for business, workflow automation',
-      url:         `${BASE_URL}/en`,
-      image:       OG_IMAGE_EN,
-      lang:        'en',
-      alternates:  ALTERNATES,
-    },
-    faq: {
-      title:       'FAQ | OryonX',
-      description: 'Everything about business automation and AI. We answer your questions about intelligent agents, implementation, and ROI.',
-      keywords:    'automation FAQ, business AI questions, chatbot FAQ',
-      url:         `${BASE_URL}/en/faq`,
-      image:       OG_IMAGE_EN,
-      lang:        'en',
-      alternates:  { es: `${BASE_URL}/es/faq`, en: `${BASE_URL}/en/faq`, 'x-default': `${BASE_URL}/en/faq` },
-    },
-    services: {
-      title:       'AI Automation Services | OryonX',
-      description: '24/7 lead capture, AI support agents, automated workflows. Custom AI infrastructure for your business.',
-      keywords:    'AI chatbots, process automation, support agents, system integration',
-      url:         `${BASE_URL}/en/services`,
-      image:       OG_IMAGE_EN,
-      lang:        'en',
-      alternates:  { es: `${BASE_URL}/es/servicios`, en: `${BASE_URL}/en/services`, 'x-default': `${BASE_URL}/en/services` },
-    },
-    pricing: {
-      title:       'Pricing & Plans | OryonX',
-      description: 'AI automation plans from €199/month. No annual contracts. Setup included. Guaranteed scalability.',
-      keywords:    'AI automation pricing, chatbot plans, AI agent costs',
-      url:         `${BASE_URL}/en/pricing`,
-      image:       OG_IMAGE_EN,
-      lang:        'en',
-      alternates:  { es: `${BASE_URL}/es/precios`, en: `${BASE_URL}/en/pricing`, 'x-default': `${BASE_URL}/en/pricing` },
-    },
-    terms: {
-      title:       'Terms of Service | OryonX',
-      description: 'Terms and conditions governing the use and purchase of OryonX AI automation services.',
-      keywords:    'terms of service, terms and conditions, OryonX legal',
-      url:         `${BASE_URL}/en/terms`,
-      image:       OG_IMAGE_EN,
-      lang:        'en',
-      alternates:  { es: `${BASE_URL}/es/terms`, en: `${BASE_URL}/en/terms`, 'x-default': `${BASE_URL}/en/terms` },
-    },
-    privacy: {
-      title:       'Privacy Policy | OryonX',
-      description: 'How OryonX collects, uses, and protects your personal data under GDPR and UK GDPR.',
-      keywords:    'privacy policy, data protection, GDPR, OryonX',
-      url:         `${BASE_URL}/en/privacy`,
-      image:       OG_IMAGE_EN,
-      lang:        'en',
-      alternates:  { es: `${BASE_URL}/es/privacy`, en: `${BASE_URL}/en/privacy`, 'x-default': `${BASE_URL}/en/privacy` },
-    },
-    'data-deletion': {
-      title:       'Data Deletion | OryonX',
-      description: 'How to request deletion of your personal data collected by OryonX through WhatsApp, web chat, or voice channels.',
-      keywords:    'data deletion, delete personal data, WhatsApp privacy, Meta data controls, GDPR',
-      url:         `${BASE_URL}/en/data-deletion`,
-      image:       OG_IMAGE_EN,
-      lang:        'en',
-      alternates:  { es: `${BASE_URL}/es/data-deletion`, en: `${BASE_URL}/en/data-deletion`, 'x-default': `${BASE_URL}/en/data-deletion` },
-    },
-    aboutus: {
-      title:       'About Us | OryonX',
-      description: 'Meet the team behind OryonX and our mission: bringing AI automation within reach of any service business.',
-      keywords:    'about OryonX, OryonX team, AI agency Spain UK, who we are',
-      url:         `${BASE_URL}/en/aboutus`,
-      image:       OG_IMAGE_EN,
-      lang:        'en',
-      alternates:  { es: `${BASE_URL}/es/aboutus`, en: `${BASE_URL}/en/aboutus`, 'x-default': `${BASE_URL}/en/aboutus` },
-    },
-    contacto: {
-      title:       'Contact | OryonX',
-      description: 'Talk to the OryonX team. Tell us about your challenge and we will get back to you within 24h.',
-      keywords:    'contact OryonX, talk to an expert, request AI demo',
-      url:         `${BASE_URL}/en/contacto`,
-      image:       OG_IMAGE_EN,
-      lang:        'en',
-      alternates:  { es: `${BASE_URL}/es/contacto`, en: `${BASE_URL}/en/contacto`, 'x-default': `${BASE_URL}/en/contacto` },
-    },
-  },
+function alternatesFor(pathEs, pathEn) {
+  return {
+    es:          `${BASE_URL}/es/${pathEs}`,
+    en:          `${BASE_URL}/en/${pathEn}`,
+    'x-default': `${BASE_URL}/en/${pathEn}`,
+  };
+}
+
+function buildEntry(lang, textKey, path, altPathEs, altPathEn) {
+  const text = seoText[lang][textKey];
+  if (!text) return null;
+  return {
+    ...text,
+    url:        `${BASE_URL}/${lang}/${path}`,
+    image:      lang === 'es' ? OG_IMAGE_ES : OG_IMAGE_EN,
+    lang,
+    alternates: alternatesFor(altPathEs, altPathEn),
+  };
+}
+
+function buildLangData(lang) {
+  const out = {};
+  for (const [key, paths] of Object.entries(PATHS)) {
+    const entry = buildEntry(lang, key, paths[lang], paths.es, paths.en);
+    if (entry) out[key] = entry;
+  }
+  for (const { esKey, esPath, enKey, enPath } of LEGACY_ENTRIES) {
+    const key = lang === 'es' ? esKey : enKey;
+    const path = lang === 'es' ? esPath : enPath;
+    const entry = buildEntry(lang, key, path, esPath, enPath);
+    if (entry) out[key] = entry;
+  }
+  return out;
+}
+
+const HOME_ALTERNATES = { es: `${BASE_URL}/es`, en: `${BASE_URL}/en`, 'x-default': `${BASE_URL}/en` };
+
+function buildHome(lang) {
+  return {
+    ...seoText[lang].home,
+    url:        `${BASE_URL}/${lang}`,
+    image:      lang === 'es' ? OG_IMAGE_ES : OG_IMAGE_EN,
+    lang,
+    alternates: HOME_ALTERNATES,
+  };
+}
+
+export const seoData = {
+  es: { ...buildLangData('es'), home: buildHome('es') },
+  en: { ...buildLangData('en'), home: buildHome('en') },
 };
 
 export const SCHEMA_LD = {

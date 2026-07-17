@@ -1,0 +1,77 @@
+{
+  "home": {
+    "title": "OryonX | AI Receptionist & Lead Capture for Small Business",
+    "description": "Never miss another call or lead. OryonX builds AI receptionists that answer your calls, WhatsApp and website 24/7 — so no enquiry falls through the cracks, day or night.",
+    "keywords": "AI receptionist for small business, never miss a call, 24/7 call answering, AI lead capture WhatsApp"
+  },
+  "asistente-24-7": {
+    "title": "AI Receptionist for Small Business | 24/7 Call Answering — OryonX",
+    "description": "Never miss a call again. Our AI receptionist answers your phone, website and WhatsApp 24/7 — capturing, qualifying and logging every lead automatically, day or night.",
+    "keywords": "AI receptionist for small business, 24/7 call answering for trades, never miss a call, AI receptionist UK"
+  },
+  "crm": {
+    "title": "AI Lead Capture CRM for Service Businesses | OryonX",
+    "description": "Stop losing leads to slow follow-up. Our AI-powered CRM captures every enquiry automatically, scores it, and follows up before your competitor does.",
+    "keywords": "lead capture CRM, AI lead follow-up, CRM for service business, small business CRM UK"
+  },
+  "desarrollo-web": {
+    "title": "AI-Integrated Website Development for SMEs | OryonX",
+    "description": "A website that captures leads from day one. We design and build sites with AI built in — chatbot, CRM integration and SEO-optimised. Not a template. Yours.",
+    "keywords": "AI-integrated website, lead capture website, AI website development UK, web design with chatbot"
+  },
+  "integraciones": {
+    "title": "AI WhatsApp Business Integration | Multichannel AI Assistant — OryonX",
+    "description": "Stop copying data between apps. We connect your WhatsApp, email, calendar and CRM into one multichannel AI assistant — so information flows automatically.",
+    "keywords": "AI WhatsApp business, multichannel AI assistant, AI lead capture WhatsApp, workflow automation UK"
+  },
+  "custom-ai": {
+    "title": "AI Receptionist for Trades & Clinics | Custom AI — OryonX",
+    "description": "Built for your sector, not a generic template. Custom AI receptionists for plumbers, trades and clinics — trained on your business, your data and how you actually work.",
+    "keywords": "AI receptionist for trades, AI answering for plumbers, AI answering for clinics, custom AI solutions UK"
+  },
+  "faq": {
+    "title": "FAQ — AI Receptionist & Automation Questions | OryonX",
+    "description": "Everything about AI receptionists and business automation. We answer your questions about setup, pricing, and how it actually works.",
+    "keywords": "AI receptionist FAQ, automation FAQ, business AI questions"
+  },
+  "blog": {
+    "title": "Blog — AI Automation Insights for Small Business | OryonX",
+    "description": "Practical guides on AI receptionists, lead capture and business automation — real ROI stories from service businesses using AI.",
+    "keywords": "AI automation blog, business automation guides, AI receptionist tips"
+  },
+  "aboutus": {
+    "title": "About Us | OryonX — AI Automation Team",
+    "description": "Meet the team behind OryonX and our mission: bringing AI automation within reach of any service business.",
+    "keywords": "about OryonX, OryonX team, AI agency Spain UK, who we are"
+  },
+  "contacto": {
+    "title": "Contact Us | Talk to an AI Automation Expert — OryonX",
+    "description": "Talk to the OryonX team. Tell us about your challenge and we will get back to you within 24h.",
+    "keywords": "contact OryonX, talk to an expert, request AI demo"
+  },
+  "terms": {
+    "title": "Terms of Service | OryonX",
+    "description": "Terms and conditions governing the use and purchase of OryonX AI automation services.",
+    "keywords": "terms of service, terms and conditions, OryonX legal"
+  },
+  "privacy": {
+    "title": "Privacy Policy | OryonX",
+    "description": "How OryonX collects, uses, and protects your personal data under GDPR and UK GDPR.",
+    "keywords": "privacy policy, data protection, GDPR, OryonX"
+  },
+  "data-deletion": {
+    "title": "Data Deletion | OryonX",
+    "description": "How to request deletion of your personal data collected by OryonX through WhatsApp, web chat, or voice channels.",
+    "keywords": "data deletion, delete personal data, WhatsApp privacy, Meta data controls, GDPR"
+  },
+  "services": {
+    "title": "AI Automation Services | OryonX",
+    "description": "24/7 lead capture, AI support agents, automated workflows. Custom AI infrastructure for your business.",
+    "keywords": "AI chatbots, process automation, support agents, system integration"
+  },
+  "pricing": {
+    "title": "Pricing & Plans | OryonX",
+    "description": "AI automation plans from €299/month. No annual contracts. Setup included. Guaranteed scalability.",
+    "keywords": "AI automation pricing, chatbot plans, AI agent costs"
+  }
+}
