@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { logoutUser } from '../../actions/authActions';
 import { apiLogout } from '../../api/apiActions';
 import { useAdminT } from '../../context/AdminLangContext';
+import GlobalSearch from '../ui/GlobalSearch';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -23,7 +24,10 @@ const getInitials = (user) => {
 
 // ── CrmTopBar ─────────────────────────────────────────────────────────────────
 
-const CrmTopBar = ({ isCollapsed, setIsCollapsed, mobileMenuOpen, setMobileMenuOpen, searchRef }) => {
+const CrmTopBar = ({
+  isCollapsed, setIsCollapsed, mobileMenuOpen, setMobileMenuOpen, searchRef,
+  onNavigate, organizations, isPlatformAdmin,
+}) => {
   const dispatch       = useDispatch();
   const navigate       = useNavigate();
   const token          = useSelector((s) => s.auth.token);
@@ -76,7 +80,6 @@ const CrmTopBar = ({ isCollapsed, setIsCollapsed, mobileMenuOpen, setMobileMenuO
   };
 
   const initials = getInitials(user);
-  const placeholder = t.navbar?.search_placeholder || 'Buscar clientes, leads, facturas...';
 
   return (
     <header className="h-16 bg-white border-b border-gray-100 flex items-center px-4 gap-3 flex-shrink-0 z-30 sticky top-0">
@@ -92,26 +95,13 @@ const CrmTopBar = ({ isCollapsed, setIsCollapsed, mobileMenuOpen, setMobileMenuO
         </svg>
       </button>
 
-      {/* Search input */}
-      <div className="flex-1 min-w-0 max-w-lg">
-        <div className="relative">
-          <svg
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
-            fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-          <input
-            ref={searchRef}
-            type="text"
-            placeholder={placeholder}
-            className="w-full bg-[#F1F5F9] rounded-lg pl-9 pr-14 py-2 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-crm-accent/30 transition-shadow"
-          />
-          <kbd className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] text-gray-400 bg-gray-100 border border-gray-300 rounded px-1.5 py-0.5 font-mono leading-none pointer-events-none hidden sm:inline">
-            ⌘K
-          </kbd>
-        </div>
-      </div>
+      {/* Global search — real, multi-tenant-isolated (see src/components/ui/GlobalSearch.jsx) */}
+      <GlobalSearch
+        searchRef={searchRef}
+        onNavigate={onNavigate}
+        organizations={organizations}
+        isPlatformAdmin={isPlatformAdmin}
+      />
 
       {/* Notification bell — static (no backend yet) */}
       <button

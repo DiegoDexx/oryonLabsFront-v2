@@ -7,11 +7,12 @@
   },
   "sidebar": {
     "ventas": "VENTAS",
-    "ingresos": "INGRESOS"
+    "ingresos": "INGRESOS",
+    "plataforma": "PLATAFORMA"
   },
   "page": {
     "title": "Panel de Administración",
-    "subtitle": "Oryon Labs · Gestión interna",
+    "subtitle": "OryonX · Gestión interna",
     "greeting_morning": "Buenos días",
     "greeting_afternoon": "Buenas tardes",
     "greeting_evening": "Buenas noches"
@@ -37,7 +38,9 @@
     "subscriptions": "Suscripciones",
     "invoices": "Facturación",
     "leads": "Leads",
-    "users": "Usuarios"
+    "users": "Usuarios",
+    "organizations": "Organizaciones",
+    "ai_performance": "Rendimiento IA"
   },
   "toasts": {
     "invoice_paid": "Factura marcada como pagada",
@@ -435,18 +438,24 @@
       "clients": "Clientes",
       "leads": "Leads",
       "invoices": "Facturas",
-      "subscriptions": "Suscripciones"
+      "subscriptions": "Suscripciones",
+      "organizations": "Organizaciones"
     },
     "result_detail": {
       "client": "Cliente",
       "lead": "Lead",
       "invoice": "Factura",
       "subscription": "Suscripción",
+      "organization": "Organización",
       "amount": "Importe",
       "due_date": "Vencimiento",
       "plan": "Plan",
       "monthly_fee": "Mensualidad",
       "status": "Estado",
+      "vertical": "Vertical",
+      "users": "Usuarios",
+      "active": "Activa",
+      "inactive": "Inactiva",
       "navigate": "Ver en panel",
       "close": "Cerrar"
     }
@@ -517,5 +526,65 @@
     "cancel": "Cancelar",
     "confirm": "Eliminar",
     "deleting": "Eliminando..."
+  },
+  "organizations": {
+    "title": "Organizaciones",
+    "subtitle": "Tenants activos en la plataforma OryonX",
+    "loading": "Cargando organizaciones...",
+    "empty": "No hay organizaciones registradas.",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "view_performance": "Ver rendimiento IA",
+    "headers": {
+      "name": "Nombre",
+      "plan": "Plan",
+      "vertical": "Vertical",
+      "status": "Estado",
+      "users": "Usuarios",
+      "created": "Alta",
+      "actions": "Acciones"
+    }
+  },
+  "assistant_performance": {
+    "select_org": "Cliente (tenant)",
+    "select_org_placeholder": "Selecciona un cliente...",
+    "no_org_selected": "Selecciona un cliente arriba para ver el rendimiento de su asistente.",
+    "loading": "Cargando métricas...",
+    "unknown": "Desconocido",
+    "assistant_id": "Assistant ID",
+    "workflow_id": "Workflow ID",
+    "kpi_total_ai_cost": "Coste IA total",
+    "kpi_total_calls": "Llamadas totales",
+    "kpi_total_runs": "Ejecuciones n8n",
+    "kpi_margin": "Margen (mes actual)",
+    "llm_section_title": "Uso de LLM",
+    "kpi_llm_cost": "Coste LLM",
+    "kpi_llm_tokens": "Tokens totales",
+    "kpi_llm_requests": "Peticiones",
+    "by_model": "Coste por modelo",
+    "by_channel": "Peticiones por canal",
+    "llm_empty": "Sin uso de LLM registrado para este cliente.",
+    "calls_section_title": "Llamadas de voz",
+    "kpi_voice_cost": "Coste llamadas",
+    "kpi_avg_duration": "Duración media",
+    "calls_empty": "Sin llamadas registradas para este cliente.",
+    "play_recording": "Escuchar",
+    "headers": {
+      "date": "Fecha",
+      "duration": "Duración",
+      "ended_reason": "Motivo de fin",
+      "cost": "Coste",
+      "recording": "Grabación"
+    },
+    "executions_section_title": "Ejecuciones n8n",
+    "kpi_success": "Exitosas",
+    "kpi_failed": "Fallidas",
+    "kpi_avg_duration_ms": "Duración media",
+    "margin_section_title": "Margen",
+    "margin_period": "mes actual",
+    "margin_empty": "Sin datos de margen para este período.",
+    "kpi_revenue": "Ingresos (MRR)",
+    "kpi_ai_cost": "Coste IA",
+    "kpi_margin_usd": "Margen"
   }
 }

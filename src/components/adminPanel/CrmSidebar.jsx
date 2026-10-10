@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import logoBlueOx from '../../assets/img/logo_blue_ox.webp';
 import { useAdminT } from '../../context/AdminLangContext';
 
@@ -49,11 +50,24 @@ const Icons = {
       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
     </svg>
   ),
+  organizations: (
+    <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1m4 0h1m-6 4h1m4 0h1m-6 4h1m4 0h1" />
+    </svg>
+  ),
+  ai_performance: (
+    <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a4 4 0 115.657 0l-1.171 1.17A2 2 0 0013.414 18h-2.828a2 2 0 01-1.415-.585l-1.171-1.17z" />
+    </svg>
+  ),
 };
 
 // ── Nav structure ────────────────────────────────────────────────────────────
+// `organizations`/`ai_performance` are cross-tenant (OryonX only) — only
+// included for platform admins (org id 1). Backend enforces this for real
+// via the `platform-admin` middleware; this is just the UI mirror.
 
-const NAV_STRUCTURE = [
+const buildNavStructure = (isPlatformAdmin) => [
   { key: 'dashboard' },
   { key: 'pipeline' },
   { type: 'section', labelKey: 'ventas' },
@@ -64,12 +78,18 @@ const NAV_STRUCTURE = [
   { key: 'subscriptions' },
   { key: 'invoices' },
   { key: 'users' },
+  ...(isPlatformAdmin ? [
+    { type: 'section', labelKey: 'plataforma' },
+    { key: 'organizations' },
+    { key: 'ai_performance' },
+  ] : []),
 ];
 
 // ── Shared nav content ───────────────────────────────────────────────────────
 
-const SidebarInner = ({ compact, selectedTab, onTabChange, leads, t, onClose }) => {
+const SidebarInner = ({ compact, selectedTab, onTabChange, leads, t, onClose, isPlatformAdmin }) => {
   const newLeadsCount = leads.filter((l) => l.status === 'new').length;
+  const navStructure = buildNavStructure(isPlatformAdmin);
 
   return (
     <div className="flex flex-col h-full">
@@ -96,7 +116,7 @@ const SidebarInner = ({ compact, selectedTab, onTabChange, leads, t, onClose }) 
 
       {/* Nav items */}
       <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-0.5" style={{ scrollbarWidth: 'thin', scrollbarColor: '#15234A transparent' }}>
-        {NAV_STRUCTURE.map((item, i) => {
+        {navStructure.map((item, i) => {
           if (item.type === 'section') {
             if (compact) {
               return <div key={i} className="mx-2 my-3 h-px bg-white/10" />;
@@ -160,6 +180,8 @@ const SidebarInner = ({ compact, selectedTab, onTabChange, leads, t, onClose }) 
 
 const CrmSidebar = ({ selectedTab, setSelectedTab, leads, isCollapsed, mobileOpen, setMobileOpen }) => {
   const { t } = useAdminT();
+  const user = useSelector((s) => s.auth.user);
+  const isPlatformAdmin = user?.organization_id === 1;
 
   return (
     <>
@@ -174,6 +196,7 @@ const CrmSidebar = ({ selectedTab, setSelectedTab, leads, isCollapsed, mobileOpe
           onTabChange={setSelectedTab}
           leads={leads}
           t={t}
+          isPlatformAdmin={isPlatformAdmin}
         />
       </aside>
 
@@ -198,6 +221,7 @@ const CrmSidebar = ({ selectedTab, setSelectedTab, leads, isCollapsed, mobileOpe
           leads={leads}
           t={t}
           onClose={() => setMobileOpen(false)}
+          isPlatformAdmin={isPlatformAdmin}
         />
       </aside>
     </>

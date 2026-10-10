@@ -129,6 +129,28 @@ export const apiDeleteUser = (token, id) =>
 export const apiGlobalSearch = (token, type, value) =>
   request("GET", `/api/search?type=${encodeURIComponent(type)}&value=${encodeURIComponent(value)}`, null, token);
 
+// ── Platform admin (OryonX only — cross-tenant) ─────────────────────────────
+const qs = (params) =>
+  Object.entries(params)
+    .filter(([, v]) => v !== undefined && v !== null && v !== "")
+    .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+    .join("&");
+
+export const apiGetOrganizations = (token) =>
+  request("GET", "/api/organizations", null, token);
+
+export const apiGetUsageMetrics = (token, orgId, params = {}) =>
+  request("GET", `/api/metrics/usage?${qs({ organization_id: orgId, ...params })}`, null, token);
+
+export const apiGetCallMetrics = (token, orgId, params = {}) =>
+  request("GET", `/api/metrics/calls?${qs({ organization_id: orgId, ...params })}`, null, token);
+
+export const apiGetExecutionMetrics = (token, orgId, params = {}) =>
+  request("GET", `/api/metrics/executions?${qs({ organization_id: orgId, ...params })}`, null, token);
+
+export const apiGetMarginMetrics = (token, orgId, params = {}) =>
+  request("GET", `/api/metrics/margin?${qs({ organization_id: orgId, ...params })}`, null, token);
+
 // ── Refresh helpers ───────────────────────────────────────────────────────────
 /** Fetches all panel data in parallel. Returns { clients, leads, subscriptions, invoices, projects }. */
 export const apiRefreshAll = async (token) => {

@@ -41,6 +41,6 @@ export default function Page() {
 
 // FASE 3: Exportar config para Vike
 // export const documentProps = {
-//   title: 'Oryon Labs | Automatización IA para PyMEs',
+//   title: 'OryonX | Automatización IA para PyMEs',
 //   description: 'Automatizamos la captación de leads...'
 // }

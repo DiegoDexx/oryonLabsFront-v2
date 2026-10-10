@@ -16,6 +16,7 @@ const RESULT_COLOR = {
   leads:         "text-blue-600 bg-blue-50",
   invoices:      "text-amber-600 bg-amber-50",
   subscriptions: "text-cyan bg-cyan/10",
+  organizations: "text-purple-600 bg-purple-50",
 };
 
 const RESULT_TAB = {
@@ -23,7 +24,21 @@ const RESULT_TAB = {
   leads:         "leads",
   invoices:      "invoices",
   subscriptions: "subscriptions",
+  organizations: "organizations",
 };
+
+// Organizations aren't tenant-scoped data — they're the tenant directory
+// itself (GET /api/organizations, platform-admin only). Matched client-side
+// against the list the panel already fetched on mount, instead of round-
+// tripping to the backend search endpoint, so no new cross-tenant surface
+// is added to GlobalSearchController for a list that's already fully loaded.
+function searchOrganizations(organizations, rawValue) {
+  const value = rawValue.trim().toLowerCase();
+  if (!value || !organizations?.length) return [];
+  return organizations.filter((org) =>
+    org.name?.toLowerCase().includes(value) || org.slug?.toLowerCase().includes(value)
+  );
+}
 
 /* ── Icons ── */
 const SearchIcon = ({ cls = "w-4 h-4" }) => (
@@ -61,6 +76,7 @@ function getResultSub(item, section) {
   if (section === "leads")         return item.email || item.phone;
   if (section === "invoices")      return item.amount ? `€${item.amount}` : item.status;
   if (section === "subscriptions") return item.monthly_fee ? `€${item.monthly_fee}/mes` : item.status;
+  if (section === "organizations") return item.slug ? `${item.plan ?? "—"} · ${item.slug}` : item.plan;
   return null;
 }
 
@@ -72,7 +88,7 @@ const DetailRow = ({ label, value }) => (
 );
 
 /* ── Main component ── */
-const GlobalSearch = ({ onNavigate }) => {
+const GlobalSearch = ({ onNavigate, searchRef, organizations, isPlatformAdmin }) => {
   const { t }  = useAdminT();
   const ts     = t.search;
   const token  = useSelector((s) => s.auth.token);
@@ -86,7 +102,8 @@ const GlobalSearch = ({ onNavigate }) => {
 
   const wrapperRef  = useRef(null);
   const mobileInput = useRef(null);
-  const desktopInput = useRef(null);
+  const internalDesktopInput = useRef(null);
+  const desktopInput = searchRef ?? internalDesktopInput;
   const debounceRef = useRef(null);
 
   /* click-outside closes desktop dropdown */
@@ -128,6 +145,9 @@ const GlobalSearch = ({ onNavigate }) => {
     try {
       const type = detectSearchType(value);
       const data = await apiGlobalSearch(token, type, value.trim());
+      if (isPlatformAdmin) {
+        data.organizations = searchOrganizations(organizations, value);
+      }
       setResults(data);
       setDropdownOpen(true);
     } catch (err) {
@@ -135,7 +155,7 @@ const GlobalSearch = ({ onNavigate }) => {
     } finally {
       setSearching(false);
     }
-  }, [token]);
+  }, [token, isPlatformAdmin, organizations]);
 
   const handleChange = (e) => {
     const val = e.target.value;
@@ -259,6 +279,17 @@ const GlobalSearch = ({ onNavigate }) => {
           <DetailRow label={rd.client}    value={item.client?.name} />
         </>
       );
+    } else if (section === "organizations") {
+      fields = (
+        <>
+          <DetailRow label={rd.organization} value={item.name} />
+          <DetailRow label="Slug"            value={item.slug} />
+          <DetailRow label={rd.plan}         value={item.plan} />
+          <DetailRow label={rd.vertical}     value={item.vertical} />
+          <DetailRow label={rd.status}       value={item.is_active ? rd.active : rd.inactive} />
+          <DetailRow label={rd.users}        value={item.users_count ?? 0} />
+        </>
+      );
     } else {
       fields = (
         <>
@@ -358,8 +389,13 @@ const GlobalSearch = ({ onNavigate }) => {
             onChange={handleChange}
             onFocus={() => { if (hasResults) setDropdownOpen(true); }}
             placeholder={ts.placeholder}
-            className="w-full pl-9 pr-4 py-2 text-sm bg-gray-100 border border-transparent rounded-lg focus:outline-none focus:bg-white focus:border-gray-300 transition placeholder:text-gray-400"
+            className="w-full pl-9 pr-14 py-2 text-sm bg-gray-100 border border-transparent rounded-lg focus:outline-none focus:bg-white focus:border-gray-300 transition placeholder:text-gray-400"
           />
+          {!query && (
+            <kbd className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] text-gray-400 bg-gray-100 border border-gray-300 rounded px-1.5 py-0.5 font-mono leading-none pointer-events-none hidden sm:inline">
+              ⌘K
+            </kbd>
+          )}
         </div>
         {dropdownOpen && query.trim().length >= 2 && (
           <div className="absolute top-full mt-1 left-0 right-0 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden z-50">

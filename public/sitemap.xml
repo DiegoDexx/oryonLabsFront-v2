@@ -3,37 +3,37 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>https://oryonlabs.com/es</loc>
-    <xhtml:link rel="alternate" hreflang="es"        href="https://oryonlabs.com/es"/>
-    <xhtml:link rel="alternate" hreflang="en"        href="https://oryonlabs.com/en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://oryonlabs.com/en"/>
+    <loc>https://oryonx.ai/es</loc>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://oryonx.ai/es"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://oryonx.ai/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://oryonx.ai/en"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://oryonlabs.com/en</loc>
-    <xhtml:link rel="alternate" hreflang="es"        href="https://oryonlabs.com/es"/>
-    <xhtml:link rel="alternate" hreflang="en"        href="https://oryonlabs.com/en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://oryonlabs.com/en"/>
+    <loc>https://oryonx.ai/en</loc>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://oryonx.ai/es"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://oryonx.ai/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://oryonx.ai/en"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://oryonlabs.com/es/faq</loc>
-    <xhtml:link rel="alternate" hreflang="es"        href="https://oryonlabs.com/es/faq"/>
-    <xhtml:link rel="alternate" hreflang="en"        href="https://oryonlabs.com/en/faq"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://oryonlabs.com/en/faq"/>
+    <loc>https://oryonx.ai/es/faq</loc>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://oryonx.ai/es/faq"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://oryonx.ai/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://oryonx.ai/en/faq"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://oryonlabs.com/en/faq</loc>
-    <xhtml:link rel="alternate" hreflang="es"        href="https://oryonlabs.com/es/faq"/>
-    <xhtml:link rel="alternate" hreflang="en"        href="https://oryonlabs.com/en/faq"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://oryonlabs.com/en/faq"/>
+    <loc>https://oryonx.ai/en/faq</loc>
+    <xhtml:link rel="alternate" hreflang="es"        href="https://oryonx.ai/es/faq"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://oryonx.ai/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://oryonx.ai/en/faq"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

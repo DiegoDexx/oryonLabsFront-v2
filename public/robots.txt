@@ -6,4 +6,4 @@ Disallow: /adminpanel
 Disallow: /api
 Disallow: /login
 
-Sitemap: https://oryonlabs.com/sitemap.xml
+Sitemap: https://oryonx.ai/sitemap.xml

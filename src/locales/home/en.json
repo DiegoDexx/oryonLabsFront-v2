@@ -19,7 +19,7 @@
     "trust_indicator_1": "Automatic response in seconds",
     "trust_indicator_2": "Visible results in 30 days",
     "trust_indicator_3": "Support included",
-    "panel_title": "Oryon Labs — Automation Dashboard",
+    "panel_title": "OryonX — Automation Dashboard",
     "panel_badge": "50+ SMBs automated",
     "metrics": {
       "leads": {
@@ -796,7 +796,7 @@
   "testimonials": {
     "badge": "Success stories",
     "title": "What our clients say",
-    "description": "Real results from companies that automated with Oryon Labs.",
+    "description": "Real results from companies that automated with OryonX.",
     "cards": [
       {
         "quote": "In 3 weeks we went from losing 40% of leads due to late response to capturing them automatically 24/7.",
@@ -806,7 +806,7 @@
         "rating": 5
       },
       {
-        "quote": "Oryon Labs automated our appointment and follow-up system. Now our team focuses on serving, not administering.",
+        "quote": "OryonX automated our appointment and follow-up system. Now our team focuses on serving, not administering.",
         "name": "Dr. Carlos Ruiz",
         "company": "Clínica BeautyMed",
         "result": "We save 3h/day",
@@ -976,7 +976,7 @@
     }
   },
   "footer": {
-    "brand": "OryonLabs",
+    "brand": "OryonX",
     "description": "We automate lead capture, customer service, and your company's workflows.",
     "newsletter": {
       "title": "Subscribe to newsletter",
@@ -1018,7 +1018,7 @@
       "phone": "+44 800 048 0408",
       "whatsapp": "WhatsApp available"
     },
-    "copyright": "© {year} OryonLabs. All rights reserved."
+    "copyright": "© {year} OryonX. All rights reserved."
   },
   "cookies": {
     "text": "We use cookies to improve your experience. By continuing, you agree to our",
@@ -1037,7 +1037,7 @@
     "quick_questions_label": "Quick questions:",
     "rate_limit_banner": "Message limit reached. Contact us at support@oryonx.ai",
     "lead_done_badge": "✅ Request received",
-    "initial_message": "Hi! I'm Ridley, Oryon Labs' virtual assistant. How can I help you today?",
+    "initial_message": "Hi! I'm Ridley, OryonX's virtual assistant. How can I help you today?",
     "placeholder": "Type your message...",
     "rate_limit_msg": "You've reached the message limit. You can continue in 1 hour or contact us directly.",
     "timeout_msg": "The connection took too long. Please try again.",

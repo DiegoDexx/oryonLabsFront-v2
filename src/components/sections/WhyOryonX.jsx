@@ -28,7 +28,7 @@ function StatusBadge({ children }) {
   );
 }
 
-export default function WhyOryonLabs() {
+export default function WhyOryonX() {
   const location = useLocation();
   const pathLang = location.pathname.split('/')[1];
   const lang = ['es', 'en'].includes(pathLang) ? pathLang : 'es';

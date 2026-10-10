@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useAdminT } from '../../../../context/AdminLangContext';
 import { getChannelConfig } from './metrics/helpers';
+import { SummaryKpiCard, KpiCard } from './metrics/primitives';
 
 import LeadCaptureTrend    from './metrics/LeadCaptureTrend';
 import ChannelCards        from './metrics/ChannelCards';
@@ -46,49 +47,6 @@ const formatDate = () =>
     month: 'long',
     day: 'numeric',
   });
-
-// ── Summary KPI card (top row) ────────────────────────────────────────────────
-
-const SummaryKpiCard = ({ label, value, icon, trend, trendLabel, neutral }) => (
-  <div className="bg-white rounded-2xl border border-crm-border shadow-[0_1px_3px_rgba(15,23,42,0.06)] p-5 flex flex-col gap-3">
-    <div className="flex items-start justify-between">
-      <div className="w-10 h-10 rounded-[10px] bg-cyan-pale flex items-center justify-center text-crm-accent flex-shrink-0">
-        {icon}
-      </div>
-      {trend !== undefined && trend !== null && (
-        <span className={`text-xs font-semibold px-2 py-0.5 rounded-full flex items-center gap-0.5 ${
-          neutral
-            ? 'text-gray-500 bg-gray-100'
-            : trend > 0
-              ? 'text-green-600 bg-green-50'
-              : trend < 0
-                ? 'text-red-500 bg-red-50'
-                : 'text-gray-500 bg-gray-100'
-        }`}>
-          {neutral ? null : trend > 0 ? '↑' : trend < 0 ? '↓' : '→'}
-          {trendLabel}
-        </span>
-      )}
-    </div>
-    <div>
-      <p className="text-[32px] font-bold text-crm-text tabular-nums leading-tight">{value}</p>
-      <p className="text-sm text-[#64748B] mt-0.5">{label}</p>
-    </div>
-  </div>
-);
-
-// ── Detail KPI card (inside collapsible sections) ─────────────────────────────
-
-const KpiCard = ({ label, value, sub, color = 'text-navy', badge }) => (
-  <div className="bg-white rounded-xl border border-crm-border p-5 shadow-[0_1px_3px_rgba(15,23,42,0.06)]">
-    <p className="text-xs text-gray-500 mb-1">{label}</p>
-    <div className="flex items-end gap-2">
-      <p className={`text-3xl font-bold tabular-nums ${color}`}>{value}</p>
-      {badge}
-    </div>
-    {sub && <p className="text-xs text-gray-400 mt-1">{sub}</p>}
-  </div>
-);
 
 const TrendPill = ({ value }) => {
   if (value === null || value === undefined) return null;

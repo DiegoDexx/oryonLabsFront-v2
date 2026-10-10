@@ -24,15 +24,20 @@ import LeadsView  from '../components/adminPanel/views/LeadsView';
 import UsersView  from '../components/adminPanel/views/UsersView';
 import UserModal  from '../components/adminPanel/modals/UserModal';
 import Toast      from '../components/adminPanel/Toast';
+import OrganizationsView        from '../components/adminPanel/views/platform/OrganizationsView';
+import AssistantPerformanceView from '../components/adminPanel/views/platform/AssistantPerformanceView';
 
 const API_URL = import.meta.env.VITE_API_URL;
+const PLATFORM_TABS = new Set(['organizations', 'ai_performance']);
 
 // ── AdminPanelInner ──────────────────────────────────────────────────────────
 
 const AdminPanelInner = () => {
   const { t } = useAdminT();
   const token    = useSelector((s) => s.auth.token);
+  const user     = useSelector((s) => s.auth.user);
   const navigate = useNavigate();
+  const isPlatformAdmin = user?.organization_id === 1;
 
   // ── Sidebar state (persisted) ──────────────────────────────────────────────
   const [sidebarCollapsed, setSidebarCollapsed] = useState(
@@ -57,6 +62,8 @@ const AdminPanelInner = () => {
   const [invoices,       setInvoices]       = useState([]);
   const [leads,          setLeads]          = useState([]);
   const [users,          setUsers]          = useState([]);
+  const [organizations,  setOrganizations]  = useState([]);
+  const [selectedOrgId,  setSelectedOrgId]  = useState(null);
 
   // ── Modals ─────────────────────────────────────────────────────────────────
   const [showCreateSub,     setShowCreateSub]     = useState(false);
@@ -76,6 +83,10 @@ const AdminPanelInner = () => {
   const { data: rawInvoices }      = useGet(`${API_URL}/api/invoices`,            token);
   const { data: rawLeads }         = useGet(`${API_URL}/api/leads`,               token);
   const { data: rawUsers }         = useGet(`${API_URL}/api/users`,               token);
+  // Cross-tenant — only fetched for OryonX staff (org id 1); backend
+  // would 403 it for anyone else, so don't even fire the request otherwise.
+  const { data: rawOrganizations, loading: loadingOrganizations } =
+    useGet(isPlatformAdmin ? `${API_URL}/api/organizations` : null, token);
 
   useEffect(() => { if (!token) navigate('/login'); }, [token, navigate]);
   useEffect(() => { if (Array.isArray(rawProjects))      setProjects(rawProjects);           }, [rawProjects]);
@@ -84,6 +95,7 @@ const AdminPanelInner = () => {
   useEffect(() => { if (Array.isArray(rawInvoices))      setInvoices(rawInvoices);           }, [rawInvoices]);
   useEffect(() => { if (Array.isArray(rawLeads))         setLeads(rawLeads);                 }, [rawLeads]);
   useEffect(() => { if (Array.isArray(rawUsers))         setUsers(rawUsers);                 }, [rawUsers]);
+  useEffect(() => { if (Array.isArray(rawOrganizations)) setOrganizations(rawOrganizations); }, [rawOrganizations]);
 
   // ── Refresh helpers ────────────────────────────────────────────────────────
   const refreshClients       = async () => { const d = await apiGetClients(token);       if (Array.isArray(d)) setClients(d);       };
@@ -163,6 +175,8 @@ const AdminPanelInner = () => {
     invoices:      t.tabs.invoices,
     leads:         t.tabs.leads,
     users:         t.tabs.users,
+    organizations: t.tabs.organizations,
+    ai_performance: t.tabs.ai_performance,
   };
 
   return (
@@ -188,6 +202,9 @@ const AdminPanelInner = () => {
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenuOpen={setMobileMenuOpen}
           searchRef={searchRef}
+          onNavigate={setSelectedTab}
+          organizations={organizations}
+          isPlatformAdmin={isPlatformAdmin}
         />
 
         {/* Scrollable content */}
@@ -202,7 +219,8 @@ const AdminPanelInner = () => {
                     {tabTitle[selectedTab]}
                   </h1>
 
-                  {/* Quick-action buttons */}
+                  {/* Quick-action buttons — not relevant on platform (cross-tenant) tabs */}
+                  {!PLATFORM_TABS.has(selectedTab) && (
                   <div className="sm:ml-auto flex flex-wrap gap-2">
                     <button onClick={() => setShowCreateLead(true)}
                       className="flex items-center gap-1.5 bg-white text-gray-700 border border-crm-border px-3 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 hover:border-gray-300 transition shadow-sm">
@@ -230,6 +248,7 @@ const AdminPanelInner = () => {
                       {t.actions.invoice}
                     </button>
                   </div>
+                  )}
                 </div>
               </div>
             )}
@@ -303,6 +322,21 @@ const AdminPanelInner = () => {
                 users={users}
                 token={token}
                 onRefresh={refreshUsers}
+              />
+            )}
+            {selectedTab === 'organizations' && (
+              <OrganizationsView
+                organizations={organizations}
+                loading={loadingOrganizations}
+                onViewPerformance={(orgId) => { setSelectedOrgId(orgId); setSelectedTab('ai_performance'); }}
+              />
+            )}
+            {selectedTab === 'ai_performance' && (
+              <AssistantPerformanceView
+                organizations={organizations}
+                selectedOrgId={selectedOrgId}
+                onSelectOrg={setSelectedOrgId}
+                token={token}
               />
             )}
           </div>
