@@ -226,7 +226,9 @@
         "urgency": "Urgencia",
         "status": "Estado",
         "date": "Fecha",
-        "actions": "Acciones"
+        "actions": "Acciones",
+        "sector": "Sector",
+        "channel_source": "Canal / Fuente"
       },
       "empty": "Sin leads registrados.",
       "convert": "Convertir",
@@ -260,6 +262,39 @@
       "confirm": "Sí, eliminar",
       "deleting": "Eliminando...",
       "confirm_prefix": "¿Eliminar a"
+    },
+    "filters": {
+      "sector_all": "Sector — todos",
+      "sector_none": "Sin sector"
+    },
+    "sectors": {
+      "reformas_oficios": "Reformas y oficios",
+      "clinica_salud": "Clínica o salud",
+      "despacho_legal": "Despacho legal",
+      "otro": "Otro"
+    },
+    "challenge_ids": {
+      "tiempo": "Tareas repetitivas",
+      "clientes": "Atención a clientes",
+      "leads": "Seguimiento de leads",
+      "empezar": "Por dónde empezar",
+      "asistente": "Asistente 24/7",
+      "herramientas_desconectadas": "Herramientas desconectadas"
+    },
+    "capture": {
+      "title": "Datos de captación",
+      "sector": "Sector",
+      "plan": "Plan elegido",
+      "plan_short": "Plan",
+      "message": "Mensaje del cliente",
+      "source_page": "Página de origen",
+      "utm_source": "UTM source",
+      "utm_medium": "UTM medium",
+      "utm_campaign": "UTM campaign",
+      "utm_content": "UTM content",
+      "privacy": "Política de privacidad",
+      "privacy_accepted": "Aceptada",
+      "privacy_missing": "Consentimiento no registrado"
     }
   },
   "clients": {
@@ -368,7 +403,13 @@
       "email": "Email",
       "instagram": "Instagram",
       "form": "Formulario web"
-    }
+    },
+    "sector": "Sector",
+    "sector_none": "Sin especificar",
+    "sector_other": "Especifica el sector",
+    "sector_other_placeholder": "Ej. Inmobiliaria",
+    "message": "Mensaje",
+    "message_placeholder": "Contexto o notas del lead (máx. 1000 caracteres)"
   },
   "modal_client": {
     "title": "Añadir cliente",

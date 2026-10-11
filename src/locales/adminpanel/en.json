@@ -226,7 +226,9 @@
         "urgency": "Urgency",
         "status": "Status",
         "date": "Date",
-        "actions": "Actions"
+        "actions": "Actions",
+        "sector": "Sector",
+        "channel_source": "Channel / Source"
       },
       "empty": "No leads registered yet.",
       "convert": "Convert",
@@ -260,6 +262,39 @@
       "confirm": "Yes, delete",
       "deleting": "Deleting...",
       "confirm_prefix": "Delete"
+    },
+    "filters": {
+      "sector_all": "Sector — all",
+      "sector_none": "No sector"
+    },
+    "sectors": {
+      "reformas_oficios": "Renovation & trades",
+      "clinica_salud": "Clinic & healthcare",
+      "despacho_legal": "Legal firm",
+      "otro": "Other"
+    },
+    "challenge_ids": {
+      "tiempo": "Repetitive tasks",
+      "clientes": "Customer handling",
+      "leads": "Lead follow-up",
+      "empezar": "Where to start",
+      "asistente": "24/7 assistant",
+      "herramientas_desconectadas": "Disconnected tools"
+    },
+    "capture": {
+      "title": "Capture data",
+      "sector": "Sector",
+      "plan": "Chosen plan",
+      "plan_short": "Plan",
+      "message": "Customer message",
+      "source_page": "Source page",
+      "utm_source": "UTM source",
+      "utm_medium": "UTM medium",
+      "utm_campaign": "UTM campaign",
+      "utm_content": "UTM content",
+      "privacy": "Privacy policy",
+      "privacy_accepted": "Accepted",
+      "privacy_missing": "Consent not recorded"
     }
   },
   "clients": {
@@ -368,7 +403,13 @@
       "email": "Email",
       "instagram": "Instagram",
       "form": "Web form"
-    }
+    },
+    "sector": "Sector",
+    "sector_none": "Not specified",
+    "sector_other": "Specify the sector",
+    "sector_other_placeholder": "E.g. Real estate",
+    "message": "Message",
+    "message_placeholder": "Context or notes about the lead (max. 1000 characters)"
   },
   "modal_client": {
     "title": "Add client",

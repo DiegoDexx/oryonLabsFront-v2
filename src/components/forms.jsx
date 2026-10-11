@@ -203,7 +203,7 @@ const ProjectRequestForm = ({ variant = "full", channel = "form" }) => {
       language:      lang,
 
       // Campos nuevos
-      plan:                selectedPlan,
+      plan:                selectedPlan === tf.plan.unknown ? "" : selectedPlan, // "not sure yet" is not a plan
       sector:              selectedSector,
       sector_other:        selectedSector === "otro" ? sectorOther : "",
       message:             freeMessage,
