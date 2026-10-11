@@ -81,6 +81,31 @@ export default function ChatWidget({ autoOpen = false }) {
     setIsLimited(getMessageCount() >= RATE_LIMIT);
   }, []);
 
+  // ── Fixes móvil ─────────────────────────────────────────────
+  // Altura real visible (dvh cae mal con la barra del navegador; visualViewport
+  // cubre además el teclado abierto). Se aplica al panel como maxHeight.
+  const [viewportH, setViewportH] = useState(
+    typeof window !== 'undefined' ? (window.visualViewport?.height || window.innerHeight) : 800
+  );
+  useEffect(() => {
+    const vv = window.visualViewport;
+    const onResize = () => setViewportH(vv?.height || window.innerHeight);
+    vv?.addEventListener('resize', onResize);
+    window.addEventListener('resize', onResize);
+    return () => {
+      vv?.removeEventListener('resize', onResize);
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
+
+  // Al abrir el chat, la página de fondo no hace scroll
+  useEffect(() => {
+    if (!isOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prev; };
+  }, [isOpen]);
+
   const remaining = Math.max(0, RATE_LIMIT - msgCount);
 
   const addMessage = (type, text) => {
@@ -173,7 +198,7 @@ export default function ChatWidget({ autoOpen = false }) {
         <button
           onClick={() => setIsOpen(true)}
           aria-label="Abrir chat con Ridley"
-          className="fixed bottom-6 right-6 w-14 h-14 bg-cyan hover:bg-cyan-medium rounded-full shadow-2xl flex items-center justify-center transition-all z-50 hover:scale-110"
+          className="fixed bottom-20 md:bottom-6 right-6 w-14 h-14 bg-cyan hover:bg-cyan-medium rounded-full shadow-2xl flex items-center justify-center transition-all z-50 hover:scale-110"
         >
           <img
             src={ridleyImg}
@@ -189,8 +214,12 @@ export default function ChatWidget({ autoOpen = false }) {
       {/* Chat Widget */}
       {isOpen && (
         <div
-          className="fixed bottom-6 right-6 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl z-50 border border-gray-100 flex flex-col overflow-hidden"
-          style={{ maxHeight: 'calc(100vh - 5rem)' }}
+          className="fixed bottom-20 md:bottom-6 right-3 sm:right-6 w-[calc(100vw-1.5rem)] max-w-sm bg-white rounded-2xl shadow-2xl z-50 border border-gray-100 flex flex-col overflow-hidden"
+          style={{
+            // dvh con fallback: el panel nunca supera el área visible, ni con
+            // teclado abierto (visualViewport) ni con la barra de direcciones.
+            maxHeight: `calc(min(${viewportH}px, 100dvh) - 6.5rem - env(safe-area-inset-bottom, 0px))`,
+          }}
         >
 
           {/* Header */}
@@ -372,7 +401,7 @@ export default function ChatWidget({ autoOpen = false }) {
                   onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                   placeholder={t.placeholder}
                   disabled={isLoading}
-                  className="flex-1 bg-gray-100 rounded-full px-4 py-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan disabled:opacity-50"
+                  className="flex-1 bg-gray-100 rounded-full px-4 py-3 text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan disabled:opacity-50"
                 />
                 <button
                   onClick={() => handleSend()}

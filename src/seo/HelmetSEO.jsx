@@ -13,6 +13,7 @@ export default function HelmetSEO({
   image,
   lang = 'es',
   alternates = {},
+  robots = 'index, follow',
 }) {
   useHead({
     title,
@@ -20,7 +21,7 @@ export default function HelmetSEO({
     meta: [
       { name: 'description',         content: description },
       { name: 'keywords',            content: keywords },
-      { name: 'robots',              content: 'index, follow' },
+      { name: 'robots',              content: robots },
       { name: 'theme-color',         content: '#060F27' },
       { property: 'og:title',        content: title },
       { property: 'og:description',  content: description },

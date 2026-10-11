@@ -25,7 +25,9 @@ export default function ComparisonTable({ comparison, plans = [], symbol = '€'
   if (!comparison) return null;
 
   const anchor = comparison.anchor_id || (lang === 'en' ? 'comparison' : 'comparativa');
-  const contactAnchor = `#${lang === 'en' ? 'contact' : 'contacto'}`;
+  const consultAnchor = `#${lang === 'en' ? 'contact' : 'contacto'}`;
+  const planAnchor = (i) =>
+    plans[i] ? `/${lang}/contacto?plan=${encodeURIComponent(plans[i].name)}` : consultAnchor;
   const consultLabel = comparison.consult_label || (lang === 'en' ? 'Consult' : 'Consultar');
 
   const headerBg = (i) => (i === 1 ? 'bg-cyan-50' : 'bg-white');
@@ -75,7 +77,7 @@ export default function ComparisonTable({ comparison, plans = [], symbol = '€'
                 {comparison.plan_names.map((_, i) => (
                   <td key={i} className={`py-3 px-3 ${headerBg(i)} ${cellBorder(i)}`}>
                     {plans[i] && (
-                      <PlanButton text={plans[i].cta} isPro={i === 1} href={contactAnchor} small />
+                      <PlanButton text={plans[i].cta} isPro={i === 1} href={planAnchor(i)} small />
                     )}
                   </td>
                 ))}
@@ -125,7 +127,7 @@ export default function ComparisonTable({ comparison, plans = [], symbol = '€'
                             )
                           ) : isConsultValue(val) ? (
                             <a
-                              href={contactAnchor}
+                              href={consultAnchor}
                               className="inline-flex items-center gap-1 text-sm font-semibold text-orange-600 hover:text-orange-700 underline decoration-dotted underline-offset-2 transition-colors"
                             >
                               {val}
@@ -152,7 +154,7 @@ export default function ComparisonTable({ comparison, plans = [], symbol = '€'
                 {comparison.plan_names.map((_, i) => (
                   <td key={i} className={`py-5 px-3 ${cellBorder(i)} ${i === 1 ? 'bg-cyan-pale/10' : ''}`}>
                     {plans[i] && (
-                      <PlanButton text={plans[i].cta} isPro={i === 1} href={contactAnchor} />
+                      <PlanButton text={plans[i].cta} isPro={i === 1} href={planAnchor(i)} />
                     )}
                   </td>
                 ))}
@@ -175,7 +177,7 @@ export default function ComparisonTable({ comparison, plans = [], symbol = '€'
                 <p className="text-cyan-100 text-sm sm:text-base max-w-md">{comparison.closing_cta.subtitle}</p>
               </div>
               <a
-                href={contactAnchor}
+                href={consultAnchor}
                 className="flex-shrink-0 bg-cyan hover:bg-cyan-medium text-white font-semibold px-7 py-3.5 rounded-lg transition-all whitespace-nowrap"
               >
                 {comparison.closing_cta.cta}
