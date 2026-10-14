@@ -110,7 +110,7 @@ const AssistantPerformanceView = ({ organizations, selectedOrgId, onSelectOrg, t
         </select>
         {selectedOrg && (
           <span className="text-xs text-gray-400">
-            {ta.assistant_id}: {[selectedOrg.vapi_assistant_id, selectedOrg.telnyx_assistant_id].filter(Boolean).join(' / ') || '—'} ·{ta.workflow_id}: {(selectedOrg.n8n_workflow_ids || []).join(', ') || '—'}
+            {ta.assistant_id}: {[selectedOrg.vapi_assistant_id, selectedOrg.telnyx_assistant_id].filter(Boolean).join(' / ') || '—'} · {ta.workflow_id}: {(selectedOrg.n8n_workflow_ids || []).join(', ') || '—'}
           </span>
         )}
       </div>
