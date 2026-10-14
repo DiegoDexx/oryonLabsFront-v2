@@ -26,6 +26,7 @@ import UserModal  from '../components/adminPanel/modals/UserModal';
 import Toast      from '../components/adminPanel/Toast';
 import OrganizationsView        from '../components/adminPanel/views/platform/OrganizationsView';
 import AssistantPerformanceView from '../components/adminPanel/views/platform/AssistantPerformanceView';
+import { normalizeOrganization } from '../components/adminPanel/views/platform/orgDisplay';
 
 const API_URL = import.meta.env.VITE_API_URL;
 const PLATFORM_TABS = new Set(['organizations', 'ai_performance']);
@@ -95,7 +96,7 @@ const AdminPanelInner = () => {
   useEffect(() => { if (Array.isArray(rawInvoices))      setInvoices(rawInvoices);           }, [rawInvoices]);
   useEffect(() => { if (Array.isArray(rawLeads))         setLeads(rawLeads);                 }, [rawLeads]);
   useEffect(() => { if (Array.isArray(rawUsers))         setUsers(rawUsers);                 }, [rawUsers]);
-  useEffect(() => { if (Array.isArray(rawOrganizations)) setOrganizations(rawOrganizations); }, [rawOrganizations]);
+  useEffect(() => { if (Array.isArray(rawOrganizations)) setOrganizations(rawOrganizations.map(normalizeOrganization)); }, [rawOrganizations]);
 
   // ── Refresh helpers ────────────────────────────────────────────────────────
   const refreshClients       = async () => { const d = await apiGetClients(token);       if (Array.isArray(d)) setClients(d);       };
@@ -324,14 +325,14 @@ const AdminPanelInner = () => {
                 onRefresh={refreshUsers}
               />
             )}
-            {selectedTab === 'organizations' && (
+            {isPlatformAdmin && selectedTab === 'organizations' && (
               <OrganizationsView
                 organizations={organizations}
                 loading={loadingOrganizations}
                 onViewPerformance={(orgId) => { setSelectedOrgId(orgId); setSelectedTab('ai_performance'); }}
               />
             )}
-            {selectedTab === 'ai_performance' && (
+            {isPlatformAdmin && selectedTab === 'ai_performance' && (
               <AssistantPerformanceView
                 organizations={organizations}
                 selectedOrgId={selectedOrgId}

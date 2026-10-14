@@ -53,7 +53,7 @@ const OrganizationsView = ({ organizations, loading, onViewPerformance }) => {
                   <tr key={org.id} className="hover:bg-gray-50/40 transition">
                     <td className="px-6 py-3.5">
                       <div className="font-medium text-gray-900">{org.name}</div>
-                      <div className="text-xs text-gray-400">{org.slug}</div>
+                      {org.slug && <div className="text-xs text-gray-400">{org.slug}</div>}
                     </td>
                     <td className="px-6 py-3.5 text-gray-600 capitalize">{org.plan}</td>
                     <td className="px-6 py-3.5">
