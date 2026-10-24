@@ -30,4 +30,3 @@ ACCIONES: faq_response|collect_lead_data|create_lead|not_related|request_human
 SOLO JSON. Empieza { termina }. Sin texto antes ni después.
 {"respuesta":"Texto aquí","accion_recomendada":"faq_response","es_lead":false,"lead_confirmado":false,"datos_suficientes_para_crm":false,"missing_fields":[],"create_lead":false,"lead":{"name":"","company":"","email":"","phone":"","challenge":"","challenge_id":"","sector":"","sector_other":"","client_volume":"","tools":"","urgency":"","plan":"","message":"","language":"${lang}","suggested_plan":"","commercial_summary":""}}`;
 }
-
