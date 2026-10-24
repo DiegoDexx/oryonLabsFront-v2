@@ -11,7 +11,7 @@ const INITIAL = {
 };
 const MESSAGE_MAX = 1000;
 
-const CreateLeadModal = ({ isOpen, onClose, onSuccess }) => {
+const CreateLeadModal = ({ isOpen, onClose, token, onSuccess }) => {
   const { t } = useAdminT();
   const ml = t.modal_lead;
   const lsec = t.leads.sectors;
@@ -46,7 +46,7 @@ const CreateLeadModal = ({ isOpen, onClose, onSuccess }) => {
       const { sector, sector_other, message, ...base } = form;
       const sectorOther = sector_other.trim();
       const text = message.trim();
-      await apiSubmitLeadForm({
+      await apiSubmitLeadForm(token, {
         ...base,
         status: "new",
         ...(sector ? { sector } : {}),

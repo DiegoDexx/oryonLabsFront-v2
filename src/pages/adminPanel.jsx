@@ -370,6 +370,7 @@ const AdminPanelInner = () => {
       <CreateLeadModal
         isOpen={showCreateLead}
         onClose={() => setShowCreateLead(false)}
+        token={token}
         onSuccess={() => { refreshLeads(); showToast(t.toasts.lead_created); }}
       />
       <UserModal
