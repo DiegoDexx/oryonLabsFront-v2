@@ -80,8 +80,12 @@ export const apiDeleteLead = (token, id) =>
   request("DELETE", `/api/leads/${id}`, null, token);
 
 // ── Projects ──────────────────────────────────────────────────────────────────
+// GET /api/projects → indexFull: [{ client, project, requirements }] (auth:sanctum, tenant-scoped).
 export const apiGetProjects = (token) =>
-  request("GET", "/api/admin/projects/full", null, token);
+  request("GET", "/api/projects", null, token);
+
+export const apiUpdateProject = (token, id, data) =>
+  request("PATCH", `/api/projects/${id}`, data, token);
 
 export const apiUpdateProjectStage = (token, id, stage) =>
   request("PATCH", `/api/projects/${id}/stage`, { stage }, token);

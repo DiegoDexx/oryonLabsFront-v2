@@ -31,6 +31,11 @@ export const PIPELINE_STAGES = [
   'negotiation', 'onboarding', 'active'
 ];
 
+// Exact enum accepted by ProjectController@updateStage / @update.
+export const PROJECT_STAGES = [...PIPELINE_STAGES, 'closed_won', 'closed_lost'];
+
+export const PROJECT_PRIORITIES = ['low', 'medium', 'high'];
+
 export const StatCard = ({ label, value, sub, color = 'cyan' }) => (
   <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
     <p className="text-sm text-gray-500 mb-1">{label}</p>

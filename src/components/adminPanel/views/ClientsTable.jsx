@@ -4,6 +4,7 @@ import Modal from "../../ui/Modal";
 import { apiDeleteClient, apiUpdateClient } from "../../../api/apiActions";
 import { useAdminT } from "../../../context/AdminLangContext";
 import { PLAN_LABEL } from "../shared";
+import EditClientModal from "../modals/EditClientModal";
 
 const CLIENT_STATUS = {
   active:   "bg-green-100 text-green-700",
@@ -23,6 +24,12 @@ const EyeIcon = () => (
   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
     <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+  </svg>
+);
+
+const PencilIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
   </svg>
 );
 
@@ -47,7 +54,7 @@ const DetailField = ({ label, value }) => (
 
 const CLOSED_STAGES = ["closed_won", "closed_lost"];
 
-const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) => {
+const ClientsTable = ({ clients, token, onDelete, onStatusChange, onUpdated, onRefresh }) => {
   const { t } = useAdminT();
   const tc = t.clients;
 
@@ -57,6 +64,7 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
   const [openStatusId, setOpenStatusId] = useState(null);
   const [dropdownPos, setDropdownPos]   = useState({ top: 0, left: 0 });
   const [viewTarget, setViewTarget]     = useState(null);
+  const [editTarget, setEditTarget]     = useState(null);
   const [refreshing, setRefreshing]     = useState(false);
 
   useEffect(() => {
@@ -205,6 +213,13 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
                         <EyeIcon />
                       </button>
                       <button
+                        onClick={() => setEditTarget(client)}
+                        className="p-1.5 text-gray-400 hover:text-cyan hover:bg-cyan/10 rounded-lg transition"
+                        title={tc.edit_btn}
+                      >
+                        <PencilIcon />
+                      </button>
+                      <button
                         onClick={() => openDeleteModal(client)}
                         className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition"
                         title={tc.delete.title}
@@ -290,6 +305,14 @@ const ClientsTable = ({ clients, token, onDelete, onStatusChange, onRefresh }) =
           </div>
         )}
       </Modal>
+
+      <EditClientModal
+        isOpen={!!editTarget}
+        onClose={() => setEditTarget(null)}
+        token={token}
+        client={editTarget}
+        onSuccess={onUpdated}
+      />
 
       {/* Confirm delete modal */}
       <Modal isOpen={!!deleteTarget} onClose={closeDeleteModal} title={tc.delete.title}>

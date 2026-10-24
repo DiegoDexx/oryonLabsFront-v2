@@ -57,7 +57,10 @@
     "user_updated": "Usuario actualizado",
     "user_deleted": "Usuario eliminado",
     "project_deleted": "Proyecto eliminado correctamente.",
-    "subscription_deleted": "Suscripción eliminada correctamente."
+    "subscription_deleted": "Suscripción eliminada correctamente.",
+    "client_updated": "Cliente actualizado",
+    "project_updated": "Proyecto actualizado",
+    "project_stage_updated": "Estado del proyecto actualizado"
   },
   "common": {
     "cancel": "Cancelar",
@@ -337,7 +340,8 @@
       "confirm": "Sí, eliminar",
       "deleting": "Eliminando...",
       "about_to_delete": "Estás a punto de eliminar a"
-    }
+    },
+    "edit_btn": "Editar cliente"
   },
   "subscriptions": {
     "kpi_mrr": "MRR Total",
@@ -424,7 +428,12 @@
     "email_required": "El email es obligatorio.",
     "email_invalid": "Email inválido.",
     "submit": "Crear cliente",
-    "submitting": "Creando..."
+    "submitting": "Creando...",
+    "edit_title": "Editar cliente",
+    "status_churned": "Perdido",
+    "language": "Idioma",
+    "save": "Guardar cambios",
+    "saving": "Guardando..."
   },
   "modal_subscription": {
     "title": "Nueva suscripción",
@@ -557,9 +566,25 @@
       "category": "Categoría",
       "client": "Cliente",
       "client_email": "Email cliente",
-      "requirements": "Requisitos"
+      "requirements": "Requisitos",
+      "stage": "Estado",
+      "priority": "Prioridad"
     },
-    "delete_btn": "Eliminar proyecto"
+    "delete_btn": "Eliminar proyecto",
+    "loading": "Cargando proyectos...",
+    "load_error": "No se pudieron cargar los proyectos.",
+    "retry": "Reintentar",
+    "edit_btn": "Editar proyecto",
+    "stages": {
+      "lead": "Lead",
+      "contacted": "Contactado",
+      "proposal": "Propuesta",
+      "negotiation": "Negociación",
+      "onboarding": "Onboarding",
+      "active": "Activo",
+      "closed_won": "Cerrado (ganado)",
+      "closed_lost": "Cerrado (perdido)"
+    }
   },
   "confirm_delete": {
     "title": "Confirmar eliminación",
@@ -657,5 +682,22 @@
     "kpi_revenue": "Ingresos (MRR)",
     "kpi_ai_cost": "Coste IA",
     "kpi_margin_usd": "Margen"
+  },
+  "modal_project": {
+    "title": "Editar proyecto",
+    "name": "Nombre",
+    "category": "Categoría",
+    "priority": "Prioridad",
+    "priority_none": "Sin prioridad",
+    "priorities": {
+      "low": "Baja",
+      "medium": "Media",
+      "high": "Alta"
+    },
+    "name_required": "El nombre es obligatorio.",
+    "name_too_long": "Máximo 255 caracteres.",
+    "category_required": "La categoría es obligatoria.",
+    "submit": "Guardar cambios",
+    "submitting": "Guardando..."
   }
 }
