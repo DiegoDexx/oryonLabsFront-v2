@@ -93,8 +93,9 @@ const ProjectsTable = ({ projects, token, onDeleteProject }) => {
     },
   ];
 
-  const rows = projects.map((item) => ({
-    id:           item.project?.id ?? Math.random(),
+  const rows = projects.map((item, idx) => ({
+    // id estable: Math.random() regeneraba las keys en cada render
+    id:           item.project?.id ?? `missing-${idx}`,
     projectName:  item.project?.name     ?? tp.no_name,
     category:     item.project?.category ?? tp.no_category,
     clientName:   item.client?.name      ?? tp.no_client,
@@ -108,8 +109,8 @@ const ProjectsTable = ({ projects, token, onDeleteProject }) => {
         <DataGrid
           rows={rows}
           columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5, 10, 20]}
+          initialState={{ pagination: { paginationModel: { pageSize: 5 } } }}
+          pageSizeOptions={[5, 10, 20]}
           disableSelectionOnClick
           autoHeight
           getRowHeight={() => "auto"}

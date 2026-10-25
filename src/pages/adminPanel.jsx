@@ -109,7 +109,10 @@ const AdminPanelInner = () => {
   // ── Handlers ───────────────────────────────────────────────────────────────
   const handleStageChange = async (projectId, stage) => {
     await apiUpdateProjectStage(token, projectId, stage);
-    setProjects((prev) => prev.map((p) => p.id === projectId ? { ...p, stage } : p));
+    // items con forma {client, project, requirements} — el id vive en p.project
+    setProjects((prev) => prev.map((p) =>
+      p.project?.id === projectId ? { ...p, project: { ...p.project, stage } } : p
+    ));
   };
 
   const handleSubscriptionStatus = async (id, status) => {
@@ -123,7 +126,9 @@ const AdminPanelInner = () => {
     showToast(t.toasts.invoice_paid);
   };
 
-  const handleClientDelete = () => { refreshClients(); showToast(t.toasts.client_deleted); };
+  // Al borrar un cliente el backend puede resetear sus leads vinculados
+  // (status/client_id) — refrescamos leads además de clients.
+  const handleClientDelete = () => { refreshClients(); refreshLeads(); showToast(t.toasts.client_deleted); };
 
   const handleSubscriptionDelete = (subId) => {
     setSubscriptions((prev) => prev.filter((s) => s.id !== subId));
@@ -152,6 +157,9 @@ const AdminPanelInner = () => {
     showToast(msg);
     refreshClients();
     refreshLeads();
+    // La conversión crea un Project (stage onboarding) en backend — sin este
+    // refetch la pestaña Proyectos muestra la lista stale hasta recargar.
+    refreshProjects();
   };
 
   const handleLeadUpdate = (leadId, patch) => {
