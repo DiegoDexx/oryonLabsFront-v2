@@ -150,7 +150,9 @@ const AdminPanelInner = () => {
     showToast(t.toasts.invoice_paid);
   };
 
-  const handleClientDelete = () => { refreshClients(); showToast(t.toasts.client_deleted); };
+  // Al borrar un cliente el backend puede resetear sus leads vinculados
+  // (status/client_id) — refrescamos leads además de clients.
+  const handleClientDelete = () => { refreshClients(); refreshLeads(); showToast(t.toasts.client_deleted); };
   const handleClientUpdated = () => { refreshClients(); showToast(t.toasts.client_updated); };
 
   const handleSubscriptionDelete = (subId) => {
@@ -180,6 +182,9 @@ const AdminPanelInner = () => {
     showToast(msg);
     refreshClients();
     refreshLeads();
+    // La conversión crea un Project (stage onboarding) en backend — sin este
+    // refetch la pestaña Proyectos muestra la lista stale hasta recargar.
+    loadProjects();
   };
 
   const handleLeadUpdate = (leadId, patch) => {
