@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
   apiGetClients, apiGetLeads, apiGetSubscriptions, apiGetInvoices, apiGetProjects,
-  apiGetUsers,
+  apiGetUsers, apiGetClientInvoices,
   apiUpdateProjectStage, apiDeleteProject, apiUpdateSubscriptionStatus, apiMarkInvoicePaid,
 } from '../api/apiActions';
 import { AdminLangProvider, useAdminT } from '../context/AdminLangContext';
@@ -16,6 +16,8 @@ import DashboardView        from '../components/adminPanel/views/dashboard/Dashb
 import PipelineView         from '../components/adminPanel/views/PipelineView';
 import SubscriptionsView    from '../components/adminPanel/views/SubscriptionsView';
 import InvoicesView         from '../components/adminPanel/views/InvoicesView';
+import ClientInvoicesView   from '../components/adminPanel/views/ClientInvoicesView';
+import BillingSettingsView  from '../components/adminPanel/views/BillingSettingsView';
 import CreateSubscriptionModal from '../components/adminPanel/modals/CreateSubscriptionModal';
 import CreateInvoiceModal      from '../components/adminPanel/modals/CreateInvoiceModal';
 import CreateClientModal       from '../components/adminPanel/modals/CreateClientModal';
@@ -63,7 +65,10 @@ const AdminPanelInner = () => {
   const [clients,        setClients]        = useState([]);
   const [subscriptions,  setSubscriptions]  = useState([]);
   const [invoices,       setInvoices]       = useState([]);
-  const [leads,          setLeads]          = useState([]);
+  const [clientInvoices,        setClientInvoices]        = useState([]);
+  const [clientInvoicesLoading, setClientInvoicesLoading] = useState(true);
+  const [clientInvoicesError,   setClientInvoicesError]   = useState(null);
+  const [leads,         setLeads]          = useState([]);
   const [users,          setUsers]          = useState([]);
   const [organizations,  setOrganizations]  = useState([]);
   const [selectedOrgId,  setSelectedOrgId]  = useState(null);
@@ -122,6 +127,25 @@ const AdminPanelInner = () => {
   }, [token]);
 
   useEffect(() => { loadProjects(); }, [loadProjects]);
+
+  // Facturas PSR → sus clientes. Mismo patrón que projects (no useGet): el
+  // error conserva status y el código del backend (p. ej. module_not_available)
+  // para que la vista distinga "sin facturas" de "no se pudo cargar".
+  const refreshClientInvoices = useCallback(async ({ silent = false } = {}) => {
+    if (!token) return;
+    if (!silent) setClientInvoicesLoading(true);
+    try {
+      const d = await apiGetClientInvoices(token);
+      setClientInvoices(Array.isArray(d) ? d : []);
+      setClientInvoicesError(null);
+    } catch (err) {
+      setClientInvoicesError(err);
+    } finally {
+      setClientInvoicesLoading(false);
+    }
+  }, [token]);
+
+  useEffect(() => { refreshClientInvoices(); }, [refreshClientInvoices]);
 
   // ── Handlers ───────────────────────────────────────────────────────────────
   const handleStageChange = async (projectId, stage) => {
@@ -191,6 +215,8 @@ const AdminPanelInner = () => {
     setLeads((prev) => prev.map((l) => l.id === leadId ? { ...l, ...patch } : l));
   };
 
+  const handleLeadEdited = () => { refreshLeads(); showToast(t.toasts.lead_updated); };
+
   const handleLeadDelete = (leadId) => {
     setLeads((prev) => prev.filter((l) => l.id !== leadId));
     showToast(t.toasts.lead_deleted);
@@ -207,7 +233,9 @@ const AdminPanelInner = () => {
     clients:       t.tabs.clients,
     subscriptions: t.tabs.subscriptions,
     invoices:      t.tabs.invoices,
-    leads:         t.tabs.leads,
+    'client-invoices':  t.tabs['client-invoices'],
+    'billing-settings': t.tabs['billing-settings'],
+    leads:        t.tabs.leads,
     users:         t.tabs.users,
     organizations: t.tabs.organizations,
     ai_performance: t.tabs.ai_performance,
@@ -345,6 +373,21 @@ const AdminPanelInner = () => {
             {selectedTab === 'invoices' && (
               <InvoicesView invoices={invoices} onMarkPaid={handleMarkPaid} />
             )}
+            {selectedTab === 'client-invoices' && (
+              <ClientInvoicesView
+                invoices={clientInvoices}
+                loading={clientInvoicesLoading}
+                error={clientInvoicesError}
+                token={token}
+                clients={clients}
+                onRetry={() => refreshClientInvoices()}
+                onRefresh={() => refreshClientInvoices({ silent: true })}
+                onToast={showToast}
+              />
+            )}
+            {selectedTab === 'billing-settings' && (
+              <BillingSettingsView token={token} onToast={showToast} />
+            )}
             {selectedTab === 'leads' && (
               <LeadsView
                 leads={leads}
@@ -355,6 +398,7 @@ const AdminPanelInner = () => {
                 onConvert={handleLeadConvert}
                 onDelete={handleLeadDelete}
                 onLeadUpdate={handleLeadUpdate}
+                onEdited={handleLeadEdited}
               />
             )}
             {selectedTab === 'users' && (
