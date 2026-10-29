@@ -57,7 +57,10 @@
     "user_updated": "User updated",
     "user_deleted": "User deleted",
     "project_deleted": "Project deleted successfully.",
-    "subscription_deleted": "Subscription deleted successfully."
+    "subscription_deleted": "Subscription deleted successfully.",
+    "client_updated": "Client updated",
+    "project_updated": "Project updated",
+    "project_stage_updated": "Project stage updated"
   },
   "common": {
     "cancel": "Cancel",
@@ -337,7 +340,8 @@
       "confirm": "Yes, delete",
       "deleting": "Deleting...",
       "about_to_delete": "You are about to delete"
-    }
+    },
+    "edit_btn": "Edit client"
   },
   "subscriptions": {
     "kpi_mrr": "Total MRR",
@@ -424,7 +428,12 @@
     "email_required": "Email is required.",
     "email_invalid": "Invalid email.",
     "submit": "Create client",
-    "submitting": "Creating..."
+    "submitting": "Creating...",
+    "edit_title": "Edit client",
+    "status_churned": "Churned",
+    "language": "Language",
+    "save": "Save changes",
+    "saving": "Saving..."
   },
   "modal_subscription": {
     "title": "New subscription",
@@ -557,9 +566,25 @@
       "category": "Category",
       "client": "Client",
       "client_email": "Client email",
-      "requirements": "Requirements"
+      "requirements": "Requirements",
+      "stage": "Stage",
+      "priority": "Priority"
     },
-    "delete_btn": "Delete project"
+    "delete_btn": "Delete project",
+    "loading": "Loading projects...",
+    "load_error": "Projects could not be loaded.",
+    "retry": "Retry",
+    "edit_btn": "Edit project",
+    "stages": {
+      "lead": "Lead",
+      "contacted": "Contacted",
+      "proposal": "Proposal",
+      "negotiation": "Negotiation",
+      "onboarding": "Onboarding",
+      "active": "Active",
+      "closed_won": "Closed (won)",
+      "closed_lost": "Closed (lost)"
+    }
   },
   "confirm_delete": {
     "title": "Confirm deletion",
@@ -657,5 +682,22 @@
     "kpi_revenue": "Revenue (MRR)",
     "kpi_ai_cost": "AI cost",
     "kpi_margin_usd": "Margin"
+  },
+  "modal_project": {
+    "title": "Edit project",
+    "name": "Name",
+    "category": "Category",
+    "priority": "Priority",
+    "priority_none": "No priority",
+    "priorities": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "name_required": "Name is required.",
+    "name_too_long": "Maximum 255 characters.",
+    "category_required": "Category is required.",
+    "submit": "Save changes",
+    "submitting": "Saving..."
   }
 }

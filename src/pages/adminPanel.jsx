@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useGet } from '../hooks/useFetch';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -58,6 +58,8 @@ const AdminPanelInner = () => {
 
   // ── Data ───────────────────────────────────────────────────────────────────
   const [projects,       setProjects]       = useState([]);
+  const [projectsLoading, setProjectsLoading] = useState(true);
+  const [projectsError,   setProjectsError]   = useState(null);
   const [clients,        setClients]        = useState([]);
   const [subscriptions,  setSubscriptions]  = useState([]);
   const [invoices,       setInvoices]       = useState([]);
@@ -78,7 +80,6 @@ const AdminPanelInner = () => {
   const showToast = (message, type = 'success') => setToast({ visible: true, message, type });
 
   // ── Data fetching ──────────────────────────────────────────────────────────
-  const { data: rawProjects }      = useGet(`${API_URL}/api/admin/projects/full`, token);
   const { data: rawClients }       = useGet(`${API_URL}/api/clients`,             token);
   const { data: rawSubscriptions } = useGet(`${API_URL}/api/subscriptions`,       token);
   const { data: rawInvoices }      = useGet(`${API_URL}/api/invoices`,            token);
@@ -90,7 +91,6 @@ const AdminPanelInner = () => {
     useGet(isPlatformAdmin ? `${API_URL}/api/organizations` : null, token);
 
   useEffect(() => { if (!token) navigate('/login'); }, [token, navigate]);
-  useEffect(() => { if (Array.isArray(rawProjects))      setProjects(rawProjects);           }, [rawProjects]);
   useEffect(() => { if (Array.isArray(rawClients))       setClients(rawClients);             }, [rawClients]);
   useEffect(() => { if (Array.isArray(rawSubscriptions)) setSubscriptions(rawSubscriptions); }, [rawSubscriptions]);
   useEffect(() => { if (Array.isArray(rawInvoices))      setInvoices(rawInvoices);           }, [rawInvoices]);
@@ -103,16 +103,40 @@ const AdminPanelInner = () => {
   const refreshSubscriptions = async () => { const d = await apiGetSubscriptions(token); if (Array.isArray(d)) setSubscriptions(d); };
   const refreshInvoices      = async () => { const d = await apiGetInvoices(token);      if (Array.isArray(d)) setInvoices(d);      };
   const refreshLeads         = async () => { const d = await apiGetLeads(token);         if (Array.isArray(d)) setLeads(d);         };
-  const refreshProjects      = async () => { const d = await apiGetProjects(token);      if (Array.isArray(d)) setProjects(d);      };
   const refreshUsers         = async () => { const d = await apiGetUsers(token);         if (Array.isArray(d)) setUsers(d);         };
+
+  // Projects load through apiActions (not useGet) so a 401/403/500 surfaces as an
+  // error state instead of silently rendering an empty list.
+  const loadProjects = useCallback(async () => {
+    if (!token) return;
+    setProjectsLoading(true);
+    setProjectsError(null);
+    try {
+      const d = await apiGetProjects(token);
+      setProjects(Array.isArray(d) ? d : []);
+    } catch (err) {
+      setProjectsError(err.status ? `${err.status} · ${err.message}` : err.message);
+    } finally {
+      setProjectsLoading(false);
+    }
+  }, [token]);
+
+  useEffect(() => { loadProjects(); }, [loadProjects]);
 
   // ── Handlers ───────────────────────────────────────────────────────────────
   const handleStageChange = async (projectId, stage) => {
     await apiUpdateProjectStage(token, projectId, stage);
-    // items con forma {client, project, requirements} — el id vive en p.project
     setProjects((prev) => prev.map((p) =>
       p.project?.id === projectId ? { ...p, project: { ...p.project, stage } } : p
     ));
+    showToast(t.toasts.project_stage_updated);
+  };
+
+  const handleProjectUpdated = (projectId, patch) => {
+    setProjects((prev) => prev.map((p) =>
+      p.project?.id === projectId ? { ...p, project: { ...p.project, ...patch } } : p
+    ));
+    showToast(t.toasts.project_updated);
   };
 
   const handleSubscriptionStatus = async (id, status) => {
@@ -129,6 +153,7 @@ const AdminPanelInner = () => {
   // Al borrar un cliente el backend puede resetear sus leads vinculados
   // (status/client_id) — refrescamos leads además de clients.
   const handleClientDelete = () => { refreshClients(); refreshLeads(); showToast(t.toasts.client_deleted); };
+  const handleClientUpdated = () => { refreshClients(); showToast(t.toasts.client_updated); };
 
   const handleSubscriptionDelete = (subId) => {
     setSubscriptions((prev) => prev.filter((s) => s.id !== subId));
@@ -159,7 +184,7 @@ const AdminPanelInner = () => {
     refreshLeads();
     // La conversión crea un Project (stage onboarding) en backend — sin este
     // refetch la pestaña Proyectos muestra la lista stale hasta recargar.
-    refreshProjects();
+    loadProjects();
   };
 
   const handleLeadUpdate = (leadId, patch) => {
@@ -290,8 +315,13 @@ const AdminPanelInner = () => {
                   client: p.client,
                   requirements: p.requirements,
                 }))}
+                loading={projectsLoading}
+                error={projectsError}
                 token={token}
+                onRetry={loadProjects}
                 onDeleteProject={handleProjectDelete}
+                onStageChange={handleStageChange}
+                onProjectUpdated={handleProjectUpdated}
               />
             )}
             {selectedTab === 'clients' && (
@@ -300,6 +330,7 @@ const AdminPanelInner = () => {
                 token={token}
                 onDelete={handleClientDelete}
                 onStatusChange={handleClientStatusChange}
+                onUpdated={handleClientUpdated}
                 onRefresh={refreshClients}
               />
             )}
