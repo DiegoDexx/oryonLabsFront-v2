@@ -45,8 +45,29 @@ export default function Layout() {
     };
   }, []);
 
-  if (location.pathname.includes('adminpanel') || location.pathname.includes('login')) {
+  if (
+    location.pathname.includes('adminpanel') ||
+    location.pathname.includes('login')
+  ) {
     return <Outlet />;
+  }
+
+  // Landing pages de campaña: sin Navbar/Footer/Breadcrumb/StickyMobileCTA —
+  // la única acción posible es contactar. El chat sigue disponible.
+  const isLanding = location.pathname.split('/')[2] === 'lp';
+
+  if (isLanding) {
+    return (
+      <>
+        <Outlet />
+        {chatReady && (
+          <Suspense fallback={null}>
+            <ChatWidget autoOpen={autoOpenChat} />
+          </Suspense>
+        )}
+        <CookieBanner />
+      </>
+    );
   }
 
   return (

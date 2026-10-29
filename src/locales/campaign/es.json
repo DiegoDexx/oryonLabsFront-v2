@@ -1,0 +1,59 @@
+{
+  "default": {
+    "headline": "Cada lead que no respondes en 5 minutos se va con tu competencia",
+    "subhead": "Montamos el sistema que responde, cualifica y agenda por ti — en WhatsApp, web y teléfono. Tú solo atiendes a los que ya quieren comprar.",
+    "whatsapp_cta": "Prefiero hablar por WhatsApp",
+    "benefits": [
+      {
+        "title": "Respuesta en segundos, 24/7",
+        "desc": "Ningún lead se enfría por esperar. El sistema contesta al momento, también los domingos."
+      },
+      {
+        "title": "Solo hablas con leads cualificados",
+        "desc": "Filtramos curiosos y preguntas repetidas. Tu tiempo va a los que tienen intención real."
+      },
+      {
+        "title": "Todo registrado en tu CRM",
+        "desc": "Cada conversación queda guardada con nombre, teléfono y necesidad. Nada se pierde."
+      }
+    ]
+  },
+  "reformas": {
+    "headline": "¿Cuántos presupuestos pierdes por no contestar a tiempo?",
+    "subhead": "El cliente de reformas pide presupuesto a 3 empresas y firma con la primera que responde bien. Que esa seas tú, sin estar pegado al móvil.",
+    "whatsapp_cta": "Prefiero hablar por WhatsApp",
+    "benefits": [
+      {
+        "title": "Contestas antes que la competencia",
+        "desc": "Mientras otros devuelven la llamada al día siguiente, tú ya has cualificado al cliente."
+      },
+      {
+        "title": "Visitas agendadas sin perseguir a nadie",
+        "desc": "El sistema propone huecos y confirma citas. Tú solo apareces a medir."
+      },
+      {
+        "title": "Fotos y detalles del trabajo, ya recogidos",
+        "desc": "El lead llega con metros, tipo de reforma y urgencia. Presupuestas más rápido."
+      }
+    ]
+  },
+  "clinicas": {
+    "headline": "Tu recepción no da abasto. Tus pacientes lo notan.",
+    "subhead": "Citas, dudas y cancelaciones atendidas al momento por WhatsApp y teléfono, sin contratar más personal ni perder pacientes por no contestar.",
+    "whatsapp_cta": "Prefiero hablar por WhatsApp",
+    "benefits": [
+      {
+        "title": "Cero llamadas perdidas",
+        "desc": "Cada paciente recibe respuesta inmediata, también fuera de horario de consulta."
+      },
+      {
+        "title": "Agenda llena, sin huecos muertos",
+        "desc": "Recordatorios y reprogramación automática reducen los no-shows."
+      },
+      {
+        "title": "Tu equipo, liberado del teléfono",
+        "desc": "Recepción se dedica a los pacientes que tienen delante, no a colgar llamadas."
+      }
+    ]
+  }
+}

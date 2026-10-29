@@ -9,6 +9,7 @@ import {
   apiConvertLead,
   apiDeleteLead,
 } from "../../../api/apiActions";
+import { SECTOR_IDS, SECTOR_BADGE, PLAN_CHOSEN_BADGE, getSectorLabel, getChosenPlan } from "../leadCapture";
 
 const LEAD_STATUS_BADGE = {
   new:       "bg-blue-100 text-blue-700",
@@ -24,10 +25,12 @@ const CHANNEL_BADGE = {
   whatsapp: "bg-green-100 text-green-700",
   phone:    "bg-blue-100 text-blue-700",
   manual:   "bg-gray-100 text-gray-600",
+  instagram_ads: "bg-pink-100 text-pink-700",
+  tiktok_ads:    "bg-fuchsia-100 text-fuchsia-700",
 };
 
 const STATUSES = ["new", "contacted", "qualified", "converted", "discarded"];
-const CHANNELS = ["form", "chatbot", "whatsapp", "phone", "manual"];
+const CHANNELS = ["form", "chatbot", "whatsapp", "phone", "manual", "instagram_ads", "tiktok_ads"];
 
 const PRIORITY_BADGE = {
   high:   "bg-red-100 text-red-700",
@@ -67,7 +70,7 @@ const DetailField = ({ label, value }) => (
   </div>
 );
 
-const SectionBlock = ({ label, value, color = "gray" }) => {
+const SectionBlock = ({ label, value, color = "gray", badge = null, pre = false }) => {
   const colors = {
     orange: "bg-orange-50 border-orange-100 text-orange-800",
     blue:   "bg-blue-50 border-blue-100 text-blue-800",
@@ -79,8 +82,9 @@ const SectionBlock = ({ label, value, color = "gray" }) => {
       <div className="flex items-center gap-2 mb-2">
         <div className={`w-1 h-4 rounded-full ${accent[color]}`} />
         <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">{label}</p>
+        {badge}
       </div>
-      <p className={`text-sm leading-relaxed rounded-lg p-3.5 border ${colors[color]}`}>{value}</p>
+      <p className={`text-sm leading-relaxed rounded-lg p-3.5 border ${colors[color]} ${pre ? "whitespace-pre-wrap break-words" : ""}`}>{value}</p>
     </div>
   );
 };
@@ -91,6 +95,16 @@ const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelet
   const ldel = t.leads.delete;
   const ls   = t.leads.stats;
   const lt   = t.leads.table;
+  const lc   = t.leads.capture;
+  const lsec = t.leads.sectors;
+
+  const formatDateTime = (dateStr) => {
+    if (!dateStr) return "";
+    const locale = lang === "en" ? "en-GB" : "es-ES";
+    return new Date(dateStr).toLocaleString(locale, {
+      day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit",
+    });
+  };
 
   const formatDate = (dateStr) => {
     if (!dateStr) return "—";
@@ -108,6 +122,7 @@ const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelet
 
   const [filterStatus,  setFilterStatus]  = useState("");
   const [filterChannel, setFilterChannel] = useState("");
+  const [filterSector,  setFilterSector]  = useState("");
   const [notesValue,  setNotesValue]  = useState("");
   const [savingNotes, setSavingNotes] = useState(false);
   const [assignedTo,    setAssignedTo]    = useState(null);
@@ -123,6 +138,8 @@ const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelet
   const filtered = leads.filter((l) => {
     if (filterStatus  && l.status  !== filterStatus)  return false;
     if (filterChannel && l.channel !== filterChannel) return false;
+    if (filterSector === "none" && l.sector) return false;
+    if (filterSector && filterSector !== "none" && l.sector !== filterSector) return false;
     return true;
   });
 
@@ -255,9 +272,18 @@ const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelet
             <option value="">{lt.headers.channel} — all</option>
             {CHANNELS.map((c) => <option key={c} value={c}>{c}</option>)}
           </select>
-          {(filterStatus || filterChannel) && (
+          <select
+            value={filterSector}
+            onChange={(e) => setFilterSector(e.target.value)}
+            className="text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 text-gray-600 bg-white focus:outline-none focus:ring-2 focus:ring-cyan/20 focus:border-cyan"
+          >
+            <option value="">{t.leads.filters.sector_all}</option>
+            {SECTOR_IDS.map((id) => <option key={id} value={id}>{lsec[id]}</option>)}
+            <option value="none">{t.leads.filters.sector_none}</option>
+          </select>
+          {(filterStatus || filterChannel || filterSector) && (
             <button
-              onClick={() => { setFilterStatus(""); setFilterChannel(""); }}
+              onClick={() => { setFilterStatus(""); setFilterChannel(""); setFilterSector(""); }}
               className="text-xs text-gray-400 hover:text-gray-700 underline underline-offset-2"
             >
               {t.common.cancel}
@@ -285,7 +311,8 @@ const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelet
               <tr>
                 <th className="px-5 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{lt.headers.lead}</th>
                 <th className="px-5 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:table-cell">{lt.headers.company}</th>
-                <th className="px-5 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">{lt.headers.channel}</th>
+                <th className="px-5 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">{lt.headers.channel_source}</th>
+                <th className="px-5 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">{lt.headers.sector}</th>
                 <th className="px-5 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">{lt.headers.challenge}</th>
                 <th className="px-5 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">{lt.headers.urgency}</th>
                 <th className="px-5 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{lt.headers.status}</th>
@@ -296,7 +323,7 @@ const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelet
             <tbody className="divide-y divide-gray-100">
               {filtered.length === 0 ? (
                 <tr>
-                  <td colSpan={8} className="px-6 py-12 text-center text-gray-400 text-sm">
+                  <td colSpan={9} className="px-6 py-12 text-center text-gray-400 text-sm">
                     {lt.empty}
                   </td>
                 </tr>
@@ -311,6 +338,33 @@ const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelet
                     <span className={`inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full ${CHANNEL_BADGE[lead.channel] || "bg-gray-100 text-gray-600"}`}>
                       {lead.channel || "—"}
                     </span>
+                    {lead.utm_source && (
+                      <div
+                        className="text-[11px] text-gray-400 mt-1 max-w-[170px] truncate"
+                        title={[lead.utm_source, lead.utm_campaign].filter(Boolean).join(" / ")}
+                      >
+                        {[lead.utm_source, lead.utm_campaign].filter(Boolean).join(" / ")}
+                      </div>
+                    )}
+                  </td>
+                  <td className="px-5 py-4 hidden md:table-cell">
+                    {lead.sector ? (
+                      <span className={`inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full max-w-[160px] truncate ${SECTOR_BADGE[lead.sector] || SECTOR_BADGE.otro}`}>
+                        {getSectorLabel(lead.sector, lead.sector_other, lsec)}
+                      </span>
+                    ) : (
+                      <span className="text-sm text-gray-400">—</span>
+                    )}
+                    {getChosenPlan(lead.plan) && (
+                      <div className="mt-1.5">
+                        <span
+                          className={`inline-flex items-center text-[11px] font-medium px-2 py-0.5 rounded-full ${PLAN_CHOSEN_BADGE}`}
+                          title={lc.plan}
+                        >
+                          {lc.plan_short} · {getChosenPlan(lead.plan)}
+                        </span>
+                      </div>
+                    )}
                   </td>
                   <td className="px-5 py-4 text-gray-500 text-xs max-w-[140px] truncate hidden lg:table-cell" title={lead.challenge}>
                     {lead.challenge || "—"}
@@ -449,7 +503,62 @@ const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelet
               label={ld.challenge}
               value={viewTarget.challenge || ld.no_challenge}
               color="orange"
+              badge={viewTarget.challenge_id ? (
+                <span className="inline-flex items-center text-[11px] font-medium px-2 py-0.5 rounded-full bg-orange-100 text-orange-700">
+                  {t.leads.challenge_ids?.[viewTarget.challenge_id] || viewTarget.challenge_id}
+                </span>
+              ) : null}
             />
+
+            {/* Capture data — only fields that have a value; consent is always shown */}
+            <div>
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">{lc.title}</p>
+              <div className="grid grid-cols-2 gap-x-6 gap-y-3.5">
+                {viewTarget.sector && (
+                  <div>
+                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{lc.sector}</p>
+                    <span className={`inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full ${SECTOR_BADGE[viewTarget.sector] || SECTOR_BADGE.otro}`}>
+                      {getSectorLabel(viewTarget.sector, viewTarget.sector_other, lsec)}
+                    </span>
+                  </div>
+                )}
+                {getChosenPlan(viewTarget.plan) && (
+                  <div>
+                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{lc.plan}</p>
+                    <span className={`inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full ${PLAN_CHOSEN_BADGE}`}>
+                      {getChosenPlan(viewTarget.plan)}
+                    </span>
+                  </div>
+                )}
+                {["utm_source", "utm_medium", "utm_campaign", "utm_content"].map((key) =>
+                  viewTarget[key] ? <DetailField key={key} label={lc[key]} value={viewTarget[key]} /> : null
+                )}
+                {viewTarget.source_page && (
+                  <div className="col-span-2">
+                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{lc.source_page}</p>
+                    <p className="text-sm text-gray-800 break-all">{viewTarget.source_page}</p>
+                  </div>
+                )}
+                <div className="col-span-2">
+                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{lc.privacy}</p>
+                  {viewTarget.privacy_accepted ? (
+                    <p className="text-sm text-green-700">
+                      <span aria-hidden="true">✓</span> {lc.privacy_accepted}
+                      {viewTarget.privacy_accepted_at ? ` · ${formatDateTime(viewTarget.privacy_accepted_at)}` : ""}
+                    </p>
+                  ) : (
+                    <p className="text-sm text-gray-500">
+                      <span aria-hidden="true">✗</span> {lc.privacy_missing}
+                    </p>
+                  )}
+                </div>
+              </div>
+              {viewTarget.message && (
+                <div className="mt-4">
+                  <SectionBlock label={lc.message} value={viewTarget.message} color="gray" pre />
+                </div>
+              )}
+            </div>
 
             {/* Commercial summary */}
             {viewTarget.commercial_summary ? (

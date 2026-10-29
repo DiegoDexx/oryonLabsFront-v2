@@ -2,13 +2,19 @@ import { useState } from "react";
 import Modal from "../../ui/Modal";
 import { apiSubmitLeadForm } from "../../../api/apiActions";
 import { useAdminT } from "../../../context/AdminLangContext";
+import { SECTOR_IDS } from "../leadCapture";
 
 const CHANNEL_KEYS = ["manual", "whatsapp", "phone", "email", "instagram", "form"];
-const INITIAL = { name: "", company: "", email: "", phone: "", channel: "manual", language: "es" };
+const INITIAL = {
+  name: "", company: "", email: "", phone: "", channel: "manual", language: "es",
+  sector: "", sector_other: "", message: "",
+};
+const MESSAGE_MAX = 1000;
 
-const CreateLeadModal = ({ isOpen, onClose, onSuccess }) => {
+const CreateLeadModal = ({ isOpen, onClose, token, onSuccess }) => {
   const { t } = useAdminT();
   const ml = t.modal_lead;
+  const lsec = t.leads.sectors;
 
   const [form, setForm]       = useState(INITIAL);
   const [errors, setErrors]   = useState({});
@@ -26,12 +32,27 @@ const CreateLeadModal = ({ isOpen, onClose, onSuccess }) => {
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
   };
 
+  const handleSectorChange = (e) => {
+    const value = e.target.value;
+    // "Other" free text only makes sense while sector is "otro".
+    setForm((prev) => ({ ...prev, sector: value, sector_other: value === "otro" ? prev.sector_other : "" }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
     setLoading(true);
     try {
-      await apiSubmitLeadForm({ ...form, status: "new" });
+      const { sector, sector_other, message, ...base } = form;
+      const sectorOther = sector_other.trim();
+      const text = message.trim();
+      await apiSubmitLeadForm(token, {
+        ...base,
+        status: "new",
+        ...(sector ? { sector } : {}),
+        ...(sector === "otro" && sectorOther ? { sector_other: sectorOther } : {}),
+        ...(text ? { message: text } : {}),
+      });
       setForm(INITIAL);
       setErrors({});
       onSuccess();
@@ -98,6 +119,35 @@ const CreateLeadModal = ({ isOpen, onClose, onSuccess }) => {
               <option value="en">🇬🇧 English</option>
             </select>
           </div>
+        </div>
+
+        <div className={form.sector === "otro" ? "grid grid-cols-2 gap-4" : ""}>
+          <div>
+            <label className={lbl}>{ml.sector}</label>
+            <select value={form.sector} onChange={handleSectorChange} className={sel}>
+              <option value="">{ml.sector_none}</option>
+              {SECTOR_IDS.map((id) => (
+                <option key={id} value={id}>{lsec[id]}</option>
+              ))}
+            </select>
+          </div>
+          {form.sector === "otro" && (
+            <div>
+              <label className={lbl}>{ml.sector_other}</label>
+              <input type="text" value={form.sector_other} onChange={handleChange("sector_other")}
+                maxLength={100} placeholder={ml.sector_other_placeholder} className={inp("sector_other")} />
+            </div>
+          )}
+        </div>
+
+        <div>
+          <div className="flex items-center justify-between mb-1.5">
+            <label className="block text-xs font-medium text-gray-600">{ml.message}</label>
+            <span className="text-[11px] text-gray-400 tabular-nums">{form.message.length}/{MESSAGE_MAX}</span>
+          </div>
+          <textarea value={form.message} onChange={handleChange("message")} rows={3} maxLength={MESSAGE_MAX}
+            placeholder={ml.message_placeholder}
+            className={`${inp("message")} resize-none`} />
         </div>
 
         {errors.submit && (

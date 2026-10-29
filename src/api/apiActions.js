@@ -60,9 +60,9 @@ export const apiDeleteClient = (token, id) =>
 export const apiGetLeads = (token) =>
   request("GET", "/api/leads", null, token);
 
-/** Ruta pública — no requiere token (usado desde el formulario de la web) */
-export const apiSubmitLeadForm = (data) =>
-  request("POST", "/api/leads", data, null);
+/** Crear lead desde el admin panel — ruta protegida (Sanctum o X-Service-Token) */
+export const apiSubmitLeadForm = (token, data) =>
+  request("POST", "/api/leads", data, token);
 
 export const apiUpdateLead = (token, id, data) =>
   request("PATCH", `/api/leads/${id}`, data, token);

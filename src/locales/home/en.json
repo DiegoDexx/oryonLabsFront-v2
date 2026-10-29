@@ -92,20 +92,44 @@
         "title": "AI chatbot on your website, available 24/7",
         "description": "Ridley captures, qualifies and manages every lead automatically from your website. No wait time, no lost leads.",
         "checks": [
-          { "text": "Instant response", "status": "active" },
-          { "text": "Automatic qualification", "status": "active" },
-          { "text": "Direct CRM integration", "status": "active" },
-          { "text": "Multilingual", "status": "active" }
+          {
+            "text": "Instant response",
+            "status": "active"
+          },
+          {
+            "text": "Automatic qualification",
+            "status": "active"
+          },
+          {
+            "text": "Direct CRM integration",
+            "status": "active"
+          },
+          {
+            "text": "Multilingual",
+            "status": "active"
+          }
         ],
         "mockup": {
           "header_name": "Ridley — AI Assistant",
           "header_status": "Online now",
           "header_domain": "chat.oryonx.ai",
           "messages": [
-            { "from": "user", "text": "Hi, I'm interested in a bathroom renovation, how much does it cost?" },
-            { "from": "bot", "text": "Hi! I'm Ridley, Renovy's assistant. Can you tell me the bathroom's size and which city you're in?" },
-            { "from": "user", "text": "About 6m², I'm in Madrid." },
-            { "from": "bot", "text": "A full renovation of 6m² in Madrid usually runs €4,500–7,000 depending on finishes. Want me to connect you with a specialist for an exact quote?" }
+            {
+              "from": "user",
+              "text": "Hi, I'm interested in a bathroom renovation, how much does it cost?"
+            },
+            {
+              "from": "bot",
+              "text": "Hi! I'm Ridley, Renovy's assistant. Can you tell me the bathroom's size and which city you're in?"
+            },
+            {
+              "from": "user",
+              "text": "About 6m², I'm in Madrid."
+            },
+            {
+              "from": "bot",
+              "text": "A full renovation of 6m² in Madrid usually runs €4,500–7,000 depending on finishes. Want me to connect you with a specialist for an exact quote?"
+            }
           ],
           "input_placeholder": "Type a message..."
         }
@@ -115,27 +139,70 @@
         "title": "One AI assistant across all your channels",
         "description": "Ridley already handles WhatsApp natively. Telegram and Instagram are coming soon — same assistant, same history, nothing different to configure per channel.",
         "checks": [
-          { "text": "WhatsApp Business integrated", "status": "active" },
-          { "text": "Telegram", "status": "roadmap" },
-          { "text": "Instagram", "status": "roadmap" },
-          { "text": "Unified history in CRM", "status": "active" }
+          {
+            "text": "WhatsApp Business integrated",
+            "status": "active"
+          },
+          {
+            "text": "Telegram",
+            "status": "roadmap"
+          },
+          {
+            "text": "Instagram",
+            "status": "roadmap"
+          },
+          {
+            "text": "Unified history in CRM",
+            "status": "active"
+          }
         ],
         "mockup": {
-          "channels_tab": { "whatsapp": "WhatsApp", "telegram": "Telegram", "instagram": "Instagram" },
+          "channels_tab": {
+            "whatsapp": "WhatsApp",
+            "telegram": "Telegram",
+            "instagram": "Instagram"
+          },
           "status": "Ridley active",
           "messages": [
-            { "from": "user", "text": "Hi, I saw your ad, I want pricing info" },
-            { "from": "bot", "text": "Hi! I'm Ridley 👋 Can you tell me your name and the city where you need the renovation?" },
-            { "from": "user", "text": "I'm Pedro, in Valencia" },
-            { "from": "bot", "text": "Great, Pedro 😊 We have a team in Valencia. An advisor will contact you today before 6pm." }
+            {
+              "from": "user",
+              "text": "Hi, I saw your ad, I want pricing info"
+            },
+            {
+              "from": "bot",
+              "text": "Hi! I'm Ridley 👋 Can you tell me your name and the city where you need the renovation?"
+            },
+            {
+              "from": "user",
+              "text": "I'm Pedro, in Valencia"
+            },
+            {
+              "from": "bot",
+              "text": "Great, Pedro 😊 We have a team in Valencia. An advisor will contact you today before 6pm."
+            }
           ],
           "footer_label": "Ridley manages every channel from a single panel:",
           "channels": [
-            { "text": "WhatsApp", "status": "active" },
-            { "text": "Telegram", "status": "roadmap" },
-            { "text": "Instagram", "status": "roadmap" },
-            { "text": "Web Chat", "status": "active" },
-            { "text": "Voice AI", "status": "active" }
+            {
+              "text": "WhatsApp",
+              "status": "active"
+            },
+            {
+              "text": "Telegram",
+              "status": "roadmap"
+            },
+            {
+              "text": "Instagram",
+              "status": "roadmap"
+            },
+            {
+              "text": "Web Chat",
+              "status": "active"
+            },
+            {
+              "text": "Voice AI",
+              "status": "active"
+            }
           ]
         }
       },
@@ -144,20 +211,53 @@
         "title": "Unified CRM with a visual pipeline",
         "description": "All your leads, clients and opportunities in a single panel. No exporting to Excel. No information lost between channels.",
         "checks": [
-          { "text": "Visual stage-based pipeline", "status": "active" },
-          { "text": "Complete contact history", "status": "active" },
-          { "text": "Real-time KPIs", "status": "active" },
-          { "text": "Mobile access", "status": "active" }
+          {
+            "text": "Visual stage-based pipeline",
+            "status": "active"
+          },
+          {
+            "text": "Complete contact history",
+            "status": "active"
+          },
+          {
+            "text": "Real-time KPIs",
+            "status": "active"
+          },
+          {
+            "text": "Mobile access",
+            "status": "active"
+          }
         ],
         "mockup": {
-          "sidebar": ["Dashboard", "Pipeline", "Leads", "Clients", "Proposals", "Automations", "Users", "Settings"],
+          "sidebar": [
+            "Dashboard",
+            "Pipeline",
+            "Leads",
+            "Clients",
+            "Proposals",
+            "Automations",
+            "Users",
+            "Settings"
+          ],
           "header_title": "OryonX CRM",
           "panel_title": "Dashboard",
           "kpis": [
-            { "label": "New leads", "value": "44" },
-            { "label": "Active clients", "value": "23" },
-            { "label": "Proposals sent", "value": "19" },
-            { "label": "Pending invoices", "value": "0" }
+            {
+              "label": "New leads",
+              "value": "44"
+            },
+            {
+              "label": "Active clients",
+              "value": "23"
+            },
+            {
+              "label": "Proposals sent",
+              "value": "19"
+            },
+            {
+              "label": "Pending invoices",
+              "value": "0"
+            }
           ],
           "chart_title": "Acquisition",
           "chart_subtitle": "Leads per month",
@@ -172,10 +272,22 @@
         "title": "AI voice agent that answers every call",
         "description": "Your business never sends a customer to voicemail. Ridley answers, understands the need and books the visit — day or night.",
         "checks": [
-          { "text": "Immediate response, 24/7", "status": "active" },
-          { "text": "Real-time transcription", "status": "active" },
-          { "text": "AI post-call summary", "status": "active" },
-          { "text": "CRM integration", "status": "active" }
+          {
+            "text": "Immediate response, 24/7",
+            "status": "active"
+          },
+          {
+            "text": "Real-time transcription",
+            "status": "active"
+          },
+          {
+            "text": "AI post-call summary",
+            "status": "active"
+          },
+          {
+            "text": "CRM integration",
+            "status": "active"
+          }
         ],
         "mockup": {
           "header_status": "Incoming call — Pedro Jiménez",
@@ -186,10 +298,22 @@
           "ia_label": "AI",
           "customer_label": "Customer",
           "transcript": [
-            { "speaker": "ia", "text": "Thanks for calling Renovy, how can I help you?" },
-            { "speaker": "cliente", "text": "Hi, I wanted some information about a kitchen renovation." },
-            { "speaker": "ia", "text": "Sure, which city is the property in and roughly how many square meters is the kitchen?" },
-            { "speaker": "cliente", "text": "Valencia, about 10 m²." }
+            {
+              "speaker": "ia",
+              "text": "Thanks for calling Renovy, how can I help you?"
+            },
+            {
+              "speaker": "cliente",
+              "text": "Hi, I wanted some information about a kitchen renovation."
+            },
+            {
+              "speaker": "ia",
+              "text": "Sure, which city is the property in and roughly how many square meters is the kitchen?"
+            },
+            {
+              "speaker": "cliente",
+              "text": "Valencia, about 10 m²."
+            }
           ],
           "footer_label": "Automatic summary when the call ends"
         }
@@ -213,11 +337,26 @@
       "included_label": "Included",
       "per_month": "/month",
       "rows": [
-        { "tool": "Sales CRM software", "price": "~80" },
-        { "tool": "AI chat & support platform", "price": "~120" },
-        { "tool": "Email marketing tool", "price": "~60" },
-        { "tool": "Workflow & task automation", "price": "~80" },
-        { "tool": "WhatsApp Business messaging", "price": "~40" }
+        {
+          "tool": "Sales CRM software",
+          "price": "~80"
+        },
+        {
+          "tool": "AI chat & support platform",
+          "price": "~120"
+        },
+        {
+          "tool": "Email marketing tool",
+          "price": "~60"
+        },
+        {
+          "tool": "Workflow & task automation",
+          "price": "~80"
+        },
+        {
+          "tool": "WhatsApp Business messaging",
+          "price": "~40"
+        }
       ],
       "admin_row": {
         "tool": "Administrative management",
@@ -972,8 +1111,44 @@
       "errors": {
         "volumen_clientes_required": "Please indicate how many contacts you manage.",
         "urgencia_required": "Please indicate when you need a solution."
+      },
+      "update_button": "Send and improve my request"
+    },
+    "optional_hint": "optional",
+    "steps_short": [
+      "Your details",
+      "Your challenge",
+      "Improve your request"
+    ],
+    "short_extend_link": "Want a sharper proposal? Answer 4 more questions (optional) →",
+    "short_extend_hint": "We've already received your request. Answer these to fine-tune the proposal before we call you.",
+    "plan": {
+      "question": "Which plan are you interested in?",
+      "selected_label": "Selected plan",
+      "unknown": "Not sure yet"
+    },
+    "sector": {
+      "question": "What sector do you work in?",
+      "error_required": "Please indicate your sector.",
+      "other_placeholder": "Tell us your sector (optional)",
+      "options": {
+        "reformas_oficios": "Renovation & trades",
+        "clinica_salud": "Clinic or healthcare",
+        "despacho_legal": "Legal firm",
+        "otro": "Other"
       }
-    }
+    },
+    "message": {
+      "label": "Anything else we should know?",
+      "placeholder": "Tell us about your case in your own words (max. 1000 characters)"
+    },
+    "privacy": {
+      "label": "I have read and accept the",
+      "link_text": "privacy policy",
+      "error_required": "You must accept the privacy policy."
+    },
+    "submit_error": "We couldn't send your request. Please try again in a few minutes.",
+    "submit_error_whatsapp": "Or message us directly on WhatsApp"
   },
   "footer": {
     "brand": "OryonX",

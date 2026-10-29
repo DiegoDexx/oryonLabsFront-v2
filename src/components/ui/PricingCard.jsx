@@ -52,7 +52,7 @@ export default function PricingCard({
 
   const voiceFeatureSlug = voiceFeature?.link ? `/${lang}/servicios/${voiceFeature.link}` : null;
 
-  const contactAnchor = lang === 'en' ? '#contact' : '#contacto';
+  const contactAnchor = `/${lang}/contacto?plan=${encodeURIComponent(name)}`;
 
   return (
     <div

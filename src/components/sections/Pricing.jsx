@@ -48,7 +48,7 @@ function MicroFAQ({ faq }) {
 // 3 main cards instead, so the primary choice stays a 3-way comparison.
 function BusinessTierBar({ plan, symbol, pricing, lang }) {
   if (!plan) return null;
-  const contactAnchor = lang === 'en' ? '#contact' : '#contacto';
+  const contactAnchor = `/${lang}/contacto?plan=${encodeURIComponent(plan.name)}`;
   const monthly = `${symbol}${plan.price_monthly}`;
 
   return (
@@ -80,7 +80,7 @@ function BusinessTierBar({ plan, symbol, pricing, lang }) {
 
 function CustomCaseBar({ customCase, lang }) {
   if (!customCase) return null;
-  const anchor = lang === 'en' ? '#contact' : '#contacto';
+  const anchor = `/${lang}/contacto`;
   return (
     <div className="bg-navy py-12 px-4">
       <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-white">

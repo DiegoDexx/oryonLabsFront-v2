@@ -1,0 +1,59 @@
+{
+  "default": {
+    "headline": "Every lead you don't answer in 5 minutes goes to your competitor",
+    "subhead": "We build the system that answers, qualifies and books for you — on WhatsApp, web and phone. You only talk to people ready to buy.",
+    "whatsapp_cta": "I'd rather talk on WhatsApp",
+    "benefits": [
+      {
+        "title": "Answers in seconds, 24/7",
+        "desc": "No lead goes cold waiting. The system replies instantly, even on Sundays."
+      },
+      {
+        "title": "You only talk to qualified leads",
+        "desc": "We filter out tyre-kickers and repeat questions. Your time goes to real intent."
+      },
+      {
+        "title": "Everything logged in your CRM",
+        "desc": "Every conversation is saved with name, phone and need. Nothing gets lost."
+      }
+    ]
+  },
+  "reformas": {
+    "headline": "How many quotes do you lose by not replying in time?",
+    "subhead": "Renovation clients ask 3 companies for a quote and sign with the first one that responds properly. Make sure that's you — without living on your phone.",
+    "whatsapp_cta": "I'd rather talk on WhatsApp",
+    "benefits": [
+      {
+        "title": "You answer before your competitors",
+        "desc": "While others call back the next day, you've already qualified the client."
+      },
+      {
+        "title": "Site visits booked without chasing anyone",
+        "desc": "The system proposes slots and confirms appointments. You just show up to measure."
+      },
+      {
+        "title": "Job details and photos, already collected",
+        "desc": "The lead arrives with size, project type and urgency. You quote faster."
+      }
+    ]
+  },
+  "clinicas": {
+    "headline": "Your front desk can't keep up. Your patients notice.",
+    "subhead": "Appointments, questions and cancellations handled instantly on WhatsApp and phone, without hiring more staff or losing patients to unanswered calls.",
+    "whatsapp_cta": "I'd rather talk on WhatsApp",
+    "benefits": [
+      {
+        "title": "Zero missed calls",
+        "desc": "Every patient gets an instant reply, even outside opening hours."
+      },
+      {
+        "title": "Full diary, no dead gaps",
+        "desc": "Automatic reminders and rescheduling cut no-shows."
+      },
+      {
+        "title": "Your team, off the phone",
+        "desc": "Reception focuses on the patients in front of them, not on hanging up calls."
+      }
+    ]
+  }
+}

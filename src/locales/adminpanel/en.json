@@ -226,7 +226,9 @@
         "urgency": "Urgency",
         "status": "Status",
         "date": "Date",
-        "actions": "Actions"
+        "actions": "Actions",
+        "sector": "Sector",
+        "channel_source": "Channel / Source"
       },
       "empty": "No leads registered yet.",
       "convert": "Convert",
@@ -260,6 +262,39 @@
       "confirm": "Yes, delete",
       "deleting": "Deleting...",
       "confirm_prefix": "Delete"
+    },
+    "filters": {
+      "sector_all": "Sector — all",
+      "sector_none": "No sector"
+    },
+    "sectors": {
+      "reformas_oficios": "Renovation & trades",
+      "clinica_salud": "Clinic & healthcare",
+      "despacho_legal": "Legal firm",
+      "otro": "Other"
+    },
+    "challenge_ids": {
+      "tiempo": "Repetitive tasks",
+      "clientes": "Customer handling",
+      "leads": "Lead follow-up",
+      "empezar": "Where to start",
+      "asistente": "24/7 assistant",
+      "herramientas_desconectadas": "Disconnected tools"
+    },
+    "capture": {
+      "title": "Capture data",
+      "sector": "Sector",
+      "plan": "Chosen plan",
+      "plan_short": "Plan",
+      "message": "Customer message",
+      "source_page": "Source page",
+      "utm_source": "UTM source",
+      "utm_medium": "UTM medium",
+      "utm_campaign": "UTM campaign",
+      "utm_content": "UTM content",
+      "privacy": "Privacy policy",
+      "privacy_accepted": "Accepted",
+      "privacy_missing": "Consent not recorded"
     }
   },
   "clients": {
@@ -368,7 +403,13 @@
       "email": "Email",
       "instagram": "Instagram",
       "form": "Web form"
-    }
+    },
+    "sector": "Sector",
+    "sector_none": "Not specified",
+    "sector_other": "Specify the sector",
+    "sector_other_placeholder": "E.g. Real estate",
+    "message": "Message",
+    "message_placeholder": "Context or notes about the lead (max. 1000 characters)"
   },
   "modal_client": {
     "title": "Add client",
@@ -546,9 +587,39 @@
     }
   },
   "assistant_performance": {
+    "overview": {
+      "title": "Performance and margin",
+      "scope_global": "Global",
+      "scope_global_option": "Global view (all clients)",
+      "vs_previous": "vs",
+      "loading": "Loading this month's metrics...",
+      "error": "This month's metrics could not be loaded.",
+      "ai_cost": "AI cost (this month)",
+      "margin": "Margin (this month)",
+      "executions": "Total executions",
+      "executions_short": "runs",
+      "error_rate": "Error rate",
+      "latency": "Avg latency",
+      "response_time": "Response time",
+      "cost_month": "Cost (month)",
+      "revenue": "Revenue (MRR)",
+      "cost_voice": "Voice",
+      "cost_llm": "LLM",
+      "revenue_unlinked": "no billing client linked: revenue is 0",
+      "empty": "No executions recorded this month.",
+      "unattributed": "Unattributed: {cost} of cost and {executions} executions belong to no client. Their assistant or workflow still has to be mapped on the organization.",
+      "channels": {
+        "whatsapp": "WhatsApp",
+        "web_chat": "Web chat",
+        "voice_telnyx": "Voice (Telnyx)",
+        "voice_vapi": "Voice (Vapi)",
+        "other": "Other"
+      },
+      "revenue_unlinked_list": "No billing linked (revenue counted as 0, margin unreliable): {clients}."
+    },
     "select_org": "Client (tenant)",
     "select_org_placeholder": "Select a client...",
-    "no_org_selected": "Select a client above to see their assistant's performance.",
+    "no_org_selected": "Select a client above to see their assistant's detail: calls, LLM usage and executions.",
     "loading": "Loading metrics...",
     "unknown": "Unknown",
     "assistant_id": "Assistant ID",

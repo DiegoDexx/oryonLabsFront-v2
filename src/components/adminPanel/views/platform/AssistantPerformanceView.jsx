@@ -1,6 +1,7 @@
 import { useGet } from '../../../../hooks/useFetch';
 import { useAdminT } from '../../../../context/AdminLangContext';
 import { KpiCard, SummaryKpiCard, VerticalBars } from '../dashboard/metrics/primitives';
+import PerformanceOverview from './PerformanceOverview';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -84,7 +85,7 @@ const AssistantPerformanceView = ({ organizations, selectedOrgId, onSelectOrg, t
 
   // ── Workflow execution aggregates ───────────────────────────────────────
   const successfulRuns = executions.filter((e) => e.status === 'success').length;
-  const failedRuns      = executions.filter((e) => e.status === 'failed').length;
+  const failedRuns      = executions.filter((e) => ['error', 'crashed', 'failed'].includes(e.status)).length;
   const avgExecMs       = executions.length > 0
     ? executions.reduce((acc, e) => acc + Number(e.duration_ms || 0), 0) / executions.length
     : 0;
@@ -102,17 +103,19 @@ const AssistantPerformanceView = ({ organizations, selectedOrgId, onSelectOrg, t
           onChange={(e) => onSelectOrg(e.target.value ? Number(e.target.value) : null)}
           className="w-full sm:max-w-sm border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-cyan focus:border-transparent"
         >
-          <option value="">{ta.select_org_placeholder}</option>
+          <option value="">{ta.overview.scope_global_option}</option>
           {organizations.map((org) => (
-            <option key={org.id} value={org.id}>{org.name} ({org.slug})</option>
+            <option key={org.id} value={org.id}>{org.slug ? `${org.name} (${org.slug})` : org.name}</option>
           ))}
         </select>
         {selectedOrg && (
           <span className="text-xs text-gray-400">
-            {ta.assistant_id}: {selectedOrg.vapi_assistant_id || '—'} · {ta.workflow_id}: {selectedOrg.n8n_workflow_id || '—'}
+            {ta.assistant_id}: {[selectedOrg.vapi_assistant_id, selectedOrg.telnyx_assistant_id].filter(Boolean).join(' / ') || '—'} · {ta.workflow_id}: {(selectedOrg.n8n_workflow_ids || []).join(', ') || '—'}
           </span>
         )}
       </div>
+
+      <PerformanceOverview selectedOrgId={selectedOrgId} token={token} />
 
       {!selectedOrgId ? (
         <div className="py-16 text-center text-gray-400 text-sm bg-white rounded-xl border border-gray-200">
@@ -125,17 +128,10 @@ const AssistantPerformanceView = ({ organizations, selectedOrgId, onSelectOrg, t
       ) : (
         <>
           {/* ── KPI row ──────────────────────────────────────────────────── */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             <SummaryKpiCard label={ta.kpi_total_ai_cost} value={fmtUsd(totalAiCost)} icon={<span>💰</span>} />
             <SummaryKpiCard label={ta.kpi_total_calls}   value={calls.length}        icon={<span>📞</span>} />
             <SummaryKpiCard label={ta.kpi_total_runs}    value={executions.length}   icon={<span>⚙️</span>} />
-            <SummaryKpiCard
-              label={ta.kpi_margin}
-              value={margin ? `${margin.margin_pct}%` : '—'}
-              icon={<span>📈</span>}
-              trend={margin ? (margin.margin_pct >= 0 ? 1 : -1) : null}
-              trendLabel={margin ? fmtUsd(margin.margin_usd) : undefined}
-            />
           </div>
 
           {/* ── LLM usage ────────────────────────────────────────────────── */}
