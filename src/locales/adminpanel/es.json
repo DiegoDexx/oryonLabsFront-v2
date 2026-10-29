@@ -28,7 +28,8 @@
     "add_client": "Añadir cliente",
     "subscription": "Suscripción",
     "invoice": "Factura",
-    "add_user": "Nuevo usuario"
+    "add_user": "Nuevo usuario",
+    "quote": "Presupuesto"
   },
   "tabs": {
     "dashboard": "Dashboard",
@@ -40,7 +41,8 @@
     "leads": "Leads",
     "users": "Usuarios",
     "organizations": "Organizaciones",
-    "ai_performance": "Rendimiento IA"
+    "ai_performance": "Rendimiento IA",
+    "quotes": "Presupuestos"
   },
   "toasts": {
     "invoice_paid": "Factura marcada como pagada",
@@ -60,7 +62,8 @@
     "subscription_deleted": "Suscripción eliminada correctamente.",
     "client_updated": "Cliente actualizado",
     "project_updated": "Proyecto actualizado",
-    "project_stage_updated": "Estado del proyecto actualizado"
+    "project_stage_updated": "Estado del proyecto actualizado",
+    "quote_created": "Presupuesto creado"
   },
   "common": {
     "cancel": "Cancelar",
@@ -384,7 +387,8 @@
       "action": "Acción"
     },
     "empty": "Sin facturas",
-    "mark_paid": "Marcar pagada"
+    "mark_paid": "Marcar pagada",
+    "preview_send": "Ver y enviar"
   },
   "pipeline": {
     "empty_stage": "Vacío"
@@ -699,5 +703,48 @@
     "category_required": "La categoría es obligatoria.",
     "submit": "Guardar cambios",
     "submitting": "Guardando..."
+  },
+  "quotes": {
+    "headers": {
+      "number": "Nº Presupuesto",
+      "lead": "Lead",
+      "amount": "Importe",
+      "status": "Estado",
+      "date": "Fecha",
+      "actions": "Acciones"
+    },
+    "empty": "Sin presupuestos",
+    "preview_send": "Ver y enviar"
+  },
+  "modal_quote": {
+    "title": "Nuevo presupuesto",
+    "lead": "Lead",
+    "lead_required": "El lead es obligatorio",
+    "lead_placeholder": "Selecciona un lead…",
+    "amount_type": "Tipo de importe",
+    "fixed": "Importe fijo",
+    "range": "Rango (mín–máx)",
+    "amount_fixed": "Importe",
+    "amount_required": "El importe es obligatorio",
+    "amount_min": "Mínimo",
+    "amount_max": "Máximo",
+    "range_required": "Indica al menos un mínimo o un máximo",
+    "submit": "Crear presupuesto",
+    "submitting": "Creando…"
+  },
+  "pdf_viewer": {
+    "loading": "Cargando PDF…",
+    "download": "Descargar",
+    "send_email": "Enviar por email",
+    "send_whatsapp": "Enviar por WhatsApp",
+    "sending": "Enviando…",
+    "email_sent": "Email enviado correctamente",
+    "whatsapp_sent": "Enviado por WhatsApp",
+    "no_phone": "Sin número de teléfono",
+    "err_billing": "Completa tu perfil de facturación en Ajustes",
+    "err_no_email": "El destinatario no tiene email",
+    "err_amount": "Indica primero un importe",
+    "err_send_failed": "No se pudo enviar el email, inténtalo de nuevo",
+    "err_generic": "Algo ha fallado"
   }
 }

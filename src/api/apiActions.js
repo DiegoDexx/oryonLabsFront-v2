@@ -39,6 +39,32 @@ const request = async (method, path, body = null, token = null) => {
   return data;
 };
 
+/**
+ * Variante de `request` para respuestas binarias (PDFs). Devuelve un
+ * objectURL listo para <iframe>/<a download>. En error intenta parsear el
+ * cuerpo como JSON para reutilizar el mismo contrato de errores.
+ */
+const requestBlob = async (path, token) => {
+  const res = await fetch(`${API_URL}${path}`, {
+    method: "GET",
+    headers: {
+      Accept: "application/pdf",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+  });
+
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    const err = new Error(data.message || `Error ${res.status}`);
+    err.status = res.status;
+    err.data = data;
+    throw err;
+  }
+
+  const blob = await res.blob();
+  return URL.createObjectURL(blob);
+};
+
 // ── Auth ─────────────────────────────────────────────────────────────────────
 export const apiLogout = (token) =>
   request("POST", "/api/logout", null, token);
@@ -115,6 +141,50 @@ export const apiCreateInvoice = (token, data) =>
 
 export const apiMarkInvoicePaid = (token, id) =>
   request("PATCH", `/api/invoices/${id}/mark-paid`, null, token);
+
+// Envío/PDF de facturas viven en client_invoices (documento fiscal con PDF
+// dompdf + SES). La vista lista /api/invoices; si el id no existe en
+// client_invoices el backend responde 404 y el visor muestra el error.
+export const apiSendInvoice = (token, id) =>
+  request("POST", `/api/client-invoices/${id}/send`, null, token);
+
+export const apiGetInvoicePdfUrl = (token, id) =>
+  requestBlob(`/api/client-invoices/${id}/pdf`, token);
+
+// ── Quotes ────────────────────────────────────────────────────────────────────
+export const apiGetQuotes = (token) =>
+  request("GET", "/api/quotes", null, token);
+
+export const apiCreateQuote = (token, data) =>
+  request("POST", "/api/quotes", data, token);
+
+export const apiSendQuote = (token, id) =>
+  request("POST", `/api/quotes/${id}/send`, null, token);
+
+export const apiGetQuotePdfUrl = (token, id) =>
+  requestBlob(`/api/quotes/${id}/pdf`, token);
+
+// ── WhatsApp (vía n8n — el backend Laravel no interviene) ────────────────────
+const N8N_WHATSAPP_WEBHOOK = import.meta.env.VITE_N8N_WHATSAPP_WEBHOOK;
+
+export const apiSendWhatsAppDocument = async ({ doc_type, doc_id, phone, name }) => {
+  if (!N8N_WHATSAPP_WEBHOOK) {
+    throw new Error("WhatsApp sending is not configured (missing VITE_N8N_WHATSAPP_WEBHOOK)");
+  }
+  const res = await fetch(N8N_WHATSAPP_WEBHOOK, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ doc_type, doc_id, phone, name }),
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    const err = new Error(data.message || `WhatsApp send failed (${res.status})`);
+    err.status = res.status;
+    err.data = data;
+    throw err;
+  }
+  return res.json().catch(() => ({}));
+};
 
 // ── Users ─────────────────────────────────────────────────────────────────────
 export const apiGetUsers = (token) =>

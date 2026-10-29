@@ -28,7 +28,8 @@
     "add_client": "Add client",
     "subscription": "Subscription",
     "invoice": "Invoice",
-    "add_user": "New user"
+    "add_user": "New user",
+    "quote": "Quote"
   },
   "tabs": {
     "dashboard": "Dashboard",
@@ -40,7 +41,8 @@
     "leads": "Leads",
     "users": "Users",
     "organizations": "Organizations",
-    "ai_performance": "AI Performance"
+    "ai_performance": "AI Performance",
+    "quotes": "Quotes"
   },
   "toasts": {
     "invoice_paid": "Invoice marked as paid",
@@ -60,7 +62,8 @@
     "subscription_deleted": "Subscription deleted successfully.",
     "client_updated": "Client updated",
     "project_updated": "Project updated",
-    "project_stage_updated": "Project stage updated"
+    "project_stage_updated": "Project stage updated",
+    "quote_created": "Quote created"
   },
   "common": {
     "cancel": "Cancel",
@@ -384,7 +387,8 @@
       "action": "Action"
     },
     "empty": "No invoices",
-    "mark_paid": "Mark as paid"
+    "mark_paid": "Mark as paid",
+    "preview_send": "Preview & send"
   },
   "pipeline": {
     "empty_stage": "Empty"
@@ -699,5 +703,48 @@
     "category_required": "Category is required.",
     "submit": "Save changes",
     "submitting": "Saving..."
+  },
+  "quotes": {
+    "headers": {
+      "number": "Quote Nº",
+      "lead": "Lead",
+      "amount": "Amount",
+      "status": "Status",
+      "date": "Date",
+      "actions": "Actions"
+    },
+    "empty": "No quotes yet",
+    "preview_send": "Preview & send"
+  },
+  "modal_quote": {
+    "title": "New quote",
+    "lead": "Lead",
+    "lead_required": "Lead is required",
+    "lead_placeholder": "Select a lead…",
+    "amount_type": "Amount type",
+    "fixed": "Fixed amount",
+    "range": "Range (min–max)",
+    "amount_fixed": "Amount",
+    "amount_required": "Amount is required",
+    "amount_min": "Min",
+    "amount_max": "Max",
+    "range_required": "Set at least a min or a max",
+    "submit": "Create quote",
+    "submitting": "Creating…"
+  },
+  "pdf_viewer": {
+    "loading": "Loading PDF…",
+    "download": "Download",
+    "send_email": "Send by email",
+    "send_whatsapp": "Send by WhatsApp",
+    "sending": "Sending…",
+    "email_sent": "Email sent successfully",
+    "whatsapp_sent": "Sent by WhatsApp",
+    "no_phone": "No phone number",
+    "err_billing": "Complete your billing profile in Settings",
+    "err_no_email": "The recipient has no email",
+    "err_amount": "Set an amount first",
+    "err_send_failed": "Email could not be sent, try again",
+    "err_generic": "Something went wrong"
   }
 }

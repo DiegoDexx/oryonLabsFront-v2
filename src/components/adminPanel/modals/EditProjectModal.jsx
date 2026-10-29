@@ -116,14 +116,14 @@ const EditProjectModal = ({ isOpen, onClose, token, project, onSuccess }) => {
           <button
             type="button"
             onClick={onClose}
-            className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 transition"
+            className="flex-1 px-4 py-2 rounded-lg border border-gray-200 text-gray-600 text-xs font-medium hover:bg-gray-50 transition"
           >
             {t.common.cancel}
           </button>
           <button
             type="submit"
             disabled={loading}
-            className="flex-1 px-4 py-2.5 rounded-lg bg-cyan hover:bg-cyan-medium disabled:opacity-50 text-white text-sm font-semibold transition"
+            className="flex-1 px-4 py-2 rounded-lg bg-cyan hover:bg-cyan-medium disabled:opacity-50 text-white text-xs font-semibold transition"
           >
             {loading ? mp.submitting : mp.submit}
           </button>

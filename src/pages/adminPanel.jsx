@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
   apiGetClients, apiGetLeads, apiGetSubscriptions, apiGetInvoices, apiGetProjects,
-  apiGetUsers,
+  apiGetUsers, apiGetQuotes,
   apiUpdateProjectStage, apiDeleteProject, apiUpdateSubscriptionStatus, apiMarkInvoicePaid,
 } from '../api/apiActions';
 import { AdminLangProvider, useAdminT } from '../context/AdminLangContext';
@@ -16,6 +16,8 @@ import DashboardView        from '../components/adminPanel/views/dashboard/Dashb
 import PipelineView         from '../components/adminPanel/views/PipelineView';
 import SubscriptionsView    from '../components/adminPanel/views/SubscriptionsView';
 import InvoicesView         from '../components/adminPanel/views/InvoicesView';
+import QuotesView            from '../components/adminPanel/views/QuotesView';
+import CreateQuoteModal      from '../components/adminPanel/modals/CreateQuoteModal';
 import CreateSubscriptionModal from '../components/adminPanel/modals/CreateSubscriptionModal';
 import CreateInvoiceModal      from '../components/adminPanel/modals/CreateInvoiceModal';
 import CreateClientModal       from '../components/adminPanel/modals/CreateClientModal';
@@ -63,6 +65,7 @@ const AdminPanelInner = () => {
   const [clients,        setClients]        = useState([]);
   const [subscriptions,  setSubscriptions]  = useState([]);
   const [invoices,       setInvoices]       = useState([]);
+  const [quotes,         setQuotes]         = useState([]);
   const [leads,          setLeads]          = useState([]);
   const [users,          setUsers]          = useState([]);
   const [organizations,  setOrganizations]  = useState([]);
@@ -71,6 +74,7 @@ const AdminPanelInner = () => {
   // ── Modals ─────────────────────────────────────────────────────────────────
   const [showCreateSub,     setShowCreateSub]     = useState(false);
   const [showCreateInvoice, setShowCreateInvoice] = useState(false);
+  const [showCreateQuote,   setShowCreateQuote]   = useState(false);
   const [showCreateClient,  setShowCreateClient]  = useState(false);
   const [showCreateLead,    setShowCreateLead]    = useState(false);
   const [showCreateUser,    setShowCreateUser]    = useState(false);
@@ -83,6 +87,7 @@ const AdminPanelInner = () => {
   const { data: rawClients }       = useGet(`${API_URL}/api/clients`,             token);
   const { data: rawSubscriptions } = useGet(`${API_URL}/api/subscriptions`,       token);
   const { data: rawInvoices }      = useGet(`${API_URL}/api/invoices`,            token);
+  const { data: rawQuotes }        = useGet(`${API_URL}/api/quotes`,              token);
   const { data: rawLeads }         = useGet(`${API_URL}/api/leads`,               token);
   const { data: rawUsers }         = useGet(`${API_URL}/api/users`,               token);
   // Cross-tenant — only fetched for OryonX staff (org id 1); backend
@@ -94,6 +99,7 @@ const AdminPanelInner = () => {
   useEffect(() => { if (Array.isArray(rawClients))       setClients(rawClients);             }, [rawClients]);
   useEffect(() => { if (Array.isArray(rawSubscriptions)) setSubscriptions(rawSubscriptions); }, [rawSubscriptions]);
   useEffect(() => { if (Array.isArray(rawInvoices))      setInvoices(rawInvoices);           }, [rawInvoices]);
+  useEffect(() => { if (Array.isArray(rawQuotes))        setQuotes(rawQuotes);               }, [rawQuotes]);
   useEffect(() => { if (Array.isArray(rawLeads))         setLeads(rawLeads);                 }, [rawLeads]);
   useEffect(() => { if (Array.isArray(rawUsers))         setUsers(rawUsers);                 }, [rawUsers]);
   useEffect(() => { if (Array.isArray(rawOrganizations)) setOrganizations(rawOrganizations.map(normalizeOrganization)); }, [rawOrganizations]);
@@ -102,6 +108,7 @@ const AdminPanelInner = () => {
   const refreshClients       = async () => { const d = await apiGetClients(token);       if (Array.isArray(d)) setClients(d);       };
   const refreshSubscriptions = async () => { const d = await apiGetSubscriptions(token); if (Array.isArray(d)) setSubscriptions(d); };
   const refreshInvoices      = async () => { const d = await apiGetInvoices(token);      if (Array.isArray(d)) setInvoices(d);      };
+  const refreshQuotes        = async () => { const d = await apiGetQuotes(token);        if (Array.isArray(d)) setQuotes(d);        };
   const refreshLeads         = async () => { const d = await apiGetLeads(token);         if (Array.isArray(d)) setLeads(d);         };
   const refreshUsers         = async () => { const d = await apiGetUsers(token);         if (Array.isArray(d)) setUsers(d);         };
 
@@ -206,6 +213,7 @@ const AdminPanelInner = () => {
     projects:      t.tabs.projects,
     clients:       t.tabs.clients,
     subscriptions: t.tabs.subscriptions,
+    quotes:        t.tabs.quotes,
     invoices:      t.tabs.invoices,
     leads:         t.tabs.leads,
     users:         t.tabs.users,
@@ -257,27 +265,32 @@ const AdminPanelInner = () => {
                   {!PLATFORM_TABS.has(selectedTab) && (
                   <div className="sm:ml-auto flex flex-wrap gap-2">
                     <button onClick={() => setShowCreateLead(true)}
-                      className="flex items-center gap-1.5 bg-white text-gray-700 border border-crm-border px-3 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 hover:border-gray-300 transition shadow-sm">
+                      className="flex items-center gap-1.5 bg-white text-gray-700 border border-crm-border px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-gray-50 hover:border-gray-300 transition shadow-sm">
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
                       {t.actions.new_lead}
                     </button>
                     <button onClick={() => setShowCreateClient(true)}
-                      className="flex items-center gap-1.5 bg-white text-gray-700 border border-crm-border px-3 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 hover:border-gray-300 transition shadow-sm">
+                      className="flex items-center gap-1.5 bg-white text-gray-700 border border-crm-border px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-gray-50 hover:border-gray-300 transition shadow-sm">
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
                       {t.actions.add_client}
                     </button>
                     <button onClick={() => setShowCreateUser(true)}
-                      className="flex items-center gap-1.5 bg-white text-gray-700 border border-crm-border px-3 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 hover:border-gray-300 transition shadow-sm">
+                      className="flex items-center gap-1.5 bg-white text-gray-700 border border-crm-border px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-gray-50 hover:border-gray-300 transition shadow-sm">
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
                       {t.actions.add_user}
                     </button>
                     <button onClick={() => setShowCreateSub(true)}
-                      className="flex items-center gap-1.5 bg-crm-accent text-white px-3 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition shadow-sm">
+                      className="flex items-center gap-1.5 bg-crm-accent text-white px-2.5 py-1.5 rounded-lg text-xs font-medium hover:opacity-90 transition shadow-sm">
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
                       {t.actions.subscription}
                     </button>
+                    <button onClick={() => setShowCreateQuote(true)}
+                      className="flex items-center gap-1.5 bg-cyan text-white px-2.5 py-1.5 rounded-lg text-xs font-medium hover:opacity-90 transition shadow-sm">
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
+                      {t.actions.quote}
+                    </button>
                     <button onClick={() => setShowCreateInvoice(true)}
-                      className="flex items-center gap-1.5 bg-navy text-white px-3 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition shadow-sm">
+                      className="flex items-center gap-1.5 bg-navy text-white px-2.5 py-1.5 rounded-lg text-xs font-medium hover:opacity-90 transition shadow-sm">
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
                       {t.actions.invoice}
                     </button>
@@ -342,8 +355,11 @@ const AdminPanelInner = () => {
                 onDeleteSubscription={handleSubscriptionDelete}
               />
             )}
+            {selectedTab === 'quotes' && (
+              <QuotesView quotes={quotes} token={token} onRefresh={refreshQuotes} />
+            )}
             {selectedTab === 'invoices' && (
-              <InvoicesView invoices={invoices} onMarkPaid={handleMarkPaid} />
+              <InvoicesView invoices={invoices} onMarkPaid={handleMarkPaid} token={token} />
             )}
             {selectedTab === 'leads' && (
               <LeadsView
@@ -399,6 +415,13 @@ const AdminPanelInner = () => {
         token={token}
         invoices={invoices}
         onSuccess={() => { refreshInvoices(); setShowCreateInvoice(false); showToast(t.toasts.invoice_created); }}
+      />
+      <CreateQuoteModal
+        isOpen={showCreateQuote}
+        onClose={() => setShowCreateQuote(false)}
+        token={token}
+        leads={leads}
+        onSuccess={() => { refreshQuotes(); setShowCreateQuote(false); showToast(t.toasts.quote_created ?? 'Quote created'); }}
       />
       <CreateClientModal
         isOpen={showCreateClient}

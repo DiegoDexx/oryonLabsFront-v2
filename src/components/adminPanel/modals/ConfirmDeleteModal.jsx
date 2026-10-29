@@ -23,7 +23,7 @@ const ConfirmDeleteModal = ({ isOpen, onClose, onConfirm, entityName, warningTex
           <button
             type="button"
             onClick={onClose}
-            className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 transition"
+            className="flex-1 px-4 py-2 rounded-lg border border-gray-200 text-gray-600 text-xs font-medium hover:bg-gray-50 transition"
           >
             {t.common.cancel}
           </button>
@@ -31,7 +31,7 @@ const ConfirmDeleteModal = ({ isOpen, onClose, onConfirm, entityName, warningTex
             type="button"
             onClick={onConfirm}
             disabled={loading}
-            className="flex-1 px-4 py-2.5 rounded-lg bg-red-500 text-white text-sm font-semibold hover:bg-red-600 disabled:opacity-50 transition"
+            className="flex-1 px-4 py-2 rounded-lg bg-red-500 text-white text-xs font-semibold hover:bg-red-600 disabled:opacity-50 transition"
           >
             {loading ? cd.deleting : cd.confirm}
           </button>

@@ -195,22 +195,22 @@ const DashboardView = ({ leads, clients, subscriptions, invoices, onNewLead, onN
         {/* Quick-action buttons in dashboard header */}
         <div className="flex flex-wrap gap-2 sm:justify-end sm:flex-shrink-0">
           <button onClick={onNewLead}
-            className="flex items-center gap-1.5 bg-white text-gray-700 border border-crm-border px-3 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 hover:border-gray-300 transition shadow-sm">
+            className="flex items-center gap-1.5 bg-white text-gray-700 border border-crm-border px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-gray-50 hover:border-gray-300 transition shadow-sm">
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
             {t.actions.new_lead}
           </button>
           <button onClick={onNewClient}
-            className="flex items-center gap-1.5 bg-white text-gray-700 border border-crm-border px-3 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 hover:border-gray-300 transition shadow-sm">
+            className="flex items-center gap-1.5 bg-white text-gray-700 border border-crm-border px-2.5 py-1.5 rounded-lg text-xs font-medium hover:bg-gray-50 hover:border-gray-300 transition shadow-sm">
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
             {t.actions.add_client}
           </button>
           <button onClick={onNewSub}
-            className="flex items-center gap-1.5 bg-crm-accent text-white px-3 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition shadow-sm">
+            className="flex items-center gap-1.5 bg-crm-accent text-white px-2.5 py-1.5 rounded-lg text-xs font-medium hover:opacity-90 transition shadow-sm">
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
             {t.actions.subscription}
           </button>
           <button onClick={onNewInvoice}
-            className="flex items-center gap-1.5 bg-navy text-white px-3 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition shadow-sm">
+            className="flex items-center gap-1.5 bg-navy text-white px-2.5 py-1.5 rounded-lg text-xs font-medium hover:opacity-90 transition shadow-sm">
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
             {t.actions.invoice}
           </button>
