@@ -133,18 +133,17 @@ export const apiDeleteSubscription = (token, id) =>
   request("DELETE", `/api/subscriptions/${id}`, null, token);
 
 // ── Invoices ──────────────────────────────────────────────────────────────────
+// El panel opera sobre client_invoices: documento fiscal real con PDF dompdf
+// + envío SES + estados draft/sent/paid/overdue. La tabla /api/invoices
+// (facturación interna SaaS de OryonX a tenants) no se usa en la vista.
 export const apiGetInvoices = (token) =>
-  request("GET", "/api/invoices", null, token);
+  request("GET", "/api/client-invoices", null, token);
 
 export const apiCreateInvoice = (token, data) =>
-  request("POST", "/api/invoices", data, token);
+  request("POST", "/api/client-invoices", data, token);
 
 export const apiMarkInvoicePaid = (token, id) =>
-  request("PATCH", `/api/invoices/${id}/mark-paid`, null, token);
-
-// Envío/PDF de facturas viven en client_invoices (documento fiscal con PDF
-// dompdf + SES). La vista lista /api/invoices; si el id no existe en
-// client_invoices el backend responde 404 y el visor muestra el error.
+  request("PATCH", `/api/client-invoices/${id}/mark-paid`, null, token);
 export const apiSendInvoice = (token, id) =>
   request("POST", `/api/client-invoices/${id}/send`, null, token);
 

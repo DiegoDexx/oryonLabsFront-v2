@@ -4,17 +4,15 @@ import { useAdminT } from '../../../context/AdminLangContext';
 import PdfPreviewModal from '../PdfPreviewModal';
 import { apiGetInvoicePdfUrl, apiSendInvoice, apiSendWhatsAppDocument } from '../../../api/apiActions';
 
-const TYPE_BADGE = {
-  setup:   'bg-purple-100 text-purple-700',
-  monthly: 'bg-blue-100 text-blue-700',
-  extra:   'bg-gray-100 text-gray-600',
-};
+// client_invoices: estados draft/sent/paid/overdue. "Pendiente de cobro"
+// = todo lo no pagado (draft + sent + overdue).
+const UNPAID = ['draft', 'sent', 'overdue'];
 
 const InvoicesView = ({ invoices, onMarkPaid, token }) => {
   const { t } = useAdminT();
   const ti = t.invoices;
   const headers = Object.values(ti.headers);
-  const pending = invoices.filter(i => i.status === 'pending');
+  const pending = invoices.filter(i => UNPAID.includes(i.status));
   const pendingAmount = pending.reduce((acc, i) => acc + parseFloat(i.amount || 0), 0);
 
   const [preview, setPreview] = useState(null); // factura abierta en el visor
@@ -52,7 +50,9 @@ const InvoicesView = ({ invoices, onMarkPaid, token }) => {
                 <tr key={inv.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 font-medium text-navy">{inv.invoice_number}</td>
                   <td className="px-6 py-4 text-gray-600">{inv.client?.name || '—'}</td>
-                  <td className="px-6 py-4"><Badge value={inv.type} map={TYPE_BADGE} /></td>
+                  <td className="px-6 py-4 text-gray-500 text-sm">
+                    {inv.trade_job_id ? `#${inv.trade_job_id}` : (ti.direct || 'Direct')}
+                  </td>
                   <td className="px-6 py-4 font-medium text-navy">€{inv.amount}</td>
                   <td className="px-6 py-4 text-gray-500 text-sm">{inv.due_date}</td>
                   <td className="px-6 py-4"><Badge value={inv.status} map={STATUS_BADGE} /></td>
@@ -62,7 +62,7 @@ const InvoicesView = ({ invoices, onMarkPaid, token }) => {
                         className="text-xs bg-navy text-white px-2.5 py-1.5 rounded-lg hover:opacity-90 transition">
                         {ti.preview_send || 'Preview & send'}
                       </button>
-                      {inv.status === 'pending' && (
+                      {inv.status !== 'paid' && (
                         <button onClick={() => onMarkPaid(inv.id)}
                           className="text-xs bg-green-500 text-white px-2.5 py-1.5 rounded-lg hover:bg-green-600 transition">
                           {ti.mark_paid}

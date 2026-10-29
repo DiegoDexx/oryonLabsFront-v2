@@ -388,7 +388,8 @@
     },
     "empty": "No invoices",
     "mark_paid": "Mark as paid",
-    "preview_send": "Preview & send"
+    "preview_send": "Preview & send",
+    "direct": "Direct"
   },
   "pipeline": {
     "empty_stage": "Empty"
@@ -482,7 +483,8 @@
       "monthly": "Monthly",
       "extra": "Extra"
     },
-    "client_required": "Select a client."
+    "client_required": "Select a client.",
+    "optional": "optional"
   },
   "search": {
     "placeholder": "Search clients, leads, invoices…",

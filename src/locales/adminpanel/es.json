@@ -388,7 +388,8 @@
     },
     "empty": "Sin facturas",
     "mark_paid": "Marcar pagada",
-    "preview_send": "Ver y enviar"
+    "preview_send": "Ver y enviar",
+    "direct": "Directa"
   },
   "pipeline": {
     "empty_stage": "Vacío"
@@ -482,7 +483,8 @@
       "monthly": "Mensual",
       "extra": "Extra"
     },
-    "client_required": "Selecciona un cliente."
+    "client_required": "Selecciona un cliente.",
+    "optional": "opcional"
   },
   "search": {
     "placeholder": "Buscar clientes, leads, facturas…",
