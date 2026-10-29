@@ -170,6 +170,57 @@ export const apiDownloadClientInvoicePdf = async (token, id, invoiceNumber) => {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 };
 
+/**
+ * PDF como objectURL (sin descargar) — para el visor <iframe> del panel.
+ * Mismo contrato de errores que request(): err.status / err.data.
+ */
+export const apiGetPdfBlobUrl = async (token, path) => {
+  const res = await fetch(`${API_URL}${path}`, {
+    headers: { Accept: "application/pdf", Authorization: `Bearer ${token}` },
+  });
+
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    const err = new Error(data.message || `Error ${res.status}`);
+    err.status = res.status;
+    err.data   = data;
+    throw err;
+  }
+
+  return URL.createObjectURL(await res.blob());
+};
+
+/**
+ * Envío por WhatsApp vía workflow n8n (CERO cambios de backend): n8n recibe
+ * { doc_type, doc_id, phone, name }, descarga el PDF con token de servicio y
+ * lo envía por la Cloud API de Meta. Sin VITE_N8N_WHATSAPP_WEBHOOK configurada
+ * lanza error controlado que el visor muestra como "not configured".
+ */
+export const apiSendWhatsAppDocument = async ({ doc_type, doc_id, phone, name }) => {
+  const url = import.meta.env.VITE_N8N_WHATSAPP_WEBHOOK;
+  if (!url) {
+    const err = new Error("WhatsApp sending is not configured");
+    err.status = 0;
+    throw err;
+  }
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ doc_type, doc_id, phone, name }),
+  });
+
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    const err = new Error(data.message || data.error || `Error ${res.status}`);
+    err.status = res.status;
+    err.data   = data;
+    throw err;
+  }
+
+  return res.json().catch(() => ({ ok: true }));
+};
+
 // ── Trade jobs ────────────────────────────────────────────────────────────────
 export const apiGetTradeJobs = (token) =>
   request("GET", "/api/trade-jobs", null, token);

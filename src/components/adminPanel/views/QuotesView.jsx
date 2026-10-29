@@ -5,11 +5,14 @@ import { useAdminT } from "../../../context/AdminLangContext";
 import {
   apiDeleteQuote,
   apiDownloadQuotePdf,
+  apiGetPdfBlobUrl,
   apiSendQuote,
+  apiSendWhatsAppDocument,
   apiUpdateQuoteStatus,
 } from "../../../api/apiActions";
 import Modal from "../../ui/Modal";
 import CreateQuoteModal from "../modals/CreateQuoteModal";
+import PdfPreviewModal from "../PdfPreviewModal";
 import { clientInvoiceErrorMessage, formatGBP } from "../billing";
 
 const QUOTE_STATUSES = ["draft", "sent", "accepted", "rejected", "expired"];
@@ -21,6 +24,13 @@ const QUOTE_STATUS_COLOR = {
   rejected: "error",
   expired:  "warning",
 };
+
+const EyeIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+  </svg>
+);
 
 const DownloadIcon = () => (
   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -72,6 +82,7 @@ const QuotesView = ({ quotes, loading, error, token, leads, onRetry, onRefresh, 
   const [refreshing, setRefreshing]     = useState(false);
   const [showCreate, setShowCreate]     = useState(false);
   const [pdfBusy, setPdfBusy]           = useState(null);
+  const [previewQuote, setPreviewQuote] = useState(null); // quote abierta en el visor PDF
 
   const [action, setAction]         = useState(null);
   const [actionBusy, setActionBusy] = useState(false);
@@ -196,6 +207,13 @@ const QuotesView = ({ quotes, loading, error, token, leads, onRetry, onRefresh, 
         const q = params.row.raw;
         return (
           <div className="flex items-center gap-1 h-full">
+            <button
+              onClick={() => setPreviewQuote(q)}
+              className={`${iconBtn} hover:text-cyan hover:bg-cyan/10`}
+              title={tq.actions?.preview_send || "Preview & send"}
+            >
+              <EyeIcon />
+            </button>
             <button
               onClick={() => handleDownload(q)}
               disabled={pdfBusy === q.id}
@@ -345,6 +363,23 @@ const QuotesView = ({ quotes, loading, error, token, leads, onRetry, onRefresh, 
         leads={leads}
         onSuccess={() => { setShowCreate(false); onToast(t.toasts.quote_created); onRefresh(); }}
       />
+
+      {previewQuote && (
+        <PdfPreviewModal
+          isOpen={!!previewQuote}
+          onClose={() => setPreviewQuote(null)}
+          title={previewQuote.quote_number || `Quote #${previewQuote.id}`}
+          loadPdfUrl={() => apiGetPdfBlobUrl(token, `/api/quotes/${previewQuote.id}/pdf`)}
+          sendEmail={() => apiSendQuote(token, previewQuote.id)}
+          sendWhatsApp={previewQuote.lead?.phone ? () => apiSendWhatsAppDocument({
+            doc_type: "quote",
+            doc_id: previewQuote.id,
+            phone: previewQuote.lead.phone,
+            name: previewQuote.lead?.name || "",
+          }) : null}
+          whatsappAvailable={!!previewQuote.lead?.phone}
+        />
+      )}
     </>
   );
 };

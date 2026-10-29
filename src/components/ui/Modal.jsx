@@ -1,8 +1,13 @@
 import { useEffect } from "react";
 
-const SIZES = { sm: 'max-w-sm', md: 'max-w-md', lg: 'max-w-lg', xl: 'max-w-xl', '2xl': 'max-w-2xl', '3xl': 'max-w-3xl', '4xl': 'max-w-4xl' };
+const DESKTOP_WIDTH = {
+  sm: "sm:max-w-lg",
+  md: "sm:max-w-2xl",
+  lg: "sm:max-w-3xl",
+  xl: "sm:max-w-4xl",
+};
 
-const Modal = ({ isOpen, onClose, title, children, size = 'lg' }) => {
+const Modal = ({ isOpen, onClose, title, children, size = "md" }) => {
   useEffect(() => {
     const handleKey = (e) => { if (e.key === "Escape") onClose(); };
     if (isOpen) document.addEventListener("keydown", handleKey);
@@ -11,15 +16,19 @@ const Modal = ({ isOpen, onClose, title, children, size = 'lg' }) => {
 
   if (!isOpen) return null;
 
+  // Responsive: en móvil bottom-sheet a casi toda la pantalla (scroll interno,
+  // inputs apilados), en desktop centrado y más horizontal según `size`.
+  const desktopWidth = DESKTOP_WIDTH[size] || DESKTOP_WIDTH.md;
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
       <div
-        className={`relative bg-white rounded-2xl shadow-2xl w-full ${SIZES[size] || SIZES.lg} mx-4 max-h-[90vh] overflow-y-auto`}
+        className={`relative bg-white shadow-2xl w-full ${desktopWidth} sm:mx-4 rounded-t-2xl sm:rounded-2xl max-h-[92vh] sm:max-h-[90vh] flex flex-col overflow-hidden`}
         style={{ animation: "modalIn 0.15s ease-out" }}
       >
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-          <h2 className="text-lg font-bold text-navy">{title}</h2>
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-gray-100 flex-shrink-0">
+          <h2 className="text-base sm:text-lg font-bold text-navy">{title}</h2>
           <button
             onClick={onClose}
             className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-100 text-gray-500 transition"
@@ -29,7 +38,7 @@ const Modal = ({ isOpen, onClose, title, children, size = 'lg' }) => {
             </svg>
           </button>
         </div>
-        <div className="px-6 py-5">{children}</div>
+        <div className="px-4 sm:px-6 py-4 sm:py-5 overflow-y-auto">{children}</div>
       </div>
       <style>{`@keyframes modalIn { from { opacity:0; transform:scale(0.95); } to { opacity:1; transform:scale(1); } }`}</style>
     </div>

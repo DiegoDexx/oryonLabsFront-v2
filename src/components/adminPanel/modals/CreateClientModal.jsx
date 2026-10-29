@@ -55,7 +55,7 @@ const CreateClientModal = ({ isOpen, onClose, token, onSuccess }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={mc.title}>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           <div>
             <label className="block text-xs font-medium text-gray-600 mb-1.5">
               {mc.name} <span className="text-red-400">*</span>
@@ -126,14 +126,14 @@ const CreateClientModal = ({ isOpen, onClose, token, onSuccess }) => {
           <button
             type="button"
             onClick={onClose}
-            className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 transition"
+            className="flex-1 px-4 py-2 rounded-lg border border-gray-200 text-gray-600 text-xs font-medium hover:bg-gray-50 transition"
           >
             {t.common.cancel}
           </button>
           <button
             type="submit"
             disabled={loading}
-            className="flex-1 px-4 py-2.5 rounded-lg bg-cyan hover:bg-cyan-medium disabled:opacity-50 text-white text-sm font-semibold transition"
+            className="flex-1 px-4 py-2 rounded-lg bg-cyan hover:bg-cyan-medium disabled:opacity-50 text-white text-xs font-semibold transition"
           >
             {loading ? mc.submitting : mc.submit}
           </button>

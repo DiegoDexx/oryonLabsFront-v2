@@ -455,7 +455,7 @@ const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelet
       )}
 
       {/* Lead detail modal */}
-      <Modal isOpen={!!viewTarget} onClose={() => setViewTarget(null)} title={ld.title} size="3xl">
+      <Modal isOpen={!!viewTarget} onClose={() => setViewTarget(null)} title={ld.title} size="lg">
         {viewTarget && (
           <div className="space-y-5">
             {/* Header — full width */}

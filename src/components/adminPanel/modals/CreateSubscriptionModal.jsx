@@ -115,7 +115,7 @@ const CreateSubscriptionModal = ({ isOpen, onClose, clients, token, onSuccess })
           {errors.plan && <p className={err}>{errors.plan}</p>}
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           <div>
             <label className={lbl}>{ms.setup_fee} *</label>
             <input type="number" min="0" step="0.01" className={inp} value={form.setupFee} onChange={set("setupFee")} placeholder="0.00" />
@@ -128,7 +128,7 @@ const CreateSubscriptionModal = ({ isOpen, onClose, clients, token, onSuccess })
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           <div>
             <label className={lbl}>{ms.start_date} *</label>
             <input type="date" className={inp} value={form.startDate} onChange={set("startDate")} />
@@ -149,11 +149,11 @@ const CreateSubscriptionModal = ({ isOpen, onClose, clients, token, onSuccess })
 
         <div className="flex gap-3 pt-2">
           <button type="button" onClick={handleClose}
-            className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 transition">
+            className="flex-1 px-4 py-2 rounded-lg border border-gray-200 text-gray-600 text-xs font-medium hover:bg-gray-50 transition">
             {t.common.cancel}
           </button>
           <button type="submit" disabled={submitting}
-            className="flex-1 px-4 py-2.5 rounded-lg bg-cyan text-white text-sm font-semibold hover:bg-cyan-medium disabled:opacity-50 transition">
+            className="flex-1 px-4 py-2 rounded-lg bg-cyan text-white text-xs font-semibold hover:bg-cyan-medium disabled:opacity-50 transition">
             {submitting ? ms.submitting : ms.submit}
           </button>
         </div>
