@@ -66,14 +66,14 @@ const SubscriptionsView = ({ subscriptions, onStatusChange, token, onDeleteSubsc
 
   return (
     <div className="space-y-4">
-      <div className="bg-white rounded-xl border border-gray-200 p-4 inline-flex gap-6">
-        <div>
-          <p className="text-xs text-gray-500">{ts.kpi_mrr}</p>
-          <p className="text-2xl font-bold text-cyan">€{MRR.toFixed(0)}</p>
+      <div className="grid grid-cols-2 gap-4">
+        <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+          <p className="text-xs text-gray-500 mb-1">{ts.kpi_mrr}</p>
+          <p className="text-3xl font-bold text-cyan">€{MRR.toFixed(0)}</p>
         </div>
-        <div>
-          <p className="text-xs text-gray-500">{ts.kpi_active}</p>
-          <p className="text-2xl font-bold text-green-600">
+        <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+          <p className="text-xs text-gray-500 mb-1">{ts.kpi_active}</p>
+          <p className="text-3xl font-bold text-green-600">
             {subscriptions.filter(s => s.status === 'active').length}
           </p>
         </div>
@@ -87,35 +87,32 @@ const SubscriptionsView = ({ subscriptions, onStatusChange, token, onDeleteSubsc
                 {headers.map(h => (
                   <th key={h} className="px-6 py-4 text-left text-sm font-semibold text-gray-600">{h}</th>
                 ))}
-                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600">Acciones</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
               {subscriptions.length === 0 ? (
-                <tr><td colSpan={headers.length + 1} className="px-6 py-12 text-center text-gray-500">{ts.empty}</td></tr>
+                <tr><td colSpan={headers.length} className="px-6 py-12 text-center text-gray-500">{ts.empty}</td></tr>
               ) : subscriptions.map(s => (
                 <tr key={s.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 font-medium text-navy">{s.client?.name || '—'}</td>
+                  <td className="px-6 py-4 font-medium text-navy whitespace-nowrap">{s.client?.name || '—'}</td>
                   <td className="px-6 py-4"><Badge value={s.plan} label={PLAN_LABEL[s.plan] || s.plan} map={PLAN_BADGE} /></td>
                   <td className="px-6 py-4 text-gray-600">€{s.setup_fee}</td>
                   <td className="px-6 py-4 text-gray-600">€{s.monthly_fee}{ts.per_month}</td>
-                  <td className="px-6 py-4 text-gray-500 text-sm">{s.start_date}</td>
-                  <td className="px-6 py-4 text-gray-500 text-sm">{s.next_billing_date || '—'}</td>
-                  <td className="px-6 py-4"><Badge value={s.status} map={STATUS_BADGE} /></td>
+                  <td className="px-6 py-4 text-gray-500 text-sm whitespace-nowrap">{formatDate(s.start_date, locale)}</td>
+                  <td className="px-6 py-4 text-gray-500 text-sm whitespace-nowrap">{formatDate(s.next_billing_date, locale)}</td>
+                  <td className="px-6 py-4"><Badge value={s.status} label={ts.statuses?.[s.status] ?? s.status} map={STATUS_BADGE} /></td>
                   <td className="px-6 py-4">
-                    <select className="text-xs border border-gray-200 rounded px-2 py-1 text-gray-600"
-                      value={s.status} onChange={e => onStatusChange(s.id, e.target.value)}>
-                      {['active', 'paused', 'cancelled', 'pending'].map(st => (
-                        <option key={st} value={st}>{st}</option>
-                      ))}
-                    </select>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-2">
+                      <select className="text-xs border border-gray-200 rounded px-2 py-1 text-gray-600"
+                        value={s.status} onChange={e => onStatusChange(s.id, e.target.value)}>
+                        {['active', 'paused', 'cancelled', 'pending'].map(st => (
+                          <option key={st} value={st}>{ts.statuses?.[st] ?? st}</option>
+                        ))}
+                      </select>
                       <button
                         onClick={() => setViewTarget(s)}
                         className="p-1.5 text-gray-400 hover:text-blue-500 hover:bg-blue-50 rounded-lg transition"
-                        title="Ver detalle"
+                        title={ts.detail.title}
                       >
                         <EyeIcon />
                       </button>

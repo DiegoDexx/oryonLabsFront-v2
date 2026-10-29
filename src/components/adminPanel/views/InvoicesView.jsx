@@ -7,23 +7,29 @@ const TYPE_BADGE = {
   extra:   'bg-gray-100 text-gray-600',
 };
 
+const formatDate = (d, locale = 'es-ES') => {
+  if (!d) return '—';
+  return new Date(d).toLocaleDateString(locale, { day: '2-digit', month: 'short', year: 'numeric' });
+};
+
 const InvoicesView = ({ invoices, onMarkPaid }) => {
-  const { t } = useAdminT();
+  const { t, lang } = useAdminT();
   const ti = t.invoices;
+  const locale = lang === 'en' ? 'en-GB' : 'es-ES';
   const headers = Object.values(ti.headers);
   const pending = invoices.filter(i => i.status === 'pending');
   const pendingAmount = pending.reduce((acc, i) => acc + parseFloat(i.amount || 0), 0);
 
   return (
     <div className="space-y-4">
-      <div className="bg-white rounded-xl border border-gray-200 p-4 inline-flex gap-6">
-        <div>
-          <p className="text-xs text-gray-500">{ti.kpi_pending_amount}</p>
-          <p className="text-2xl font-bold text-orange-500">€{pendingAmount.toFixed(0)}</p>
+      <div className="grid grid-cols-2 gap-4">
+        <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+          <p className="text-xs text-gray-500 mb-1">{ti.kpi_pending_amount}</p>
+          <p className="text-3xl font-bold text-orange-500">€{pendingAmount.toFixed(0)}</p>
         </div>
-        <div>
-          <p className="text-xs text-gray-500">{ti.kpi_pending_count}</p>
-          <p className="text-2xl font-bold text-navy">{pending.length}</p>
+        <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+          <p className="text-xs text-gray-500 mb-1">{ti.kpi_pending_count}</p>
+          <p className="text-3xl font-bold text-navy">{pending.length}</p>
         </div>
       </div>
 
@@ -44,10 +50,10 @@ const InvoicesView = ({ invoices, onMarkPaid }) => {
                 <tr key={inv.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 font-medium text-navy">{inv.invoice_number}</td>
                   <td className="px-6 py-4 text-gray-600">{inv.client?.name || '—'}</td>
-                  <td className="px-6 py-4"><Badge value={inv.type} map={TYPE_BADGE} /></td>
+                  <td className="px-6 py-4"><Badge value={inv.type} label={ti.types?.[inv.type] ?? inv.type} map={TYPE_BADGE} /></td>
                   <td className="px-6 py-4 font-medium text-navy">€{inv.amount}</td>
-                  <td className="px-6 py-4 text-gray-500 text-sm">{inv.due_date}</td>
-                  <td className="px-6 py-4"><Badge value={inv.status} map={STATUS_BADGE} /></td>
+                  <td className="px-6 py-4 text-gray-500 text-sm whitespace-nowrap">{formatDate(inv.due_date, locale)}</td>
+                  <td className="px-6 py-4"><Badge value={inv.status} label={ti.statuses?.[inv.status] ?? inv.status} map={STATUS_BADGE} /></td>
                   <td className="px-6 py-4">
                     {inv.status === 'pending' && (
                       <button onClick={() => onMarkPaid(inv.id)}

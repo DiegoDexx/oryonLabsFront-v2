@@ -28,7 +28,8 @@
     "add_client": "Añadir cliente",
     "subscription": "Suscripción",
     "invoice": "Factura",
-    "add_user": "Nuevo usuario"
+    "add_user": "Nuevo usuario",
+    "new_btn": "+ Nuevo"
   },
   "tabs": {
     "dashboard": "Dashboard",
@@ -393,6 +394,12 @@
       "status": "Estado",
       "action": "Acción"
     },
+    "statuses": {
+      "active": "Activa",
+      "paused": "Pausada",
+      "cancelled": "Cancelada",
+      "pending": "Pendiente"
+    },
     "empty": "Sin suscripciones",
     "delete_btn": "Eliminar suscripción",
     "per_month": "/mes",
@@ -419,6 +426,16 @@
       "due_date": "Vencimiento",
       "status": "Estado",
       "action": "Acción"
+    },
+    "statuses": {
+      "pending": "Pendiente",
+      "paid": "Pagada",
+      "overdue": "Vencida"
+    },
+    "types": {
+      "setup": "Setup",
+      "monthly": "Mensual",
+      "extra": "Extra"
     },
     "empty": "Sin facturas",
     "mark_paid": "Marcar pagada"

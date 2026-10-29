@@ -28,7 +28,8 @@
     "add_client": "Add client",
     "subscription": "Subscription",
     "invoice": "Invoice",
-    "add_user": "New user"
+    "add_user": "New user",
+    "new_btn": "+ New"
   },
   "tabs": {
     "dashboard": "Dashboard",
@@ -393,6 +394,12 @@
       "status": "Status",
       "action": "Action"
     },
+    "statuses": {
+      "active": "Active",
+      "paused": "Paused",
+      "cancelled": "Cancelled",
+      "pending": "Pending"
+    },
     "empty": "No subscriptions",
     "delete_btn": "Delete subscription",
     "per_month": "/mo",
@@ -419,6 +426,16 @@
       "due_date": "Due date",
       "status": "Status",
       "action": "Action"
+    },
+    "statuses": {
+      "pending": "Pending",
+      "paid": "Paid",
+      "overdue": "Overdue"
+    },
+    "types": {
+      "setup": "Setup",
+      "monthly": "Monthly",
+      "extra": "Extra"
     },
     "empty": "No invoices",
     "mark_paid": "Mark as paid"

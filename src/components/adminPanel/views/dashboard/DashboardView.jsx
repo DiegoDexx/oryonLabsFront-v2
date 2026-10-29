@@ -40,8 +40,8 @@ const getGreeting = (t) => {
   return (t.dashboard.greeting_evening || 'Buenas noches').toUpperCase();
 };
 
-const formatDate = () =>
-  new Date().toLocaleDateString('es-ES', {
+const formatDate = (locale = 'es-ES') =>
+  new Date().toLocaleDateString(locale, {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
@@ -108,7 +108,7 @@ const IconInvoice = () => (
 // ── DashboardView ─────────────────────────────────────────────────────────────
 
 const DashboardView = ({ leads, clients, subscriptions, invoices, onNewLead, onNewClient, onNewSub, onNewInvoice }) => {
-  const { t } = useAdminT();
+  const { t, lang } = useAdminT();
   const user  = useSelector((s) => s.auth.user);
   const [open, setOpen] = useState({ adquisicion: true, conversion: true, negocio: true });
   const toggle = (key) => setOpen((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -189,7 +189,7 @@ const DashboardView = ({ leads, clients, subscriptions, invoices, onNewLead, onN
           <h1 className="text-[30px] font-bold text-crm-text leading-tight">
             {t.dashboard.panel_title || 'Panel de control'}
           </h1>
-          <p className="text-sm text-[#64748B] mt-1 capitalize">{formatDate()}</p>
+          <p className="text-sm text-[#64748B] mt-1 capitalize">{formatDate(lang === 'en' ? 'en-GB' : 'es-ES')}</p>
         </div>
 
         {/* Quick-action buttons in dashboard header */}

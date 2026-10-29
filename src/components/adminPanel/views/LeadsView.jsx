@@ -455,10 +455,10 @@ const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelet
       )}
 
       {/* Lead detail modal */}
-      <Modal isOpen={!!viewTarget} onClose={() => setViewTarget(null)} title={ld.title}>
+      <Modal isOpen={!!viewTarget} onClose={() => setViewTarget(null)} title={ld.title} size="3xl">
         {viewTarget && (
           <div className="space-y-5">
-            {/* Header */}
+            {/* Header — full width */}
             <div className="flex items-center gap-3.5 pb-4 border-b border-gray-100">
               <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center text-blue-700 font-bold text-base flex-shrink-0">
                 {viewTarget.name?.charAt(0)?.toUpperCase() || "?"}
@@ -472,125 +472,135 @@ const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelet
               </span>
             </div>
 
-            {/* Contact info */}
-            <div>
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">{ld.contact_info}</p>
-              <div className="grid grid-cols-2 gap-x-6 gap-y-3.5">
-                <DetailField label={ld.company}  value={viewTarget.company} />
-                <DetailField label={ld.phone}    value={viewTarget.phone} />
-                <DetailField label={ld.channel}  value={viewTarget.channel} />
-                <DetailField label={ld.language} value={viewTarget.language} />
-                <DetailField label={ld.urgency}  value={viewTarget.urgency} />
-                <DetailField label={ld.date}     value={formatDate(viewTarget.created_at)} />
-                {viewTarget.priority && (
-                  <div>
-                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{ld.priority}</p>
-                    <span className={`inline-flex items-center text-xs font-medium px-2 py-0.5 rounded-full ${PRIORITY_BADGE[viewTarget.priority] || "bg-gray-100 text-gray-500"}`}>
-                      {viewTarget.priority}
-                    </span>
+            {/* 2-column layout on desktop, stacked on mobile */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
+
+              {/* ── Left column ──────────────────────────────────────────────── */}
+              <div className="space-y-5">
+                {/* Contact info */}
+                <div>
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">{ld.contact_info}</p>
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+                    <DetailField label={ld.company}  value={viewTarget.company} />
+                    <DetailField label={ld.phone}    value={viewTarget.phone} />
+                    <DetailField label={ld.channel}  value={viewTarget.channel} />
+                    <DetailField label={ld.language} value={viewTarget.language} />
+                    <DetailField label={ld.urgency}  value={viewTarget.urgency} />
+                    <DetailField label={ld.date}     value={formatDate(viewTarget.created_at)} />
+                    {viewTarget.priority && (
+                      <div>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{ld.priority}</p>
+                        <span className={`inline-flex items-center text-xs font-medium px-2 py-0.5 rounded-full ${PRIORITY_BADGE[viewTarget.priority] || "bg-gray-100 text-gray-500"}`}>
+                          {viewTarget.priority}
+                        </span>
+                      </div>
+                    )}
                   </div>
-                )}
+                </div>
+
+                {/* Assigned to */}
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-1 h-4 rounded-full bg-cyan" />
+                    <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">{ld.assigned_to}</p>
+                    {savingAssign && <span className="text-xs text-cyan animate-pulse ml-1">{ld.saving}</span>}
+                  </div>
+                  <select
+                    value={assignedTo ?? ""}
+                    onChange={(e) => handleAssignChange(e.target.value)}
+                    disabled={savingAssign}
+                    className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-cyan/20 focus:border-cyan disabled:opacity-50"
+                  >
+                    <option value="">{ld.unassigned}</option>
+                    {users.map((u) => (
+                      <option key={u.id} value={u.id}>{u.name || u.email}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Challenge */}
+                <SectionBlock
+                  label={ld.challenge}
+                  value={viewTarget.challenge || ld.no_challenge}
+                  color="orange"
+                  badge={viewTarget.challenge_id ? (
+                    <span className="inline-flex items-center text-[11px] font-medium px-2 py-0.5 rounded-full bg-orange-100 text-orange-700">
+                      {t.leads.challenge_ids?.[viewTarget.challenge_id] || viewTarget.challenge_id}
+                    </span>
+                  ) : null}
+                />
               </div>
-            </div>
 
-            {/* Assigned to */}
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-1 h-4 rounded-full bg-cyan" />
-                <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">{ld.assigned_to}</p>
-                {savingAssign && <span className="text-xs text-cyan animate-pulse ml-1">{ld.saving}</span>}
-              </div>
-              <select
-                value={assignedTo ?? ""}
-                onChange={(e) => handleAssignChange(e.target.value)}
-                disabled={savingAssign}
-                className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-cyan/20 focus:border-cyan disabled:opacity-50"
-              >
-                <option value="">{ld.unassigned}</option>
-                {users.map((u) => (
-                  <option key={u.id} value={u.id}>{u.name || u.email}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Challenge */}
-            <SectionBlock
-              label={ld.challenge}
-              value={viewTarget.challenge || ld.no_challenge}
-              color="orange"
-              badge={viewTarget.challenge_id ? (
-                <span className="inline-flex items-center text-[11px] font-medium px-2 py-0.5 rounded-full bg-orange-100 text-orange-700">
-                  {t.leads.challenge_ids?.[viewTarget.challenge_id] || viewTarget.challenge_id}
-                </span>
-              ) : null}
-            />
-
-            {/* Capture data — only fields that have a value; consent is always shown */}
-            <div>
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">{lc.title}</p>
-              <div className="grid grid-cols-2 gap-x-6 gap-y-3.5">
-                {viewTarget.sector && (
-                  <div>
-                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{lc.sector}</p>
-                    <span className={`inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full ${SECTOR_BADGE[viewTarget.sector] || SECTOR_BADGE.otro}`}>
-                      {getSectorLabel(viewTarget.sector, viewTarget.sector_other, lsec)}
-                    </span>
+              {/* ── Right column ─────────────────────────────────────────────── */}
+              <div className="space-y-5">
+                {/* Capture data */}
+                <div>
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">{lc.title}</p>
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+                    {viewTarget.sector && (
+                      <div>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{lc.sector}</p>
+                        <span className={`inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full ${SECTOR_BADGE[viewTarget.sector] || SECTOR_BADGE.otro}`}>
+                          {getSectorLabel(viewTarget.sector, viewTarget.sector_other, lsec)}
+                        </span>
+                      </div>
+                    )}
+                    {getChosenPlan(viewTarget.plan) && (
+                      <div>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{lc.plan}</p>
+                        <span className={`inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full ${PLAN_CHOSEN_BADGE}`}>
+                          {getChosenPlan(viewTarget.plan)}
+                        </span>
+                      </div>
+                    )}
+                    {["utm_source", "utm_medium", "utm_campaign", "utm_content"].map((key) =>
+                      viewTarget[key] ? <DetailField key={key} label={lc[key]} value={viewTarget[key]} /> : null
+                    )}
+                    {viewTarget.source_page && (
+                      <div className="col-span-2">
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{lc.source_page}</p>
+                        <p className="text-sm text-gray-800 break-all">{viewTarget.source_page}</p>
+                      </div>
+                    )}
+                    <div className="col-span-2">
+                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{lc.privacy}</p>
+                      {viewTarget.privacy_accepted ? (
+                        <p className="text-sm text-green-700">
+                          <span aria-hidden="true">✓</span> {lc.privacy_accepted}
+                          {viewTarget.privacy_accepted_at ? ` · ${formatDateTime(viewTarget.privacy_accepted_at)}` : ""}
+                        </p>
+                      ) : (
+                        <p className="text-sm text-gray-500">
+                          <span aria-hidden="true">✗</span> {lc.privacy_missing}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                )}
-                {getChosenPlan(viewTarget.plan) && (
-                  <div>
-                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{lc.plan}</p>
-                    <span className={`inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full ${PLAN_CHOSEN_BADGE}`}>
-                      {getChosenPlan(viewTarget.plan)}
-                    </span>
-                  </div>
-                )}
-                {["utm_source", "utm_medium", "utm_campaign", "utm_content"].map((key) =>
-                  viewTarget[key] ? <DetailField key={key} label={lc[key]} value={viewTarget[key]} /> : null
-                )}
-                {viewTarget.source_page && (
-                  <div className="col-span-2">
-                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{lc.source_page}</p>
-                    <p className="text-sm text-gray-800 break-all">{viewTarget.source_page}</p>
-                  </div>
-                )}
-                <div className="col-span-2">
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{lc.privacy}</p>
-                  {viewTarget.privacy_accepted ? (
-                    <p className="text-sm text-green-700">
-                      <span aria-hidden="true">✓</span> {lc.privacy_accepted}
-                      {viewTarget.privacy_accepted_at ? ` · ${formatDateTime(viewTarget.privacy_accepted_at)}` : ""}
-                    </p>
-                  ) : (
-                    <p className="text-sm text-gray-500">
-                      <span aria-hidden="true">✗</span> {lc.privacy_missing}
-                    </p>
+                  {viewTarget.message && (
+                    <div className="mt-4">
+                      <SectionBlock label={lc.message} value={viewTarget.message} color="gray" pre />
+                    </div>
                   )}
                 </div>
+
+                {/* Commercial summary */}
+                {viewTarget.commercial_summary ? (
+                  <SectionBlock label={ld.commercial_summary} value={viewTarget.commercial_summary} color="blue" />
+                ) : (
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-1 h-4 rounded-full bg-blue-200" />
+                      <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">{ld.commercial_summary}</p>
+                    </div>
+                    <p className="text-sm text-gray-400 italic bg-gray-50 border border-gray-100 rounded-lg p-3.5">
+                      {ld.no_summary}
+                    </p>
+                  </div>
+                )}
               </div>
-              {viewTarget.message && (
-                <div className="mt-4">
-                  <SectionBlock label={lc.message} value={viewTarget.message} color="gray" pre />
-                </div>
-              )}
             </div>
 
-            {/* Commercial summary */}
-            {viewTarget.commercial_summary ? (
-              <SectionBlock label={ld.commercial_summary} value={viewTarget.commercial_summary} color="blue" />
-            ) : (
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-1 h-4 rounded-full bg-blue-200" />
-                  <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">{ld.commercial_summary}</p>
-                </div>
-                <p className="text-sm text-gray-400 italic bg-gray-50 border border-gray-100 rounded-lg p-3.5">
-                  {ld.no_summary}
-                </p>
-              </div>
-            )}
-
-            {/* Notes */}
+            {/* Notes — full width */}
             <div>
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
@@ -614,7 +624,7 @@ const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelet
               />
             </div>
 
-            {/* Actions */}
+            {/* Actions — full width */}
             <div className="flex gap-3 pt-2 border-t border-gray-100">
               <button
                 onClick={() => setViewTarget(null)}
