@@ -39,31 +39,11 @@ const request = async (method, path, body = null, token = null) => {
   return data;
 };
 
-/**
- * Variante de `request` para respuestas binarias (PDFs). Devuelve un
- * objectURL listo para <iframe>/<a download>. En error intenta parsear el
- * cuerpo como JSON para reutilizar el mismo contrato de errores.
- */
-const requestBlob = async (path, token) => {
-  const res = await fetch(`${API_URL}${path}`, {
-    method: "GET",
-    headers: {
-      Accept: "application/pdf",
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-    },
-  });
-
-  if (!res.ok) {
-    const data = await res.json().catch(() => ({}));
-    const err = new Error(data.message || `Error ${res.status}`);
-    err.status = res.status;
-    err.data = data;
-    throw err;
-  }
-
-  const blob = await res.blob();
-  return URL.createObjectURL(blob);
-};
+const qs = (params) =>
+  Object.entries(params)
+    .filter(([, v]) => v !== undefined && v !== null && v !== "")
+    .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+    .join("&");
 
 // ── Auth ─────────────────────────────────────────────────────────────────────
 export const apiLogout = (token) =>
@@ -133,57 +113,115 @@ export const apiDeleteSubscription = (token, id) =>
   request("DELETE", `/api/subscriptions/${id}`, null, token);
 
 // ── Invoices ──────────────────────────────────────────────────────────────────
-// El panel opera sobre client_invoices: documento fiscal real con PDF dompdf
-// + envío SES + estados draft/sent/paid/overdue. La tabla /api/invoices
-// (facturación interna SaaS de OryonX a tenants) no se usa en la vista.
 export const apiGetInvoices = (token) =>
-  request("GET", "/api/client-invoices", null, token);
+  request("GET", "/api/invoices", null, token);
 
 export const apiCreateInvoice = (token, data) =>
-  request("POST", "/api/client-invoices", data, token);
+  request("POST", "/api/invoices", data, token);
 
 export const apiMarkInvoicePaid = (token, id) =>
-  request("PATCH", `/api/client-invoices/${id}/mark-paid`, null, token);
-export const apiSendInvoice = (token, id) =>
+  request("PATCH", `/api/invoices/${id}/mark-paid`, null, token);
+
+// ── Client invoices (PSR → sus clientes; distinto de /api/invoices) ───────────
+export const apiGetClientInvoices = (token, params = {}) => {
+  const query = qs(params);
+  return request("GET", `/api/client-invoices${query ? `?${query}` : ""}`, null, token);
+};
+
+export const apiCreateClientInvoice = (token, data) =>
+  request("POST", "/api/client-invoices", data, token);
+
+export const apiUpdateClientInvoice = (token, id, data) =>
+  request("PATCH", `/api/client-invoices/${id}`, data, token);
+
+export const apiDeleteClientInvoice = (token, id) =>
+  request("DELETE", `/api/client-invoices/${id}`, null, token);
+
+export const apiMarkClientInvoicePaid = (token, id, paymentMethod = null) =>
+  request("PATCH", `/api/client-invoices/${id}/mark-paid`, paymentMethod ? { payment_method: paymentMethod } : null, token);
+
+export const apiSendClientInvoice = (token, id) =>
   request("POST", `/api/client-invoices/${id}/send`, null, token);
 
-export const apiGetInvoicePdfUrl = (token, id) =>
-  requestBlob(`/api/client-invoices/${id}/pdf`, token);
+/**
+ * El endpoint del PDF exige Bearer, así que un <a href> directo daría 401:
+ * se descarga con fetch, se convierte en blob y se dispara la descarga.
+ */
+export const apiDownloadClientInvoicePdf = async (token, id, invoiceNumber) => {
+  const res = await fetch(`${API_URL}/api/client-invoices/${id}/pdf`, {
+    headers: { Accept: "application/pdf", Authorization: `Bearer ${token}` },
+  });
 
-// ── Quotes ────────────────────────────────────────────────────────────────────
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    const err = new Error(data.message || `Error ${res.status}`);
+    err.status = res.status;
+    err.data   = data;
+    throw err;
+  }
+
+  const url  = URL.createObjectURL(await res.blob());
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `${invoiceNumber || `invoice-${id}`}.pdf`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+};
+
+// ── Trade jobs ────────────────────────────────────────────────────────────────
+export const apiGetTradeJobs = (token) =>
+  request("GET", "/api/trade-jobs", null, token);
+
+// ── Quotes (presupuestos PSR → leads) ────────────────────────────────────────
 export const apiGetQuotes = (token) =>
   request("GET", "/api/quotes", null, token);
 
 export const apiCreateQuote = (token, data) =>
   request("POST", "/api/quotes", data, token);
 
+export const apiUpdateQuote = (token, id, data) =>
+  request("PATCH", `/api/quotes/${id}`, data, token);
+
+export const apiDeleteQuote = (token, id) =>
+  request("DELETE", `/api/quotes/${id}`, null, token);
+
+export const apiUpdateQuoteStatus = (token, id, status) =>
+  request("PATCH", `/api/quotes/${id}/status`, { status }, token);
+
 export const apiSendQuote = (token, id) =>
   request("POST", `/api/quotes/${id}/send`, null, token);
 
-export const apiGetQuotePdfUrl = (token, id) =>
-  requestBlob(`/api/quotes/${id}/pdf`, token);
-
-// ── WhatsApp (vía n8n — el backend Laravel no interviene) ────────────────────
-const N8N_WHATSAPP_WEBHOOK = import.meta.env.VITE_N8N_WHATSAPP_WEBHOOK;
-
-export const apiSendWhatsAppDocument = async ({ doc_type, doc_id, phone, name }) => {
-  if (!N8N_WHATSAPP_WEBHOOK) {
-    throw new Error("WhatsApp sending is not configured (missing VITE_N8N_WHATSAPP_WEBHOOK)");
-  }
-  const res = await fetch(N8N_WHATSAPP_WEBHOOK, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify({ doc_type, doc_id, phone, name }),
+export const apiDownloadQuotePdf = async (token, id, quoteNumber) => {
+  const res = await fetch(`${API_URL}/api/quotes/${id}/pdf`, {
+    headers: { Accept: "application/pdf", Authorization: `Bearer ${token}` },
   });
+
   if (!res.ok) {
     const data = await res.json().catch(() => ({}));
-    const err = new Error(data.message || `WhatsApp send failed (${res.status})`);
+    const err = new Error(data.message || `Error ${res.status}`);
     err.status = res.status;
-    err.data = data;
+    err.data   = data;
     throw err;
   }
-  return res.json().catch(() => ({}));
+
+  const url  = URL.createObjectURL(await res.blob());
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `${quoteNumber || `quote-${id}`}.pdf`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 };
+
+// ── Billing profile (datos fiscales de la organización autenticada) ──────────
+export const apiGetBillingProfile = (token) =>
+  request("GET", "/api/me/billing-profile", null, token);
+
+export const apiUpdateBillingProfile = (token, data) =>
+  request("PUT", "/api/me/billing-profile", data, token);
 
 // ── Users ─────────────────────────────────────────────────────────────────────
 export const apiGetUsers = (token) =>
@@ -203,12 +241,6 @@ export const apiGlobalSearch = (token, type, value) =>
   request("GET", `/api/search?type=${encodeURIComponent(type)}&value=${encodeURIComponent(value)}`, null, token);
 
 // ── Platform admin (OryonX only — cross-tenant) ─────────────────────────────
-const qs = (params) =>
-  Object.entries(params)
-    .filter(([, v]) => v !== undefined && v !== null && v !== "")
-    .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
-    .join("&");
-
 export const apiGetOrganizations = (token) =>
   request("GET", "/api/organizations", null, token);
 

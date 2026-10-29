@@ -10,6 +10,7 @@ import {
   apiDeleteLead,
 } from "../../../api/apiActions";
 import { SECTOR_IDS, SECTOR_BADGE, PLAN_CHOSEN_BADGE, getSectorLabel, getChosenPlan } from "../leadCapture";
+import EditLeadModal from "../modals/EditLeadModal";
 
 const LEAD_STATUS_BADGE = {
   new:       "bg-blue-100 text-blue-700",
@@ -57,6 +58,12 @@ const EyeIcon = () => (
   </svg>
 );
 
+const PencilIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+  </svg>
+);
+
 const RefreshIcon = ({ spinning }) => (
   <svg className={`w-4 h-4 ${spinning ? "animate-spin" : ""}`} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -89,7 +96,7 @@ const SectionBlock = ({ label, value, color = "gray", badge = null, pre = false 
   );
 };
 
-const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelete, onLeadUpdate, users = [] }) => {
+const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelete, onLeadUpdate, onEdited, users = [] }) => {
   const { t, lang } = useAdminT();
   const ld   = t.leads.detail;
   const ldel = t.leads.delete;
@@ -118,6 +125,7 @@ const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelet
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [deleting, setDeleting]         = useState(false);
   const [viewTarget, setViewTarget]     = useState(null);
+  const [editTarget, setEditTarget]     = useState(null);
   const [refreshing, setRefreshing]     = useState(false);
 
   const [filterStatus,  setFilterStatus]  = useState("");
@@ -392,6 +400,13 @@ const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelet
                       >
                         <EyeIcon />
                       </button>
+                      <button
+                        onClick={() => setEditTarget(lead)}
+                        className="p-1.5 text-gray-400 hover:text-cyan hover:bg-cyan/10 rounded-lg transition"
+                        title={t.leads.edit.edit_btn}
+                      >
+                        <PencilIcon />
+                      </button>
                       {lead.status !== "converted" && (
                         <button
                           onClick={() => handleConvert(lead)}
@@ -607,6 +622,12 @@ const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelet
               >
                 {t.common.close}
               </button>
+              <button
+                onClick={() => { setEditTarget(viewTarget); setViewTarget(null); }}
+                className="flex-1 px-4 py-2.5 rounded-lg border border-cyan/40 text-cyan text-sm font-semibold hover:bg-cyan/10 transition"
+              >
+                {t.leads.edit.edit_btn}
+              </button>
               {viewTarget.status !== "converted" && (
                 <button
                   onClick={() => { handleConvert(viewTarget); setViewTarget(null); }}
@@ -620,6 +641,14 @@ const LeadsView = ({ leads, token, onRefresh, onStatusChange, onConvert, onDelet
           </div>
         )}
       </Modal>
+
+      <EditLeadModal
+        isOpen={!!editTarget}
+        onClose={() => setEditTarget(null)}
+        token={token}
+        lead={editTarget}
+        onSuccess={() => onEdited?.()}
+      />
 
       {/* Confirm delete modal */}
       <Modal isOpen={!!deleteTarget} onClose={() => setDeleteTarget(null)} title={ldel.title}>

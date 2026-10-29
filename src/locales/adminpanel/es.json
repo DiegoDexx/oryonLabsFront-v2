@@ -28,8 +28,7 @@
     "add_client": "Añadir cliente",
     "subscription": "Suscripción",
     "invoice": "Factura",
-    "add_user": "Nuevo usuario",
-    "quote": "Presupuesto"
+    "add_user": "Nuevo usuario"
   },
   "tabs": {
     "dashboard": "Dashboard",
@@ -42,6 +41,8 @@
     "users": "Usuarios",
     "organizations": "Organizaciones",
     "ai_performance": "Rendimiento IA",
+    "client-invoices": "Facturas a clientes",
+    "billing-settings": "Ajustes de facturación",
     "quotes": "Presupuestos"
   },
   "toasts": {
@@ -63,7 +64,17 @@
     "client_updated": "Cliente actualizado",
     "project_updated": "Proyecto actualizado",
     "project_stage_updated": "Estado del proyecto actualizado",
-    "quote_created": "Presupuesto creado"
+    "client_invoice_created": "Factura creada",
+    "client_invoice_updated": "Factura actualizada",
+    "client_invoice_deleted": "Factura eliminada",
+    "client_invoice_sent": "Factura enviada",
+    "client_invoice_paid": "Factura marcada como pagada",
+    "billing_profile_saved": "Datos fiscales guardados",
+    "lead_updated": "Lead actualizado",
+    "quote_created": "Presupuesto creado correctamente",
+    "quote_sent": "Presupuesto enviado por email",
+    "quote_deleted": "Presupuesto eliminado",
+    "quote_status_updated": "Estado del presupuesto actualizado"
   },
   "common": {
     "cancel": "Cancelar",
@@ -301,6 +312,29 @@
       "privacy": "Política de privacidad",
       "privacy_accepted": "Aceptada",
       "privacy_missing": "Consentimiento no registrado"
+    },
+    "edit": {
+      "title": "Editar lead",
+      "edit_btn": "Editar",
+      "readonly_hint": "Los datos de contacto no se pueden editar desde el panel por ahora.",
+      "cannot_clear": "Este campo no se puede vaciar desde el panel.",
+      "save": "Guardar cambios",
+      "saving": "Guardando…",
+      "fields": {
+        "name": "Nombre",
+        "company": "Empresa",
+        "email": "Email",
+        "phone": "Teléfono",
+        "language": "Idioma",
+        "client_volume": "Volumen de clientes",
+        "challenge": "Reto",
+        "status": "Estado",
+        "priority": "Prioridad",
+        "channel": "Canal",
+        "category": "Categoría",
+        "project_name": "Proyecto",
+        "notes": "Notas"
+      }
     }
   },
   "clients": {
@@ -387,9 +421,7 @@
       "action": "Acción"
     },
     "empty": "Sin facturas",
-    "mark_paid": "Marcar pagada",
-    "preview_send": "Ver y enviar",
-    "direct": "Directa"
+    "mark_paid": "Marcar pagada"
   },
   "pipeline": {
     "empty_stage": "Vacío"
@@ -483,8 +515,7 @@
       "monthly": "Mensual",
       "extra": "Extra"
     },
-    "client_required": "Selecciona un cliente.",
-    "optional": "opcional"
+    "client_required": "Selecciona un cliente."
   },
   "search": {
     "placeholder": "Buscar clientes, leads, facturas…",
@@ -493,7 +524,7 @@
     "sections": {
       "clients": "Clientes",
       "leads": "Leads",
-      "invoices": "Facturas",
+      "invoices": "Facturas de suscripción (OryonX)",
       "subscriptions": "Suscripciones",
       "organizations": "Organizaciones"
     },
@@ -706,47 +737,208 @@
     "submit": "Guardar cambios",
     "submitting": "Guardando..."
   },
-  "quotes": {
+  "client_invoices": {
+    "new_btn": "Nueva factura",
+    "filter_all": "Estado — todos",
+    "statuses": {
+      "draft": "Borrador",
+      "sent": "Enviada",
+      "paid": "Pagada",
+      "overdue": "Vencida"
+    },
     "headers": {
-      "number": "Nº Presupuesto",
+      "number": "Nº factura",
+      "client": "Cliente",
+      "amount": "Importe",
+      "status": "Estado",
+      "issued": "Emisión",
+      "due": "Vencimiento",
+      "actions": "Acciones"
+    },
+    "actions": {
+      "pdf": "Descargar PDF",
+      "send": "Enviar",
+      "edit": "Editar",
+      "mark_paid": "Marcar pagada",
+      "delete": "Eliminar"
+    },
+    "loading": "Cargando facturas…",
+    "load_error": "No se pudieron cargar las facturas.",
+    "retry": "Reintentar",
+    "empty": "Todavía no hay facturas. Crea la primera desde un trabajo.",
+    "empty_filtered": "Ninguna factura con este estado.",
+    "module_unavailable": "La facturación a clientes no está incluida en el plan de esta organización.",
+    "pdf_error": "No se pudo descargar el PDF",
+    "send": {
+      "title": "Enviar factura",
+      "question": "¿Enviar {number} a {email}?",
+      "question_no_email": "¿Enviar {number}? El destinatario se resolverá desde los datos del cliente.",
+      "confirm": "Enviar",
+      "busy": "Enviando…"
+    },
+    "mark_paid": {
+      "title": "Marcar como pagada",
+      "question": "¿Marcar {number} como pagada?",
+      "confirm": "Marcar pagada",
+      "busy": "Guardando…"
+    },
+    "delete": {
+      "title": "Eliminar factura",
+      "question_prefix": "¿Eliminar",
+      "warning": "Solo se pueden eliminar borradores. Esta acción no se puede deshacer.",
+      "confirm": "Eliminar",
+      "busy": "Eliminando…"
+    },
+    "errors": {
+      "billing_profile_incomplete": "Completa los datos fiscales de la organización en Ajustes de facturación. Faltan: {missing}",
+      "bill_to_incomplete": "Faltan datos fiscales del cliente: {missing}",
+      "destination_email_missing": "El destinatario no tiene email",
+      "send_failed": "Error al enviar, inténtalo de nuevo",
+      "amount_required": "El presupuesto del trabajo no tiene importe: indica el importe manualmente.",
+      "invoice_not_draft": "Solo se pueden eliminar facturas en borrador."
+    },
+    "modal": {
+      "create_title": "Nueva factura a cliente",
+      "edit_title": "Editar factura",
+      "trade_job": "Trabajo",
+      "trade_job_placeholder": "Selecciona un trabajo…",
+      "trade_jobs_loading": "Cargando trabajos…",
+      "trade_job_required": "Selecciona un trabajo.",
+      "no_trade_jobs": "No hay trabajos sin facturar.",
+      "client": "Cliente",
+      "client_none": "Sin cliente (se factura al lead del trabajo)",
+      "client_hint": "Opcional. Si el lead del trabajo ya es cliente se preselecciona.",
+      "amount": "Importe (£)",
+      "amount_placeholder": "Se deriva del presupuesto si se deja vacío",
+      "vat_rate": "IVA (%)",
+      "due_date": "Vencimiento",
+      "payment_method": "Método de pago",
+      "payment_method_placeholder": "bank_transfer, card…",
+      "submit": "Crear factura",
+      "submitting": "Creando…",
+      "save": "Guardar cambios",
+      "saving": "Guardando…",
+      "bill_to_section": "Datos del destinatario",
+      "bill_to_override": "Usar estos datos en lugar de los del cliente",
+      "bill_to_hint": "Útil para particulares o clientes sin ficha fiscal. Sin marcar, se usan los datos actuales del cliente al enviar.",
+      "client_required": "Es necesario seleccionar un cliente cuando no hay trabajo asociado.",
+      "amount_required": "El importe es obligatorio cuando no hay trabajo asociado.",
+      "description": "Descripción",
+      "description_placeholder": "¿A qué corresponde esta factura?"
+    }
+  },
+  "billing": {
+    "fields": {
+      "legal_name": "Razón social",
+      "vat_number": "NIF / VAT",
+      "address_line1": "Dirección (línea 1)",
+      "address_line2": "Dirección (línea 2)",
+      "city": "Ciudad",
+      "postcode": "Código postal",
+      "country": "País",
+      "company_number": "Nº de empresa (Companies House)",
+      "bank_name": "Banco",
+      "account_name": "Titular de la cuenta",
+      "sort_code": "Sort code",
+      "account_number": "Nº de cuenta",
+      "iban": "IBAN",
+      "payment_terms_days": "Plazo de pago (días)",
+      "from_email": "Email remitente",
+      "reply_to": "Responder a",
+      "footer_notes": "Notas al pie",
+      "email": "Email",
+      "phone": "Teléfono",
+      "billing_profile": "Perfil fiscal"
+    },
+    "client_section": "Datos de facturación",
+    "client_missing": "Faltan para poder facturarle: {missing}"
+  },
+  "billing_settings": {
+    "intro": "Datos fiscales con los que la organización emite sus facturas. Aparecen en el PDF y en el email de envío.",
+    "loading": "Cargando datos fiscales…",
+    "load_error": "No se pudieron cargar los datos fiscales.",
+    "retry": "Reintentar",
+    "complete": "Perfil fiscal completo: ya puedes enviar facturas.",
+    "missing": "Faltan: {missing}",
+    "from_email_locked": "Lo gestiona OryonX tras verificar el dominio",
+    "no_changes": "No hay cambios que guardar",
+    "sections": {
+      "identity": "Empresa",
+      "address": "Dirección fiscal",
+      "bank": "Datos bancarios y cobro",
+      "sending": "Envío de facturas"
+    },
+    "save": "Guardar",
+    "saving": "Guardando…"
+  },
+  "quotes": {
+    "new_btn": "Nuevo presupuesto",
+    "filter_all": "Todos los estados",
+    "statuses": {
+      "draft": "Borrador",
+      "sent": "Enviado",
+      "accepted": "Aceptado",
+      "rejected": "Rechazado",
+      "expired": "Expirado"
+    },
+    "headers": {
+      "number": "Presupuesto #",
       "lead": "Lead",
       "amount": "Importe",
       "status": "Estado",
-      "date": "Fecha",
+      "issued": "Creado",
+      "sent_at": "Enviado",
+      "expires": "Expira",
       "actions": "Acciones"
     },
-    "empty": "Sin presupuestos",
-    "preview_send": "Ver y enviar"
-  },
-  "modal_quote": {
-    "title": "Nuevo presupuesto",
-    "lead": "Lead",
-    "lead_required": "El lead es obligatorio",
-    "lead_placeholder": "Selecciona un lead…",
-    "amount_type": "Tipo de importe",
-    "fixed": "Importe fijo",
-    "range": "Rango (mín–máx)",
-    "amount_fixed": "Importe",
-    "amount_required": "El importe es obligatorio",
-    "amount_min": "Mínimo",
-    "amount_max": "Máximo",
-    "range_required": "Indica al menos un mínimo o un máximo",
-    "submit": "Crear presupuesto",
-    "submitting": "Creando…"
-  },
-  "pdf_viewer": {
-    "loading": "Cargando PDF…",
-    "download": "Descargar",
-    "send_email": "Enviar por email",
-    "send_whatsapp": "Enviar por WhatsApp",
-    "sending": "Enviando…",
-    "email_sent": "Email enviado correctamente",
-    "whatsapp_sent": "Enviado por WhatsApp",
-    "no_phone": "Sin número de teléfono",
-    "err_billing": "Completa tu perfil de facturación en Ajustes",
-    "err_no_email": "El destinatario no tiene email",
-    "err_amount": "Indica primero un importe",
-    "err_send_failed": "No se pudo enviar el email, inténtalo de nuevo",
-    "err_generic": "Algo ha fallado"
+    "actions": {
+      "pdf": "Descargar PDF",
+      "send": "Enviar propuesta",
+      "delete": "Eliminar"
+    },
+    "loading": "Cargando presupuestos...",
+    "load_error": "No se pudieron cargar los presupuestos.",
+    "retry": "Reintentar",
+    "empty": "Aún no hay presupuestos.",
+    "empty_filtered": "Ningún presupuesto coincide con el filtro.",
+    "module_unavailable": "El módulo de Presupuestos no está disponible en tu plan actual.",
+    "pdf_error": "Error al descargar el PDF",
+    "send": {
+      "title": "Enviar propuesta",
+      "question": "¿Enviar presupuesto {number} por email a {email}?",
+      "question_no_email": "¿Enviar presupuesto {number}? El lead no tiene email — el envío puede fallar.",
+      "confirm": "Enviar",
+      "busy": "Enviando..."
+    },
+    "delete": {
+      "title": "Eliminar presupuesto",
+      "question_prefix": "¿Eliminar",
+      "confirm": "Eliminar",
+      "busy": "Eliminando..."
+    },
+    "errors": {
+      "billing_profile_incomplete": "Tu perfil de facturación está incompleto. Ve a Ajustes → Facturación para completarlo antes de enviar.",
+      "amount_required": "Establece un importe (fijo o rango) antes de enviar.",
+      "destination_email_missing": "El lead vinculado no tiene email.",
+      "send_failed": "No se pudo enviar el email. Inténtalo de nuevo — el presupuesto NO se marcó como enviado."
+    },
+    "modal": {
+      "create_title": "Nuevo presupuesto",
+      "lead": "Lead",
+      "lead_placeholder": "Selecciona un lead…",
+      "lead_required": "Es necesario seleccionar un lead.",
+      "amount_mode": "Tipo de precio",
+      "amount_fixed_label": "Importe fijo",
+      "amount_range_label": "Rango estimado",
+      "amount_fixed_field": "Importe",
+      "amount_min": "Mínimo",
+      "amount_max": "Máximo",
+      "amount_positive": "El importe debe ser positivo.",
+      "notes": "Notas",
+      "notes_placeholder": "Alcance del trabajo, condiciones especiales…",
+      "expires_at": "Válido hasta",
+      "submit": "Crear presupuesto",
+      "submitting": "Creando..."
+    }
   }
 }

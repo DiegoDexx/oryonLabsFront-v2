@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import Modal from "../../ui/Modal";
 import { apiUpdateClient } from "../../../api/apiActions";
 import { useAdminT } from "../../../context/AdminLangContext";
+import { BILLING_DETAILS_FIELDS, translateFields } from "../billing";
+
+const toBilling = (client) =>
+  Object.fromEntries(BILLING_DETAILS_FIELDS.map((k) => [k, client?.billing_details?.[k] ?? ""]));
 
 const toForm = (client) => ({
   name:     client?.name     ?? "",
@@ -10,11 +14,13 @@ const toForm = (client) => ({
   phone:    client?.phone    ?? "",
   status:   client?.status   ?? "active",
   language: client?.language ?? "es",
+  billing:  toBilling(client),
 });
 
 const EditClientModal = ({ isOpen, onClose, token, client, onSuccess }) => {
   const { t } = useAdminT();
   const mc = t.modal_client;
+  const tb = t.billing;
 
   const [form, setForm]       = useState(toForm(client));
   const [errors, setErrors]   = useState({});
@@ -37,6 +43,15 @@ const EditClientModal = ({ isOpen, onClose, token, client, onSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
+    // El backend hace merge de billing_details por clave: solo se envían las
+    // que cambian (una clave vacía va como null y se borra).
+    const original = toBilling(client);
+    const billingChanges = Object.fromEntries(
+      BILLING_DETAILS_FIELDS
+        .filter((k) => form.billing[k].trim() !== String(original[k]).trim())
+        .map((k) => [k, form.billing[k].trim() || null])
+    );
+
     setLoading(true);
     try {
       await apiUpdateClient(token, client.id, {
@@ -46,6 +61,7 @@ const EditClientModal = ({ isOpen, onClose, token, client, onSuccess }) => {
         phone:    form.phone.trim() || null,
         status:   form.status,
         language: form.language,
+        ...(Object.keys(billingChanges).length > 0 ? { billing_details: billingChanges } : {}),
       });
       onSuccess();
       onClose();
@@ -64,6 +80,14 @@ const EditClientModal = ({ isOpen, onClose, token, client, onSuccess }) => {
     setForm((prev) => ({ ...prev, [field]: e.target.value }));
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
   };
+
+  const handleBillingChange = (field) => (e) => {
+    setForm((prev) => ({ ...prev, billing: { ...prev.billing, [field]: e.target.value } }));
+    const key = `billing_details.${field}`;
+    if (errors[key]) setErrors((prev) => ({ ...prev, [key]: undefined }));
+  };
+
+  const billingMissing = client?.billing_details_missing ?? [];
 
   const inputClass = (field) =>
     `w-full px-4 py-2.5 rounded-lg border text-sm outline-none transition ${
@@ -145,6 +169,34 @@ const EditClientModal = ({ isOpen, onClose, token, client, onSuccess }) => {
               <option value="es">🇪🇸 Español</option>
               <option value="en">🇬🇧 English</option>
             </select>
+          </div>
+        </div>
+
+        {/* Datos de facturación (destinatario de las facturas PSR) */}
+        <div className="pt-2 border-t border-gray-100 space-y-3">
+          <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">{tb.client_section}</p>
+          {billingMissing.length > 0 && (
+            <div className="bg-amber-50 border border-amber-200 rounded-lg px-3.5 py-2.5">
+              <p className="text-xs text-amber-800">
+                {tb.client_missing.replace("{missing}", translateFields(billingMissing, tb.fields))}
+              </p>
+            </div>
+          )}
+          <div className="grid grid-cols-2 gap-3">
+            {BILLING_DETAILS_FIELDS.map((k) => (
+              <div key={k} className={k === "legal_name" || k === "address_line1" ? "col-span-2" : ""}>
+                <label className="block text-xs font-medium text-gray-600 mb-1.5">{tb.fields[k]}</label>
+                <input
+                  type="text"
+                  value={form.billing[k]}
+                  onChange={handleBillingChange(k)}
+                  className={inputClass(`billing_details.${k}`)}
+                />
+                {errors[`billing_details.${k}`] && (
+                  <p className="text-red-500 text-xs mt-1">{errors[`billing_details.${k}`]}</p>
+                )}
+              </div>
+            ))}
           </div>
         </div>
 

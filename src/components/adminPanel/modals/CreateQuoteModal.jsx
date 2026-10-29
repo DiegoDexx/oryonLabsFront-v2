@@ -1,56 +1,70 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "../../ui/Modal";
 import { apiCreateQuote } from "../../../api/apiActions";
 import { useAdminT } from "../../../context/AdminLangContext";
+import { clientInvoiceErrorMessage } from "../billing";
 
-const INITIAL = { lead_id: "", amount_mode: "fixed", amount_fixed: "", amount_min: "", amount_max: "" };
+const EMPTY = { lead_id: "", amount_mode: "fixed", amount_fixed: "", amount_min: "", amount_max: "", notes: "", expires_at: "" };
 
-const CreateQuoteModal = ({ isOpen, onClose, token, leads, onSuccess }) => {
+const CreateQuoteModal = ({ isOpen, onClose, token, leads = [], onSuccess }) => {
   const { t } = useAdminT();
-  const mq = t.modal_quote || {};
+  const tq = t.quotes;
+  const tm = tq.modal;
 
-  const [form, setForm] = useState(INITIAL);
-  const [errors, setErrors] = useState({});
+  const [form, setForm]       = useState(EMPTY);
+  const [errors, setErrors]   = useState({});
   const [loading, setLoading] = useState(false);
 
-  const validate = () => {
-    const e = {};
-    if (!form.lead_id) e.lead_id = mq.lead_required || "Lead is required";
-    if (form.amount_mode === "fixed" && !form.amount_fixed)
-      e.amount_fixed = mq.amount_required || "Amount is required";
-    if (form.amount_mode === "range" && !form.amount_min && !form.amount_max)
-      e.amount_range = mq.range_required || "Set at least a min or a max";
-    setErrors(e);
-    return Object.keys(e).length === 0;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validate()) return;
-    setLoading(true);
-    try {
-      const payload = { lead_id: Number(form.lead_id) };
-      if (form.amount_mode === "fixed") {
-        payload.amount_fixed = parseFloat(form.amount_fixed);
-      } else {
-        if (form.amount_min) payload.amount_min = parseFloat(form.amount_min);
-        if (form.amount_max) payload.amount_max = parseFloat(form.amount_max);
-      }
-      await apiCreateQuote(token, payload);
-      onSuccess();
-      setForm(INITIAL);
-      setErrors({});
-      onClose();
-    } catch (err) {
-      setErrors({ submit: err.message || t.common.unexpected_error });
-    } finally {
-      setLoading(false);
-    }
-  };
+  useEffect(() => {
+    if (isOpen) { setForm(EMPTY); setErrors({}); }
+  }, [isOpen]);
 
   const handleChange = (field) => (e) => {
     setForm((prev) => ({ ...prev, [field]: e.target.value }));
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const errs = {};
+    if (!form.lead_id) errs.lead_id = tm.lead_required;
+
+    if (form.amount_mode === "fixed" && form.amount_fixed !== "") {
+      if (Number(form.amount_fixed) < 0) errs.amount_fixed = tm.amount_positive;
+    }
+    if (form.amount_mode === "range") {
+      if (form.amount_min !== "" && Number(form.amount_min) < 0) errs.amount_min = tm.amount_positive;
+      if (form.amount_max !== "" && Number(form.amount_max) < 0) errs.amount_max = tm.amount_positive;
+    }
+
+    if (Object.keys(errs).length) { setErrors(errs); return; }
+
+    const payload = { lead_id: Number(form.lead_id) };
+    if (form.amount_mode === "fixed" && form.amount_fixed !== "") {
+      payload.amount_fixed = Number(form.amount_fixed);
+    }
+    if (form.amount_mode === "range") {
+      if (form.amount_min !== "") payload.amount_min = Number(form.amount_min);
+      if (form.amount_max !== "") payload.amount_max = Number(form.amount_max);
+    }
+    if (form.notes.trim())    payload.notes      = form.notes.trim();
+    if (form.expires_at)      payload.expires_at  = form.expires_at;
+
+    setLoading(true);
+    try {
+      await apiCreateQuote(token, payload);
+      onSuccess();
+    } catch (err) {
+      const fieldErrors = err.data?.errors
+        ? Object.fromEntries(Object.entries(err.data.errors).map(([k, v]) => [k, v[0]]))
+        : {};
+      setErrors({
+        ...fieldErrors,
+        submit: clientInvoiceErrorMessage(err, tq, t.billing?.fields) || err.message || t.common.unexpected_error,
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputClass = (field) =>
@@ -59,50 +73,41 @@ const CreateQuoteModal = ({ isOpen, onClose, token, leads, onSuccess }) => {
         ? "border-red-400 focus:ring-2 focus:ring-red-200"
         : "border-gray-200 focus:border-cyan focus:ring-2 focus:ring-cyan/20"
     }`;
+  const selectClass = (field) => `${inputClass(field)} bg-white`;
+  const label = "block text-xs font-medium text-gray-600 mb-1.5";
+  const fieldError = (field) => errors[field] && <p className="text-red-500 text-xs mt-1">{errors[field]}</p>;
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title={mq.title || "New quote"}>
+    <Modal isOpen={isOpen} onClose={onClose} title={tm.create_title}>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-xs font-medium text-gray-600 mb-1.5">
-            {mq.lead || "Lead"} <span className="text-red-400">*</span>
-          </label>
-          <select value={form.lead_id} onChange={handleChange("lead_id")} className={inputClass("lead_id")}>
-            <option value="">{mq.lead_placeholder || "Select a lead…"}</option>
+          <label className={label}>{tm.lead} <span className="text-red-400">*</span></label>
+          <select value={form.lead_id} onChange={handleChange("lead_id")} className={selectClass("lead_id")}>
+            <option value="">{tm.lead_placeholder}</option>
             {leads.map((l) => (
-              <option key={l.id} value={l.id}>
-                #{l.id} · {l.name || l.email || l.phone || "—"}
-              </option>
+              <option key={l.id} value={l.id}>{l.name}{l.email ? ` (${l.email})` : ""}</option>
             ))}
           </select>
-          {errors.lead_id && <p className="text-red-500 text-xs mt-1">{errors.lead_id}</p>}
+          {fieldError("lead_id")}
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-gray-600 mb-1.5">{mq.amount_type || "Amount type"}</label>
-          <div className="grid grid-cols-2 gap-2">
-            {["fixed", "range"].map((mode) => (
-              <button
-                key={mode}
-                type="button"
-                onClick={() => handleChange("amount_mode")({ target: { value: mode } })}
-                className={`px-3 py-2 rounded-lg border text-xs font-medium transition ${
-                  form.amount_mode === mode
-                    ? "border-cyan bg-cyan/10 text-cyan"
-                    : "border-gray-200 text-gray-500 hover:bg-gray-50"
-                }`}
-              >
-                {mode === "fixed" ? (mq.fixed || "Fixed amount") : (mq.range || "Range (min–max)")}
-              </button>
-            ))}
+          <label className={label}>{tm.amount_mode}</label>
+          <div className="flex gap-3">
+            <label className="flex items-center gap-1.5 text-sm text-gray-600 cursor-pointer">
+              <input type="radio" name="amount_mode" value="fixed" checked={form.amount_mode === "fixed"} onChange={handleChange("amount_mode")} />
+              {tm.amount_fixed_label}
+            </label>
+            <label className="flex items-center gap-1.5 text-sm text-gray-600 cursor-pointer">
+              <input type="radio" name="amount_mode" value="range" checked={form.amount_mode === "range"} onChange={handleChange("amount_mode")} />
+              {tm.amount_range_label}
+            </label>
           </div>
         </div>
 
-        {form.amount_mode === "fixed" ? (
+        {form.amount_mode === "fixed" && (
           <div>
-            <label className="block text-xs font-medium text-gray-600 mb-1.5">
-              {mq.amount_fixed || "Amount"} <span className="text-red-400">*</span>
-            </label>
+            <label className={label}>{tm.amount_fixed_field}</label>
             <input
               type="number" min="0" step="0.01"
               value={form.amount_fixed}
@@ -110,12 +115,14 @@ const CreateQuoteModal = ({ isOpen, onClose, token, leads, onSuccess }) => {
               placeholder="0.00"
               className={inputClass("amount_fixed")}
             />
-            {errors.amount_fixed && <p className="text-red-500 text-xs mt-1">{errors.amount_fixed}</p>}
+            {fieldError("amount_fixed")}
           </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+        )}
+
+        {form.amount_mode === "range" && (
+          <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-gray-600 mb-1.5">{mq.amount_min || "Min"}</label>
+              <label className={label}>{tm.amount_min}</label>
               <input
                 type="number" min="0" step="0.01"
                 value={form.amount_min}
@@ -123,9 +130,10 @@ const CreateQuoteModal = ({ isOpen, onClose, token, leads, onSuccess }) => {
                 placeholder="0.00"
                 className={inputClass("amount_min")}
               />
+              {fieldError("amount_min")}
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-600 mb-1.5">{mq.amount_max || "Max"}</label>
+              <label className={label}>{tm.amount_max}</label>
               <input
                 type="number" min="0" step="0.01"
                 value={form.amount_max}
@@ -133,10 +141,26 @@ const CreateQuoteModal = ({ isOpen, onClose, token, leads, onSuccess }) => {
                 placeholder="0.00"
                 className={inputClass("amount_max")}
               />
+              {fieldError("amount_max")}
             </div>
           </div>
         )}
-        {errors.amount_range && <p className="text-red-500 text-xs -mt-2">{errors.amount_range}</p>}
+
+        <div>
+          <label className={label}>{tm.notes}</label>
+          <textarea
+            value={form.notes}
+            onChange={handleChange("notes")}
+            rows={3}
+            placeholder={tm.notes_placeholder}
+            className={inputClass("notes")}
+          />
+        </div>
+
+        <div>
+          <label className={label}>{tm.expires_at}</label>
+          <input type="date" value={form.expires_at} onChange={handleChange("expires_at")} className={inputClass("expires_at")} />
+        </div>
 
         {errors.submit && <p className="text-red-500 text-sm text-center">{errors.submit}</p>}
 
@@ -144,16 +168,16 @@ const CreateQuoteModal = ({ isOpen, onClose, token, leads, onSuccess }) => {
           <button
             type="button"
             onClick={onClose}
-            className="flex-1 px-4 py-2 rounded-lg border border-gray-200 text-gray-600 text-xs font-medium hover:bg-gray-50 transition"
+            className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 transition"
           >
             {t.common.cancel}
           </button>
           <button
             type="submit"
             disabled={loading}
-            className="flex-1 px-4 py-2 rounded-lg bg-cyan hover:bg-cyan-medium disabled:opacity-50 text-white text-xs font-semibold transition"
+            className="flex-1 px-4 py-2.5 rounded-lg bg-cyan hover:bg-cyan-medium disabled:opacity-50 text-white text-sm font-semibold transition"
           >
-            {loading ? (mq.submitting || "Creating…") : (mq.submit || "Create quote")}
+            {loading ? tm.submitting : tm.submit}
           </button>
         </div>
       </form>

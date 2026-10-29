@@ -28,8 +28,7 @@
     "add_client": "Add client",
     "subscription": "Subscription",
     "invoice": "Invoice",
-    "add_user": "New user",
-    "quote": "Quote"
+    "add_user": "New user"
   },
   "tabs": {
     "dashboard": "Dashboard",
@@ -42,6 +41,8 @@
     "users": "Users",
     "organizations": "Organizations",
     "ai_performance": "AI Performance",
+    "client-invoices": "Client invoices",
+    "billing-settings": "Billing settings",
     "quotes": "Quotes"
   },
   "toasts": {
@@ -63,7 +64,17 @@
     "client_updated": "Client updated",
     "project_updated": "Project updated",
     "project_stage_updated": "Project stage updated",
-    "quote_created": "Quote created"
+    "client_invoice_created": "Invoice created",
+    "client_invoice_updated": "Invoice updated",
+    "client_invoice_deleted": "Invoice deleted",
+    "client_invoice_sent": "Invoice sent",
+    "client_invoice_paid": "Invoice marked as paid",
+    "billing_profile_saved": "Billing details saved",
+    "lead_updated": "Lead updated",
+    "quote_created": "Quote created successfully",
+    "quote_sent": "Quote sent by email",
+    "quote_deleted": "Quote deleted",
+    "quote_status_updated": "Quote status updated"
   },
   "common": {
     "cancel": "Cancel",
@@ -301,6 +312,29 @@
       "privacy": "Privacy policy",
       "privacy_accepted": "Accepted",
       "privacy_missing": "Consent not recorded"
+    },
+    "edit": {
+      "title": "Edit lead",
+      "edit_btn": "Edit",
+      "readonly_hint": "Contact details can't be edited from the panel yet.",
+      "cannot_clear": "This field can't be cleared from the panel.",
+      "save": "Save changes",
+      "saving": "Saving…",
+      "fields": {
+        "name": "Name",
+        "company": "Company",
+        "email": "Email",
+        "phone": "Phone",
+        "language": "Language",
+        "client_volume": "Client volume",
+        "challenge": "Challenge",
+        "status": "Status",
+        "priority": "Priority",
+        "channel": "Channel",
+        "category": "Category",
+        "project_name": "Project",
+        "notes": "Notes"
+      }
     }
   },
   "clients": {
@@ -387,9 +421,7 @@
       "action": "Action"
     },
     "empty": "No invoices",
-    "mark_paid": "Mark as paid",
-    "preview_send": "Preview & send",
-    "direct": "Direct"
+    "mark_paid": "Mark as paid"
   },
   "pipeline": {
     "empty_stage": "Empty"
@@ -483,8 +515,7 @@
       "monthly": "Monthly",
       "extra": "Extra"
     },
-    "client_required": "Select a client.",
-    "optional": "optional"
+    "client_required": "Select a client."
   },
   "search": {
     "placeholder": "Search clients, leads, invoices…",
@@ -493,7 +524,7 @@
     "sections": {
       "clients": "Clients",
       "leads": "Leads",
-      "invoices": "Invoices",
+      "invoices": "Subscription invoices (OryonX)",
       "subscriptions": "Subscriptions",
       "organizations": "Organizations"
     },
@@ -706,47 +737,208 @@
     "submit": "Save changes",
     "submitting": "Saving..."
   },
-  "quotes": {
+  "client_invoices": {
+    "new_btn": "New invoice",
+    "filter_all": "Status — all",
+    "statuses": {
+      "draft": "Draft",
+      "sent": "Sent",
+      "paid": "Paid",
+      "overdue": "Overdue"
+    },
     "headers": {
-      "number": "Quote Nº",
+      "number": "Invoice no.",
+      "client": "Client",
+      "amount": "Amount",
+      "status": "Status",
+      "issued": "Issued",
+      "due": "Due",
+      "actions": "Actions"
+    },
+    "actions": {
+      "pdf": "Download PDF",
+      "send": "Send",
+      "edit": "Edit",
+      "mark_paid": "Mark as paid",
+      "delete": "Delete"
+    },
+    "loading": "Loading invoices…",
+    "load_error": "Invoices could not be loaded.",
+    "retry": "Retry",
+    "empty": "No invoices yet. Create the first one from a job.",
+    "empty_filtered": "No invoices with this status.",
+    "module_unavailable": "Client invoicing is not included in this organisation's plan.",
+    "pdf_error": "The PDF could not be downloaded",
+    "send": {
+      "title": "Send invoice",
+      "question": "Send {number} to {email}?",
+      "question_no_email": "Send {number}? The recipient will be resolved from the client's details.",
+      "confirm": "Send",
+      "busy": "Sending…"
+    },
+    "mark_paid": {
+      "title": "Mark as paid",
+      "question": "Mark {number} as paid?",
+      "confirm": "Mark as paid",
+      "busy": "Saving…"
+    },
+    "delete": {
+      "title": "Delete invoice",
+      "question_prefix": "Delete",
+      "warning": "Only drafts can be deleted. This cannot be undone.",
+      "confirm": "Delete",
+      "busy": "Deleting…"
+    },
+    "errors": {
+      "billing_profile_incomplete": "Complete the organisation's billing details in Billing settings. Missing: {missing}",
+      "bill_to_incomplete": "The client's billing details are incomplete: {missing}",
+      "destination_email_missing": "The recipient has no email",
+      "send_failed": "Sending failed, please try again",
+      "amount_required": "The job's quote has no amount: enter the amount manually.",
+      "invoice_not_draft": "Only draft invoices can be deleted."
+    },
+    "modal": {
+      "create_title": "New client invoice",
+      "edit_title": "Edit invoice",
+      "trade_job": "Job",
+      "trade_job_placeholder": "Select a job…",
+      "trade_jobs_loading": "Loading jobs…",
+      "trade_job_required": "Select a job.",
+      "no_trade_jobs": "There are no uninvoiced jobs.",
+      "client": "Client",
+      "client_none": "No client (bill the job's lead)",
+      "client_hint": "Optional. Preselected when the job's lead is already a client.",
+      "amount": "Amount (£)",
+      "amount_placeholder": "Taken from the quote if left empty",
+      "vat_rate": "VAT (%)",
+      "due_date": "Due date",
+      "payment_method": "Payment method",
+      "payment_method_placeholder": "bank_transfer, card…",
+      "submit": "Create invoice",
+      "submitting": "Creating…",
+      "save": "Save changes",
+      "saving": "Saving…",
+      "bill_to_section": "Recipient details",
+      "bill_to_override": "Use these details instead of the client's",
+      "bill_to_hint": "Useful for individuals or clients without billing details. Unticked, the client's current details are used when sending.",
+      "client_required": "A client is required when no trade job is selected.",
+      "amount_required": "Amount is required when no trade job is selected.",
+      "description": "Description",
+      "description_placeholder": "What is this invoice for?"
+    }
+  },
+  "billing": {
+    "fields": {
+      "legal_name": "Legal name",
+      "vat_number": "VAT number",
+      "address_line1": "Address line 1",
+      "address_line2": "Address line 2",
+      "city": "City",
+      "postcode": "Postcode",
+      "country": "Country",
+      "company_number": "Company number",
+      "bank_name": "Bank",
+      "account_name": "Account name",
+      "sort_code": "Sort code",
+      "account_number": "Account number",
+      "iban": "IBAN",
+      "payment_terms_days": "Payment terms (days)",
+      "from_email": "Sender email",
+      "reply_to": "Reply-to",
+      "footer_notes": "Footer notes",
+      "email": "Email",
+      "phone": "Phone",
+      "billing_profile": "Billing profile"
+    },
+    "client_section": "Billing details",
+    "client_missing": "Needed before this client can be invoiced: {missing}"
+  },
+  "billing_settings": {
+    "intro": "The details your organisation issues invoices with. They appear on the PDF and in the email.",
+    "loading": "Loading billing details…",
+    "load_error": "Billing details could not be loaded.",
+    "retry": "Retry",
+    "complete": "Billing profile complete: you can send invoices.",
+    "missing": "Missing: {missing}",
+    "from_email_locked": "Managed by OryonX once the domain is verified",
+    "no_changes": "Nothing to save",
+    "sections": {
+      "identity": "Company",
+      "address": "Registered address",
+      "bank": "Bank and payment",
+      "sending": "Invoice sending"
+    },
+    "save": "Save",
+    "saving": "Saving…"
+  },
+  "quotes": {
+    "new_btn": "New quote",
+    "filter_all": "All statuses",
+    "statuses": {
+      "draft": "Draft",
+      "sent": "Sent",
+      "accepted": "Accepted",
+      "rejected": "Rejected",
+      "expired": "Expired"
+    },
+    "headers": {
+      "number": "Quote #",
       "lead": "Lead",
       "amount": "Amount",
       "status": "Status",
-      "date": "Date",
+      "issued": "Created",
+      "sent_at": "Sent",
+      "expires": "Expires",
       "actions": "Actions"
     },
-    "empty": "No quotes yet",
-    "preview_send": "Preview & send"
-  },
-  "modal_quote": {
-    "title": "New quote",
-    "lead": "Lead",
-    "lead_required": "Lead is required",
-    "lead_placeholder": "Select a lead…",
-    "amount_type": "Amount type",
-    "fixed": "Fixed amount",
-    "range": "Range (min–max)",
-    "amount_fixed": "Amount",
-    "amount_required": "Amount is required",
-    "amount_min": "Min",
-    "amount_max": "Max",
-    "range_required": "Set at least a min or a max",
-    "submit": "Create quote",
-    "submitting": "Creating…"
-  },
-  "pdf_viewer": {
-    "loading": "Loading PDF…",
-    "download": "Download",
-    "send_email": "Send by email",
-    "send_whatsapp": "Send by WhatsApp",
-    "sending": "Sending…",
-    "email_sent": "Email sent successfully",
-    "whatsapp_sent": "Sent by WhatsApp",
-    "no_phone": "No phone number",
-    "err_billing": "Complete your billing profile in Settings",
-    "err_no_email": "The recipient has no email",
-    "err_amount": "Set an amount first",
-    "err_send_failed": "Email could not be sent, try again",
-    "err_generic": "Something went wrong"
+    "actions": {
+      "pdf": "Download PDF",
+      "send": "Send proposal",
+      "delete": "Delete"
+    },
+    "loading": "Loading quotes...",
+    "load_error": "Quotes could not be loaded.",
+    "retry": "Retry",
+    "empty": "No quotes yet.",
+    "empty_filtered": "No quotes match the selected filter.",
+    "module_unavailable": "The Quotes module is not available on your current plan.",
+    "pdf_error": "PDF download failed",
+    "send": {
+      "title": "Send proposal",
+      "question": "Send quote {number} by email to {email}?",
+      "question_no_email": "Send quote {number}? The lead has no email — the send may fail.",
+      "confirm": "Send",
+      "busy": "Sending..."
+    },
+    "delete": {
+      "title": "Delete quote",
+      "question_prefix": "Delete",
+      "confirm": "Delete",
+      "busy": "Deleting..."
+    },
+    "errors": {
+      "billing_profile_incomplete": "Your billing profile is incomplete. Go to Settings → Billing to complete it before sending.",
+      "amount_required": "Set an amount (fixed or range) before sending.",
+      "destination_email_missing": "The linked lead has no email address.",
+      "send_failed": "The email could not be sent. Please try again — the quote was NOT marked as sent."
+    },
+    "modal": {
+      "create_title": "New quote",
+      "lead": "Lead",
+      "lead_placeholder": "Select a lead…",
+      "lead_required": "A lead is required.",
+      "amount_mode": "Pricing",
+      "amount_fixed_label": "Fixed amount",
+      "amount_range_label": "Estimated range",
+      "amount_fixed_field": "Amount",
+      "amount_min": "Minimum",
+      "amount_max": "Maximum",
+      "amount_positive": "Amount must be positive.",
+      "notes": "Notes",
+      "notes_placeholder": "Scope of work, special conditions…",
+      "expires_at": "Valid until",
+      "submit": "Create quote",
+      "submitting": "Creating..."
+    }
   }
 }
