@@ -174,6 +174,48 @@ export const apiDownloadClientInvoicePdf = async (token, id, invoiceNumber) => {
 export const apiGetTradeJobs = (token) =>
   request("GET", "/api/trade-jobs", null, token);
 
+// ── Quotes (presupuestos PSR → leads) ────────────────────────────────────────
+export const apiGetQuotes = (token) =>
+  request("GET", "/api/quotes", null, token);
+
+export const apiCreateQuote = (token, data) =>
+  request("POST", "/api/quotes", data, token);
+
+export const apiUpdateQuote = (token, id, data) =>
+  request("PATCH", `/api/quotes/${id}`, data, token);
+
+export const apiDeleteQuote = (token, id) =>
+  request("DELETE", `/api/quotes/${id}`, null, token);
+
+export const apiUpdateQuoteStatus = (token, id, status) =>
+  request("PATCH", `/api/quotes/${id}/status`, { status }, token);
+
+export const apiSendQuote = (token, id) =>
+  request("POST", `/api/quotes/${id}/send`, null, token);
+
+export const apiDownloadQuotePdf = async (token, id, quoteNumber) => {
+  const res = await fetch(`${API_URL}/api/quotes/${id}/pdf`, {
+    headers: { Accept: "application/pdf", Authorization: `Bearer ${token}` },
+  });
+
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    const err = new Error(data.message || `Error ${res.status}`);
+    err.status = res.status;
+    err.data   = data;
+    throw err;
+  }
+
+  const url  = URL.createObjectURL(await res.blob());
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `${quoteNumber || `quote-${id}`}.pdf`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+};
+
 // ── Billing profile (datos fiscales de la organización autenticada) ──────────
 export const apiGetBillingProfile = (token) =>
   request("GET", "/api/me/billing-profile", null, token);

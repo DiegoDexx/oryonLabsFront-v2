@@ -42,7 +42,8 @@
     "organizations": "Organizations",
     "ai_performance": "AI Performance",
     "client-invoices": "Client invoices",
-    "billing-settings": "Billing settings"
+    "billing-settings": "Billing settings",
+    "quotes": "Quotes"
   },
   "toasts": {
     "invoice_paid": "Invoice marked as paid",
@@ -69,7 +70,11 @@
     "client_invoice_sent": "Invoice sent",
     "client_invoice_paid": "Invoice marked as paid",
     "billing_profile_saved": "Billing details saved",
-    "lead_updated": "Lead updated"
+    "lead_updated": "Lead updated",
+    "quote_created": "Quote created successfully",
+    "quote_sent": "Quote sent by email",
+    "quote_deleted": "Quote deleted",
+    "quote_status_updated": "Quote status updated"
   },
   "common": {
     "cancel": "Cancel",
@@ -815,7 +820,11 @@
       "saving": "Saving…",
       "bill_to_section": "Recipient details",
       "bill_to_override": "Use these details instead of the client's",
-      "bill_to_hint": "Useful for individuals or clients without billing details. Unticked, the client's current details are used when sending."
+      "bill_to_hint": "Useful for individuals or clients without billing details. Unticked, the client's current details are used when sending.",
+      "client_required": "A client is required when no trade job is selected.",
+      "amount_required": "Amount is required when no trade job is selected.",
+      "description": "Description",
+      "description_placeholder": "What is this invoice for?"
     }
   },
   "billing": {
@@ -861,5 +870,75 @@
     },
     "save": "Save",
     "saving": "Saving…"
+  },
+  "quotes": {
+    "new_btn": "New quote",
+    "filter_all": "All statuses",
+    "statuses": {
+      "draft": "Draft",
+      "sent": "Sent",
+      "accepted": "Accepted",
+      "rejected": "Rejected",
+      "expired": "Expired"
+    },
+    "headers": {
+      "number": "Quote #",
+      "lead": "Lead",
+      "amount": "Amount",
+      "status": "Status",
+      "issued": "Created",
+      "sent_at": "Sent",
+      "expires": "Expires",
+      "actions": "Actions"
+    },
+    "actions": {
+      "pdf": "Download PDF",
+      "send": "Send proposal",
+      "delete": "Delete"
+    },
+    "loading": "Loading quotes...",
+    "load_error": "Quotes could not be loaded.",
+    "retry": "Retry",
+    "empty": "No quotes yet.",
+    "empty_filtered": "No quotes match the selected filter.",
+    "module_unavailable": "The Quotes module is not available on your current plan.",
+    "pdf_error": "PDF download failed",
+    "send": {
+      "title": "Send proposal",
+      "question": "Send quote {number} by email to {email}?",
+      "question_no_email": "Send quote {number}? The lead has no email — the send may fail.",
+      "confirm": "Send",
+      "busy": "Sending..."
+    },
+    "delete": {
+      "title": "Delete quote",
+      "question_prefix": "Delete",
+      "confirm": "Delete",
+      "busy": "Deleting..."
+    },
+    "errors": {
+      "billing_profile_incomplete": "Your billing profile is incomplete. Go to Settings → Billing to complete it before sending.",
+      "amount_required": "Set an amount (fixed or range) before sending.",
+      "destination_email_missing": "The linked lead has no email address.",
+      "send_failed": "The email could not be sent. Please try again — the quote was NOT marked as sent."
+    },
+    "modal": {
+      "create_title": "New quote",
+      "lead": "Lead",
+      "lead_placeholder": "Select a lead…",
+      "lead_required": "A lead is required.",
+      "amount_mode": "Pricing",
+      "amount_fixed_label": "Fixed amount",
+      "amount_range_label": "Estimated range",
+      "amount_fixed_field": "Amount",
+      "amount_min": "Minimum",
+      "amount_max": "Maximum",
+      "amount_positive": "Amount must be positive.",
+      "notes": "Notes",
+      "notes_placeholder": "Scope of work, special conditions…",
+      "expires_at": "Valid until",
+      "submit": "Create quote",
+      "submitting": "Creating..."
+    }
   }
 }

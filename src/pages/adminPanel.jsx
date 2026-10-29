@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
   apiGetClients, apiGetLeads, apiGetSubscriptions, apiGetInvoices, apiGetProjects,
-  apiGetUsers, apiGetClientInvoices,
+  apiGetUsers, apiGetClientInvoices, apiGetQuotes,
   apiUpdateProjectStage, apiDeleteProject, apiUpdateSubscriptionStatus, apiMarkInvoicePaid,
 } from '../api/apiActions';
 import { AdminLangProvider, useAdminT } from '../context/AdminLangContext';
@@ -17,6 +17,7 @@ import PipelineView         from '../components/adminPanel/views/PipelineView';
 import SubscriptionsView    from '../components/adminPanel/views/SubscriptionsView';
 import InvoicesView         from '../components/adminPanel/views/InvoicesView';
 import ClientInvoicesView   from '../components/adminPanel/views/ClientInvoicesView';
+import QuotesView           from '../components/adminPanel/views/QuotesView';
 import BillingSettingsView  from '../components/adminPanel/views/BillingSettingsView';
 import CreateSubscriptionModal from '../components/adminPanel/modals/CreateSubscriptionModal';
 import CreateInvoiceModal      from '../components/adminPanel/modals/CreateInvoiceModal';
@@ -68,6 +69,9 @@ const AdminPanelInner = () => {
   const [clientInvoices,        setClientInvoices]        = useState([]);
   const [clientInvoicesLoading, setClientInvoicesLoading] = useState(true);
   const [clientInvoicesError,   setClientInvoicesError]   = useState(null);
+  const [quotes,        setQuotes]        = useState([]);
+  const [quotesLoading, setQuotesLoading] = useState(true);
+  const [quotesError,   setQuotesError]   = useState(null);
   const [leads,         setLeads]          = useState([]);
   const [users,          setUsers]          = useState([]);
   const [organizations,  setOrganizations]  = useState([]);
@@ -146,6 +150,23 @@ const AdminPanelInner = () => {
   }, [token]);
 
   useEffect(() => { refreshClientInvoices(); }, [refreshClientInvoices]);
+
+  // Quotes (presupuestos PSR). Same error-surfacing pattern as projects/client-invoices.
+  const refreshQuotes = useCallback(async ({ silent = false } = {}) => {
+    if (!token) return;
+    if (!silent) setQuotesLoading(true);
+    try {
+      const d = await apiGetQuotes(token);
+      setQuotes(Array.isArray(d) ? d : []);
+      setQuotesError(null);
+    } catch (err) {
+      setQuotesError(err);
+    } finally {
+      setQuotesLoading(false);
+    }
+  }, [token]);
+
+  useEffect(() => { refreshQuotes(); }, [refreshQuotes]);
 
   // ── Handlers ───────────────────────────────────────────────────────────────
   const handleStageChange = async (projectId, stage) => {
@@ -233,6 +254,7 @@ const AdminPanelInner = () => {
     clients:       t.tabs.clients,
     subscriptions: t.tabs.subscriptions,
     invoices:      t.tabs.invoices,
+    quotes:             t.tabs.quotes,
     'client-invoices':  t.tabs['client-invoices'],
     'billing-settings': t.tabs['billing-settings'],
     leads:        t.tabs.leads,
@@ -372,6 +394,18 @@ const AdminPanelInner = () => {
             )}
             {selectedTab === 'invoices' && (
               <InvoicesView invoices={invoices} onMarkPaid={handleMarkPaid} />
+            )}
+            {selectedTab === 'quotes' && (
+              <QuotesView
+                quotes={quotes}
+                loading={quotesLoading}
+                error={quotesError}
+                token={token}
+                leads={leads}
+                onRetry={() => refreshQuotes()}
+                onRefresh={() => refreshQuotes({ silent: true })}
+                onToast={showToast}
+              />
             )}
             {selectedTab === 'client-invoices' && (
               <ClientInvoicesView

@@ -4,7 +4,7 @@ import { apiCreateClientInvoice, apiGetTradeJobs } from "../../../api/apiActions
 import { useAdminT } from "../../../context/AdminLangContext";
 import { PAYMENT_METHOD_SUGGESTIONS, clientInvoiceErrorMessage, formatGBP } from "../billing";
 
-const EMPTY = { trade_job_id: "", client_id: "", amount: "", due_date: "", payment_method: "", vat_rate: "" };
+const EMPTY = { trade_job_id: "", client_id: "", amount: "", description: "", due_date: "", payment_method: "", vat_rate: "" };
 
 const tradeJobLabel = (tj) => {
   const quote = tj.quote?.amount_fixed ?? tj.quote?.amount_max ?? tj.quote?.amount_min;
@@ -60,16 +60,24 @@ const CreateClientInvoiceModal = ({ isOpen, onClose, token, clients = [], invoic
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
   };
 
+  const hasTradeJob = !!form.trade_job_id;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.trade_job_id) { setErrors({ trade_job_id: tm.trade_job_required }); return; }
+    const errs = {};
+    // Without a trade job, client and amount are mandatory.
+    if (!hasTradeJob && !form.client_id) errs.client_id = tm.client_required;
+    if (!hasTradeJob && form.amount === "") errs.amount  = tm.amount_required;
+    if (Object.keys(errs).length) { setErrors(errs); return; }
 
-    const payload = { trade_job_id: Number(form.trade_job_id) };
+    const payload = {};
+    if (form.trade_job_id)          payload.trade_job_id   = Number(form.trade_job_id);
     if (form.client_id)             payload.client_id      = Number(form.client_id);
     if (form.amount !== "")         payload.amount         = Number(form.amount);
     if (form.vat_rate !== "")       payload.vat_rate       = Number(form.vat_rate);
     if (form.due_date)              payload.due_date       = form.due_date;
     if (form.payment_method.trim()) payload.payment_method = form.payment_method.trim();
+    if (form.description.trim())    payload.description    = form.description.trim();
 
     setLoading(true);
     try {
@@ -103,7 +111,7 @@ const CreateClientInvoiceModal = ({ isOpen, onClose, token, clients = [], invoic
     <Modal isOpen={isOpen} onClose={onClose} title={tm.create_title}>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className={label}>{tm.trade_job} <span className="text-red-400">*</span></label>
+          <label className={label}>{tm.trade_job}</label>
           <select
             value={form.trade_job_id}
             onChange={handleChange("trade_job_id")}
@@ -123,7 +131,7 @@ const CreateClientInvoiceModal = ({ isOpen, onClose, token, clients = [], invoic
         </div>
 
         <div>
-          <label className={label}>{tm.client}</label>
+          <label className={label}>{tm.client}{!hasTradeJob && <span className="text-red-400"> *</span>}</label>
           <select value={form.client_id} onChange={handleChange("client_id")} className={selectClass("client_id")}>
             <option value="">{tm.client_none}</option>
             {clients.map((c) => (
@@ -134,9 +142,23 @@ const CreateClientInvoiceModal = ({ isOpen, onClose, token, clients = [], invoic
           {fieldError("client_id")}
         </div>
 
+        {!hasTradeJob && (
+          <div>
+            <label className={label}>{tm.description}</label>
+            <input
+              type="text"
+              value={form.description}
+              onChange={handleChange("description")}
+              placeholder={tm.description_placeholder}
+              className={inputClass("description")}
+            />
+            {fieldError("description")}
+          </div>
+        )}
+
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className={label}>{tm.amount}</label>
+            <label className={label}>{tm.amount}{!hasTradeJob && <span className="text-red-400"> *</span>}</label>
             <input
               type="number" min="0" step="0.01"
               value={form.amount}

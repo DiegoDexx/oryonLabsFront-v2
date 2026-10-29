@@ -42,7 +42,8 @@
     "organizations": "Organizaciones",
     "ai_performance": "Rendimiento IA",
     "client-invoices": "Facturas a clientes",
-    "billing-settings": "Ajustes de facturación"
+    "billing-settings": "Ajustes de facturación",
+    "quotes": "Presupuestos"
   },
   "toasts": {
     "invoice_paid": "Factura marcada como pagada",
@@ -69,7 +70,11 @@
     "client_invoice_sent": "Factura enviada",
     "client_invoice_paid": "Factura marcada como pagada",
     "billing_profile_saved": "Datos fiscales guardados",
-    "lead_updated": "Lead actualizado"
+    "lead_updated": "Lead actualizado",
+    "quote_created": "Presupuesto creado correctamente",
+    "quote_sent": "Presupuesto enviado por email",
+    "quote_deleted": "Presupuesto eliminado",
+    "quote_status_updated": "Estado del presupuesto actualizado"
   },
   "common": {
     "cancel": "Cancelar",
@@ -815,7 +820,11 @@
       "saving": "Guardando…",
       "bill_to_section": "Datos del destinatario",
       "bill_to_override": "Usar estos datos en lugar de los del cliente",
-      "bill_to_hint": "Útil para particulares o clientes sin ficha fiscal. Sin marcar, se usan los datos actuales del cliente al enviar."
+      "bill_to_hint": "Útil para particulares o clientes sin ficha fiscal. Sin marcar, se usan los datos actuales del cliente al enviar.",
+      "client_required": "Es necesario seleccionar un cliente cuando no hay trabajo asociado.",
+      "amount_required": "El importe es obligatorio cuando no hay trabajo asociado.",
+      "description": "Descripción",
+      "description_placeholder": "¿A qué corresponde esta factura?"
     }
   },
   "billing": {
@@ -861,5 +870,75 @@
     },
     "save": "Guardar",
     "saving": "Guardando…"
+  },
+  "quotes": {
+    "new_btn": "Nuevo presupuesto",
+    "filter_all": "Todos los estados",
+    "statuses": {
+      "draft": "Borrador",
+      "sent": "Enviado",
+      "accepted": "Aceptado",
+      "rejected": "Rechazado",
+      "expired": "Expirado"
+    },
+    "headers": {
+      "number": "Presupuesto #",
+      "lead": "Lead",
+      "amount": "Importe",
+      "status": "Estado",
+      "issued": "Creado",
+      "sent_at": "Enviado",
+      "expires": "Expira",
+      "actions": "Acciones"
+    },
+    "actions": {
+      "pdf": "Descargar PDF",
+      "send": "Enviar propuesta",
+      "delete": "Eliminar"
+    },
+    "loading": "Cargando presupuestos...",
+    "load_error": "No se pudieron cargar los presupuestos.",
+    "retry": "Reintentar",
+    "empty": "Aún no hay presupuestos.",
+    "empty_filtered": "Ningún presupuesto coincide con el filtro.",
+    "module_unavailable": "El módulo de Presupuestos no está disponible en tu plan actual.",
+    "pdf_error": "Error al descargar el PDF",
+    "send": {
+      "title": "Enviar propuesta",
+      "question": "¿Enviar presupuesto {number} por email a {email}?",
+      "question_no_email": "¿Enviar presupuesto {number}? El lead no tiene email — el envío puede fallar.",
+      "confirm": "Enviar",
+      "busy": "Enviando..."
+    },
+    "delete": {
+      "title": "Eliminar presupuesto",
+      "question_prefix": "¿Eliminar",
+      "confirm": "Eliminar",
+      "busy": "Eliminando..."
+    },
+    "errors": {
+      "billing_profile_incomplete": "Tu perfil de facturación está incompleto. Ve a Ajustes → Facturación para completarlo antes de enviar.",
+      "amount_required": "Establece un importe (fijo o rango) antes de enviar.",
+      "destination_email_missing": "El lead vinculado no tiene email.",
+      "send_failed": "No se pudo enviar el email. Inténtalo de nuevo — el presupuesto NO se marcó como enviado."
+    },
+    "modal": {
+      "create_title": "Nuevo presupuesto",
+      "lead": "Lead",
+      "lead_placeholder": "Selecciona un lead…",
+      "lead_required": "Es necesario seleccionar un lead.",
+      "amount_mode": "Tipo de precio",
+      "amount_fixed_label": "Importe fijo",
+      "amount_range_label": "Rango estimado",
+      "amount_fixed_field": "Importe",
+      "amount_min": "Mínimo",
+      "amount_max": "Máximo",
+      "amount_positive": "El importe debe ser positivo.",
+      "notes": "Notas",
+      "notes_placeholder": "Alcance del trabajo, condiciones especiales…",
+      "expires_at": "Válido hasta",
+      "submit": "Crear presupuesto",
+      "submitting": "Creando..."
+    }
   }
 }
