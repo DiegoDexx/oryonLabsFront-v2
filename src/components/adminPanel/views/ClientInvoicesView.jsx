@@ -5,10 +5,13 @@ import { useAdminT } from "../../../context/AdminLangContext";
 import {
   apiDeleteClientInvoice,
   apiDownloadClientInvoicePdf,
+  apiGetPdfBlobUrl,
   apiMarkClientInvoicePaid,
   apiSendClientInvoice,
+  apiSendWhatsAppDocument,
 } from "../../../api/apiActions";
 import Modal from "../../ui/Modal";
+import PdfPreviewModal from "../PdfPreviewModal";
 import CreateClientInvoiceModal from "../modals/CreateClientInvoiceModal";
 import EditClientInvoiceModal from "../modals/EditClientInvoiceModal";
 import {
@@ -24,6 +27,13 @@ import {
   invoiceClientName,
   invoiceDestinationEmail,
 } from "../billing";
+
+const EyeIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+  </svg>
+);
 
 const DownloadIcon = () => (
   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -77,6 +87,7 @@ const ClientInvoicesView = ({ invoices, loading, error, token, clients, onRetry,
   const [showCreate, setShowCreate]     = useState(false);
   const [editTarget, setEditTarget]     = useState(null);
   const [pdfBusy, setPdfBusy]           = useState(null);
+  const [previewInv, setPreviewInv]     = useState(null); // factura abierta en el visor PDF
 
   // Acciones con confirmación: { type: 'send' | 'delete' | 'paid', invoice }
   const [action, setAction]             = useState(null);
@@ -206,6 +217,13 @@ const ClientInvoicesView = ({ invoices, loading, error, token, clients, onRetry,
         const inv = params.row.raw;
         return (
           <div className="flex items-center gap-1 h-full">
+            <button
+              onClick={() => setPreviewInv(inv)}
+              className={`${iconBtn} hover:text-cyan hover:bg-cyan/10`}
+              title={ti.actions?.preview_send || "Preview & send"}
+            >
+              <EyeIcon />
+            </button>
             <button
               onClick={() => handleDownload(inv)}
               disabled={pdfBusy === inv.id}
@@ -404,6 +422,23 @@ const ClientInvoicesView = ({ invoices, loading, error, token, clients, onRetry,
         clients={clients}
         onSuccess={() => { setEditTarget(null); onToast(t.toasts.client_invoice_updated); onRefresh(); }}
       />
+
+      {previewInv && (
+        <PdfPreviewModal
+          isOpen={!!previewInv}
+          onClose={() => setPreviewInv(null)}
+          title={previewInv.invoice_number || `Invoice #${previewInv.id}`}
+          loadPdfUrl={() => apiGetPdfBlobUrl(token, `/api/client-invoices/${previewInv.id}/pdf`)}
+          sendEmail={() => apiSendClientInvoice(token, previewInv.id)}
+          sendWhatsApp={(previewInv.client?.phone || previewInv.bill_to?.phone) ? () => apiSendWhatsAppDocument({
+            doc_type: "client_invoice",
+            doc_id: previewInv.id,
+            phone: previewInv.client?.phone || previewInv.bill_to?.phone,
+            name: invoiceClientName(previewInv) || "",
+          }) : null}
+          whatsappAvailable={!!(previewInv.client?.phone || previewInv.bill_to?.phone)}
+        />
+      )}
     </>
   );
 };

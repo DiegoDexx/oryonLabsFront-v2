@@ -1,24 +1,18 @@
-import { useState, useCallback } from 'react';
 import { Badge, STATUS_BADGE } from '../shared';
 import { useAdminT } from '../../../context/AdminLangContext';
-import PdfPreviewModal from '../PdfPreviewModal';
-import { apiGetInvoicePdfUrl, apiSendInvoice, apiSendWhatsAppDocument } from '../../../api/apiActions';
 
-// client_invoices: estados draft/sent/paid/overdue. "Pendiente de cobro"
-// = todo lo no pagado (draft + sent + overdue).
-const UNPAID = ['draft', 'sent', 'overdue'];
+const TYPE_BADGE = {
+  setup:   'bg-purple-100 text-purple-700',
+  monthly: 'bg-blue-100 text-blue-700',
+  extra:   'bg-gray-100 text-gray-600',
+};
 
-const InvoicesView = ({ invoices, onMarkPaid, token }) => {
+const InvoicesView = ({ invoices, onMarkPaid }) => {
   const { t } = useAdminT();
   const ti = t.invoices;
   const headers = Object.values(ti.headers);
-  const pending = invoices.filter(i => UNPAID.includes(i.status));
+  const pending = invoices.filter(i => i.status === 'pending');
   const pendingAmount = pending.reduce((acc, i) => acc + parseFloat(i.amount || 0), 0);
-
-  const [preview, setPreview] = useState(null); // factura abierta en el visor
-  const openPreview = useCallback((inv) => setPreview(inv), []);
-  const closePreview = useCallback(() => setPreview(null), []);
-  const phoneOf = (inv) => inv.client?.phone || null;
 
   return (
     <div className="space-y-4">
@@ -50,25 +44,17 @@ const InvoicesView = ({ invoices, onMarkPaid, token }) => {
                 <tr key={inv.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 font-medium text-navy">{inv.invoice_number}</td>
                   <td className="px-6 py-4 text-gray-600">{inv.client?.name || '—'}</td>
-                  <td className="px-6 py-4 text-gray-500 text-sm">
-                    {inv.trade_job_id ? `#${inv.trade_job_id}` : (ti.direct || 'Direct')}
-                  </td>
+                  <td className="px-6 py-4"><Badge value={inv.type} map={TYPE_BADGE} /></td>
                   <td className="px-6 py-4 font-medium text-navy">€{inv.amount}</td>
                   <td className="px-6 py-4 text-gray-500 text-sm">{inv.due_date}</td>
                   <td className="px-6 py-4"><Badge value={inv.status} map={STATUS_BADGE} /></td>
                   <td className="px-6 py-4">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <button onClick={() => openPreview(inv)}
-                        className="text-xs bg-navy text-white px-2.5 py-1.5 rounded-lg hover:opacity-90 transition">
-                        {ti.preview_send || 'Preview & send'}
+                    {inv.status === 'pending' && (
+                      <button onClick={() => onMarkPaid(inv.id)}
+                        className="text-xs bg-green-500 text-white px-3 py-1.5 rounded-lg hover:bg-green-600 transition">
+                        {ti.mark_paid}
                       </button>
-                      {inv.status !== 'paid' && (
-                        <button onClick={() => onMarkPaid(inv.id)}
-                          className="text-xs bg-green-500 text-white px-2.5 py-1.5 rounded-lg hover:bg-green-600 transition">
-                          {ti.mark_paid}
-                        </button>
-                      )}
-                    </div>
+                    )}
                   </td>
                 </tr>
               ))}
@@ -76,23 +62,6 @@ const InvoicesView = ({ invoices, onMarkPaid, token }) => {
           </table>
         </div>
       </div>
-
-      {preview && (
-        <PdfPreviewModal
-          isOpen={!!preview}
-          onClose={closePreview}
-          title={preview.invoice_number || `Invoice #${preview.id}`}
-          loadPdfUrl={() => apiGetInvoicePdfUrl(token, preview.id)}
-          sendEmail={() => apiSendInvoice(token, preview.id)}
-          sendWhatsApp={phoneOf(preview) ? () => apiSendWhatsAppDocument({
-            doc_type: 'client_invoice',
-            doc_id: preview.id,
-            phone: phoneOf(preview),
-            name: preview.client?.name || '',
-          }) : null}
-          whatsappAvailable={!!phoneOf(preview)}
-        />
-      )}
     </div>
   );
 };
