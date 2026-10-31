@@ -15,3 +15,6 @@
 
 [build.environment]
 NODE_VERSION = "22"
+# Workflow n8n: envío de documentos por WhatsApp desde el visor PDF del CRM.
+# Vite inyecta VITE_* en build time; Netlify no ve el .env local, así que va aquí.
+VITE_N8N_WHATSAPP_WEBHOOK = "https://n8n.diegoalejandrojs.com/webhook/crm-send-document-whatsapp"
